@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ✏ EDIT: Replace [Your Name] with your actual name everywhere below -->
+  <title>[Your Name] — AI, Robotics & Writing</title>
+  <meta name="description" content="Student builder focused on AI, robotics, software, and analytical writing." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========== NAV ========== -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#home" class="nav__logo">
+        <!-- ✏ EDIT: Replace with your initials and name -->
+        <span class="nav__logo-mark">YN</span>
+        <span class="nav__logo-name">[Your Name]</span>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about"    class="nav__link">About</a></li>
+        <li><a href="#featured" class="nav__link">Project</a></li>
+        <li><a href="#writing"  class="nav__link">Writing</a></li>
+        <li><a href="#skills"   class="nav__link">Skills</a></li>
+        <li><a href="#next"     class="nav__link">Coming Soon</a></li>
+        <li><a href="#contact"  class="nav__link">Contact</a></li>
+      </ul>
+      <div class="nav__right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span id="themeIcon">☀</span>
+        </button>
+        <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ========== HOME ========== -->
+    <section class="hero" id="home">
+      <div class="hero__bg-grid" aria-hidden="true"></div>
+      <div class="hero__content reveal">
+        <!-- ✏ EDIT: Replace [Your Name] -->
+        <div class="hero__tag">Dubai, UAE &middot; 2025</div>
+        <h1 class="hero__name">[Your Name]</h1>
+        <p class="hero__tagline">Student builder focused on AI, robotics, software, and analytical writing.</p>
+        <p class="hero__intro">I build technical projects, document what I learn, and write about systems, stories, and decision-making.</p>
+        <div class="hero__buttons">
+          <a href="#featured" class="btn btn--primary">View Project</a>
+          <a href="#writing"  class="btn btn--ghost">Read Writing</a>
+          <a href="#contact"  class="btn btn--ghost">Contact</a>
+        </div>
+        <div class="hero__stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Arduino</span>
+          <span class="stack-tag">Computer Vision</span>
+          <span class="stack-tag">AI / ML</span>
+          <span class="stack-tag">Analytical Writing</span>
+        </div>
+      </div>
+      <div class="hero__visual reveal-delay" aria-hidden="true">
+        <div class="hero__circuit">
+          <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="200" cy="200" r="150" stroke="var(--accent)" stroke-width="0.5" stroke-dasharray="4 10" opacity="0.25"/>
+            <circle cx="200" cy="200" r="100" stroke="var(--accent)" stroke-width="0.5" opacity="0.18"/>
+            <circle cx="200" cy="200" r="50"  stroke="var(--accent)" stroke-width="1"   opacity="0.4"/>
+            <circle cx="200" cy="200" r="7"   fill="var(--accent)"   opacity="0.9"/>
+            <line x1="50"  y1="200" x2="350" y2="200" stroke="var(--accent)" stroke-width="0.5" opacity="0.12"/>
+            <line x1="200" y1="50"  x2="200" y2="350" stroke="var(--accent)" stroke-width="0.5" opacity="0.12"/>
+            <circle cx="200" cy="50"  r="3" fill="var(--accent)"   opacity="0.6"/>
+            <circle cx="350" cy="200" r="3" fill="var(--accent)"   opacity="0.6"/>
+            <circle cx="200" cy="350" r="3" fill="var(--accent)"   opacity="0.6"/>
+            <circle cx="50"  cy="200" r="3" fill="var(--accent)"   opacity="0.6"/>
+            <circle cx="300" cy="100" r="3" fill="var(--accent-2)" opacity="0.5"/>
+            <circle cx="100" cy="300" r="3" fill="var(--accent-2)" opacity="0.5"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">About</span>
+          <h2 class="section__title">Who I Am</h2>
+        </div>
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <p>
+              I'm a 17-year-old student based in Dubai studying under the American curriculum.
+              My work sits at the intersection of software, robotics, and AI — I build systems
+              that connect code to the physical world, or use AI to make information more useful.
+            </p>
+            <p>
+              Outside technical projects, I write analytical essays on character psychology,
+              narrative structure, and decision-making in fiction. I think careful analysis
+              of stories and systems is the same underlying skill.
+            </p>
+            <p>
+              Long term, I'm interested in how AI and software can support biology and longevity
+              research — especially through tools that help analyze papers, datasets, and
+              experimental knowledge. I'm preparing for university in AI or software engineering,
+              with Khalifa University as a primary goal.
+            </p>
+          </div>
+          <div class="about__cards reveal-delay">
+            <div class="about__card">
+              <span class="about__card-icon">&#9881;</span>
+              <h3>Engineering</h3>
+              <p>Hardware-software systems using Python, Arduino, and computer vision.</p>
+            </div>
+            <div class="about__card">
+              <span class="about__card-icon">&#11835;</span>
+              <h3>AI & Tools</h3>
+              <p>Writing code and using AI to build things that are actually useful.</p>
+            </div>
+            <div class="about__card">
+              <span class="about__card-icon">&#9998;</span>
+              <h3>Writing</h3>
+              <p>Essays on psychology, narrative structure, and decision-making in fiction.</p>
+            </div>
+            <div class="about__card">
+              <span class="about__card-icon">&#9650;</span>
+              <h3>Long View</h3>
+              <p>AI tools for biology and longevity research — making hard problems more tractable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FEATURED PROJECT ========== -->
+    <section class="section featured" id="featured">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Featured Project &mdash; Built 2024</span>
+          <h2 class="section__title">Computer-Vision Robotic Hand</h2>
+          <p class="section__subtitle">
+            A camera-based robotic hand system built with Python, computer vision, Arduino,
+            and servo motors. The system tracks live hand movement through a webcam and maps
+            the motion to a physical servo-driven hand prototype.
+          </p>
+        </div>
+
+        <!-- Five detail cards -->
+        <div class="featured__grid">
+
+          <div class="featured__card reveal">
+            <span class="featured__card-label">Problem</span>
+            <p>I wanted to understand how software can control physical systems using vision input — closing the loop between camera, code, and hardware.</p>
+          </div>
+
+          <div class="featured__card reveal">
+            <span class="featured__card-label">Build</span>
+            <p>A webcam feeds live frames into a Python script running a computer vision pipeline. Detected hand landmarks are mapped to angles, sent over serial to an Arduino, which drives servo motors attached to a cardboard mechanical hand.</p>
+          </div>
+
+          <div class="featured__card reveal">
+            <span class="featured__card-label">Tools Used</span>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">OpenCV / MediaPipe</span>
+              <span class="tag">Arduino (C++)</span>
+              <span class="tag">Servo Motors</span>
+              <span class="tag">Serial Communication</span>
+              <span class="tag">Cardboard Prototyping</span>
+            </div>
+          </div>
+
+          <div class="featured__card reveal">
+            <span class="featured__card-label">What I Learned</span>
+            <p>Hardware-software integration is harder than either alone. Debugging a physical system means the bug might be in the code, the wiring, the mechanics, or the mapping math. I learned to isolate each layer separately and prototype fast under constraints.</p>
+          </div>
+
+          <div class="featured__card reveal">
+            <span class="featured__card-label">Next Improvements</span>
+            <p>Improve the mechanical structure for smoother movement, reduce serial latency, add gesture recognition for discrete commands, and eventually rebuild the hand in 3D-printed PLA for a more durable version.</p>
+          </div>
+
+        </div>
+
+        <!-- Media area -->
+        <div class="featured__media reveal">
+          <p class="media-note">
+            <!-- ✏ EDIT: Replace this block with a real video embed or image gallery when ready -->
+            Project video and images &mdash; <em>adding soon.</em>
+          </p>
+          <!--
+            TO ADD A VIDEO: replace the <p> above with something like:
+            <video src="your-demo.mp4" controls width="100%"></video>
+            OR for YouTube:
+            <div class="video-embed">
+              <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            TO ADD IMAGES: use an <img> tag per image, e.g.:
+            <div class="image-row">
+              <img src="images/hand-1.jpg" alt="Robotic hand front view" />
+              <img src="images/hand-2.jpg" alt="Arduino wiring" />
+            </div>
+          -->
+
+          <div class="featured__links">
+            <!-- ✏ EDIT: Replace href with your GitHub repo URL when ready -->
+            <span class="btn btn--ghost btn--disabled">GitHub &mdash; coming soon</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== WRITING ========== -->
+    <section class="section writing" id="writing">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Writing</span>
+          <h2 class="section__title">Essays &amp; Analysis</h2>
+          <p class="section__subtitle">
+            I write analytical essays on character psychology, narrative structure, themes,
+            and decision-making in fiction and media. These are separate from my technical
+            work but use the same underlying thinking.
+          </p>
+        </div>
+
+        <div class="writing__grid">
+
+          <!-- ✏ EDIT THIS CARD: Replace the title, description, and link with your real essay -->
+          <article class="writing-card writing-card--real reveal">
+            <span class="writing-card__category">
+              <!-- ✏ EDIT: e.g. "Character Analysis" or "Story Structure" -->
+              Character Analysis
+            </span>
+            <h3 class="writing-card__title">
+              <!-- ✏ EDIT: Your essay title -->
+              [Your Essay Title Here]
+            </h3>
+            <p class="writing-card__desc">
+              <!-- ✏ EDIT: 1-2 sentences describing what the essay is about -->
+              A close reading of [character name]'s psychology and motivations — examining how their decisions reflect the story's central conflict and what that reveals about [theme].
+            </p>
+            <!--
+              ✏ EDIT: Choose one of the following options:
+
+              Option A — Link to a hosted page (Notion, blog, etc.):
+              <a href="https://your-link-here.com" class="writing-card__link" target="_blank" rel="noopener">Read Essay &rarr;</a>
+
+              Option B — Inline content (add the essay directly below in a <details> block).
+
+              Option C — Not published yet (use the disabled label below):
+              <span class="writing-card__link writing-card__link--soon">Publishing soon</span>
+            -->
+            <span class="writing-card__link writing-card__link--soon">Publishing soon</span>
+          </article>
+
+          <!-- This second card is intentionally minimal — a signal that more is coming -->
+          <article class="writing-card reveal">
+            <span class="writing-card__category">Story Structure</span>
+            <h3 class="writing-card__title">More essays in progress</h3>
+            <p class="writing-card__desc">
+              I'm currently writing analyses on narrative structure, character incentives, and
+              decision-making in specific books and series. Will be added here when complete.
+            </p>
+            <span class="writing-card__link writing-card__link--soon">Coming soon</span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section class="section skills" id="skills">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Skills</span>
+          <h2 class="section__title">Tools &amp; Knowledge</h2>
+        </div>
+        <div class="skills__groups">
+
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">Coding</h3>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">HTML / CSS / JS</span>
+              <span class="tag">Arduino (C++)</span>
+              <span class="tag">Git &amp; GitHub</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">Robotics &amp; Hardware</h3>
+            <div class="tag-row">
+              <span class="tag">Arduino</span>
+              <span class="tag">Servo Motors</span>
+              <span class="tag">Serial Communication</span>
+              <span class="tag">Hardware Prototyping</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">AI &amp; Computer Vision</h3>
+            <div class="tag-row">
+              <span class="tag">OpenCV</span>
+              <span class="tag">MediaPipe</span>
+              <span class="tag">LLM APIs (learning)</span>
+              <span class="tag">Prompt Engineering</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">Writing &amp; Thinking</h3>
+            <div class="tag-row">
+              <span class="tag">Analytical Essays</span>
+              <span class="tag">Systems Thinking</span>
+              <span class="tag">Technical Documentation</span>
+              <span class="tag">Story Structure Analysis</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== COMING SOON ========== -->
+    <section class="section next" id="next">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Coming Soon</span>
+          <h2 class="section__title">What I'm Building Next</h2>
+          <p class="section__subtitle">These projects are in planning or early development. I'll add them here when complete.</p>
+        </div>
+        <div class="next__grid">
+
+          <div class="next-card reveal">
+            <span class="next-card__status">In Progress</span>
+            <h3>AI Study Assistant</h3>
+            <p>A lightweight tool for organizing and querying study material using an LLM pipeline. Being built as a simple web app.</p>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">LLM API</span>
+              <span class="tag">Web</span>
+            </div>
+          </div>
+
+          <div class="next-card reveal">
+            <span class="next-card__status">Planned</span>
+            <h3>Landing Page / Lead Funnel Demo</h3>
+            <p>A clean, conversion-focused demo page built to show what a well-structured client landing page looks like in practice.</p>
+            <div class="tag-row">
+              <span class="tag">HTML / CSS / JS</span>
+              <span class="tag">Design</span>
+            </div>
+          </div>
+
+          <div class="next-card reveal">
+            <span class="next-card__status">Planned</span>
+            <h3>Longevity Research Paper Summarizer</h3>
+            <p>A tool that ingests academic papers on longevity and biology and produces structured summaries — making dense research more navigable.</p>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">LLM API</span>
+              <span class="tag">Biology</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Contact</span>
+          <h2 class="section__title">Get In Touch</h2>
+          <p class="section__subtitle">
+            For projects, university-related outreach, or small freelance work — contact me directly.
+          </p>
+        </div>
+        <div class="contact__links reveal">
+
+          <!-- ✏ EDIT: Replace with your real email -->
+          <a href="mailto:your@email.com" class="contact-link">
+            <span class="contact-link__icon">&#9993;</span>
+            <div>
+              <span class="contact-link__label">Email</span>
+              <span class="contact-link__value">your@email.com</span>
+            </div>
+          </a>
+
+          <!-- ✏ EDIT: Replace yourusername with your GitHub handle -->
+          <a href="https://github.com/yourusername" class="contact-link" target="_blank" rel="noopener">
+            <span class="contact-link__icon">&#9654;</span>
+            <div>
+              <span class="contact-link__label">GitHub</span>
+              <span class="contact-link__value">github.com/yourusername</span>
+            </div>
+          </a>
+
+          <!-- ✏ EDIT: Add your LinkedIn URL, or remove this block if you don't have one yet -->
+          <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank" rel="noopener">
+            <span class="contact-link__icon">&#8599;</span>
+            <div>
+              <span class="contact-link__label">LinkedIn</span>
+              <span class="contact-link__value">linkedin.com/in/yourprofile</span>
+            </div>
+          </a>
+
+          <!--
+            ✏ OPTIONAL — WhatsApp:
+            Uncomment and replace the number (country code, no + or spaces):
+            <a href="https://wa.me/971XXXXXXXXX" class="contact-link" target="_blank" rel="noopener">
+              <span class="contact-link__icon">&#9711;</span>
+              <div>
+                <span class="contact-link__label">WhatsApp</span>
+                <span class="contact-link__value">+971 XX XXX XXXX</span>
+              </div>
+            </a>
+          -->
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <!-- ✏ EDIT: Replace [Your Name] -->
+        <span class="footer__name">[Your Name]</span>
+        <span class="footer__copy">Dubai, UAE &mdash; 2025</span>
+        <span class="footer__note">HTML &middot; CSS &middot; JS</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
