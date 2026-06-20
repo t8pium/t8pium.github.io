@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollProgress(reduceMotion);
   initCursorGlow(reduceMotion);
   initSplitWords(reduceMotion);
+  forceHeroHeadlineSize();
   initParallax(reduceMotion);
   initSectionState();
   initMagneticTargets(reduceMotion);
@@ -20,6 +21,51 @@ function loadStylesheet(href) {
   link.rel = "stylesheet";
   link.href = href;
   document.head.appendChild(link);
+}
+
+function forceHeroHeadlineSize() {
+  const css = `
+    #home .hero__copy > h1.split-words,
+    #home .hero__copy > h1.split-words .word {
+      font-size: clamp(2.15rem, 3.2vw, 3.35rem) !important;
+      line-height: 1.08 !important;
+      letter-spacing: -0.032em !important;
+    }
+
+    #home .hero__copy > h1.split-words {
+      max-width: 660px !important;
+    }
+  `;
+
+  let style = document.getElementById("heroHeadlineForceStyles");
+  if (!style) {
+    style = document.createElement("style");
+    style.id = "heroHeadlineForceStyles";
+    document.head.appendChild(style);
+  }
+  style.textContent = css;
+
+  const heroTitle = document.querySelector("#home .hero__copy > h1.split-words");
+  if (!heroTitle) return;
+
+  const apply = () => {
+    heroTitle.style.setProperty("font-size", "clamp(2.15rem, 3.2vw, 3.35rem)", "important");
+    heroTitle.style.setProperty("line-height", "1.08", "important");
+    heroTitle.style.setProperty("letter-spacing", "-0.032em", "important");
+    heroTitle.style.setProperty("max-width", "660px", "important");
+
+    heroTitle.querySelectorAll(".word").forEach((word) => {
+      word.style.setProperty("font-size", "inherit", "important");
+      word.style.setProperty("line-height", "inherit", "important");
+      word.style.setProperty("letter-spacing", "inherit", "important");
+    });
+  };
+
+  apply();
+  window.requestAnimationFrame(apply);
+  window.setTimeout(apply, 80);
+  window.setTimeout(apply, 300);
+  window.setTimeout(apply, 900);
 }
 
 function injectMotionStyles() {
