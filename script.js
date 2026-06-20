@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("navLinks");
   const themeToggle = document.getElementById("themeToggle");
-  const sections = [...document.querySelectorAll("main section[id]")];
-  const links = [...document.querySelectorAll(".nav__link")];
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const storage = {
@@ -54,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       else closeMenu();
     });
 
-    links.forEach((link) => link.addEventListener("click", closeMenu));
+    navLinks.querySelectorAll(".nav__link").forEach((link) => link.addEventListener("click", closeMenu));
 
     document.addEventListener("click", (event) => {
       const target = event.target;
@@ -89,6 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
     applyTheme(nextTheme);
     storage.set("portfolio-theme", nextTheme);
   });
+
+  const sections = [...document.querySelectorAll("main section[id]")];
+  const links = [...document.querySelectorAll(".nav__link")];
 
   if (sections.length && links.length) {
     const highlight = () => {
@@ -166,30 +167,107 @@ function ensureAcademicsSection() {
     <div class="container">
       <div class="section__header reveal">
         <p class="eyebrow">Academics</p>
-        <h2>Scores that show the academic side.</h2>
+        <h2>Academic profile, organized.</h2>
         <p>
-          Standardized tests, English proficiency, and advanced coursework I am using to support university and scholarship applications.
+          A compact view of my English proficiency, standardized testing, and AP coursework for university and scholarship applications.
         </p>
       </div>
 
-      <div class="academics__grid reveal-delay" aria-label="Academic scores and qualifications">
-        <article class="academic-card academic-card--feature">
-          <span class="academic-card__label">English proficiency</span>
-          <strong>IELTS 8.0</strong>
-          <p>Overall band score, showing strong academic English for university-level work.</p>
-        </article>
+      <div class="academics__layout reveal-delay" aria-label="Academic scores and coursework">
+        <div class="academics__topline">
+          <article class="academic-scorecard academic-scorecard--ielts">
+            <div class="academic-scorecard__head">
+              <span class="academic-scorecard__label">IELTS Academic</span>
+              <span class="academic-scorecard__date">Overall</span>
+            </div>
+            <div class="academic-scorecard__main">
+              <strong>8.0</strong>
+              <span>/ 9.0</span>
+            </div>
+            <p class="academic-scorecard__sub">Strong academic English profile with especially high reading performance.</p>
+            <div class="score-breakdown" aria-label="IELTS component scores">
+              <div class="score-row"><span>Listening</span><strong>8.0</strong></div>
+              <div class="score-row"><span>Reading</span><strong>9.0</strong></div>
+              <div class="score-row"><span>Writing</span><strong>7.5</strong></div>
+              <div class="score-row"><span>Speaking</span><strong>7.0</strong></div>
+            </div>
+          </article>
 
-        <article class="academic-card">
-          <span class="academic-card__label">Standardized test</span>
-          <strong>SAT 1390</strong>
-          <p>Evidence of quantitative and reading/writing readiness for competitive undergraduate programs.</p>
-        </article>
+          <article class="academic-scorecard">
+            <div class="academic-scorecard__head">
+              <span class="academic-scorecard__label">SAT</span>
+              <span class="academic-scorecard__date">Dec 2025</span>
+            </div>
+            <div class="academic-scorecard__main">
+              <strong>1390</strong>
+              <span>/ 1600</span>
+            </div>
+            <p class="academic-scorecard__sub">Balanced score with stronger math performance.</p>
+            <div class="score-breakdown" aria-label="SAT section scores">
+              <div class="score-row"><span>Reading & Writing</span><strong>680</strong></div>
+              <div class="score-row"><span>Math</span><strong>710</strong></div>
+              <div class="score-row"><span>Grade</span><strong>12th</strong></div>
+            </div>
+          </article>
 
-        <article class="academic-card">
-          <span class="academic-card__label">Advanced coursework</span>
-          <strong>5 APs</strong>
-          <p>AP coursework across STEM and writing, with results/details to be added as they are finalized.</p>
-        </article>
+          <article class="academic-scorecard">
+            <div class="academic-scorecard__head">
+              <span class="academic-scorecard__label">AP coursework</span>
+              <span class="academic-scorecard__date">2025–2026</span>
+            </div>
+            <div class="academic-scorecard__main">
+              <strong>5</strong>
+              <span>APs total</span>
+            </div>
+            <p class="academic-scorecard__sub">One completed AP score and four current AP courses across STEM, CS, and writing.</p>
+            <div class="score-breakdown" aria-label="AP summary">
+              <div class="score-row"><span>Confirmed score</span><strong>Bio 5</strong></div>
+              <div class="score-row"><span>In progress</span><strong>4 APs</strong></div>
+              <div class="score-row"><span>Focus</span><strong>STEM + Writing</strong></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="ap-board">
+          <div class="ap-board__head">
+            <div>
+              <span class="ap-board__label">AP board</span>
+              <h3 class="ap-board__title">Courses and scores</h3>
+            </div>
+            <span class="ap-board__date">2025–2026</span>
+          </div>
+          <p class="ap-board__summary">Organized by confirmed result and current AP classes.</p>
+
+          <div class="ap-grid" aria-label="AP course list">
+            <article class="ap-item ap-item--complete">
+              <span class="ap-item__status">Completed</span>
+              <h3>AP Biology</h3>
+              <p>Score: 5</p>
+            </article>
+            <article class="ap-item">
+              <span class="ap-item__status">Current</span>
+              <h3>AP Calculus AB</h3>
+              <p>Exam: May 2026</p>
+            </article>
+            <article class="ap-item">
+              <span class="ap-item__status">Current</span>
+              <h3>AP Computer Science Principles</h3>
+              <p>Exam: May 2026</p>
+            </article>
+            <article class="ap-item">
+              <span class="ap-item__status">Current</span>
+              <h3>AP English Language and Composition</h3>
+              <p>Exam: May 2026</p>
+            </article>
+            <article class="ap-item">
+              <span class="ap-item__status">Current</span>
+              <h3>AP Physics 1</h3>
+              <p>Exam: May 2026</p>
+            </article>
+          </div>
+        </div>
+
+        <p class="academics__note">Scores shown from official result screenshots. AP current-course details can be updated when final scores are released.</p>
       </div>
     </div>
   `;
@@ -259,7 +337,7 @@ function initHeroScene(reduceMotion) {
     canvas.height = Math.floor(height * dpr);
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
     createNodes();
-    draw(0);
+    draw();
   }
 
   function drawBackgroundRoutes(accent, accentTwo, accentThree) {
