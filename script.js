@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+  ensureAcademicsSection();
+
   const body = document.body;
   const nav = document.getElementById("nav");
   const hamburger = document.getElementById("hamburger");
@@ -145,6 +147,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initHeroScene(reduceMotion);
 });
+
+function ensureAcademicsSection() {
+  const navLinks = document.getElementById("navLinks");
+  const aboutSection = document.getElementById("about");
+  if (!navLinks || !aboutSection || document.getElementById("academics")) return;
+
+  const workLink = navLinks.querySelector('a[href="#featured"]')?.parentElement;
+  const navItem = document.createElement("li");
+  navItem.innerHTML = '<a href="#academics" class="nav__link">Academics</a>';
+  navLinks.insertBefore(navItem, workLink || null);
+
+  const academics = document.createElement("section");
+  academics.className = "section academics scroll-section";
+  academics.id = "academics";
+  academics.dataset.section = "03 / academics";
+  academics.innerHTML = `
+    <div class="container">
+      <div class="section__header reveal">
+        <p class="eyebrow">Academics</p>
+        <h2>Scores that show the academic side.</h2>
+        <p>
+          Standardized tests, English proficiency, and advanced coursework I am using to support university and scholarship applications.
+        </p>
+      </div>
+
+      <div class="academics__grid reveal-delay" aria-label="Academic scores and qualifications">
+        <article class="academic-card academic-card--feature">
+          <span class="academic-card__label">English proficiency</span>
+          <strong>IELTS 8.0</strong>
+          <p>Overall band score, showing strong academic English for university-level work.</p>
+        </article>
+
+        <article class="academic-card">
+          <span class="academic-card__label">Standardized test</span>
+          <strong>SAT 1390</strong>
+          <p>Evidence of quantitative and reading/writing readiness for competitive undergraduate programs.</p>
+        </article>
+
+        <article class="academic-card">
+          <span class="academic-card__label">Advanced coursework</span>
+          <strong>5 APs</strong>
+          <p>AP coursework across STEM and writing, with results/details to be added as they are finalized.</p>
+        </article>
+      </div>
+    </div>
+  `;
+
+  aboutSection.insertAdjacentElement("afterend", academics);
+}
 
 function initHeroScene(reduceMotion) {
   const canvas = document.getElementById("heroScene");
