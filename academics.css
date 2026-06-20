@@ -1,73 +1,246 @@
 .academics {
   background:
-    radial-gradient(circle at 18% 18%, rgba(34, 211, 238, 0.10), transparent 26rem),
-    radial-gradient(circle at 88% 72%, rgba(124, 58, 237, 0.10), transparent 28rem),
-    var(--bg);
+    radial-gradient(circle at 16% 20%, rgba(34, 211, 238, 0.10), transparent 28rem),
+    radial-gradient(circle at 88% 70%, rgba(124, 58, 237, 0.12), transparent 30rem),
+    linear-gradient(180deg, var(--bg), var(--bg-soft));
 }
 
-.academics__grid {
+.academics__layout {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.9rem;
+  gap: 1rem;
 }
 
-.academic-card {
-  min-height: 15rem;
-  padding: 1.15rem;
-  display: flex;
-  flex-direction: column;
+.academics__topline {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr 0.9fr;
+  gap: 1rem;
+}
+
+.academic-scorecard,
+.ap-board,
+.academic-mini-card {
   border: 1px solid rgba(154, 180, 255, 0.14);
-  border-radius: 26px;
+  border-radius: 28px;
   background: rgba(11, 17, 35, 0.74);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055), 0 18px 55px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(18px);
+}
+
+.academic-scorecard {
+  min-height: 18rem;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.academic-card:hover {
+.academic-scorecard:hover,
+.ap-item:hover {
   transform: translateY(-5px);
   border-color: rgba(34, 211, 238, 0.32);
   box-shadow: 0 24px 70px rgba(34, 211, 238, 0.10);
 }
 
-.academic-card--feature {
+.academic-scorecard--ielts {
   background:
-    linear-gradient(145deg, rgba(34, 211, 238, 0.12), rgba(124, 58, 237, 0.10) 60%),
+    linear-gradient(145deg, rgba(34, 211, 238, 0.13), rgba(124, 58, 237, 0.10) 62%),
     rgba(11, 17, 35, 0.78);
 }
 
+.academic-scorecard__head,
+.ap-board__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.academic-scorecard__label,
+.ap-board__label,
 .academic-card__label {
   color: var(--accent-3);
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
-.academic-card strong {
-  margin-top: 1.6rem;
-  color: var(--text);
-  font-family: var(--font-display);
-  font-size: clamp(2.25rem, 5vw, 4.4rem);
-  font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.055em;
+.academic-scorecard__date,
+.ap-board__date {
+  color: var(--soft);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  white-space: nowrap;
 }
 
-.academic-card p {
-  margin-top: auto;
-  padding-top: 1.35rem;
+.academic-scorecard__main {
+  margin-top: 1.6rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.academic-scorecard__main strong {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7vw, 5.3rem);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+}
+
+.academic-scorecard__main span {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.academic-scorecard__sub {
+  margin-top: 0.65rem;
+  color: var(--muted);
+  font-size: 0.94rem;
   line-height: 1.6;
 }
 
-@media (max-width: 980px) {
-  .academics__grid {
+.score-breakdown {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.score-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.62rem 0.75rem;
+  border: 1px solid rgba(154, 180, 255, 0.11);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.score-row span:first-child {
+  color: var(--muted);
+  font-size: 0.87rem;
+}
+
+.score-row strong {
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.ap-board {
+  padding: 1.2rem;
+}
+
+.ap-board__head {
+  margin-bottom: 1.1rem;
+}
+
+.ap-board__title {
+  margin-top: 0.35rem;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.ap-board__summary {
+  margin: 0.25rem 0 1.2rem;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+.ap-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.ap-item {
+  min-height: 9.5rem;
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(154, 180, 255, 0.13);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.035);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.ap-item--complete {
+  background:
+    linear-gradient(145deg, rgba(183, 243, 77, 0.10), rgba(34, 211, 238, 0.06)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.ap-item__status {
+  width: max-content;
+  padding: 0.28rem 0.52rem;
+  border-radius: 999px;
+  color: var(--accent-2);
+  background: rgba(34, 211, 238, 0.10);
+  border: 1px solid rgba(34, 211, 238, 0.20);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+}
+
+.ap-item--complete .ap-item__status {
+  color: var(--accent-3);
+  background: rgba(183, 243, 77, 0.10);
+  border-color: rgba(183, 243, 77, 0.20);
+}
+
+.ap-item h3 {
+  margin-top: 0.8rem;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.ap-item p {
+  margin-top: auto;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.academics__note {
+  margin-top: 0.85rem;
+  color: var(--soft);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1080px) {
+  .academics__topline,
+  .ap-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .academic-scorecard--ielts {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .academics__topline,
+  .ap-grid {
     grid-template-columns: 1fr;
   }
 
-  .academic-card {
-    min-height: 12rem;
+  .academic-scorecard {
+    min-height: 0;
+  }
+
+  .academic-scorecard__main strong {
+    font-size: 3.2rem;
   }
 }
