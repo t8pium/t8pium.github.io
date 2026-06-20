@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+  loadStylesheet("hero-fix.css?v=1");
   injectMotionStyles();
   document.body.classList.add("effects-ready");
 
@@ -11,6 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
   initSectionState();
   initMagneticTargets(reduceMotion);
 });
+
+function loadStylesheet(href) {
+  if (document.querySelector(`link[href="${href}"]`)) return;
+
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = href;
+  document.head.appendChild(link);
+}
 
 function injectMotionStyles() {
   if (document.getElementById("motionRuntimeStyles")) return;
