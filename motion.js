@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+  injectMotionStyles();
   document.body.classList.add("effects-ready");
 
   initScrollProgress(reduceMotion);
@@ -10,6 +11,29 @@ document.addEventListener("DOMContentLoaded", () => {
   initSectionState();
   initMagneticTargets(reduceMotion);
 });
+
+function injectMotionStyles() {
+  if (document.getElementById("motionRuntimeStyles")) return;
+
+  const style = document.createElement("style");
+  style.id = "motionRuntimeStyles";
+  style.textContent = `
+    .hero h1 .word {
+      background: linear-gradient(92deg, #ffffff, var(--accent-2) 42%, var(--accent) 74%, var(--accent-3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    body.light .hero h1 .word {
+      background: linear-gradient(92deg, #07111f, #0891b2 42%, #7c3aed 74%, #4d7c0f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  `;
+  document.head.appendChild(style);
+}
 
 function initScrollProgress(reduceMotion) {
   const progress = document.getElementById("scrollProgress");
