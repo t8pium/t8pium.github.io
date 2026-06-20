@@ -1,8 +1,12 @@
 .academics {
   background:
-    radial-gradient(circle at 16% 20%, rgba(34, 211, 238, 0.10), transparent 28rem),
-    radial-gradient(circle at 88% 70%, rgba(124, 58, 237, 0.12), transparent 30rem),
+    radial-gradient(circle at 16% 20%, rgba(34, 211, 238, 0.08), transparent 28rem),
+    radial-gradient(circle at 88% 70%, rgba(124, 58, 237, 0.10), transparent 30rem),
     linear-gradient(180deg, var(--bg), var(--bg-soft));
+}
+
+.academics .section__header {
+  margin-bottom: 1.7rem;
 }
 
 .academics__layout {
@@ -12,22 +16,21 @@
 
 .academics__topline {
   display: grid;
-  grid-template-columns: 1.15fr 0.95fr 0.9fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
 .academic-scorecard,
-.ap-board,
-.academic-mini-card {
-  border: 1px solid rgba(154, 180, 255, 0.14);
-  border-radius: 28px;
-  background: rgba(11, 17, 35, 0.74);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055), 0 18px 55px rgba(0, 0, 0, 0.24);
+.ap-board {
+  border: 1px solid rgba(154, 180, 255, 0.13);
+  border-radius: 24px;
+  background: rgba(9, 14, 30, 0.78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045), 0 16px 45px rgba(0, 0, 0, 0.20);
   backdrop-filter: blur(18px);
 }
 
 .academic-scorecard {
-  min-height: 18rem;
+  min-height: 0;
   padding: 1.15rem;
   display: flex;
   flex-direction: column;
@@ -36,15 +39,15 @@
 
 .academic-scorecard:hover,
 .ap-item:hover {
-  transform: translateY(-5px);
-  border-color: rgba(34, 211, 238, 0.32);
-  box-shadow: 0 24px 70px rgba(34, 211, 238, 0.10);
+  transform: translateY(-3px);
+  border-color: rgba(34, 211, 238, 0.28);
+  box-shadow: 0 18px 52px rgba(34, 211, 238, 0.08);
 }
 
 .academic-scorecard--ielts {
   background:
-    linear-gradient(145deg, rgba(34, 211, 238, 0.13), rgba(124, 58, 237, 0.10) 62%),
-    rgba(11, 17, 35, 0.78);
+    linear-gradient(145deg, rgba(34, 211, 238, 0.10), rgba(124, 58, 237, 0.075) 62%),
+    rgba(9, 14, 30, 0.82);
 }
 
 .academic-scorecard__head,
@@ -60,10 +63,10 @@
 .academic-card__label {
   color: var(--accent-3);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  font-weight: 500;
+  font-size: 0.68rem;
+  font-weight: 600;
   line-height: 1.35;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.035em;
   text-transform: uppercase;
 }
 
@@ -71,176 +74,187 @@
 .ap-board__date {
   color: var(--soft);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   white-space: nowrap;
 }
 
 .academic-scorecard__main {
-  margin-top: 1.6rem;
+  margin-top: 1rem;
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   gap: 0.45rem;
 }
 
 .academic-scorecard__main strong {
   color: var(--text);
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 7vw, 5.3rem);
+  font-size: clamp(2.7rem, 4.6vw, 3.85rem);
   font-weight: 800;
-  line-height: 0.82;
-  letter-spacing: -0.07em;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
 }
 
 .academic-scorecard__main span {
+  padding-bottom: 0.25rem;
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
 }
 
 .academic-scorecard__sub {
-  margin-top: 0.65rem;
+  min-height: 3.25rem;
+  margin-top: 0.7rem;
   color: var(--muted);
-  font-size: 0.94rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .score-breakdown {
-  margin-top: auto;
-  padding-top: 1.25rem;
+  margin-top: 1rem;
   display: grid;
-  gap: 0.55rem;
+  gap: 0.5rem;
+}
+
+.academic-scorecard--ielts .score-breakdown {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .score-row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 1rem;
-  padding: 0.62rem 0.75rem;
-  border: 1px solid rgba(154, 180, 255, 0.11);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.035);
+  gap: 0.7rem;
+  min-height: 2.55rem;
+  padding: 0.48rem 0.65rem;
+  border: 1px solid rgba(154, 180, 255, 0.09);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.026);
 }
 
 .score-row span:first-child {
   color: var(--muted);
-  font-size: 0.87rem;
+  font-size: 0.8rem;
 }
 
 .score-row strong {
   color: var(--text);
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  white-space: nowrap;
 }
 
 .ap-board {
-  padding: 1.2rem;
+  padding: 1.1rem;
 }
 
 .ap-board__head {
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.75rem;
 }
 
 .ap-board__title {
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
   color: var(--text);
   font-family: var(--font-display);
-  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  font-size: clamp(1.45rem, 2.6vw, 2.2rem);
   font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.045em;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
 }
 
 .ap-board__summary {
-  margin: 0.25rem 0 1.2rem;
+  margin: 0 0 1rem;
   color: var(--muted);
-  font-size: 0.96rem;
-  line-height: 1.65;
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .ap-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: 0.7rem;
 }
 
 .ap-item {
-  min-height: 9.5rem;
-  padding: 0.9rem;
+  min-height: 7.5rem;
+  padding: 0.78rem;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(154, 180, 255, 0.13);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(154, 180, 255, 0.11);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .ap-item--complete {
   background:
-    linear-gradient(145deg, rgba(183, 243, 77, 0.10), rgba(34, 211, 238, 0.06)),
-    rgba(255, 255, 255, 0.04);
+    linear-gradient(145deg, rgba(183, 243, 77, 0.095), rgba(34, 211, 238, 0.045)),
+    rgba(255, 255, 255, 0.035);
 }
 
 .ap-item__status {
   width: max-content;
-  padding: 0.28rem 0.52rem;
+  padding: 0.24rem 0.46rem;
   border-radius: 999px;
   color: var(--accent-2);
-  background: rgba(34, 211, 238, 0.10);
-  border: 1px solid rgba(34, 211, 238, 0.20);
+  background: rgba(34, 211, 238, 0.09);
+  border: 1px solid rgba(34, 211, 238, 0.18);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.6rem;
   text-transform: uppercase;
 }
 
 .ap-item--complete .ap-item__status {
   color: var(--accent-3);
-  background: rgba(183, 243, 77, 0.10);
-  border-color: rgba(183, 243, 77, 0.20);
+  background: rgba(183, 243, 77, 0.09);
+  border-color: rgba(183, 243, 77, 0.18);
 }
 
 .ap-item h3 {
-  margin-top: 0.8rem;
+  margin-top: 0.65rem;
   color: var(--text);
-  font-size: 1rem;
+  font-size: 0.92rem;
   line-height: 1.25;
 }
 
 .ap-item p {
   margin-top: auto;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   line-height: 1.45;
 }
 
 .academics__note {
-  margin-top: 0.85rem;
+  margin-top: 0.2rem;
   color: var(--soft);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
 }
 
 @media (max-width: 1080px) {
-  .academics__topline,
-  .ap-grid {
+  .academics__topline {
     grid-template-columns: 1fr 1fr;
   }
 
   .academic-scorecard--ielts {
     grid-column: 1 / -1;
   }
+
+  .ap-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 720px) {
   .academics__topline,
+  .academic-scorecard--ielts .score-breakdown,
   .ap-grid {
     grid-template-columns: 1fr;
   }
 
-  .academic-scorecard {
+  .academic-scorecard__sub {
     min-height: 0;
   }
 
   .academic-scorecard__main strong {
-    font-size: 3.2rem;
+    font-size: 3rem;
   }
 }
