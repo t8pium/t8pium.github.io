@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="gallery.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="gallery.css?v=5">
+  <script src="script.js?v=5" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -21,16 +21,8 @@
 
   <header class="site-header" id="siteHeader">
     <nav class="nav shell" aria-label="Primary navigation">
-      <a class="brand" href="#home" aria-label="t8pium, back to top">
-        <img src="assets/logo-mark.svg" alt="" width="34" height="34">
-        <span>t8pium</span>
-      </a>
-
-      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu">
-        <span class="sr-only">Open navigation</span>
-        <span></span><span></span>
-      </button>
-
+      <a class="brand" href="#home" aria-label="t8pium, back to top"><img src="assets/logo-mark.svg" alt="" width="34" height="34"><span>t8pium</span></a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"><span class="sr-only">Open navigation</span><span></span><span></span></button>
       <ul class="nav-menu" id="navMenu">
         <li><a href="#about">About</a></li>
         <li><a href="#academics">Academics</a></li>
@@ -45,305 +37,80 @@
 
   <main id="main">
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-orbit hero-orbit--one" aria-hidden="true"></div>
-      <div class="hero-orbit hero-orbit--two" aria-hidden="true"></div>
-
+      <div class="hero-grid" aria-hidden="true"></div><div class="hero-orbit hero-orbit--one" aria-hidden="true"></div><div class="hero-orbit hero-orbit--two" aria-hidden="true"></div>
       <div class="shell hero-layout">
         <div class="hero-copy reveal">
-          <div class="identity-mark">
-            <img src="assets/logo-mark.svg" alt="t8pium logo" width="58" height="58">
-            <div>
-              <span class="kicker">Dubai-based student builder</span>
-              <span class="identity-code">PORTFOLIO / 2026</span>
-            </div>
-          </div>
-
+          <div class="identity-mark"><img src="assets/logo-mark.svg" alt="t8pium logo" width="58" height="58"><div><span class="kicker">Dubai-based student builder</span><span class="identity-code">PORTFOLIO / 2026</span></div></div>
           <h1 id="hero-title">AI tools, robotics prototypes, and writing that explains the thinking.</h1>
           <p class="hero-intro">I build where software meets the physical world, then document what worked, what failed, and what the next version needs.</p>
-
-          <div class="hero-actions">
-            <a class="button button--primary" href="#work">See the hand project <span aria-hidden="true">&darr;</span></a>
-            <a class="button button--ghost" href="https://github.com/t8pium" target="_blank" rel="noopener">View GitHub <span aria-hidden="true">&nearr;</span></a>
-          </div>
-
-          <dl class="hero-meta" aria-label="Profile summary">
-            <div><dt>Location</dt><dd>Dubai, UAE</dd></div>
-            <div><dt>Focus</dt><dd>AI + Robotics</dd></div>
-            <div><dt>Current mode</dt><dd>Building for university</dd></div>
-          </dl>
+          <div class="hero-actions"><a class="button button--primary" href="#work">Open project gallery <span aria-hidden="true">&darr;</span></a><a class="button button--ghost" href="https://github.com/t8pium" target="_blank" rel="noopener">View GitHub <span aria-hidden="true">&nearr;</span></a></div>
+          <dl class="hero-meta" aria-label="Profile summary"><div><dt>Location</dt><dd>Dubai, UAE</dd></div><div><dt>Focus</dt><dd>AI + Robotics</dd></div><div><dt>Current mode</dt><dd>Building for university</dd></div></dl>
         </div>
-
         <aside class="project-console reveal reveal--delay" aria-label="Featured project preview">
-          <div class="console-bar">
-            <span><i></i> LIVE BUILD / 01</span>
-            <span>CV &rarr; MOTION</span>
-          </div>
-          <div class="console-visual" aria-hidden="true">
-            <div class="scanline"></div>
-            <div class="palm-map">
-              <i class="joint j1"></i><i class="joint j2"></i><i class="joint j3"></i><i class="joint j4"></i><i class="joint j5"></i>
-              <i class="joint j6"></i><i class="joint j7"></i><i class="joint j8"></i><i class="joint j9"></i><i class="joint j10"></i>
-              <span class="bone b1"></span><span class="bone b2"></span><span class="bone b3"></span><span class="bone b4"></span><span class="bone b5"></span>
-            </div>
-            <span class="visual-label visual-label--top">LANDMARK STREAM</span>
-            <span class="visual-label visual-label--bottom">21 PTS / SERIAL READY</span>
-          </div>
-          <div class="console-copy">
-            <span class="label">Featured work</span>
-            <h2>Computer-vision robotic hand</h2>
-            <p>Live hand landmarks become angles, serial data, and movement in a servo-driven prototype.</p>
-          </div>
-          <div class="pipeline" aria-label="Project pipeline">
-            <span>Camera</span><b>&rarr;</b><span>Python</span><b>&rarr;</b><span>Arduino</span><b>&rarr;</b><span>Servos</span>
-          </div>
+          <div class="console-bar"><span><i></i> LIVE BUILD / 01</span><span>CV &rarr; MOTION</span></div>
+          <div class="console-visual" aria-hidden="true"><div class="scanline"></div><div class="palm-map"><i class="joint j1"></i><i class="joint j2"></i><i class="joint j3"></i><i class="joint j4"></i><i class="joint j5"></i><i class="joint j6"></i><i class="joint j7"></i><i class="joint j8"></i><i class="joint j9"></i><i class="joint j10"></i><span class="bone b1"></span><span class="bone b2"></span><span class="bone b3"></span><span class="bone b4"></span><span class="bone b5"></span></div><span class="visual-label visual-label--top">LANDMARK STREAM</span><span class="visual-label visual-label--bottom">21 PTS / SERIAL READY</span></div>
+          <div class="console-copy"><span class="label">Featured work</span><h2>Computer-vision robotic hand</h2><p>Live hand landmarks become angles, serial data, and movement in a servo-driven prototype.</p></div>
+          <div class="pipeline" aria-label="Project pipeline"><span>Camera</span><b>&rarr;</b><span>Python</span><b>&rarr;</b><span>Arduino</span><b>&rarr;</b><span>Servos</span></div>
         </aside>
       </div>
-
-      <div class="hero-index shell" aria-hidden="true">
-        <span>SCROLL TO TRACE THE SYSTEM</span>
-        <span>01 &mdash; 08</span>
-      </div>
+      <div class="hero-index shell" aria-hidden="true"><span>SCROLL TO TRACE THE SYSTEM</span><span>01 &mdash; 08</span></div>
     </section>
 
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="shell section-grid">
-        <div class="section-heading reveal">
-          <span class="section-number">01 / ABOUT</span>
-          <h2 id="about-title">Code, hardware, and the thinking between them.</h2>
-        </div>
-
-        <div class="about-content reveal reveal--delay">
-          <p class="lede">I&rsquo;m a student in Dubai working between software, AI, robotics, and writing.</p>
-          <p>I like projects where code touches the physical world or turns messy information into something usable. That usually means a prototype on the desk, several broken assumptions, and a clearer system by the end.</p>
-          <p>I care about building real things, learning fast, and documenting the thinking clearly. The goal is not to look busy. It is to become difficult to ignore through the quality of the work.</p>
-
-          <div class="principles" aria-label="Working principles">
-            <span><b>01</b> Make it real</span>
-            <span><b>02</b> Find the failure</span>
-            <span><b>03</b> Explain the decision</span>
-          </div>
-        </div>
+        <div class="section-heading reveal"><span class="section-number">01 / ABOUT</span><h2 id="about-title">Code, hardware, and the thinking between them.</h2></div>
+        <div class="about-content reveal reveal--delay"><p class="lede">I&rsquo;m a student in Dubai working between software, AI, robotics, and writing.</p><p>I like projects where code touches the physical world or turns messy information into something usable. That usually means a prototype on the desk, several broken assumptions, and a clearer system by the end.</p><p>I care about building real things, learning fast, and documenting the thinking clearly. The goal is not to look busy. It is to become difficult to ignore through the quality of the work.</p><div class="principles" aria-label="Working principles"><span><b>01</b> Make it real</span><span><b>02</b> Find the failure</span><span><b>03</b> Explain the decision</span></div></div>
       </div>
     </section>
 
     <section class="section academics" id="academics" aria-labelledby="academics-title">
       <div class="shell">
-        <div class="section-heading section-heading--wide reveal">
-          <span class="section-number">02 / ACADEMICS</span>
-          <h2 id="academics-title">The academic record, without the scoreboard theatrics.</h2>
-          <p>A compact profile for admissions: verified results, percentile context where available, current coursework, and the subjects shaping the work.</p>
-        </div>
-
+        <div class="section-heading section-heading--wide reveal"><span class="section-number">02 / ACADEMICS</span><h2 id="academics-title">The academic record, without the scoreboard theatrics.</h2><p>A compact profile for admissions: verified results, percentile context where available, current coursework, and the subjects shaping the work.</p></div>
         <div class="academic-layout">
-          <article class="score-card reveal" aria-labelledby="ielts-title">
-            <header class="card-header">
-              <div><span class="label">English proficiency</span><h3 id="ielts-title">IELTS Academic</h3></div>
-              <div class="score-total"><strong>8.0</strong><span>overall / 9.0</span></div>
-            </header>
-            <dl class="score-grid score-grid--four">
-              <div><dt>Listening</dt><dd>8.0</dd></div>
-              <div><dt>Reading</dt><dd>9.0</dd></div>
-              <div><dt>Writing</dt><dd>7.5</dd></div>
-              <div><dt>Speaking</dt><dd>7.0</dd></div>
-            </dl>
-          </article>
-
-          <article class="score-card reveal reveal--delay" aria-labelledby="sat-title">
-            <header class="card-header">
-              <div><span class="label">Standardized testing</span><h3 id="sat-title">SAT</h3></div>
-              <div class="score-total"><strong>1390</strong><span>total / 1600</span></div>
-            </header>
-            <dl class="score-grid score-grid--four">
-              <div><dt>Reading &amp; Writing</dt><dd>680</dd></div>
-              <div><dt>Math</dt><dd>710</dd></div>
-              <div><dt>Your country</dt><dd>92nd</dd></div>
-              <div><dt>All testers</dt><dd>93rd</dd></div>
-            </dl>
-          </article>
-
-          <article class="ap-card reveal" aria-labelledby="ap-title">
-            <header class="card-header">
-              <div><span class="label">Advanced Placement</span><h3 id="ap-title">Course board</h3></div>
-              <span class="ap-count">5 courses</span>
-            </header>
-            <div class="ap-list">
-              <div class="ap-row ap-row--complete"><span class="course-code">BIO</span><strong>AP Biology</strong><span class="course-state">Completed &middot; 5</span></div>
-              <div class="ap-row"><span class="course-code">CALC</span><strong>AP Calculus AB</strong><span class="course-state">Current</span></div>
-              <div class="ap-row"><span class="course-code">CSP</span><strong>AP Computer Science Principles</strong><span class="course-state">Current</span></div>
-              <div class="ap-row"><span class="course-code">LANG</span><strong>AP English Language and Composition</strong><span class="course-state">Current</span></div>
-              <div class="ap-row"><span class="course-code">PHY</span><strong>AP Physics 1</strong><span class="course-state">Current</span></div>
-            </div>
-          </article>
+          <article class="score-card reveal" aria-labelledby="ielts-title"><header class="card-header"><div><span class="label">English proficiency</span><h3 id="ielts-title">IELTS Academic</h3></div><div class="score-total"><strong>8.0</strong><span>overall / 9.0</span></div></header><dl class="score-grid score-grid--four"><div><dt>Listening</dt><dd>8.0</dd></div><div><dt>Reading</dt><dd>9.0</dd></div><div><dt>Writing</dt><dd>7.5</dd></div><div><dt>Speaking</dt><dd>7.0</dd></div></dl></article>
+          <article class="score-card reveal reveal--delay" aria-labelledby="sat-title"><header class="card-header"><div><span class="label">Standardized testing</span><h3 id="sat-title">SAT</h3></div><div class="score-total"><strong>1390</strong><span>total / 1600</span></div></header><dl class="score-grid score-grid--four"><div><dt>Reading &amp; Writing</dt><dd>680</dd></div><div><dt>Math</dt><dd>710</dd></div><div><dt>Your country</dt><dd>92nd</dd></div><div><dt>All testers</dt><dd>93rd</dd></div></dl></article>
+          <article class="ap-card reveal" aria-labelledby="ap-title"><header class="card-header"><div><span class="label">Advanced Placement</span><h3 id="ap-title">Course board</h3></div><span class="ap-count">5 courses</span></header><div class="ap-list"><div class="ap-row ap-row--complete"><span class="course-code">BIO</span><strong>AP Biology</strong><span class="course-state">Completed &middot; 5</span></div><div class="ap-row"><span class="course-code">CALC</span><strong>AP Calculus AB</strong><span class="course-state">Current</span></div><div class="ap-row"><span class="course-code">CSP</span><strong>AP Computer Science Principles</strong><span class="course-state">Current</span></div><div class="ap-row"><span class="course-code">LANG</span><strong>AP English Language and Composition</strong><span class="course-state">Current</span></div><div class="ap-row"><span class="course-code">PHY</span><strong>AP Physics 1</strong><span class="course-state">Current</span></div></div></article>
         </div>
       </div>
     </section>
 
     <section class="section work" id="work" aria-labelledby="work-title">
       <div class="shell">
-        <div class="section-heading section-heading--wide reveal">
-          <span class="section-number">03 / PROJECT GALLERY</span>
-          <h2 id="work-title">Built work, separated into clean project cards.</h2>
-          <p>A gallery view of the main builds: one physical-computing prototype and one browser-automation toolkit for personal archival workflows.</p>
-        </div>
-
-        <div class="project-gallery" aria-label="Project gallery">
-          <article class="project-card project-card--robotics reveal" aria-labelledby="robotic-hand-title">
-            <div class="project-card__topline">
-              <span>PROJECT / 01</span>
-              <span class="project-card__status">Prototype</span>
-            </div>
-            <div class="project-card__visual" aria-hidden="true">
-              <div class="project-card__scan"></div>
-              <div class="project-card__nodes">
-                <i></i><i></i><i></i><i></i><i></i>
-                <i></i><i></i><i></i><i></i><i></i>
-              </div>
-            </div>
-            <div class="project-card__body">
-              <span class="label">Computer vision / hardware</span>
-              <h3 id="robotic-hand-title">Computer-vision robotic hand</h3>
-              <p>A webcam tracks live hand movement, Python maps the landmarks, and Arduino sends the motion into a servo-driven prototype.</p>
-
-              <dl class="project-card__meta" aria-label="Robotic hand project summary">
-                <div><dt>Problem</dt><dd>Close the gap between gesture and machine</dd></div>
-                <div><dt>Build</dt><dd>Camera &rarr; landmarks &rarr; serial &rarr; servos</dd></div>
-                <div><dt>Next</dt><dd>Lower latency and sturdier mechanics</dd></div>
-              </dl>
-
-              <div class="project-card__stack">
-                <span>Stack</span>
-                <div><span>Python</span><span>OpenCV / MediaPipe</span><span>Arduino C++</span><span>Servo Motors</span><span>Serial Communication</span><span>Cardboard Prototyping</span></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card project-card--archive reveal reveal--delay" aria-labelledby="archive-toolkit-title">
-            <div class="project-card__topline">
-              <span>PROJECT / 02</span>
-              <span class="project-card__status">Dev tool</span>
-            </div>
-            <div class="project-card__visual" aria-hidden="true">
-              <div class="restore-visual">
-                <div class="restore-step"><b>01</b><strong>Manual login</strong><span>Chrome profile</span></div>
-                <div class="restore-step"><b>02</b><strong>Highlight backup</strong><span>Current profile</span></div>
-                <div class="restore-step"><b>03</b><strong>Folder order</strong><span>Numeric files</span></div>
-                <div class="restore-step"><b>04</b><strong>Story restore</strong><span>Screen vision</span></div>
-              </div>
-            </div>
-            <div class="project-card__body">
-              <span class="label">Browser automation / personal archive</span>
-              <h3 id="archive-toolkit-title">Instagram Highlight Backup + Story Restore Toolkit</h3>
-              <p>A local Python toolkit for personal Instagram highlight archival and restoration workflows. It combines a dedicated Chrome profile, manual authentication, highlight detection, ordered local folders, and calibrated screen-vision restore controls.</p>
-
-              <dl class="project-card__meta" aria-label="Instagram toolkit project summary">
-                <div><dt>Backup</dt><dd>Detects highlights from the current profile page</dd></div>
-                <div><dt>Restore</dt><dd>Steps through uploader extension UI with calibration</dd></div>
-                <div><dt>Boundary</dt><dd>Personal archival, manual auth, no verification handling</dd></div>
-              </dl>
-
-              <div class="project-card__stack">
-                <span>Stack</span>
-                <div><span>Python</span><span>Playwright</span><span>PyAutoGUI</span><span>Pyperclip</span><span>OpenCV template matching</span><span>Chrome DevTools Protocol</span><span>Filesystem automation</span><span>CLI design</span></div>
-              </div>
-
-              <div class="project-card__actions">
-                <a class="button button--ghost" href="https://github.com/t8pium/instagram-highlight-personal-archiver" target="_blank" rel="noopener">View GitHub repo <span aria-hidden="true">&nearr;</span></a>
-              </div>
-            </div>
-          </article>
+        <div class="section-heading section-heading--wide reveal"><span class="section-number">03 / CODING PROJECTS</span><h2 id="work-title">Project gallery.</h2><p>Notion-style cards: image cover, title, quick properties, then a full project page when opened.</p></div>
+        <div class="gallery-shell reveal">
+          <div class="gallery-label-row"><span>Gallery view</span><span>Click a card to open full page</span></div>
+          <div class="notion-gallery notion-gallery--projects" aria-label="Coding project gallery">
+            <a class="gallery-card gallery-card--robotics" href="projects/robotic-hand/" aria-label="Open Computer-vision robotic hand project page"><div class="gallery-card__cover"><div class="cover-mark">CV</div></div><div class="gallery-card__body"><span class="gallery-card__type">Computer vision / hardware</span><h3>Computer-vision robotic hand</h3><p>Webcam landmarks mapped into servo motion through Python and Arduino.</p><div class="gallery-card__props"><span>Python</span><span>MediaPipe</span><span>Arduino</span></div><span class="gallery-card__open">Open &nearr;</span></div></a>
+            <a class="gallery-card gallery-card--archive" href="projects/instagram-highlight-toolkit/" aria-label="Open Instagram Highlight Backup and Story Restore Toolkit project page"><div class="gallery-card__cover"><div class="cover-grid"><span></span><span></span><span></span><span></span></div></div><div class="gallery-card__body"><span class="gallery-card__type">Browser automation / CLI</span><h3>Instagram Highlight Backup + Story Restore Toolkit</h3><p>Personal archival workflow with dedicated Chrome profile, folder order, and calibrated restore helper.</p><div class="gallery-card__props"><span>Playwright</span><span>PyAutoGUI</span><span>OpenCV</span></div><span class="gallery-card__open">Open &nearr;</span></div></a>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section writing" id="writing" aria-labelledby="writing-title">
       <div class="shell">
-        <div class="section-grid section-grid--top">
-          <div class="section-heading reveal">
-            <span class="section-number">04 / WRITING</span>
-            <h2 id="writing-title">I write to make the hidden structure visible.</h2>
-          </div>
-          <p class="section-intro reveal reveal--delay">Stories, decisions, technical systems, and prototypes all become clearer when the reasoning is forced onto the page.</p>
-        </div>
-
-        <div class="writing-board">
-          <article class="writing-feature reveal">
-            <span class="label">Primary lens</span>
-            <h3>Behavior under pressure</h3>
-            <p>Character analysis is a way to study incentives, self-deception, identity, and the decisions people make when every option costs something.</p>
-            <div class="annotation"><span>QUESTION</span><p>What does a person protect when their stated values stop being convenient?</p></div>
-          </article>
-
-          <div class="topic-list reveal reveal--delay">
-            <article><span>01</span><div><h3>Character psychology</h3><p>Motives, contradictions, identity, and pressure.</p></div></article>
-            <article><span>02</span><div><h3>Decision-making</h3><p>Tradeoffs, incentives, and irrational choices.</p></div></article>
-            <article><span>03</span><div><h3>Story structure</h3><p>How conflict turns choices into consequence.</p></div></article>
-            <article><span>04</span><div><h3>Systems thinking</h3><p>Feedback loops, constraints, and second-order effects.</p></div></article>
-            <article><span>05</span><div><h3>Build logs</h3><p>The decisions and failures behind a prototype.</p></div></article>
-            <article><span>06</span><div><h3>Technical notes</h3><p>Dense ideas reduced without losing their shape.</p></div></article>
+        <div class="section-heading section-heading--wide reveal"><span class="section-number">04 / WRITING PROJECTS</span><h2 id="writing-title">Writing gallery.</h2><p>Each writing card opens like a separate page: the idea, the structure, and what the piece is trying to study.</p></div>
+        <div class="gallery-shell reveal">
+          <div class="gallery-label-row"><span>Gallery view</span><span>Analysis / systems / notes</span></div>
+          <div class="notion-gallery" aria-label="Writing project gallery">
+            <a class="gallery-card gallery-card--writing" href="writing/character-psychology/"><div class="gallery-card__cover"><div class="cover-mark cover-mark--small">PSY</div></div><div class="gallery-card__body"><span class="gallery-card__type">Character psychology</span><h3>Behavior under pressure</h3><p>Motives, contradictions, identity, and the things people protect when values become expensive.</p><div class="gallery-card__props"><span>Psychology</span><span>Fiction</span></div><span class="gallery-card__open">Open &nearr;</span></div></a>
+            <a class="gallery-card" href="writing/decision-making/"><div class="gallery-card__cover"><div class="cover-mark cover-mark--small">DEC</div></div><div class="gallery-card__body"><span class="gallery-card__type">Decision-making</span><h3>Tradeoffs and incentives</h3><p>How choices change when pressure, ego, opportunity, and consequences collide.</p><div class="gallery-card__props"><span>Incentives</span><span>Judgment</span></div><span class="gallery-card__open">Open &nearr;</span></div></a>
+            <a class="gallery-card gallery-card--structure" href="writing/story-structure/"><div class="gallery-card__cover"><div class="cover-mark cover-mark--small">ARC</div></div><div class="gallery-card__body"><span class="gallery-card__type">Story structure</span><h3>Conflict into consequence</h3><p>How stories turn decisions into pressure, escalation, reversal, and payoff.</p><div class="gallery-card__props"><span>Narrative</span><span>Conflict</span></div><span class="gallery-card__open">Open &nearr;</span></div></a>
+            <a class="gallery-card gallery-card--systems" href="writing/systems-thinking/"><div class="gallery-card__cover"><div class="cover-mark cover-mark--small">SYS</div></div><div class="gallery-card__body"><span class="gallery-card__type">Systems thinking</span><h3>Feedback loops and constraints</h3><p>Studying why outcomes happen by tracing incentives, bottlenecks, and second-order effects.</p><div class="gallery-card__props"><span>Systems</span><span>Cause/effect</span></div><span class="gallery-card__open">Open &nearr;</span></div></a>
+            <a class="gallery-card" href="writing/build-logs/"><div class="gallery-card__cover"><div class="cover-mark cover-mark--small">LOG</div></div><div class="gallery-card__body"><span class="gallery-card__type">Build logs</span><h3>What broke, what changed</h3><p>Project notes that keep the decision trail visible instead of pretending every build was clean.</p><div class="gallery-card__props"><span>Process</span><span>Debugging</span></div><span class="gallery-card__open">Open &nearr;</span></div></a>
+            <a class="gallery-card gallery-card--writing" href="writing/technical-notes/"><div class="gallery-card__cover"><div class="cover-mark cover-mark--small">DOC</div></div><div class="gallery-card__body"><span class="gallery-card__type">Technical notes</span><h3>Dense ideas reduced cleanly</h3><p>Explanations that compress technical ideas without flattening the important details.</p><div class="gallery-card__props"><span>Research</span><span>Clarity</span></div><span class="gallery-card__open">Open &nearr;</span></div></a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section skills" id="skills" aria-labelledby="skills-title">
-      <div class="shell section-grid section-grid--top">
-        <div class="section-heading reveal">
-          <span class="section-number">05 / SKILLS</span>
-          <h2 id="skills-title">A working stack, not a keyword wall.</h2>
-        </div>
+    <section class="section skills" id="skills" aria-labelledby="skills-title"><div class="shell section-grid section-grid--top"><div class="section-heading reveal"><span class="section-number">05 / SKILLS</span><h2 id="skills-title">A working stack, not a keyword wall.</h2></div><div class="skill-groups reveal reveal--delay"><section><h3><span>01</span> Coding</h3><div class="tags"><span>Python</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Arduino C++</span><span>Git / GitHub</span></div></section><section><h3><span>02</span> Robotics &amp; Hardware</h3><div class="tags"><span>Arduino</span><span>Servo Motors</span><span>Serial Communication</span><span>Rapid Prototyping</span><span>Debugging</span></div></section><section><h3><span>03</span> AI &amp; Computer Vision</h3><div class="tags"><span>OpenCV</span><span>MediaPipe</span><span>LLM APIs</span><span>Prompt Design</span><span>Information Pipelines</span></div></section><section><h3><span>04</span> Writing &amp; Thinking</h3><div class="tags"><span>Analytical Essays</span><span>Systems Thinking</span><span>Technical Documentation</span><span>Story Analysis</span><span>Research Synthesis</span></div></section></div></div></section>
 
-        <div class="skill-groups reveal reveal--delay">
-          <section><h3><span>01</span> Coding</h3><div class="tags"><span>Python</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Arduino C++</span><span>Git / GitHub</span></div></section>
-          <section><h3><span>02</span> Robotics &amp; Hardware</h3><div class="tags"><span>Arduino</span><span>Servo Motors</span><span>Serial Communication</span><span>Rapid Prototyping</span><span>Debugging</span></div></section>
-          <section><h3><span>03</span> AI &amp; Computer Vision</h3><div class="tags"><span>OpenCV</span><span>MediaPipe</span><span>LLM APIs</span><span>Prompt Design</span><span>Information Pipelines</span></div></section>
-          <section><h3><span>04</span> Writing &amp; Thinking</h3><div class="tags"><span>Analytical Essays</span><span>Systems Thinking</span><span>Technical Documentation</span><span>Story Analysis</span><span>Research Synthesis</span></div></section>
-        </div>
-      </div>
-    </section>
+    <section class="section next" id="next" aria-labelledby="next-title"><div class="shell"><div class="section-heading section-heading--wide reveal"><span class="section-number">06 / COMING NEXT</span><h2 id="next-title">Projects on the bench.</h2><p>Not launch announcements. Working directions with enough shape to earn the next block of time.</p></div><div class="bench-grid"><article class="bench-card reveal"><div class="bench-head"><span>BENCH / 01</span><i>Exploring</i></div><h3>AI Study Assistant</h3><p>Organize, summarize, and query study material without turning the learning process into passive consumption.</p><div class="tags"><span>Python</span><span>LLM API</span><span>Web</span></div></article><article class="bench-card reveal"><div class="bench-head"><span>BENCH / 02</span><i>Planned</i></div><h3>Client Landing Page Demo</h3><p>A focused exercise in clear hierarchy, strong copy, fast performance, and a real conversion path.</p><div class="tags"><span>HTML / CSS / JS</span><span>Design</span></div></article><article class="bench-card reveal"><div class="bench-head"><span>BENCH / 03</span><i>Researching</i></div><h3>Longevity Paper Summarizer</h3><p>Turn dense biology papers into structured summaries while keeping claims connected to their sources.</p><div class="tags"><span>Python</span><span>LLM API</span><span>Biology</span></div></article></div></div></section>
 
-    <section class="section next" id="next" aria-labelledby="next-title">
-      <div class="shell">
-        <div class="section-heading section-heading--wide reveal">
-          <span class="section-number">06 / COMING NEXT</span>
-          <h2 id="next-title">Projects on the bench.</h2>
-          <p>Not launch announcements. Working directions with enough shape to earn the next block of time.</p>
-        </div>
-
-        <div class="bench-grid">
-          <article class="bench-card reveal"><div class="bench-head"><span>BENCH / 01</span><i>Exploring</i></div><h3>AI Study Assistant</h3><p>Organize, summarize, and query study material without turning the learning process into passive consumption.</p><div class="tags"><span>Python</span><span>LLM API</span><span>Web</span></div></article>
-          <article class="bench-card reveal"><div class="bench-head"><span>BENCH / 02</span><i>Planned</i></div><h3>Client Landing Page Demo</h3><p>A focused exercise in clear hierarchy, strong copy, fast performance, and a real conversion path.</p><div class="tags"><span>HTML / CSS / JS</span><span>Design</span></div></article>
-          <article class="bench-card reveal"><div class="bench-head"><span>BENCH / 03</span><i>Researching</i></div><h3>Longevity Paper Summarizer</h3><p>Turn dense biology papers into structured summaries while keeping claims connected to their sources.</p><div class="tags"><span>Python</span><span>LLM API</span><span>Biology</span></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section social" id="social" aria-labelledby="social-title">
-      <div class="shell">
-        <div class="section-grid section-grid--top">
-          <div class="section-heading reveal">
-            <span class="section-number">07 / SOCIAL + CONTACT</span>
-            <h2 id="social-title">Find the builds, the thoughts, and the work in progress.</h2>
-          </div>
-          <p class="section-intro reveal reveal--delay">Direct links, no newsletter funnel. Code, notes, updates, and contact all in one place.</p>
-        </div>
-
-        <div class="social-grid reveal">
-          <a href="https://github.com/t8pium" target="_blank" rel="noopener"><span class="social-code">GH</span><div><h3>GitHub</h3><p>@t8pium</p></div><b aria-hidden="true">&nearr;</b></a>
-          <a href="https://www.instagram.com/t8pium" target="_blank" rel="noopener"><span class="social-code">IG</span><div><h3>Instagram</h3><p>@t8pium</p></div><b aria-hidden="true">&nearr;</b></a>
-          <a href="https://x.com/t0pium" target="_blank" rel="noopener"><span class="social-code">X</span><div><h3>Twitter / X</h3><p>@t0pium</p></div><b aria-hidden="true">&nearr;</b></a>
-          <a href="mailto:topium.dev@gmail.com"><span class="social-code">@</span><div><h3>Email</h3><p>topium.dev@gmail.com</p></div><b aria-hidden="true">&rarr;</b></a>
-        </div>
-      </div>
-    </section>
+    <section class="section social" id="social" aria-labelledby="social-title"><div class="shell"><div class="section-grid section-grid--top"><div class="section-heading reveal"><span class="section-number">07 / SOCIAL + CONTACT</span><h2 id="social-title">Find the builds, the thoughts, and the work in progress.</h2></div><p class="section-intro reveal reveal--delay">Direct links, no newsletter funnel. Code, notes, updates, and contact all in one place.</p></div><div class="social-grid reveal"><a href="https://github.com/t8pium" target="_blank" rel="noopener"><span class="social-code">GH</span><div><h3>GitHub</h3><p>@t8pium</p></div><b aria-hidden="true">&nearr;</b></a><a href="https://www.instagram.com/t8pium" target="_blank" rel="noopener"><span class="social-code">IG</span><div><h3>Instagram</h3><p>@t8pium</p></div><b aria-hidden="true">&nearr;</b></a><a href="https://x.com/t0pium" target="_blank" rel="noopener"><span class="social-code">X</span><div><h3>Twitter / X</h3><p>@t0pium</p></div><b aria-hidden="true">&nearr;</b></a><a href="mailto:topium.dev@gmail.com"><span class="social-code">@</span><div><h3>Email</h3><p>topium.dev@gmail.com</p></div><b aria-hidden="true">&rarr;</b></a></div></div></section>
   </main>
 
-  <footer class="footer">
-    <div class="shell footer-inner">
-      <a class="brand" href="#home"><img src="assets/logo-mark.svg" alt="" width="30" height="30"><span>t8pium</span></a>
-      <p>Dubai, UAE <span>/</span> built in plain HTML, CSS &amp; JavaScript</p>
-      <a href="#home">Back to top &uarr;</a>
-    </div>
-  </footer>
+  <footer class="footer"><div class="shell footer-inner"><a class="brand" href="#home"><img src="assets/logo-mark.svg" alt="" width="30" height="30"><span>t8pium</span></a><p>Dubai, UAE <span>/</span> built in plain HTML, CSS &amp; JavaScript</p><a href="#home">Back to top &uarr;</a></div></footer>
 </body>
 </html>
