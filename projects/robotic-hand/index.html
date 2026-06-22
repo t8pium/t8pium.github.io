@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Computer-vision robotic hand | t8pium</title>
+  <link rel="icon" href="../../assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../style.css?v=5">
+  <link rel="stylesheet" href="../../gallery.css?v=5">
+</head>
+<body>
+  <main id="main" class="project-page">
+    <section class="page-hero">
+      <div class="shell page-hero__grid">
+        <div>
+          <a class="back-link" href="../../#work">&larr; Back to gallery</a>
+          <span class="page-kicker">Project / Computer vision + robotics</span>
+          <h1>Computer-vision robotic hand</h1>
+          <p>A webcam tracks live hand movement, Python maps the landmarks, and Arduino turns the motion into a servo-driven prototype.</p>
+        </div>
+        <aside class="page-panel"><div class="page-panel__cover gallery-card__cover"><div class="cover-mark">CV</div></div><div class="page-panel__body"><dl><div><dt>Status</dt><dd>Prototype</dd></div><div><dt>Focus</dt><dd>Vision to physical motion</dd></div><div><dt>Stack</dt><dd>Python, MediaPipe, Arduino</dd></div></dl></div></aside>
+      </div>
+    </section>
+    <section class="page-content shell">
+      <div class="page-section-grid"><h2>Problem</h2><div><p>The goal was to turn a visible gesture into a physical response, making software control something real instead of stopping at the screen.</p></div></div>
+      <div class="page-section-grid"><h2>Build</h2><div><ul><li>Capture live frames from a webcam.</li><li>Track hand landmarks.</li><li>Map movement into servo-friendly values.</li><li>Send motion values to Arduino.</li><li>Test the output on a physical prototype.</li></ul></div></div>
+      <div class="page-section-grid"><h2>What I learned</h2><div><p>Physical systems expose weak assumptions. Timing, friction, jitter, wiring, and structure all matter once code starts touching hardware.</p></div></div>
+      <div class="page-section-grid"><h2>Next version</h2><div><ul><li>Lower latency.</li><li>Smoother motion.</li><li>Better calibrated angle ranges.</li><li>Stronger structure.</li></ul></div></div>
+      <div class="page-section-grid"><h2>Stack</h2><div class="detail-tags"><span>Python</span><span>OpenCV / MediaPipe</span><span>Arduino C++</span><span>Servo Motors</span><span>Serial Communication</span><span>Rapid Prototyping</span></div></div>
+    </section>
+  </main>
+</body>
+</html>
