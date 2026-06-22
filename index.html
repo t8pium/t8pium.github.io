@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gallery.css">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -181,73 +182,76 @@
     <section class="section work" id="work" aria-labelledby="work-title">
       <div class="shell">
         <div class="section-heading section-heading--wide reveal">
-          <span class="section-number">03 / FEATURED WORK</span>
-          <h2 id="work-title">A hand tracked in pixels, rebuilt in cardboard and servos.</h2>
-          <p>A webcam tracks live hand movement, Python maps the landmarks, and Arduino sends the motion into a servo-driven prototype.</p>
+          <span class="section-number">03 / PROJECT GALLERY</span>
+          <h2 id="work-title">Built work, separated into clean project cards.</h2>
+          <p>A gallery view of the main builds: one physical-computing prototype and one browser-automation toolkit for personal archival workflows.</p>
         </div>
 
-        <div class="case-study">
-          <div class="case-diagram reveal" aria-label="Signal flow from webcam to robotic hand">
-            <div class="diagram-top"><span>PROTOTYPE / SYSTEM MAP</span><span>INPUT &rarr; OUTPUT</span></div>
-            <ol class="signal-flow">
-              <li><span>01</span><div><b>Webcam</b><small>Live frames</small></div></li>
-              <li><span>02</span><div><b>MediaPipe</b><small>Hand landmarks</small></div></li>
-              <li><span>03</span><div><b>Python</b><small>Angle mapping</small></div></li>
-              <li><span>04</span><div><b>Serial</b><small>Motion data</small></div></li>
-              <li><span>05</span><div><b>Arduino</b><small>Servo control</small></div></li>
-            </ol>
-            <div class="diagram-output">
-              <div class="servo-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-              <div><span class="label">Physical output</span><strong>Cardboard hand / five servos</strong></div>
+        <div class="project-gallery" aria-label="Project gallery">
+          <article class="project-card project-card--robotics reveal" aria-labelledby="robotic-hand-title">
+            <div class="project-card__topline">
+              <span>PROJECT / 01</span>
+              <span class="project-card__status">Prototype</span>
             </div>
-          </div>
+            <div class="project-card__visual" aria-hidden="true">
+              <div class="project-card__scan"></div>
+              <div class="project-card__nodes">
+                <i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <span class="label">Computer vision / hardware</span>
+              <h3 id="robotic-hand-title">Computer-vision robotic hand</h3>
+              <p>A webcam tracks live hand movement, Python maps the landmarks, and Arduino sends the motion into a servo-driven prototype.</p>
 
-          <div class="case-notes">
-            <article class="case-note reveal">
-              <span>01 / Problem</span>
-              <h3>Close the gap between a gesture and a machine.</h3>
-              <p>I wanted to understand how a camera-based software system could control a physical prototype in real time.</p>
-            </article>
-            <article class="case-note reveal">
-              <span>02 / Build</span>
-              <h3>Debug one layer at a time.</h3>
-              <p>The system separates vision, mapping, serial communication, wiring, and mechanics so each failure has somewhere to be found.</p>
-            </article>
-            <article class="case-note reveal">
-              <span>03 / What I learned</span>
-              <h3>Physical systems expose vague thinking.</h3>
-              <p>Timing, friction, weak joints, noisy readings, and power constraints turn &ldquo;working code&rdquo; into only one part of the answer.</p>
-            </article>
-            <article class="case-note reveal">
-              <span>04 / Next version</span>
-              <h3>Make the motion worth trusting.</h3>
-              <p>Lower latency, smoother mechanics, gesture states, calibrated angles, and a sturdier 3D-printed structure.</p>
-            </article>
-          </div>
-        </div>
+              <dl class="project-card__meta" aria-label="Robotic hand project summary">
+                <div><dt>Problem</dt><dd>Close the gap between gesture and machine</dd></div>
+                <div><dt>Build</dt><dd>Camera &rarr; landmarks &rarr; serial &rarr; servos</dd></div>
+                <div><dt>Next</dt><dd>Lower latency and sturdier mechanics</dd></div>
+              </dl>
 
-        <div class="tool-ledger reveal" aria-label="Tools used in the robotic hand project">
-          <span class="label">Tools used</span>
-          <div><span>Python</span><span>OpenCV / MediaPipe</span><span>Arduino C++</span><span>Servo Motors</span><span>Serial Communication</span><span>Cardboard Prototyping</span></div>
-        </div>
+              <div class="project-card__stack">
+                <span>Stack</span>
+                <div><span>Python</span><span>OpenCV / MediaPipe</span><span>Arduino C++</span><span>Servo Motors</span><span>Serial Communication</span><span>Cardboard Prototyping</span></div>
+              </div>
+            </div>
+          </article>
 
-        <div class="project-addendum reveal" aria-labelledby="highlight-tool-title">
-          <div class="section-heading section-heading--wide">
-            <span class="section-number">DEV TOOL / PERSONAL ARCHIVE</span>
-            <h3 id="highlight-tool-title">Instagram Highlight Backup + Story Restore Toolkit</h3>
-            <p>Built a local Python toolkit for personal Instagram highlight archival and restoration workflows. The backup side opens a dedicated Chrome profile, lets the user authenticate manually, and detects highlights from the currently opened Instagram profile. The restore side uses calibrated screen vision to step through an uploader extension page, restoring ordered local story files with folder selection, resume controls, and timed waits between posts.</p>
-          </div>
-          <div class="tool-ledger" aria-label="Instagram highlight backup and restore toolkit features">
-            <span class="label">Key features</span>
-            <div><span>Dedicated Chrome profile</span><span>Manual login workflow</span><span>Current profile detection</span><span>Highlight detection</span><span>EasyLoad restore helper</span><span>Screen-vision calibration</span><span>Folder picker</span><span>Ordered story sequence</span><span>Resume controls</span><span>60-70s OK wait</span></div>
-          </div>
-          <div class="tool-ledger" aria-label="Instagram highlight toolkit stack">
-            <span class="label">Stack</span>
-            <div><span>Python</span><span>Playwright</span><span>PyAutoGUI</span><span>Pyperclip</span><span>OpenCV template matching</span><span>Chrome DevTools Protocol</span><span>Browser automation</span><span>Filesystem automation</span><span>CLI design</span></div>
-          </div>
-          <div class="hero-actions">
-            <a class="button button--ghost" href="https://github.com/t8pium/instagram-highlight-personal-archiver" target="_blank" rel="noopener">View GitHub repo <span aria-hidden="true">&nearr;</span></a>
-          </div>
+          <article class="project-card project-card--archive reveal reveal--delay" aria-labelledby="archive-toolkit-title">
+            <div class="project-card__topline">
+              <span>PROJECT / 02</span>
+              <span class="project-card__status">Dev tool</span>
+            </div>
+            <div class="project-card__visual" aria-hidden="true">
+              <div class="restore-visual">
+                <div class="restore-step"><b>01</b><strong>Manual login</strong><span>Chrome profile</span></div>
+                <div class="restore-step"><b>02</b><strong>Highlight backup</strong><span>Current profile</span></div>
+                <div class="restore-step"><b>03</b><strong>Folder order</strong><span>Numeric files</span></div>
+                <div class="restore-step"><b>04</b><strong>Story restore</strong><span>Screen vision</span></div>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <span class="label">Browser automation / personal archive</span>
+              <h3 id="archive-toolkit-title">Instagram Highlight Backup + Story Restore Toolkit</h3>
+              <p>A local Python toolkit for personal Instagram highlight archival and restoration workflows. It combines a dedicated Chrome profile, manual authentication, highlight detection, ordered local folders, and calibrated screen-vision restore controls.</p>
+
+              <dl class="project-card__meta" aria-label="Instagram toolkit project summary">
+                <div><dt>Backup</dt><dd>Detects highlights from the current profile page</dd></div>
+                <div><dt>Restore</dt><dd>Steps through uploader extension UI with calibration</dd></div>
+                <div><dt>Boundary</dt><dd>Personal archival, manual auth, no verification handling</dd></div>
+              </dl>
+
+              <div class="project-card__stack">
+                <span>Stack</span>
+                <div><span>Python</span><span>Playwright</span><span>PyAutoGUI</span><span>Pyperclip</span><span>OpenCV template matching</span><span>Chrome DevTools Protocol</span><span>Filesystem automation</span><span>CLI design</span></div>
+              </div>
+
+              <div class="project-card__actions">
+                <a class="button button--ghost" href="https://github.com/t8pium/instagram-highlight-personal-archiver" target="_blank" rel="noopener">View GitHub repo <span aria-hidden="true">&nearr;</span></a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
