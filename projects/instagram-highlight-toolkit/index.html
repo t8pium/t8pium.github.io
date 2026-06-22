@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instagram Highlight Backup + Restore Toolkit | t8pium</title>
+  <link rel="icon" href="../../assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../style.css?v=5">
+  <link rel="stylesheet" href="../../gallery.css?v=5">
+</head>
+<body>
+  <main id="main" class="project-page">
+    <section class="page-hero">
+      <div class="shell page-hero__grid">
+        <div>
+          <a class="back-link" href="../../#work">&larr; Back to gallery</a>
+          <span class="page-kicker">Project / Browser automation + CLI tooling</span>
+          <h1>Instagram Highlight Backup + Story Restore Toolkit</h1>
+          <p>A local Python toolkit for personal highlight archival and restoration workflows, built around manual authentication, dedicated browser profiles, ordered folders, and calibrated screen-vision controls.</p>
+        </div>
+        <aside class="page-panel"><div class="page-panel__cover gallery-card__cover"><div class="cover-grid"><span></span><span></span><span></span><span></span></div></div><div class="page-panel__body"><dl><div><dt>Status</dt><dd>Personal tooling project</dd></div><div><dt>Focus</dt><dd>Responsible browser automation</dd></div><div><dt>Repo</dt><dd><a href="https://github.com/t8pium/instagram-highlight-personal-archiver" target="_blank" rel="noopener">GitHub</a></dd></div></dl></div></aside>
+      </div>
+    </section>
+    <section class="page-content shell">
+      <div class="page-section-grid"><h2>Positioning</h2><div><p>This is not framed as a shady downloader. It is a browser-assisted personal archive workflow for content the user owns or has permission to archive or publish.</p></div></div>
+      <div class="page-section-grid"><h2>Backup side</h2><div><ul><li>Launches or connects to a dedicated Chrome profile.</li><li>Uses manual login instead of collecting credentials.</li><li>Uses the currently opened Instagram profile page.</li><li>Detects highlight links and keeps the workflow local.</li></ul></div></div>
+      <div class="page-section-grid"><h2>Restore side</h2><div><ul><li>Uses a folder picker to choose an ordered local highlight folder.</li><li>Calibrates visible buttons on the uploader extension page.</li><li>Steps through Add, Next, Publish now, and OK.</li><li>Waits 60-70 seconds after OK before the next file.</li><li>Supports dry runs, start position, and limits for resuming.</li></ul></div></div>
+      <div class="page-section-grid"><h2>Boundary</h2><div><p>The tool does not automate login, verification, CAPTCHA, account checks, or security decisions. It depends on the user controlling the browser and using the tool responsibly.</p></div></div>
+      <div class="page-section-grid"><h2>Stack</h2><div class="detail-tags"><span>Python</span><span>Playwright</span><span>PyAutoGUI</span><span>Pyperclip</span><span>OpenCV template matching</span><span>Chrome DevTools Protocol</span><span>Filesystem automation</span><span>CLI design</span></div></div>
+    </section>
+  </main>
+</body>
+</html>
