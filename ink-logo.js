@@ -9,6 +9,11 @@
   const finePointer = window.matchMedia("(pointer: fine)").matches;
   const root = document.documentElement;
 
+  const mobileFix = document.createElement("link");
+  mobileFix.rel = "stylesheet";
+  mobileFix.href = "mobile-fix.css?v=1";
+  document.head.appendChild(mobileFix);
+
   const world = document.createElement("div");
   world.className = "atmosphere";
   world.setAttribute("aria-hidden", "true");
