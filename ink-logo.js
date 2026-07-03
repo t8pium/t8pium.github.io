@@ -6,163 +6,102 @@
   world.className = "logo-ink-world";
   world.setAttribute("aria-hidden", "true");
   world.innerHTML = `
-    <canvas class="ink-canvas"></canvas>
-    <div class="logo-scene">
-      <div class="logo-stack">
-        <span class="logo-black-core"></span>
-      </div>
-      <span class="logo-face"></span>
-      <span class="ink-lip"></span>
+    <div class="market-line">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="none">
+        <path class="line-main" d="M0 585 C90 530 145 545 220 492 S360 415 455 448 S610 520 700 436 S835 306 942 342 S1080 465 1180 385 S1330 220 1440 260" />
+        <path class="line-red" d="M0 690 C120 630 190 668 280 602 S440 518 545 550 S705 630 810 560 S952 438 1044 480 S1195 598 1290 525 S1390 430 1440 450" />
+      </svg>
     </div>
-    <span class="ink-fog"></span>
+    <div class="candles" aria-hidden="true"></div>
+    <div class="logo-scene">
+      <span class="logo-glow"></span>
+      <span class="logo-core"></span>
+      <span class="logo-face"></span>
+    </div>
+    <div class="ink-spill" aria-hidden="true"></div>
+    <span class="ink-pool"></span>
   `;
   document.body.prepend(world);
 
-  const stack = world.querySelector(".logo-stack");
-  const layers = 34;
-  for (let i = layers; i >= 1; i -= 1) {
+  const scene = world.querySelector(".logo-scene");
+  const depthCount = 16;
+  for (let i = depthCount; i >= 1; i -= 1) {
     const layer = document.createElement("span");
     layer.className = "logo-depth";
-    const depth = -i * 4.2;
-    const shift = i * 0.74;
-    layer.style.setProperty("--depth-z", `${depth}px`);
-    layer.style.setProperty("--shift-x", `${shift}px`);
-    layer.style.setProperty("--shift-y", `${shift * 1.28}px`);
-    layer.style.setProperty("--layer-alpha", `${Math.max(0.06, 0.74 - i * 0.018)}`);
-    layer.style.setProperty("--layer-brightness", `${Math.max(0.42, 1.02 - i * 0.014)}`);
-    stack.appendChild(layer);
+    layer.style.setProperty("--d", `${i * 1.15}px`);
+    layer.style.setProperty("--a", `${Math.max(0.08, 0.62 - i * 0.027)}`);
+    scene.prepend(layer);
   }
 
-  const canvas = world.querySelector(".ink-canvas");
-  const ctx = canvas.getContext("2d", { alpha: true });
-  const drops = Array.from({ length: 34 }, (_, i) => {
-    let x = Math.sin(i * 999.13) * 10000;
-    const r1 = x - Math.floor(x);
-    x = Math.sin((i + 9) * 731.31) * 10000;
-    const r2 = x - Math.floor(x);
-    x = Math.sin((i + 23) * 319.17) * 10000;
-    const r3 = x - Math.floor(x);
-    x = Math.sin((i + 41) * 191.91) * 10000;
-    const r4 = x - Math.floor(x);
-    return { r1, r2, r3, r4 };
+  const candles = world.querySelector(".candles");
+  const candleSet = [
+    [44, 24, 18, "#26a69a"], [82, 34, 28, "#ef5350"], [55, 42, 20, "#26a69a"],
+    [118, 28, 46, "#26a69a"], [64, 64, 32, "#ef5350"], [92, 35, 25, "#26a69a"],
+    [38, 26, 34, "#ef5350"], [140, 46, 56, "#26a69a"], [78, 34, 62, "#26a69a"],
+    [104, 52, 40, "#ef5350"], [58, 38, 44, "#26a69a"], [126, 26, 68, "#26a69a"],
+    [72, 46, 30, "#ef5350"], [96, 60, 42, "#ef5350"], [48, 28, 22, "#26a69a"],
+    [132, 36, 72, "#26a69a"], [68, 52, 36, "#ef5350"], [90, 28, 58, "#26a69a"]
+  ];
+  candleSet.forEach(([body, wickTop, wickBottom, color], index) => {
+    const candle = document.createElement("i");
+    candle.style.setProperty("--body", `${body}px`);
+    candle.style.setProperty("--wick-top", `${wickTop}px`);
+    candle.style.setProperty("--wick-bottom", `${wickBottom}px`);
+    candle.style.setProperty("--candle", color);
+    candle.style.transform = `translateY(${Math.sin(index * 1.7) * 54}px)`;
+    candles.appendChild(candle);
   });
 
-  let width = 0;
-  let height = 0;
-  let dpr = 1;
-  let progress = 0;
+  const spill = world.querySelector(".ink-spill");
+  const dripSet = [
+    [12, 18, 260, -8, 44], [22, 34, 440, 5, 32], [31, 11, 310, -3, 52], [43, 42, 560, 7, 26],
+    [50, 22, 390, -6, 40], [58, 15, 650, 4, 58], [68, 30, 510, -9, 35], [77, 13, 300, 6, 48], [88, 25, 470, -4, 28]
+  ];
+  dripSet.forEach(([x, w, h, skew, drop]) => {
+    const drip = document.createElement("i");
+    drip.style.setProperty("--x", `${x}%`);
+    drip.style.setProperty("--w", `${w}px`);
+    drip.style.setProperty("--h", `${h}px`);
+    drip.style.setProperty("--skew", `${skew}deg`);
+    drip.style.setProperty("--drop", `${drop}px`);
+    spill.appendChild(drip);
+  });
+
   let raf = 0;
+  let px = 0;
+  let py = 0;
 
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = Math.floor(width * dpr);
-    canvas.height = Math.floor(height * dpr);
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    draw();
-  }
-
-  function pathDrop(x, y, len, w, bend, alpha) {
-    const grad = ctx.createLinearGradient(x, y, x, y + len);
-    grad.addColorStop(0, `rgba(0, 0, 0, ${0.82 * alpha})`);
-    grad.addColorStop(0.72, `rgba(0, 0, 0, ${0.94 * alpha})`);
-    grad.addColorStop(1, `rgba(0, 0, 0, ${0.34 * alpha})`);
-
-    ctx.fillStyle = grad;
-    ctx.beginPath();
-    ctx.moveTo(x - w * 0.36, y);
-    ctx.bezierCurveTo(x - w * 0.85 + bend, y + len * 0.22, x - w * 0.48 - bend, y + len * 0.74, x - w * 0.22, y + len);
-    ctx.quadraticCurveTo(x, y + len + w * 0.42, x + w * 0.24, y + len);
-    ctx.bezierCurveTo(x + w * 0.58 + bend, y + len * 0.72, x + w * 0.88 - bend, y + len * 0.24, x + w * 0.34, y);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.strokeStyle = `rgba(255, 255, 255, ${0.035 * alpha})`;
-    ctx.lineWidth = Math.max(1, w * 0.04);
-    ctx.stroke();
-  }
-
-  function draw() {
-    if (!ctx) return;
-    ctx.clearRect(0, 0, width, height);
-
-    const logoSize = Math.min(Math.max(width * (width < 760 ? 0.88 : 0.52), 280), width < 760 ? 540 : 760);
-    const top = width < 760 ? 92 : Math.min(Math.max(height * 0.11, 88), 150);
-    const startY = top + logoSize * (width < 760 ? 0.55 : 0.60);
-    const centerX = width / 2;
-    const active = Math.max(0, progress - 0.025) / 0.975;
-
-    ctx.globalCompositeOperation = "source-over";
-    ctx.globalAlpha = 0.72 + active * 0.28;
-
-    drops.forEach((drop) => {
-      const delay = drop.r4 * 0.46;
-      const local = Math.max(0, Math.min(1, (active - delay) / (1 - delay)));
-      if (local <= 0) return;
-
-      const spread = logoSize * (0.18 + drop.r2 * 0.62);
-      const x = centerX + (drop.r1 - 0.5) * spread;
-      const y = startY + (drop.r2 - 0.5) * logoSize * 0.11;
-      const len = (height * (0.12 + drop.r3 * 0.95)) * Math.pow(local, 0.82);
-      const w = (5 + drop.r2 * 32) * (0.45 + local * 0.86);
-      const bend = (drop.r1 - 0.5) * 70 * local;
-      pathDrop(x, y, len, w, bend, 0.24 + local * 0.8);
-
-      if (local > 0.38) {
-        ctx.fillStyle = `rgba(0, 0, 0, ${(local - 0.38) * 0.32})`;
-        ctx.beginPath();
-        ctx.ellipse(x + bend * 0.18, y + len + w * 0.28, w * (1.25 + drop.r1), w * (0.42 + drop.r3 * 0.45), drop.r2 * Math.PI, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    });
-
-    const pool = Math.max(0, active - 0.42) / 0.58;
-    if (pool > 0) {
-      const poolY = height * (0.83 - pool * 0.18);
-      const grad = ctx.createRadialGradient(centerX, height, width * 0.08, centerX, height, width * (0.42 + pool * 0.28));
-      grad.addColorStop(0, `rgba(0, 0, 0, ${0.76 * pool})`);
-      grad.addColorStop(0.55, `rgba(0, 0, 0, ${0.46 * pool})`);
-      grad.addColorStop(1, "rgba(0, 0, 0, 0)");
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.ellipse(centerX, height + 20, width * (0.46 + pool * 0.18), height * (0.20 + pool * 0.12), 0, 0, Math.PI * 2);
-      ctx.fill();
-
-      for (let i = 0; i < 18; i += 1) {
-        const d = drops[i];
-        const x = centerX + (d.r1 - 0.5) * width * 0.82;
-        const y = poolY + d.r2 * height * 0.28;
-        ctx.fillStyle = `rgba(0, 0, 0, ${0.18 * pool * d.r3})`;
-        ctx.beginPath();
-        ctx.ellipse(x, y, 12 + d.r2 * 54, 5 + d.r3 * 20, d.r4 * Math.PI, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    ctx.globalAlpha = 1;
-  }
-
-  function update() {
+  function updateScroll() {
     const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    progress = Math.min(1, Math.max(0, window.scrollY / max));
+    const raw = Math.min(1, Math.max(0, window.scrollY / max));
+    const progress = Math.pow(raw, 0.72);
     root.style.setProperty("--ink-progress", progress.toFixed(4));
-    if (!reduced) draw();
   }
 
-  function requestUpdate() {
+  function scheduleScroll() {
     if (raf) return;
     raf = requestAnimationFrame(() => {
       raf = 0;
-      update();
+      updateScroll();
     });
   }
 
-  window.addEventListener("resize", resize, { passive: true });
-  window.addEventListener("scroll", requestUpdate, { passive: true });
-  resize();
-  update();
-  if (reduced) draw();
+  window.addEventListener("scroll", scheduleScroll, { passive: true });
+  window.addEventListener("resize", scheduleScroll, { passive: true });
+
+  if (!reduced) {
+    let pointerRaf = 0;
+    window.addEventListener("pointermove", (event) => {
+      px = event.clientX - window.innerWidth / 2;
+      py = event.clientY - window.innerHeight / 2;
+      if (pointerRaf) return;
+      pointerRaf = requestAnimationFrame(() => {
+        pointerRaf = 0;
+        root.style.setProperty("--pointer-x", (px / 18).toFixed(2));
+        root.style.setProperty("--pointer-y", (py / 18).toFixed(2));
+      });
+    }, { passive: true });
+  }
+
+  updateScroll();
 })();
