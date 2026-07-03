@@ -8,7 +8,7 @@
   };
 
   addCss('mobile-fix.css?v=1');
-  addCss('simple-mode.css?v=1');
+  addCss('simple-mode.css?v=2');
 
   document.querySelectorAll('h1, h2, h3').forEach((heading) => {
     heading.childNodes.forEach((child) => {
@@ -33,8 +33,8 @@
   const sync = () => {
     const on = document.documentElement.classList.contains('simple-mode');
     button.setAttribute('aria-pressed', String(on));
-    button.setAttribute('aria-label', on ? 'Turn off simple mode' : 'Turn on simple mode');
-    label.textContent = on ? 'Full' : 'Simple';
+    button.setAttribute('aria-label', on ? 'Current mode: simple. Tap for full mode.' : 'Current mode: full. Tap for simple mode.');
+    label.textContent = on ? 'Mode: Simple' : 'Mode: Full';
   };
 
   button.addEventListener('click', () => {
