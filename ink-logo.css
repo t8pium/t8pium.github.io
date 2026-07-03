@@ -1,22 +1,273 @@
 :root {
+  --bg: #0b0f14;
+  --bg-deep: #05070b;
+  --surface: rgba(19, 23, 34, 0.78);
+  --surface-2: rgba(22, 27, 39, 0.82);
+  --text: #d6dce8;
+  --muted: #8f98aa;
+  --dim: #5f6b7c;
+  --line: rgba(120, 144, 180, 0.14);
+  --line-strong: rgba(120, 144, 180, 0.28);
+  --cyan: #2962ff;
+  --violet: #4b7dff;
+  --lime: #26a69a;
+  --rose: #ef5350;
+  --amber: #f6c85f;
   --ink-progress: 0;
-  --ink-shadow: rgba(0, 0, 0, 0.72);
+  --pointer-x: 0;
+  --pointer-y: 0;
+  --depth: 22px;
+}
+
+html,
+body {
+  background: #05070b;
+}
+
+body {
+  background:
+    radial-gradient(circle at 50% -8%, rgba(41, 98, 255, 0.18), transparent 36rem),
+    linear-gradient(180deg, #0b0f14 0%, #070a0f 42%, #030407 100%);
+}
+
+body::before,
+body::after {
+  opacity: 0.18;
 }
 
 .site-header,
 main,
 footer {
   position: relative;
-  z-index: 4;
+  z-index: 5;
 }
 
-body {
-  background: #030105;
+.logo-ink-world {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  perspective: 1300px;
+  background:
+    linear-gradient(rgba(120, 144, 180, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 144, 180, 0.028) 1px, transparent 1px),
+    repeating-linear-gradient(0deg, transparent 0 71px, rgba(120, 144, 180, 0.035) 72px),
+    #05070b;
+  background-size: 72px 72px, 72px 72px, 100% 72px, auto;
 }
 
-body::before,
-body::after {
-  opacity: 0.32;
+.logo-ink-world::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(41, 98, 255, 0.0), rgba(41, 98, 255, 0.09), rgba(38, 166, 154, 0.06), rgba(239, 83, 80, 0.045), rgba(41, 98, 255, 0.0)),
+    radial-gradient(circle at calc(50% + var(--pointer-x) * 1px) calc(22% + var(--pointer-y) * 1px), rgba(41, 98, 255, 0.16), transparent 27rem),
+    linear-gradient(180deg, transparent 0 32%, rgba(0, 0, 0, calc(var(--ink-progress) * 0.44)) 72%, rgba(0, 0, 0, calc(var(--ink-progress) * 0.78)) 100%);
+  opacity: 0.95;
+}
+
+.logo-ink-world::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0 calc(100% - 72px), rgba(120, 144, 180, 0.10) calc(100% - 72px), rgba(120, 144, 180, 0.10) calc(100% - 71px), transparent calc(100% - 71px)),
+    repeating-linear-gradient(0deg, transparent 0 10.5%, rgba(120, 144, 180, 0.035) 10.7%, transparent 10.9%);
+  opacity: calc(0.48 + var(--ink-progress) * 0.18);
+}
+
+.market-line {
+  position: absolute;
+  inset: 0;
+  opacity: calc(0.34 + var(--ink-progress) * 0.22);
+  transform: translateY(calc(var(--ink-progress) * -42px));
+}
+
+.market-line svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.market-line .line-main {
+  fill: none;
+  stroke: rgba(41, 98, 255, 0.62);
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 10px rgba(41, 98, 255, 0.25));
+  stroke-dasharray: 1450;
+  stroke-dashoffset: calc(1450 - var(--ink-progress) * 960);
+}
+
+.market-line .line-red {
+  fill: none;
+  stroke: rgba(239, 83, 80, 0.42);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 900;
+  stroke-dashoffset: calc(900 - var(--ink-progress) * 480);
+}
+
+.candles {
+  position: absolute;
+  inset: 15% 8% 8%;
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+  align-items: center;
+  gap: clamp(8px, 1.3vw, 18px);
+  opacity: calc(0.20 + var(--ink-progress) * 0.18);
+  transform: translateY(calc(var(--ink-progress) * -28px));
+}
+
+.candles i {
+  position: relative;
+  justify-self: center;
+  width: 5px;
+  height: var(--body);
+  min-height: 16px;
+  border-radius: 2px;
+  background: var(--candle);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--candle), transparent 68%);
+}
+
+.candles i::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(var(--wick-top) * -1);
+  width: 1px;
+  height: calc(var(--body) + var(--wick-top) + var(--wick-bottom));
+  transform: translateX(-50%);
+  background: var(--candle);
+  opacity: 0.72;
+}
+
+.logo-scene {
+  --logo-size: clamp(330px, 41vw, 680px);
+  position: absolute;
+  top: clamp(92px, 10vh, 138px);
+  left: 50%;
+  width: var(--logo-size);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  transform:
+    translate3d(-50%, calc(var(--ink-progress) * -34px), 0)
+    rotateX(calc(46deg - var(--ink-progress) * 14deg + var(--pointer-y) * -0.018deg))
+    rotateY(calc(var(--pointer-x) * 0.026deg))
+    rotateZ(calc(-2deg + var(--ink-progress) * 4deg));
+  opacity: calc(0.50 + var(--ink-progress) * 0.16);
+  filter:
+    drop-shadow(0 36px 48px rgba(0, 0, 0, 0.70))
+    drop-shadow(0 0 28px rgba(41, 98, 255, 0.16));
+  will-change: transform;
+}
+
+.logo-scene::before,
+.logo-scene::after,
+.logo-face,
+.logo-depth,
+.logo-core {
+  position: absolute;
+  inset: 0;
+  -webkit-mask: url("assets/logo-mark.svg") center / contain no-repeat;
+  mask: url("assets/logo-mark.svg") center / contain no-repeat;
+}
+
+.logo-depth {
+  background: linear-gradient(145deg, #7d8798, #222936 42%, #070a0f 84%);
+  transform: translate3d(var(--d), calc(var(--d) * 1.16), calc(var(--d) * -1));
+  opacity: var(--a);
+}
+
+.logo-core {
+  background: #010204;
+  transform: translate3d(18px, 22px, -54px) scale(1.012);
+  opacity: calc(0.62 + var(--ink-progress) * 0.25);
+  filter: blur(0.5px);
+}
+
+.logo-face {
+  background:
+    radial-gradient(circle at 35% 18%, #f7f9fc 0 14%, #b9c1cf 36%, #323a49 68%, #080b10 100%);
+  transform: translateZ(12px);
+}
+
+.logo-face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  -webkit-mask: url("assets/logo-mark.svg") center / contain no-repeat;
+  mask: url("assets/logo-mark.svg") center / contain no-repeat;
+  background: linear-gradient(115deg, transparent 0 35%, rgba(255,255,255,.58) 45%, transparent 55%);
+  mix-blend-mode: screen;
+  opacity: 0.42;
+}
+
+.logo-glow {
+  position: absolute;
+  inset: 14% 10%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(41, 98, 255, 0.24), transparent 44%),
+    radial-gradient(circle at 50% 68%, rgba(0, 0, 0, 0.7), transparent 54%);
+  filter: blur(26px);
+  opacity: calc(0.45 + var(--ink-progress) * 0.25);
+  transform: translateZ(-90px);
+}
+
+.ink-spill {
+  position: absolute;
+  top: calc(clamp(92px, 10vh, 138px) + clamp(330px, 41vw, 680px) * 0.62);
+  left: 50%;
+  width: min(760px, 82vw);
+  height: 70vh;
+  transform: translateX(-50%) translateY(calc(var(--ink-progress) * -18px));
+  opacity: calc(var(--ink-progress) * 0.95);
+  filter: blur(0.15px) contrast(1.05);
+}
+
+.ink-spill i {
+  position: absolute;
+  top: 0;
+  left: var(--x);
+  width: var(--w);
+  height: calc(var(--h) * var(--ink-progress));
+  min-height: 0;
+  border-radius: 0 0 999px 999px;
+  background:
+    radial-gradient(ellipse at 35% 10%, rgba(255,255,255,.08), transparent 12%),
+    linear-gradient(180deg, rgba(0,0,0,.88), rgba(0,0,0,.98) 82%, rgba(0,0,0,.42));
+  transform: translateX(-50%) skewX(var(--skew));
+  box-shadow: 0 0 24px rgba(0,0,0,.72);
+}
+
+.ink-spill i::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--drop) * -1);
+  width: calc(var(--w) * 1.16);
+  height: calc(var(--w) * .86);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,.94);
+}
+
+.ink-pool {
+  position: absolute;
+  left: 50%;
+  bottom: -22vh;
+  width: calc(44vw + var(--ink-progress) * 38vw);
+  height: calc(18vh + var(--ink-progress) * 24vh);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0,0,0,.92), rgba(0,0,0,.52) 50%, transparent 72%);
+  opacity: calc(var(--ink-progress) * .78);
+  filter: blur(18px);
 }
 
 .hero,
@@ -32,175 +283,95 @@ body::after {
   background-color: transparent !important;
 }
 
-.logo-ink-world {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-  perspective: 1400px;
-  isolation: isolate;
+.hero::before,
+.hero::after,
+.section::before {
+  opacity: 0.55;
 }
 
-.logo-ink-world::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.16), transparent 26rem),
-    radial-gradient(circle at 48% 44%, rgba(255, 255, 255, 0.055), transparent 34rem),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 42%, rgba(0, 0, 0, 0.34));
-  opacity: calc(0.42 + var(--ink-progress) * 0.32);
+.site-header.scrolled,
+.site-header.menu-open {
+  background: rgba(5, 7, 11, 0.86) !important;
+  border-color: rgba(120, 144, 180, 0.16) !important;
 }
 
-.ink-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: calc(0.55 + var(--ink-progress) * 0.45);
-  filter: contrast(1.12) saturate(0.86) drop-shadow(0 0 18px rgba(0, 0, 0, 0.9));
-}
-
-.logo-scene {
-  --logo-size: clamp(300px, 52vw, 760px);
-  position: absolute;
-  top: clamp(88px, 11vh, 150px);
-  left: 50%;
-  width: var(--logo-size);
-  aspect-ratio: 1;
-  transform-style: preserve-3d;
-  transform:
-    translate3d(-50%, calc(var(--ink-progress) * -82px), 0)
-    rotateX(calc(58deg - var(--ink-progress) * 18deg))
-    rotateZ(calc(-5deg + var(--ink-progress) * 8deg));
-  opacity: calc(0.48 + var(--ink-progress) * 0.25);
-  filter:
-    drop-shadow(0 46px 60px rgba(0, 0, 0, 0.56))
-    drop-shadow(0 0 34px rgba(255, 255, 255, 0.08));
-}
-
-.logo-stack {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-}
-
-.logo-depth,
-.logo-face,
-.logo-black-core {
-  position: absolute;
-  inset: 0;
-  -webkit-mask: url("assets/logo-mark.svg") center / contain no-repeat;
-  mask: url("assets/logo-mark.svg") center / contain no-repeat;
-  transform-style: preserve-3d;
-}
-
-.logo-depth {
-  background: linear-gradient(135deg, #fffaf4 0%, #c9c1cc 30%, #5c5361 60%, #100b13 100%);
-  transform: translate3d(var(--shift-x), var(--shift-y), var(--depth-z));
-  opacity: var(--layer-alpha);
-  filter: brightness(var(--layer-brightness));
-}
-
-.logo-black-core {
-  background: #020103;
-  transform: translate3d(18px, 22px, -118px) scale(1.008);
-  opacity: calc(0.46 + var(--ink-progress) * 0.35);
-  filter: blur(0.3px);
-}
-
-.logo-face {
-  background:
-    radial-gradient(circle at 34% 18%, #ffffff 0 16%, #f7f0e9 32%, #aaa2ac 58%, #211923 100%);
-  transform: translateZ(12px);
-  box-shadow: inset -22px -36px 54px rgba(0, 0, 0, 0.34);
-}
-
-.logo-face::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  -webkit-mask: url("assets/logo-mark.svg") center / contain no-repeat;
-  mask: url("assets/logo-mark.svg") center / contain no-repeat;
-  background:
-    linear-gradient(115deg, transparent 0 32%, rgba(255, 255, 255, 0.55) 42%, transparent 52%),
-    radial-gradient(circle at 74% 18%, rgba(255, 255, 255, 0.38), transparent 21%);
-  mix-blend-mode: screen;
-  opacity: 0.75;
-}
-
-.ink-lip {
-  position: absolute;
-  left: 25%;
-  right: 25%;
-  top: 73%;
-  height: 12%;
-  transform: translateZ(24px);
-  background:
-    radial-gradient(ellipse at 18% 22%, rgba(255, 255, 255, 0.26), transparent 15%),
-    radial-gradient(ellipse at 58% 42%, rgba(255, 255, 255, 0.16), transparent 18%),
-    linear-gradient(180deg, rgba(8, 6, 9, 0.94), rgba(0, 0, 0, 0.98));
-  border-radius: 50% 50% 55% 55%;
-  filter: blur(0.2px) drop-shadow(0 12px 20px rgba(0, 0, 0, 0.82));
-  opacity: calc(0.14 + var(--ink-progress) * 0.72);
-}
-
-.ink-fog {
-  position: absolute;
-  inset: 45% -20% -10%;
-  background:
-    radial-gradient(ellipse at 38% 10%, rgba(0, 0, 0, 0.68), transparent 32%),
-    radial-gradient(ellipse at 58% 38%, rgba(0, 0, 0, 0.55), transparent 34%),
-    radial-gradient(ellipse at 50% 72%, rgba(0, 0, 0, 0.62), transparent 42%);
-  opacity: calc(var(--ink-progress) * 0.62);
-  filter: blur(28px);
-}
-
-main::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, transparent 0 34%, rgba(0, 0, 0, calc(var(--ink-progress) * 0.22)) 58%, rgba(0, 0, 0, calc(var(--ink-progress) * 0.44)) 100%);
-}
-
-.hero-copy,
-.project-console,
-.section-heading,
+.nav-menu,
+.identity-mark,
+.hero-meta,
 .about-content,
 .score-card,
 .ap-card,
+.project-console,
 .gallery-card,
 .bench-card,
 .skill-groups section,
 .social-grid,
 .page-panel {
+  background: rgba(19, 23, 34, 0.74) !important;
+  border-color: rgba(120, 144, 180, 0.15) !important;
+  backdrop-filter: blur(14px) saturate(1.12);
   box-shadow:
-    inset 0 1px rgba(255, 255, 255, 0.07),
-    0 28px 90px rgba(0, 0, 0, calc(0.22 + var(--ink-progress) * 0.16));
+    inset 0 1px rgba(255,255,255,.045),
+    0 24px 70px rgba(0,0,0,.34) !important;
+}
+
+.button--primary {
+  background: #2962ff !important;
+  border-color: #2962ff !important;
+  color: white !important;
+}
+
+.button--primary:hover {
+  background: #3d73ff !important;
+}
+
+.button--ghost,
+.nav-toggle {
+  background: rgba(19, 23, 34, 0.70) !important;
+}
+
+.gallery-card__cover,
+.console-visual {
+  background-color: #0b0f14 !important;
+}
+
+.hero h1,
+.section-heading h2,
+.page-hero h1 {
+  color: #eef3fb;
 }
 
 @media (max-width: 760px) {
   .logo-scene {
-    --logo-size: clamp(280px, 88vw, 520px);
-    top: 92px;
+    --logo-size: clamp(280px, 82vw, 500px);
+    top: 88px;
     transform:
-      translate3d(-50%, calc(var(--ink-progress) * -42px), 0)
-      rotateX(calc(46deg - var(--ink-progress) * 10deg))
-      rotateZ(calc(-4deg + var(--ink-progress) * 5deg));
+      translate3d(-50%, calc(var(--ink-progress) * -22px), 0)
+      rotateX(calc(34deg - var(--ink-progress) * 8deg))
+      rotateY(calc(var(--pointer-x) * 0.015deg))
+      rotateZ(calc(-1deg + var(--ink-progress) * 2deg));
     opacity: 0.42;
   }
 
-  .ink-canvas {
-    opacity: calc(0.46 + var(--ink-progress) * 0.45);
+  .candles {
+    inset: 22% 5% 5%;
+    gap: 8px;
+    opacity: calc(0.14 + var(--ink-progress) * 0.15);
+  }
+
+  .ink-spill {
+    top: 330px;
+    width: 92vw;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .market-line .line-main,
+  .market-line .line-red {
+    stroke-dashoffset: 0;
+  }
+
   .logo-scene {
-    transform: translate3d(-50%, 0, 0) rotateX(52deg) rotateZ(-4deg);
+    transform: translate3d(-50%, 0, 0) rotateX(38deg) rotateZ(-2deg);
   }
 }
