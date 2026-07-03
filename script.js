@@ -1,3 +1,16 @@
+(() => {
+  const add = (tag, attrs) => {
+    if (attrs.href && document.querySelector(`link[href=\"${attrs.href}\"]`)) return;
+    if (attrs.src && document.querySelector(`script[src=\"${attrs.src}\"]`)) return;
+    const node = document.createElement(tag);
+    Object.assign(node, attrs);
+    document.head.appendChild(node);
+  };
+  add('link', { rel: 'stylesheet', href: 'mobile-fix.css?v=1' });
+  add('link', { rel: 'stylesheet', href: 'simple-mode.css?v=1' });
+  add('script', { src: 'simple-toggle.js?v=1', defer: true });
+})();
+
 const header = document.getElementById("siteHeader");
 const navToggle = document.getElementById("navToggle");
 const navMenu = document.getElementById("navMenu");
