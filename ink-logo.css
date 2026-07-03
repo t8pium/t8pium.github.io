@@ -1,0 +1,206 @@
+:root {
+  --ink-progress: 0;
+  --ink-shadow: rgba(0, 0, 0, 0.72);
+}
+
+.site-header,
+main,
+footer {
+  position: relative;
+  z-index: 4;
+}
+
+body {
+  background: #030105;
+}
+
+body::before,
+body::after {
+  opacity: 0.32;
+}
+
+.hero,
+.section,
+.footer,
+.about,
+.academics,
+.work,
+.writing,
+.skills,
+.next,
+.social {
+  background-color: transparent !important;
+}
+
+.logo-ink-world {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  perspective: 1400px;
+  isolation: isolate;
+}
+
+.logo-ink-world::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.16), transparent 26rem),
+    radial-gradient(circle at 48% 44%, rgba(255, 255, 255, 0.055), transparent 34rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 42%, rgba(0, 0, 0, 0.34));
+  opacity: calc(0.42 + var(--ink-progress) * 0.32);
+}
+
+.ink-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: calc(0.55 + var(--ink-progress) * 0.45);
+  filter: contrast(1.12) saturate(0.86) drop-shadow(0 0 18px rgba(0, 0, 0, 0.9));
+}
+
+.logo-scene {
+  --logo-size: clamp(300px, 52vw, 760px);
+  position: absolute;
+  top: clamp(88px, 11vh, 150px);
+  left: 50%;
+  width: var(--logo-size);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  transform:
+    translate3d(-50%, calc(var(--ink-progress) * -82px), 0)
+    rotateX(calc(58deg - var(--ink-progress) * 18deg))
+    rotateZ(calc(-5deg + var(--ink-progress) * 8deg));
+  opacity: calc(0.48 + var(--ink-progress) * 0.25);
+  filter:
+    drop-shadow(0 46px 60px rgba(0, 0, 0, 0.56))
+    drop-shadow(0 0 34px rgba(255, 255, 255, 0.08));
+}
+
+.logo-stack {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.logo-depth,
+.logo-face,
+.logo-black-core {
+  position: absolute;
+  inset: 0;
+  -webkit-mask: url("assets/logo-mark.svg") center / contain no-repeat;
+  mask: url("assets/logo-mark.svg") center / contain no-repeat;
+  transform-style: preserve-3d;
+}
+
+.logo-depth {
+  background: linear-gradient(135deg, #fffaf4 0%, #c9c1cc 30%, #5c5361 60%, #100b13 100%);
+  transform: translate3d(var(--shift-x), var(--shift-y), var(--depth-z));
+  opacity: var(--layer-alpha);
+  filter: brightness(var(--layer-brightness));
+}
+
+.logo-black-core {
+  background: #020103;
+  transform: translate3d(18px, 22px, -118px) scale(1.008);
+  opacity: calc(0.46 + var(--ink-progress) * 0.35);
+  filter: blur(0.3px);
+}
+
+.logo-face {
+  background:
+    radial-gradient(circle at 34% 18%, #ffffff 0 16%, #f7f0e9 32%, #aaa2ac 58%, #211923 100%);
+  transform: translateZ(12px);
+  box-shadow: inset -22px -36px 54px rgba(0, 0, 0, 0.34);
+}
+
+.logo-face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  -webkit-mask: url("assets/logo-mark.svg") center / contain no-repeat;
+  mask: url("assets/logo-mark.svg") center / contain no-repeat;
+  background:
+    linear-gradient(115deg, transparent 0 32%, rgba(255, 255, 255, 0.55) 42%, transparent 52%),
+    radial-gradient(circle at 74% 18%, rgba(255, 255, 255, 0.38), transparent 21%);
+  mix-blend-mode: screen;
+  opacity: 0.75;
+}
+
+.ink-lip {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 73%;
+  height: 12%;
+  transform: translateZ(24px);
+  background:
+    radial-gradient(ellipse at 18% 22%, rgba(255, 255, 255, 0.26), transparent 15%),
+    radial-gradient(ellipse at 58% 42%, rgba(255, 255, 255, 0.16), transparent 18%),
+    linear-gradient(180deg, rgba(8, 6, 9, 0.94), rgba(0, 0, 0, 0.98));
+  border-radius: 50% 50% 55% 55%;
+  filter: blur(0.2px) drop-shadow(0 12px 20px rgba(0, 0, 0, 0.82));
+  opacity: calc(0.14 + var(--ink-progress) * 0.72);
+}
+
+.ink-fog {
+  position: absolute;
+  inset: 45% -20% -10%;
+  background:
+    radial-gradient(ellipse at 38% 10%, rgba(0, 0, 0, 0.68), transparent 32%),
+    radial-gradient(ellipse at 58% 38%, rgba(0, 0, 0, 0.55), transparent 34%),
+    radial-gradient(ellipse at 50% 72%, rgba(0, 0, 0, 0.62), transparent 42%);
+  opacity: calc(var(--ink-progress) * 0.62);
+  filter: blur(28px);
+}
+
+main::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 0 34%, rgba(0, 0, 0, calc(var(--ink-progress) * 0.22)) 58%, rgba(0, 0, 0, calc(var(--ink-progress) * 0.44)) 100%);
+}
+
+.hero-copy,
+.project-console,
+.section-heading,
+.about-content,
+.score-card,
+.ap-card,
+.gallery-card,
+.bench-card,
+.skill-groups section,
+.social-grid,
+.page-panel {
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.07),
+    0 28px 90px rgba(0, 0, 0, calc(0.22 + var(--ink-progress) * 0.16));
+}
+
+@media (max-width: 760px) {
+  .logo-scene {
+    --logo-size: clamp(280px, 88vw, 520px);
+    top: 92px;
+    transform:
+      translate3d(-50%, calc(var(--ink-progress) * -42px), 0)
+      rotateX(calc(46deg - var(--ink-progress) * 10deg))
+      rotateZ(calc(-4deg + var(--ink-progress) * 5deg));
+    opacity: 0.42;
+  }
+
+  .ink-canvas {
+    opacity: calc(0.46 + var(--ink-progress) * 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-scene {
+    transform: translate3d(-50%, 0, 0) rotateX(52deg) rotateZ(-4deg);
+  }
+}
