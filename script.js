@@ -12,7 +12,7 @@ function closeMenu() {
   navToggle.querySelector(".sr-only").textContent = "Open navigation";
   navMenu.classList.remove("open");
   header?.classList.remove("menu-open");
-  document.body.style.overflow = "";
+  document.body.classList.remove("no-scroll");
 }
 
 navToggle?.addEventListener("click", () => {
@@ -21,7 +21,7 @@ navToggle?.addEventListener("click", () => {
   navToggle.querySelector(".sr-only").textContent = open ? "Open navigation" : "Close navigation";
   navMenu?.classList.toggle("open", !open);
   header?.classList.toggle("menu-open", !open);
-  document.body.style.overflow = open ? "" : "hidden";
+  document.body.classList.toggle("no-scroll", !open);
 });
 
 navLinks.forEach((link) => link.addEventListener("click", closeMenu));
@@ -66,6 +66,19 @@ window.addEventListener("resize", () => {
   updatePageState();
 });
 
+if (!reducedMotion.matches) {
+  let pointerTicking = false;
+  window.addEventListener("pointermove", (event) => {
+    if (pointerTicking) return;
+    pointerTicking = true;
+    window.requestAnimationFrame(() => {
+      document.documentElement.style.setProperty("--mx", `${event.clientX}px`);
+      document.documentElement.style.setProperty("--my", `${event.clientY}px`);
+      pointerTicking = false;
+    });
+  }, { passive: true });
+}
+
 const revealItems = document.querySelectorAll(".reveal");
 
 if (reducedMotion.matches || !("IntersectionObserver" in window)) {
@@ -83,4 +96,3 @@ if (reducedMotion.matches || !("IntersectionObserver" in window)) {
 }
 
 updatePageState();
-
