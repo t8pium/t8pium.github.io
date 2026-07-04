@@ -21,51 +21,30 @@
     flex: 0 0 auto !important;
   }
 
-  .hero {
-    position: relative !important;
-    isolation: isolate !important;
-    overflow: hidden !important;
-  }
-
-  .hero::after {
-    content: "" !important;
-    position: absolute !important;
-    top: 180px !important;
+  .mobile-hero-logo {
+    position: fixed !important;
+    top: 245px !important;
     left: 50% !important;
     width: min(118vw, 560px) !important;
-    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
     transform: translateX(-50%) rotate(-2deg) !important;
-    z-index: 0 !important;
+    z-index: 4 !important;
     pointer-events: none !important;
-    opacity: 0.36 !important;
-    background:
-      radial-gradient(circle at 44% 34%, rgba(255,255,255,0.34), transparent 25%),
-      linear-gradient(145deg, rgba(225,235,255,0.82), rgba(90,120,175,0.42) 42%, rgba(5,8,15,0.86) 82%) !important;
-    -webkit-mask: url("assets/logo-mark.svg") center / contain no-repeat !important;
-    mask: url("assets/logo-mark.svg") center / contain no-repeat !important;
+    opacity: 0.30 !important;
+    mix-blend-mode: screen !important;
     filter:
       drop-shadow(0 36px 64px rgba(0,0,0,0.72))
-      drop-shadow(0 0 48px rgba(82,134,255,0.38)) !important;
+      drop-shadow(0 0 52px rgba(82,134,255,0.40)) !important;
   }
 
-  .hero::before {
-    content: "" !important;
-    position: absolute !important;
-    top: 145px !important;
-    left: 50% !important;
-    width: min(130vw, 640px) !important;
-    aspect-ratio: 1 / 1 !important;
-    transform: translateX(-50%) !important;
-    z-index: 0 !important;
-    pointer-events: none !important;
-    opacity: 0.38 !important;
-    background: radial-gradient(circle, rgba(82,134,255,0.22), rgba(38,166,154,0.08) 38%, transparent 68%) !important;
-    filter: blur(28px) !important;
-  }
-
-  .hero > * {
+  .hero > .shell,
+  .hero-copy,
+  .hero-actions,
+  .identity-mark,
+  .hero-intro,
+  .hero h1 {
     position: relative !important;
-    z-index: 2 !important;
+    z-index: 6 !important;
   }
 
   .scene {
@@ -73,21 +52,15 @@
   }
 
   .logo-scene {
-    opacity: 0.18 !important;
+    opacity: 0.14 !important;
   }
 }
 
 @media (max-width: 430px) {
-  .hero::after {
-    top: 195px !important;
-    width: 122vw !important;
-    opacity: 0.42 !important;
-  }
-
-  .hero::before {
-    top: 160px !important;
-    width: 135vw !important;
-    opacity: 0.42 !important;
+  .mobile-hero-logo {
+    top: 260px !important;
+    width: 124vw !important;
+    opacity: 0.36 !important;
   }
 }
 
@@ -97,8 +70,8 @@
     font-size: 0.92rem !important;
   }
 
-  .hero::after {
-    width: 116vw !important;
-    opacity: 0.38 !important;
+  .mobile-hero-logo {
+    width: 118vw !important;
+    opacity: 0.34 !important;
   }
 }
