@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Automatic Keyboard Presser + Macro Recorder | t8pium</title>
+  <link rel="icon" href="../../assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../style.css?v=7">
+  <link rel="stylesheet" href="../../gallery.css?v=7">
+</head>
+<body>
+  <main id="main" class="project-page">
+    <section class="page-hero">
+      <div class="shell page-hero__grid">
+        <div>
+          <a class="back-link" href="../../#work">&larr; Back to gallery</a>
+          <span class="page-kicker">Project / Desktop automation + macro recording</span>
+          <h1>Automatic Keyboard Presser + Macro Recorder</h1>
+          <p>A local Python desktop tool for configurable key-combo pressing, hold-down automation, and mouse/keyboard macro recording with replay loops.</p>
+        </div>
+        <aside class="page-panel">
+          <div class="page-panel__cover gallery-card__cover"><div class="cover-mark">KEY</div></div>
+          <div class="page-panel__body"><dl><div><dt>Status</dt><dd>Finished local desktop tool</dd></div><div><dt>Focus</dt><dd>Input automation + macro replay</dd></div><div><dt>Repo</dt><dd><a href="https://github.com/t8pium/automatic-keyboard-presser" target="_blank" rel="noopener">GitHub</a></dd></div></dl></div>
+        </aside>
+      </div>
+    </section>
+    <section class="page-content shell">
+      <div class="page-section-grid"><h2>What it does</h2><div><p>This project started as a simple automatic keyboard presser and evolved into a fuller desktop automation panel with a clickable keyboard, physical key detection, combo pressing, and macro replay.</p></div></div>
+      <div class="page-section-grid"><h2>Keyboard automation</h2><div><ul><li>Clickable virtual keyboard for selecting keys.</li><li>Supports combinations like Ctrl + A, Ctrl + V, Shift + Tab, and Alt + F4.</li><li>Detects left/right Ctrl, Shift, Alt, Win, arrows, function keys, letters, numbers, and symbols.</li><li>Press repeatedly mode uses a configurable interval.</li><li>Hold down mode hides the interval because it is not needed.</li></ul></div></div>
+      <div class="page-section-grid"><h2>Macro recorder</h2><div><ul><li>Records mouse movement, clicks, and scroll.</li><li>Records keyboard input.</li><li>Can record mouse + keyboard together.</li><li>Replays a recording once or continuously.</li><li>Supports instant looping or a custom wait time between loops.</li></ul></div></div>
+      <div class="page-section-grid"><h2>Controls</h2><div><ul><li>F6 starts the selected action.</li><li>F8 stops everything and releases held inputs.</li><li>F9 toggles recording.</li><li>F10 stops recording.</li></ul></div></div>
+      <div class="page-section-grid"><h2>Stack</h2><div class="detail-tags"><span>Python</span><span>Tkinter</span><span>pynput</span><span>Keyboard automation</span><span>Mouse automation</span><span>Desktop UI</span><span>Macro recording</span></div></div>
+      <div class="page-section-grid"><h2>Boundary</h2><div><p>The app sends real keyboard and mouse input to the active window. It is meant for local workflows where the user is allowed to automate input, with an easy stop hotkey kept available.</p></div></div>
+    </section>
+  </main>
+</body>
+</html>
