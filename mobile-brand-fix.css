@@ -1,0 +1,30 @@
+/* Keep the t8pium brand visible on mobile. */
+@media (max-width: 760px) {
+  .brand {
+    min-width: 0 !important;
+    gap: 0.65rem !important;
+  }
+
+  .brand > span {
+    display: inline-block !important;
+    color: #eef3fb !important;
+    font-size: 1.02rem !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.02em !important;
+    white-space: nowrap !important;
+    max-width: 46vw !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .brand img {
+    flex: 0 0 auto !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand > span {
+    max-width: 38vw !important;
+    font-size: 0.92rem !important;
+  }
+}
