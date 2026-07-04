@@ -41,20 +41,11 @@ function addKeyboardPresserProjectCard() {
 }
 
 function replaceRoboticHandCover() {
-  const sketchfabSrc = "https://sketchfab.com/models/d45545d7e80742f68fff11aa19ac4631/embed?autostart=1&ui_theme=dark&ui_infos=0&ui_controls=0&ui_watermark=0";
   document.querySelectorAll('img[src*="robotic-hand-cover.svg"]').forEach((img) => {
-    const holder = document.createElement("div");
-    holder.className = "sketchfab-embed-cover";
-
-    const iframe = document.createElement("iframe");
-    iframe.title = "Robot hand 3D model";
-    iframe.src = sketchfabSrc;
-    iframe.loading = "lazy";
-    iframe.allow = "autoplay; fullscreen; xr-spatial-tracking";
-    iframe.setAttribute("allowfullscreen", "");
-
-    holder.appendChild(iframe);
-    img.replaceWith(holder);
+    img.src = "assets/covers/robotic-hand-thumbnail-final.svg?v=1";
+    img.removeAttribute("srcset");
+    img.style.objectFit = "cover";
+    img.style.objectPosition = "center center";
   });
 }
 
