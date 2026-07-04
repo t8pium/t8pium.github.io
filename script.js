@@ -1,6 +1,6 @@
 (() => {
   const add = (tag, attrs) => {
-    if (attrs.href && document.querySelector(`link[href=\"${attrs.href}\"]`)) return;
+    if (attrs.href && document.querySelector(`link[href="${attrs.href}"]`)) return;
     const node = document.createElement(tag);
     Object.assign(node, attrs);
     document.head.appendChild(node);
@@ -28,7 +28,20 @@ function addMobileLogo() {
   document.body.appendChild(logo);
 }
 
+function addKeyboardPresserProjectCard() {
+  const gallery = document.querySelector(".notion-gallery--projects");
+  if (!gallery || document.querySelector('a[href="projects/automatic-keyboard-presser/"]')) return;
+
+  const card = document.createElement("a");
+  card.className = "gallery-card gallery-card--automation";
+  card.href = "projects/automatic-keyboard-presser/";
+  card.setAttribute("aria-label", "Open Automatic Keyboard Presser and Macro Recorder project page");
+  card.innerHTML = `<div class="gallery-card__cover"><div class="cover-mark">KEY</div></div><div class="gallery-card__body"><span class="gallery-card__type">Desktop automation / macro recorder</span><h3>Automatic Keyboard Presser + Macro Recorder</h3><p>Configurable key combos, hold/repeat modes, and mouse + keyboard recording with replay loops.</p><div class="gallery-card__props"><span>Python</span><span>Tkinter</span><span>pynput</span></div><span class="gallery-card__open">Open &nearr;</span></div>`;
+  gallery.appendChild(card);
+}
+
 addMobileLogo();
+addKeyboardPresserProjectCard();
 
 function closeMenu() {
   if (!navToggle || !navMenu) return;
