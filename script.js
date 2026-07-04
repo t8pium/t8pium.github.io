@@ -40,13 +40,39 @@ function addKeyboardPresserProjectCard() {
   gallery.appendChild(card);
 }
 
-function replaceRoboticHandCover() {
-  document.querySelectorAll('img[src*="robotic-hand-cover.svg"]').forEach((img) => {
-    img.src = "assets/covers/robotic-hand-thumbnail-final.svg?v=1";
-    img.removeAttribute("srcset");
-    img.style.objectFit = "cover";
-    img.style.objectPosition = "center center";
-  });
+async function getSketchfabStill() {
+  const apiUrl = "https://api.sketchfab.com/v3/models/d45545d7e80742f68fff11aa19ac4631";
+
+  try {
+    const response = await fetch(apiUrl, { mode: "cors" });
+    if (!response.ok) throw new Error(`Sketchfab API ${response.status}`);
+
+    const data = await response.json();
+    const images = data?.thumbnails?.images || [];
+    const best = [...images]
+      .filter((image) => image?.url)
+      .sort((a, b) => (b.width || 0) - (a.width || 0))[0];
+
+    return best?.url || "";
+  } catch (error) {
+    console.warn("Could not load Sketchfab still thumbnail:", error);
+    return "";
+  }
+}
+
+async function replaceRoboticHandCover() {
+  const fallback = "assets/covers/robotic-hand-cover.svg?v=static-fallback";
+  const stillUrl = await getSketchfabStill();
+  const src = stillUrl || fallback;
+
+  document
+    .querySelectorAll('img[src*="robotic-hand-cover.svg"], img[src*="robotic-hand-thumbnail-final.svg"]')
+    .forEach((img) => {
+      img.src = src;
+      img.removeAttribute("srcset");
+      img.style.objectFit = "cover";
+      img.style.objectPosition = "center center";
+    });
 }
 
 addMobileLogo();
