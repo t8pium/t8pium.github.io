@@ -18,7 +18,7 @@
           <h1>Computer-vision robotic hand</h1>
           <p>A webcam tracks live hand movement, Python maps the landmarks, and Arduino turns the motion into a servo-driven prototype.</p>
         </div>
-        <aside class="page-panel"><div class="page-panel__cover gallery-card__cover"><img src="../../assets/covers/robotic-hand-thumbnail-final.svg?v=1" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></div><div class="page-panel__body"><dl><div><dt>Status</dt><dd>Prototype</dd></div><div><dt>Focus</dt><dd>Vision to physical motion</dd></div><div><dt>Stack</dt><dd>Python, MediaPipe, Arduino</dd></div></dl></div></aside>
+        <aside class="page-panel"><div class="page-panel__cover gallery-card__cover"><img id="robotHandStill" src="../../assets/covers/robotic-hand-cover.svg?v=static-fallback" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;"></div><div class="page-panel__body"><dl><div><dt>Status</dt><dd>Prototype</dd></div><div><dt>Focus</dt><dd>Vision to physical motion</dd></div><div><dt>Stack</dt><dd>Python, MediaPipe, Arduino</dd></div></dl></div></aside>
       </div>
     </section>
     <section class="page-content shell">
@@ -29,5 +29,18 @@
       <div class="page-section-grid"><h2>Stack</h2><div class="detail-tags"><span>Python</span><span>OpenCV / MediaPipe</span><span>Arduino C++</span><span>Servo Motors</span><span>Serial Communication</span><span>Rapid Prototyping</span></div></div>
     </section>
   </main>
+  <script>
+    (async () => {
+      try {
+        const response = await fetch('https://api.sketchfab.com/v3/models/d45545d7e80742f68fff11aa19ac4631', { mode: 'cors' });
+        if (!response.ok) return;
+        const data = await response.json();
+        const best = [...(data?.thumbnails?.images || [])].filter((image) => image?.url).sort((a, b) => (b.width || 0) - (a.width || 0))[0];
+        if (best?.url) document.getElementById('robotHandStill').src = best.url;
+      } catch (error) {
+        console.warn('Could not load Sketchfab still thumbnail:', error);
+      }
+    })();
+  </script>
 </body>
 </html>
