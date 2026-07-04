@@ -38,14 +38,28 @@
     height: 78px !important;
   }
 
+  .brand {
+    min-width: 0 !important;
+    gap: 0.65rem !important;
+  }
+
   .brand img {
     width: 44px !important;
     height: 44px !important;
     border-radius: 16px !important;
+    flex: 0 0 auto !important;
   }
 
   .brand > span {
-    display: none !important;
+    display: inline-block !important;
+    color: #eef3fb !important;
+    font-size: 1.02rem !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.02em !important;
+    white-space: nowrap !important;
+    max-width: 46vw !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   .nav-toggle {
@@ -210,5 +224,12 @@
   .identity-mark {
     transform: scale(0.96);
     transform-origin: left center;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand > span {
+    max-width: 38vw !important;
+    font-size: 0.92rem !important;
   }
 }
