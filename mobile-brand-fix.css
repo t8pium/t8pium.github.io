@@ -1,4 +1,4 @@
-/* Keep the t8pium brand visible on mobile. */
+/* Keep the t8pium brand visible on mobile and make the background logo readable. */
 @media (max-width: 760px) {
   .brand {
     min-width: 0 !important;
@@ -20,11 +20,63 @@
   .brand img {
     flex: 0 0 auto !important;
   }
+
+  .scene {
+    opacity: 0.92 !important;
+  }
+
+  .logo-scene {
+    --logo-size: clamp(360px, 105vw, 620px) !important;
+    top: 205px !important;
+    left: 55% !important;
+    opacity: 0.46 !important;
+    z-index: 0 !important;
+  }
+
+  .logo-mark {
+    opacity: 0.88 !important;
+    background:
+      linear-gradient(145deg, rgba(230, 238, 255, 0.62), rgba(95, 125, 180, 0.34) 38%, rgba(9, 13, 24, 0.78) 80%),
+      radial-gradient(circle at 34% 18%, rgba(255,255,255,.30), transparent 34%) !important;
+    filter:
+      blur(0.15px)
+      drop-shadow(0 30px 58px rgba(0, 0, 0, 0.62))
+      drop-shadow(0 0 44px rgba(82, 134, 255, 0.24)) !important;
+  }
+
+  .logo-shadow {
+    opacity: 0.86 !important;
+    filter: blur(22px) !important;
+  }
+
+  .logo-bloom {
+    opacity: 0.90 !important;
+    filter: blur(46px) !important;
+  }
+
+  .logo-rim {
+    opacity: 0.34 !important;
+    filter: blur(7px) !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .logo-scene {
+    --logo-size: clamp(340px, 108vw, 560px) !important;
+    top: 220px !important;
+    left: 55% !important;
+    opacity: 0.52 !important;
+  }
 }
 
 @media (max-width: 360px) {
   .brand > span {
     max-width: 38vw !important;
     font-size: 0.92rem !important;
+  }
+
+  .logo-scene {
+    --logo-size: clamp(315px, 104vw, 500px) !important;
+    opacity: 0.48 !important;
   }
 }
