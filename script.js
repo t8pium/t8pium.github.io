@@ -17,6 +17,19 @@ const navLinks = [...document.querySelectorAll(".nav-menu a")];
 const sections = [...document.querySelectorAll("main section[id]")];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+function addMobileLogo() {
+  if (!window.matchMedia("(max-width: 760px)").matches) return;
+  if (document.querySelector(".mobile-hero-logo")) return;
+  const logo = document.createElement("img");
+  logo.className = "mobile-hero-logo";
+  logo.src = "assets/logo-mark.svg";
+  logo.alt = "";
+  logo.setAttribute("aria-hidden", "true");
+  document.body.appendChild(logo);
+}
+
+addMobileLogo();
+
 function closeMenu() {
   if (!navToggle || !navMenu) return;
   navToggle.setAttribute("aria-expanded", "false");
