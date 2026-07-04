@@ -1,4 +1,46 @@
 /* Keep the t8pium brand visible on mobile and make the background logo readable. */
+.mobile-hero-logo {
+  display: none !important;
+}
+
+.gallery-card__cover:has(img),
+.page-panel__cover:has(img) {
+  aspect-ratio: 16 / 9 !important;
+  min-height: 0 !important;
+  background: #060914 !important;
+}
+
+.gallery-card__cover:has(img)::before,
+.page-panel__cover:has(img)::before {
+  display: none !important;
+}
+
+.gallery-card__cover:has(img)::after,
+.page-panel__cover:has(img)::after {
+  inset: 0 !important;
+  height: auto !important;
+  background: linear-gradient(to bottom, rgba(3,5,12,0.02), rgba(3,5,12,0.28)) !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.gallery-card__cover img,
+.page-panel__cover img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+@media (min-width: 1101px) {
+  .notion-gallery--projects {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
 @media (max-width: 760px) {
   .brand {
     min-width: 0 !important;
@@ -22,6 +64,7 @@
   }
 
   .mobile-hero-logo {
+    display: block !important;
     position: fixed !important;
     top: 245px !important;
     left: 50% !important;
