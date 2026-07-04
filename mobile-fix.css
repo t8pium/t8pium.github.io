@@ -174,30 +174,39 @@
   }
 
   .scene {
-    opacity: 0.58 !important;
+    opacity: 0.72 !important;
   }
 
   .logo-scene {
-    --logo-size: clamp(180px, 54vw, 300px) !important;
-    top: 160px !important;
-    left: 76% !important;
-    opacity: 0.10 !important;
+    --logo-size: clamp(260px, 78vw, 430px) !important;
+    top: 260px !important;
+    left: 61% !important;
+    opacity: 0.24 !important;
   }
 
   .logo-mark {
-    opacity: 0.32 !important;
-    filter: blur(0.65px) drop-shadow(0 20px 32px rgba(0, 0, 0, 0.52)) !important;
+    opacity: 0.62 !important;
+    filter: blur(0.35px) drop-shadow(0 24px 42px rgba(0, 0, 0, 0.56)) drop-shadow(0 0 28px rgba(82, 134, 255, 0.14)) !important;
+  }
+
+  .logo-shadow {
+    opacity: 0.72 !important;
+    filter: blur(20px) !important;
   }
 
   .logo-bloom {
-    opacity: 0.46 !important;
+    opacity: 0.62 !important;
+  }
+
+  .logo-rim {
+    opacity: 0.18 !important;
   }
 
   .orbit-ring,
   .hud-arcs,
   .crosshair {
-    left: 76% !important;
-    opacity: 0.09 !important;
+    left: 61% !important;
+    opacity: 0.12 !important;
   }
 
   .panel--a,
