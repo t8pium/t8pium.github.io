@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Automatic Keyboard Presser cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#050812"/><stop offset="1" stop-color="#18264b"/></linearGradient>
+    <radialGradient id="glow" cx="76%" cy="14%" r="72%"><stop stop-color="#54d7e8" stop-opacity=".24"/><stop offset="1" stop-color="#9b7cff" stop-opacity="0"/></radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".55"/></filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+  <g opacity=".24" stroke="#7ca2de" stroke-width="1"><path d="M0 40h1200M0 100h1200M0 160h1200M0 220h1200M0 280h1200M0 340h1200M0 400h1200M0 460h1200M0 520h1200M0 580h1200M0 640h1200"/><path d="M40 0v675M100 0v675M160 0v675M220 0v675M280 0v675M340 0v675M400 0v675M460 0v675M520 0v675M580 0v675M640 0v675M700 0v675M760 0v675M820 0v675M880 0v675M940 0v675M1000 0v675M1060 0v675M1120 0v675"/></g>
+  <rect x="46" y="72" width="1110" height="390" rx="28" fill="#101829" stroke="#54d7e8" stroke-opacity=".7" stroke-width="2" filter="url(#shadow)"/>
+  <text x="70" y="124" fill="#f5f8ff" font-family="Manrope, Arial, sans-serif" font-size="33" font-weight="800">Automatic Keyboard Presser</text>
+  <text x="1108" y="124" fill="#54d7e8" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="700">READY</text>
+  <rect x="70" y="154" width="720" height="95" fill="#111b2e" stroke="#344159"/>
+  <text x="90" y="183" fill="#ffffff" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="700">SELECTED KEY COMBO</text>
+  <text x="90" y="222" fill="#22c4ff" font-family="Manrope, Arial, sans-serif" font-size="26" font-weight="800">No combo selected</text>
+  <rect x="816" y="154" width="300" height="95" fill="#111b2e" stroke="#344159"/>
+  <text x="840" y="183" fill="#ffffff" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="700">COMBO MODE</text>
+  <text x="840" y="220" fill="#a6b3d2" font-family="IBM Plex Mono, monospace" font-size="14">● Press repeatedly    50 ms</text>
+  <rect x="70" y="270" width="1046" height="162" fill="#111827" stroke="#344159"/>
+  <text x="90" y="303" fill="#ffffff" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="700">VIRTUAL KEYBOARD</text>
+  <g fill="#202b3f" stroke="#25334b" stroke-width="1" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="700" text-anchor="middle">
+    <script type="application/ecmascript"><![CDATA[]]></script>
+    <g transform="translate(290 326)">
+      <rect x="0" y="0" width="38" height="20"/><text x="19" y="14" fill="#fff">Esc</text><rect x="54" y="0" width="38" height="20"/><text x="73" y="14" fill="#fff">F1</text><rect x="108" y="0" width="38" height="20"/><text x="127" y="14" fill="#fff">F2</text><rect x="162" y="0" width="38" height="20"/><text x="181" y="14" fill="#fff">F3</text><rect x="216" y="0" width="38" height="20"/><text x="235" y="14" fill="#fff">F4</text><rect x="270" y="0" width="38" height="20"/><text x="289" y="14" fill="#fff">F5</text><rect x="324" y="0" width="38" height="20"/><text x="343" y="14" fill="#fff">F6</text><rect x="378" y="0" width="38" height="20"/><text x="397" y="14" fill="#fff">F7</text><rect x="432" y="0" width="38" height="20"/><text x="451" y="14" fill="#fff">F8</text><rect x="486" y="0" width="38" height="20"/><text x="505" y="14" fill="#fff">F9</text>
+      <rect x="-35" y="32" width="42" height="22"/><text x="-14" y="47" fill="#fff">`</text><rect x="12" y="32" width="42" height="22"/><text x="33" y="47" fill="#fff">1</text><rect x="59" y="32" width="42" height="22"/><text x="80" y="47" fill="#fff">2</text><rect x="106" y="32" width="42" height="22"/><text x="127" y="47" fill="#fff">3</text><rect x="153" y="32" width="42" height="22"/><text x="174" y="47" fill="#fff">4</text><rect x="200" y="32" width="42" height="22"/><text x="221" y="47" fill="#fff">5</text><rect x="247" y="32" width="42" height="22"/><text x="268" y="47" fill="#fff">6</text><rect x="294" y="32" width="42" height="22"/><text x="315" y="47" fill="#fff">7</text><rect x="341" y="32" width="42" height="22"/><text x="362" y="47" fill="#fff">8</text><rect x="388" y="32" width="42" height="22"/><text x="409" y="47" fill="#fff">9</text><rect x="435" y="32" width="42" height="22"/><text x="456" y="47" fill="#fff">0</text>
+      <rect x="-8" y="64" width="60" height="22"/><text x="22" y="79" fill="#fff">Tab</text><rect x="58" y="64" width="42" height="22"/><text x="79" y="79" fill="#fff">Q</text><rect x="105" y="64" width="42" height="22"/><text x="126" y="79" fill="#fff">W</text><rect x="152" y="64" width="42" height="22"/><text x="173" y="79" fill="#fff">E</text><rect x="199" y="64" width="42" height="22"/><text x="220" y="79" fill="#fff">R</text><rect x="246" y="64" width="42" height="22"/><text x="267" y="79" fill="#fff">T</text><rect x="293" y="64" width="42" height="22"/><text x="314" y="79" fill="#fff">Y</text><rect x="340" y="64" width="42" height="22"/><text x="361" y="79" fill="#fff">U</text><rect x="387" y="64" width="42" height="22"/><text x="408" y="79" fill="#fff">I</text><rect x="434" y="64" width="42" height="22"/><text x="455" y="79" fill="#fff">O</text>
+      <rect x="70" y="128" width="320" height="24"/><text x="230" y="145" fill="#fff">Space</text><rect x="400" y="128" width="60" height="24"/><text x="430" y="145" fill="#fff">R Alt</text>
+    </g>
+  </g>
+  <rect x="0" y="430" width="1200" height="245" fill="#050812" opacity=".86"/>
+  <text x="76" y="526" fill="#f5f8ff" font-family="Manrope, Arial, sans-serif" font-size="54" font-weight="800">Automatic Keyboard Presser</text>
+  <text x="78" y="575" fill="#a6b3d2" font-family="Manrope, Arial, sans-serif" font-size="24">virtual keyboard · macro recorder · repeat/hold controls</text>
+  <text x="88" y="112" fill="#54d7e8" font-family="IBM Plex Mono, monospace" font-size="17" font-weight="700">DESKTOP AUTOMATION TOOL</text>
+  <path d="M78 616h420M512 616h160" stroke="#54d7e8" stroke-width="2"/><path d="M512 616h160" stroke="#9b7cff" stroke-width="2"/>
+</svg>
