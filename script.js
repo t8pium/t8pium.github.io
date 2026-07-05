@@ -36,7 +36,7 @@ function addKeyboardPresserProjectCard() {
   card.className = "gallery-card gallery-card--automation";
   card.href = "projects/automatic-keyboard-presser/";
   card.setAttribute("aria-label", "Open Automatic Keyboard Presser and Macro Recorder project page");
-  card.innerHTML = `<div class="gallery-card__cover"><div class="cover-mark">KEY</div></div><div class="gallery-card__body"><span class="gallery-card__type">Desktop automation / macro recorder</span><h3>Automatic Keyboard Presser + Macro Recorder</h3><p>Configurable key combos, hold/repeat modes, and mouse + keyboard recording with replay loops.</p><div class="gallery-card__props"><span>Python</span><span>Tkinter</span><span>pynput</span></div><span class="gallery-card__open">Open &nearr;</span></div>`;
+  card.innerHTML = `<div class="gallery-card__cover"><img src="assets/covers/automatic-keyboard-presser-cover.svg?v=2" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></div><div class="gallery-card__body"><span class="gallery-card__type">Desktop automation / macro recorder</span><h3>Automatic Keyboard Presser + Macro Recorder</h3><p>Configurable key combos, hold/repeat modes, and mouse + keyboard recording with replay loops.</p><div class="gallery-card__props"><span>Python</span><span>Tkinter</span><span>pynput</span></div><span class="gallery-card__open">Open &nearr;</span></div>`;
   gallery.appendChild(card);
 }
 
@@ -75,9 +75,30 @@ async function replaceRoboticHandCover() {
     });
 }
 
+function replaceInstagramToolkitCover() {
+  const card = document.querySelector('a[href="projects/instagram-highlight-toolkit/"]');
+  const cover = card?.querySelector(".gallery-card__cover");
+  if (!cover) return;
+
+  cover.innerHTML = `<img src="assets/covers/instagram-toolkit-launcher-cover.svg?v=1" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">`;
+}
+
+function refreshAutomaticKeyboardCover() {
+  document
+    .querySelectorAll('img[src*="automatic-keyboard-presser-cover.svg"]')
+    .forEach((img) => {
+      img.src = "assets/covers/automatic-keyboard-presser-cover.svg?v=2";
+      img.removeAttribute("srcset");
+      img.style.objectFit = "cover";
+      img.style.objectPosition = "center center";
+    });
+}
+
 addMobileLogo();
 addKeyboardPresserProjectCard();
 replaceRoboticHandCover();
+replaceInstagramToolkitCover();
+refreshAutomaticKeyboardCover();
 
 function closeMenu() {
   if (!navToggle || !navMenu) return;
