@@ -41,6 +41,22 @@
   display: block !important;
 }
 
+/* Hard override for the Instagram card so the old blurred placeholder cannot show. */
+a[href="projects/instagram-highlight-toolkit/"] .gallery-card__cover {
+  background-image: url("assets/covers/instagram-toolkit-launcher-cover.svg?v=4") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+a[href="projects/instagram-highlight-toolkit/"] .gallery-card__cover > * {
+  opacity: 0 !important;
+}
+
+a[href="projects/instagram-highlight-toolkit/"] .gallery-card__cover::after {
+  background: linear-gradient(to bottom, rgba(3,5,12,0.02), rgba(3,5,12,0.18)) !important;
+}
+
 .sketchfab-embed-cover,
 .sketchfab-embed-cover iframe {
   position: absolute !important;
