@@ -1,0 +1,36 @@
+{
+  "title": "AI Study Assistant",
+  "slug": "ai-study-assistant",
+  "category": "AI tool / education",
+  "status": "Prototype",
+  "description": "A local study assistant that turns notes into summaries, flashcards, quizzes, and weak-point review prompts.",
+  "cover_image": "raw_covers/ai-study-assistant.png",
+  "github_url": "https://github.com/t8pium/ai-study-assistant",
+  "tech_stack": [
+    "Python",
+    "Flask",
+    "OpenAI API",
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "sections": [
+    {
+      "heading": "Problem",
+      "body": "Studying from messy notes is slow because the useful structure is hidden inside long text."
+    },
+    {
+      "heading": "Build",
+      "bullets": [
+        "Paste notes into the app.",
+        "Generate summaries and flashcards.",
+        "Create quiz questions.",
+        "Track weak points for review."
+      ]
+    },
+    {
+      "heading": "What it shows",
+      "body": "This project shows AI product thinking, information design, and practical student-focused tooling."
+    }
+  ]
+}
