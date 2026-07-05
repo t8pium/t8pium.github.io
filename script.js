@@ -40,6 +40,18 @@ function addKeyboardPresserProjectCard() {
   gallery.appendChild(card);
 }
 
+function addPortfolioCmsManagerCard() {
+  const gallery = document.querySelector(".notion-gallery--projects");
+  if (!gallery || document.querySelector('a[href="projects/portfolio-cms-manager/"]')) return;
+
+  const card = document.createElement("a");
+  card.className = "gallery-card gallery-card--image";
+  card.href = "projects/portfolio-cms-manager/";
+  card.setAttribute("aria-label", "Open Portfolio CMS and Project Gallery Manager project page");
+  card.innerHTML = `<div class="gallery-card__cover"><img src="assets/covers/portfolio-cms-manager-cover.svg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></div><div class="gallery-card__body"><span class="gallery-card__type">Static site tooling / desktop app</span><h3>Portfolio CMS / Project Gallery Manager</h3><p>Desktop app that generates portfolio cards, copies cover images, and creates full project pages without hand-editing HTML.</p><div class="gallery-card__props"><span>Python</span><span>customtkinter</span><span>PyInstaller</span></div><span class="gallery-card__open">Open &nearr;</span></div>`;
+  gallery.appendChild(card);
+}
+
 async function getSketchfabStill() {
   const apiUrl = "https://api.sketchfab.com/v3/models/d45545d7e80742f68fff11aa19ac4631";
 
@@ -96,6 +108,7 @@ function refreshAutomaticKeyboardCover() {
 
 addMobileLogo();
 addKeyboardPresserProjectCard();
+addPortfolioCmsManagerCard();
 replaceRoboticHandCover();
 replaceInstagramToolkitCover();
 refreshAutomaticKeyboardCover();
