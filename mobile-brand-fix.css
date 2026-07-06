@@ -1,3 +1,79 @@
+.mobile-hero-logo {
+  display: none !important;
+}
+
 a[href="projects/portfolio-cms-manager/"] {
   display: none !important;
+}
+
+@media (min-width: 1101px) {
+  .notion-gallery--projects {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+.gallery-card__cover:has(img),
+.page-panel__cover:has(img) {
+  aspect-ratio: 16 / 9 !important;
+  min-height: 0 !important;
+  background: #060914 !important;
+}
+
+.gallery-card__cover:has(img)::before,
+.page-panel__cover:has(img)::before {
+  display: none !important;
+}
+
+.gallery-card__cover img,
+.page-panel__cover img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+@media (max-width: 760px) {
+  .brand {
+    min-width: 0 !important;
+    gap: 0.65rem !important;
+  }
+
+  .brand > span {
+    display: inline-block !important;
+    color: #eef3fb !important;
+    font-size: 1.02rem !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.02em !important;
+    white-space: nowrap !important;
+    max-width: 46vw !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .mobile-hero-logo {
+    display: block !important;
+    position: fixed !important;
+    top: 245px !important;
+    left: 50% !important;
+    width: min(118vw, 560px) !important;
+    height: auto !important;
+    transform: translateX(-50%) rotate(-2deg) !important;
+    z-index: 4 !important;
+    pointer-events: none !important;
+    opacity: 0.30 !important;
+    mix-blend-mode: screen !important;
+  }
+
+  .hero > .shell,
+  .hero-copy,
+  .hero-actions,
+  .identity-mark,
+  .hero-intro,
+  .hero h1 {
+    position: relative !important;
+    z-index: 6 !important;
+  }
 }
