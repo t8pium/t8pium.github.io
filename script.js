@@ -12,6 +12,28 @@
   document.head.appendChild(style);
 })();
 
+function forceApResults() {
+  const apCard = document.querySelector('.ap-card');
+  if (!apCard) return;
+
+  const label = apCard.querySelector('.label');
+  if (label) label.textContent = 'Advanced Placement results';
+
+  const count = apCard.querySelector('.ap-count');
+  if (count) count.textContent = '4 scores of 5 / 1 score of 4';
+
+  const apList = apCard.querySelector('.ap-list');
+  if (!apList) return;
+
+  apList.innerHTML = `
+    <div class="ap-row ap-row--complete"><span class="course-code">PHY</span><strong>AP Physics 1</strong><span class="course-state">Completed &middot; 5</span></div>
+    <div class="ap-row ap-row--complete"><span class="course-code">BIO</span><strong>AP Biology</strong><span class="course-state">Completed &middot; 5</span></div>
+    <div class="ap-row ap-row--complete"><span class="course-code">LANG</span><strong>AP English Language and Composition</strong><span class="course-state">Completed &middot; 5</span></div>
+    <div class="ap-row ap-row--complete"><span class="course-code">CALC</span><strong>AP Calculus AB</strong><span class="course-state">Completed &middot; 5</span></div>
+    <div class="ap-row ap-row--complete"><span class="course-code">CSP</span><strong>AP Computer Science Principles</strong><span class="course-state">Completed &middot; 4</span></div>
+  `;
+}
+
 const header = document.getElementById("siteHeader");
 const navToggle = document.getElementById("navToggle");
 const navMenu = document.getElementById("navMenu");
@@ -126,6 +148,7 @@ if (reducedMotion.matches || !("IntersectionObserver" in window)) {
   revealItems.forEach((item) => revealObserver.observe(item));
 }
 
+forceApResults();
 addMobileLogo();
 fixRobotCover();
 updatePageState();
