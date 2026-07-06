@@ -28,91 +28,6 @@ function addMobileLogo() {
   document.body.appendChild(logo);
 }
 
-function addKeyboardPresserProjectCard() {
-  const gallery = document.querySelector(".notion-gallery--projects");
-  if (!gallery || document.querySelector('a[href="projects/automatic-keyboard-presser/"]')) return;
-
-  const card = document.createElement("a");
-  card.className = "gallery-card gallery-card--automation";
-  card.href = "projects/automatic-keyboard-presser/";
-  card.setAttribute("aria-label", "Open Automatic Keyboard Presser and Macro Recorder project page");
-  card.innerHTML = `<div class="gallery-card__cover"><img src="assets/covers/automatic-keyboard-presser-cover.svg?v=2" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></div><div class="gallery-card__body"><span class="gallery-card__type">Desktop automation / macro recorder</span><h3>Automatic Keyboard Presser + Macro Recorder</h3><p>Configurable key combos, hold/repeat modes, and mouse + keyboard recording with replay loops.</p><div class="gallery-card__props"><span>Python</span><span>Tkinter</span><span>pynput</span></div><span class="gallery-card__open">Open &nearr;</span></div>`;
-  gallery.appendChild(card);
-}
-
-function addPortfolioCmsManagerCard() {
-  const gallery = document.querySelector(".notion-gallery--projects");
-  if (!gallery || document.querySelector('a[href="projects/portfolio-cms-manager/"]')) return;
-
-  const card = document.createElement("a");
-  card.className = "gallery-card gallery-card--image";
-  card.href = "projects/portfolio-cms-manager/";
-  card.setAttribute("aria-label", "Open Portfolio CMS and Project Gallery Manager project page");
-  card.innerHTML = `<div class="gallery-card__cover"><img src="assets/covers/portfolio-cms-manager-cover.svg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></div><div class="gallery-card__body"><span class="gallery-card__type">Static site tooling / desktop app</span><h3>Portfolio CMS / Project Gallery Manager</h3><p>Desktop app that generates portfolio cards, copies cover images, and creates full project pages without hand-editing HTML.</p><div class="gallery-card__props"><span>Python</span><span>customtkinter</span><span>PyInstaller</span></div><span class="gallery-card__open">Open &nearr;</span></div>`;
-  gallery.appendChild(card);
-}
-
-async function getSketchfabStill() {
-  const apiUrl = "https://api.sketchfab.com/v3/models/d45545d7e80742f68fff11aa19ac4631";
-
-  try {
-    const response = await fetch(apiUrl, { mode: "cors" });
-    if (!response.ok) throw new Error(`Sketchfab API ${response.status}`);
-
-    const data = await response.json();
-    const images = data?.thumbnails?.images || [];
-    const best = [...images]
-      .filter((image) => image?.url)
-      .sort((a, b) => (b.width || 0) - (a.width || 0))[0];
-
-    return best?.url || "";
-  } catch (error) {
-    console.warn("Could not load Sketchfab still thumbnail:", error);
-    return "";
-  }
-}
-
-async function replaceRoboticHandCover() {
-  const fallback = "assets/covers/robotic-hand-cover.svg?v=static-fallback";
-  const stillUrl = await getSketchfabStill();
-  const src = stillUrl || fallback;
-
-  document
-    .querySelectorAll('img[src*="robotic-hand-cover.svg"], img[src*="robotic-hand-thumbnail-final.svg"]')
-    .forEach((img) => {
-      img.src = src;
-      img.removeAttribute("srcset");
-      img.style.objectFit = "cover";
-      img.style.objectPosition = "center center";
-    });
-}
-
-function replaceInstagramToolkitCover() {
-  const card = document.querySelector('a[href="projects/instagram-highlight-toolkit/"]');
-  const cover = card?.querySelector(".gallery-card__cover");
-  if (!cover) return;
-
-  cover.innerHTML = `<img src="assets/covers/instagram-toolkit-launcher-cover.svg?v=1" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">`;
-}
-
-function refreshAutomaticKeyboardCover() {
-  document
-    .querySelectorAll('img[src*="automatic-keyboard-presser-cover.svg"]')
-    .forEach((img) => {
-      img.src = "assets/covers/automatic-keyboard-presser-cover.svg?v=2";
-      img.removeAttribute("srcset");
-      img.style.objectFit = "cover";
-      img.style.objectPosition = "center center";
-    });
-}
-
-addMobileLogo();
-addKeyboardPresserProjectCard();
-addPortfolioCmsManagerCard();
-replaceRoboticHandCover();
-replaceInstagramToolkitCover();
-refreshAutomaticKeyboardCover();
-
 function closeMenu() {
   if (!navToggle || !navMenu) return;
   navToggle.setAttribute("aria-expanded", "false");
@@ -202,4 +117,5 @@ if (reducedMotion.matches || !("IntersectionObserver" in window)) {
   revealItems.forEach((item) => revealObserver.observe(item));
 }
 
+addMobileLogo();
 updatePageState();
