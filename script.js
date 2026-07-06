@@ -6,7 +6,17 @@
     document.head.appendChild(node);
   };
   add('link', { rel: 'stylesheet', href: 'mobile-fix.css?v=1' });
-  add('link', { rel: 'stylesheet', href: 'mobile-brand-fix.css?v=2' });
+  add('link', { rel: 'stylesheet', href: 'mobile-brand-fix.css?v=8' });
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .mobile-hero-logo { display: none !important; }
+    a[href="projects/portfolio-cms-manager/"] { display: none !important; }
+    @media (min-width: 1101px) {
+      .notion-gallery--projects { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+    }
+  `;
+  document.head.appendChild(style);
 })();
 
 const header = document.getElementById("siteHeader");
