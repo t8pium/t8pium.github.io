@@ -6,6 +6,15 @@ a[href="projects/portfolio-cms-manager/"] {
   display: none !important;
 }
 
+.score-card[aria-labelledby="sat-title"] .score-grid > div:nth-child(3),
+.ap-card .ap-count {
+  display: none !important;
+}
+
+.score-card[aria-labelledby="sat-title"] .score-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
 @media (min-width: 1101px) {
   .notion-gallery--projects {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
