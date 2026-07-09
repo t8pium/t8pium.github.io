@@ -71,6 +71,21 @@ async function fixRobotCover() {
   } catch (_) {}
 }
 
+function addTopiumDiceMarketCard() {
+  const gallery = document.querySelector('.notion-gallery--projects');
+  if (!gallery || gallery.querySelector('a[href="projects/topium-dice-market/"]')) return;
+
+  const card = document.createElement('a');
+  card.className = 'gallery-card gallery-card--systems';
+  card.href = 'projects/topium-dice-market/';
+  card.setAttribute('aria-label', 'Open Topium Dice Market project page');
+  card.innerHTML = `<div class="gallery-card__cover"><img src="assets/covers/topium-dice-market-cover.svg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></div><div class="gallery-card__body"><span class="gallery-card__type">Market simulation / data visualization</span><h3>Topium Dice Market</h3><p>Local Python charting experiment where coin flips and dice rolls generate candles, higher timeframes, and VWAP bands.</p><div class="gallery-card__props"><span>Python</span><span>Tkinter</span><span>Matplotlib</span></div><span class="gallery-card__open">Open &nearr;</span></div>`;
+
+  const firstCard = gallery.querySelector('a[href="projects/robotic-hand/"]');
+  if (firstCard?.nextSibling) gallery.insertBefore(card, firstCard.nextSibling);
+  else gallery.appendChild(card);
+}
+
 function closeMenu() {
   if (!navToggle || !navMenu) return;
   navToggle.setAttribute("aria-expanded", "false");
@@ -133,6 +148,8 @@ if (!reducedMotion.matches) {
     });
   }, { passive: true });
 }
+
+addTopiumDiceMarketCard();
 
 const revealItems = document.querySelectorAll(".reveal");
 if (reducedMotion.matches || !("IntersectionObserver" in window)) {
