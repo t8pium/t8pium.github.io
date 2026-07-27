@@ -1,0 +1,1 @@
+Local output folders and media files are ignored by the project .gitignore.
