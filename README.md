@@ -11,13 +11,13 @@ Personal portfolio and project hub for **t8pium**, focused on software, AI, robo
 - **Computer-Vision Robotic Hand** — maps webcam hand landmarks to servo-driven motion through Python and Arduino.
 - **Topium Dice Market** — local market simulator that generates OHLC candles from coin flips and dice rolls, with timeframe aggregation and VWAP bands.
 - **Automatic Keyboard Presser** — Windows desktop automation and macro-recording tool.
-- **Instagram Highlight Toolkit** — local browser-assisted workflow for personal highlight backup and story restoration.
+- **Instagram Highlight Toolkit** — local browser-assisted workflow for personal highlight backup and story restoration.\n- **Fair Value Gaps — Predictive Strength Study** — quantitative MNQ research using 2020–2026 data, matched control zones, CE/retest experiments, and chronological out-of-sample validation.
 
 ## Portfolio contents
 
 - Academic profile
 - Coding project write-ups
-- Technical and analytical writing
+- Quantitative research projects\n- Technical and analytical writing
 - Project links and contact information
 
 ## Built with
