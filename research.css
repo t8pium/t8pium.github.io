@@ -47,3 +47,9 @@
 .method-list li::before { content:counter(method) !important; left:.85rem !important; top:.85rem !important; width:1.1rem !important; height:1.1rem !important; display:grid; place-items:center; background:transparent !important; color:var(--cyan); font-family:var(--mono); font-size:.52rem; box-shadow:none !important; }
 @media(max-width:900px){.research-kpis{grid-template-columns:repeat(2,1fr)}.experiment-grid{grid-template-columns:1fr}.metric-strip{grid-template-columns:1fr}.metric-strip>div+div{border-left:0;border-top:1px solid var(--line)}}
 @media(max-width:520px){.research-kpis{grid-template-columns:1fr}.research-table th,.research-table td{padding:.68rem .7rem}.experiment-card{min-height:0}}
+
+.research-code { margin-top:1rem; padding:1rem 1.05rem; overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:#080a0d; color:var(--text); font-family:var(--mono); font-size:.68rem; line-height:1.7; white-space:pre; }
+.research-code code { padding:0 !important; background:transparent !important; color:inherit !important; }
+.source-links { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+.source-links a { display:inline-flex; padding:.45rem .68rem; border:1px solid var(--line); border-radius:7px; color:var(--cyan); font-family:var(--mono); font-size:.56rem; }
+.source-links a:hover { border-color:var(--line-strong); color:var(--text); }
