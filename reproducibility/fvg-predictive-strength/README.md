@@ -25,7 +25,7 @@ cd t8pium.github.io/reproducibility/fvg-predictive-strength
 python -m venv .venv
 source .venv/bin/activate
 # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requirements.txt\npip install -e .
 ```
 
 Python 3.11+ is recommended.
@@ -167,3 +167,18 @@ The time series is split chronologically, never randomly shuffled. The multi-tim
 - Statistical significance is not equivalent to net trading profitability.
 
 Portfolio report: https://t8pium.github.io/projects/fvg-predictive-strength/
+
+
+## Original-script integrity
+
+The files in `src/original/` are the study scripts retained from the original analysis run. They intentionally still show the original `/mnt/data` paths. Do not edit them if you want an auditable copy.
+
+`scripts/run_original.py` reads an original script, patches only those environment-specific paths into a temporary copy, and executes the temporary file. Random seeds and experiment logic remain unchanged.
+
+## Expected compute
+
+The one-minute detailed study and CE body-acceptance study are the heaviest. Runtime depends strongly on CPU, available RAM, and whether Numba has already compiled its functions. Multi-timeframe runs are designed to be executed one timeframe at a time.
+
+## Data licensing
+
+This repository does not redistribute Databento market data. The downloader is provided so a reader with their own Databento access can recreate the source bars. Databento documents parent futures requests with `stype_in="parent"` and one-minute OHLCV with `schema="ohlcv-1m"`.
