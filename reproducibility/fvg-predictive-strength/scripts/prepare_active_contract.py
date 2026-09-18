@@ -1,33 +1,35 @@
 from __future__ import annotations
-from pathlib import Path
 import pandas as pd
 from fvg_research.config import RAW, PROCESSED
 from fvg_research.io import read_any
 
 def cme_trade_date(index: pd.DatetimeIndex) -> pd.Series:
-    # CME equity index futures trading day rolls at 17:00 CT. Convert to Chicago
-    # time, subtract 17h, then use the resulting calendar date.
     ct = index.tz_convert("America/Chicago")
     return pd.Series((ct - pd.Timedelta(hours=17)).date, index=index, name="trade_date")
 
 src = RAW / "mnq_ohlcv_1m.parquet"
 df = read_any(src)
-if "symbol" not in df.columns:
-    raise SystemExit("Input needs a symbol/raw_symbol column so listed expiries can be separated.")
+symbol_col = "symbol" if "symbol" in df.columns else ("raw_symbol" if "raw_symbol" in df.columns else None)
+if symbol_col is None:
+    raise SystemExit("Input needs symbol or raw_symbol so listed expiries can be separated.")
+if symbol_col != "symbol":
+    df = df.rename(columns={symbol_col: "symbol"})
 
 df["trade_date"] = cme_trade_date(df.index)
 daily = df.groupby(["trade_date","symbol"], observed=True)["volume"].sum()
-active = daily.groupby(level=0).idxmax().map(lambda x: x[1]).rename("active_symbol")
-df = df.join(active, on="trade_date")
-active_df = df[df["symbol"] == df["active_symbol"]].copy()
-active_df = active_df[~active_df.index.duplicated(keep="last")].sort_index()
+active_map = daily.groupby(level=0).idxmax().map(lambda x: x[1]).rename("active_symbol")
+df = df.join(active_map, on="trade_date")
+active = df[df["symbol"] == df["active_symbol"]].copy()
+active = active[~active.index.duplicated(keep="last")].sort_index()
+active = active.reset_index()
+if "ts_event" not in active.columns:
+    active = active.rename(columns={active.columns[0]: "ts_event"})
+active["ts_event"] = pd.to_datetime(active["ts_event"], utc=True)
 
-# Flag roll dates so experiments can exclude formation near transitions.
-symbols = active_df.groupby("trade_date", observed=True)["symbol"].first()
-roll_dates = symbols.index[symbols.ne(symbols.shift())]
-active_df["roll_date"] = active_df["trade_date"].isin(set(roll_dates))
-
-out = PROCESSED / "mnq_active_1m.parquet"
-active_df.reset_index().to_parquet(out, index=False)
-print(f"Wrote {len(active_df):,} active-contract bars to {out}")
-print(f"Contract transitions: {max(0, len(roll_dates)-1)}")
+pq = PROCESSED / "mnq_active_1m.parquet"
+pkl = PROCESSED / "active_mnq.pkl"
+active.to_parquet(pq, index=False)
+active.to_pickle(pkl)
+print(f"Wrote {len(active):,} active-contract bars")
+print(pq)
+print(pkl)
