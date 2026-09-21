@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0d10">
+<meta name="description" content="Status and reproduction guide for the public 2010–2026 Nasdaq-100 FVG replication track.">
+<title>Public Nasdaq FVG Replication | t8pium</title>
+<link rel="icon" href="../../assets/logo-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css?v=8">
+<link rel="stylesheet" href="../../research.css?v=1">
+<style>
+.status-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin-top:1.25rem}
+.status-card{padding:1rem;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.status-card strong{display:block;font-size:1.28rem}.status-card span{display:block;margin-top:.25rem;color:var(--dim);font-family:var(--mono);font-size:.55rem;text-transform:uppercase;letter-spacing:.07em}
+.audit-banner{margin-top:1rem;padding:1rem 1.1rem;border-left:3px solid var(--cyan);background:var(--surface);color:var(--muted);line-height:1.7}
+@media(max-width:850px){.status-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.status-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main id="main" class="project-page research-page">
+<section class="page-hero"><div class="shell page-hero__grid"><div>
+<a class="back-link" href="../../projects/fvg-predictive-strength/">← Back to FVG case study</a>
+<p class="page-eyebrow">Research Platform v5 / Public replication</p>
+<h1>Nasdaq FVG replication · 2010–2026</h1>
+<p>A free-source companion to the frozen CME MNQ study. It is designed to test the same FVG hypotheses across a much longer Nasdaq-100 price history without pretending the proxy feed is futures data.</p>
+<div class="verdict"><p><b>Current status:</b> the infrastructure is complete and cross-platform verified. The full 5,046,180-row, 12-stage NSX/USD replication has <strong>not yet been completed and reviewed</strong>, so this page intentionally publishes no new NSX/USD conclusion.</p></div>
+</div>
+<aside class="page-panel"><div class="page-panel__body"><dl>
+<div><dt>Source</dt><dd>HistData NSX/USD M1</dd></div>
+<div><dt>Rows</dt><dd>5,046,180</dd></div>
+<div><dt>Observed range</dt><dd>2010-11-14 → 2026-09-11</dd></div>
+<div><dt>Platform</dt><dd>Research Platform v5</dd></div>
+<div><dt>Evidence status</dt><dd>Replication pending review</dd></div>
+</dl></div></aside></div></section>
+
+<section class="page-content shell">
+<div class="page-section-grid"><h2>What is actually available</h2><div>
+<div class="status-grid">
+<div class="status-card"><strong>5.05M</strong><span>1-minute rows</span></div>
+<div class="status-card"><strong>~15.8 yrs</strong><span>observed span</span></div>
+<div class="status-card"><strong>9</strong><span>hypothesis families</span></div>
+<div class="status-card"><strong>12</strong><span>full-run stages</span></div>
+</div>
+<p>The repository can audit and normalize the merged CSV, convert its fixed-EST timestamps correctly, query prepared Parquet with DuckDB, resample to 1m/5m/15m/1H/4H, display local candlesticks with mechanically detected FVG overlays, rerun individual experiments, resume a complete replication, and generate machine-readable summaries and a separate HTML report.</p>
+<div class="audit-banner"><strong>“Live” means local.</strong> The 365 MB raw HistData-derived market file is not hosted on this portfolio or committed to Git. After a reader obtains the free source and prepares it locally, the Streamlit Research Lab reads the real observations interactively.</div>
+</div></div>
+
+<div class="page-section-grid"><h2>Why it stays separate from MNQ</h2><div>
+<p>NSX/USD is a Nasdaq-100 index-style quote feed, not CME NQ or MNQ futures. It is useful for asking whether price-pattern behavior survives more years and market regimes, but it cannot validate futures volume, contract rolls, exchange ticks, slippage or execution.</p>
+<p>The preserved CE/body script also inherits an MNQ-specific <strong>0.25-point minimum-gap and width-unit convention</strong>. On the public proxy track, those fields must be read as transferred 0.25-point method units—not as NSX/USD exchange ticks.</p>
+<div class="research-note"><strong>Research rule:</strong> public NSX/USD results may challenge or support the price-pattern hypothesis, but they never overwrite the frozen CME MNQ findings.</div>
+</div></div>
+
+<div class="page-section-grid"><h2>Reproduce it</h2><div>
+<p>Download the merged free HistData source, then prepare it locally:</p>
+<pre class="research-code"><code>python scripts/prepare_histdata_nsx.py --input "C:\path\to\NSXUSD_M1_ALL.csv" --output data/public/nsxusd
+
+python scripts/reproduce_public_nsx.py
+
+python scripts/generate_public_nsx_report.py</code></pre>
+<p>The optional GitHub Release installer exists only for a future data asset if redistribution permission is explicitly confirmed. The repository does not assume third-party redistribution rights.</p>
+<div class="source-links">
+<a href="https://github.com/t8pium/fvg-predictive-strength" target="_blank" rel="noopener">Open Research Platform v5 ↗</a>
+<a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/PUBLIC_NASDAQ_RESEARCH.md" target="_blank" rel="noopener">Public-track documentation ↗</a>
+<a href="../../projects/fvg-predictive-strength/">Full FVG case study ↗</a>
+</div>
+</div></div>
+
+<div class="page-section-grid"><h2>What comes next</h2><div>
+<p>The next evidence milestone is not another UI feature. It is the completed 12-stage run on the full 5.05M-row dataset, followed by review of the audit report and experiment outputs. Only after that should this page show NSX/USD attraction, reaction, age-decay, midpoint, regime or chronological-robustness statistics.</p>
+<p>That comparison will then answer the useful question: <strong>does the small, short-lived FVG structure seen in MNQ survive a substantially longer Nasdaq-related history?</strong></p>
+</div></div>
+</section>
+</main>
+</body>
+</html>
