@@ -122,7 +122,7 @@
  </div>
  </section>
 <section class="experiment" id="research-platform">
- <div class="eyebrow">Research Platform v4</div><h2>Inspect, reproduce, stress-test, and extend</h2>
+ <div class="eyebrow">Research Platform v5</div><h2>Inspect, reproduce, stress-test, and extend</h2>
  <p class="question">The repository is now a research platform around the frozen published study rather than only a code dump.</p>
  <div class="metrics">
   <div class="metric"><span>No-data proof</span><strong>Quick demo</strong></div>
@@ -131,8 +131,23 @@
   <div class="metric"><span>New research</span><strong>Corrected v2 track</strong></div>
  </div>
  <div class="two">
-  <div class="panel"><h3>Reproduction workflow</h3><p>Download the repository, run <code>START_HERE.bat</code>, inspect the frozen evidence immediately, then optionally prepare licensed data and run the resumable full-study reproduction. The app compares local output with the published reference and can export a self-contained HTML report.</p><p><a href="https://github.com/t8pium/fvg-predictive-strength" target="_blank" rel="noopener">Open Research Platform v4 on GitHub ↗</a></p></div>
+  <div class="panel"><h3>Reproduction workflow</h3><p>Download the repository, run <code>START_HERE.bat</code>, inspect the frozen evidence immediately, then optionally prepare licensed data and run the resumable full-study reproduction. The app compares local output with the published reference and can export a self-contained HTML report.</p><p><a href="https://github.com/t8pium/fvg-predictive-strength" target="_blank" rel="noopener">Open Research Platform v5 on GitHub ↗</a></p></div>
   <div class="panel warn"><h3>Research v2</h3><p>The published v1 scripts stay hash-locked. A separate v2 track implements symmetric full-horizon eligibility, contract-boundary censoring, parent-paired age decay, CME-trade-date clustered uncertainty, walk-forward controls, and FDR-corrected CE re-inference.</p><p><strong>All v2 results are new / unpublished research until rerun and reviewed on licensed data.</strong></p></div>
+ </div>
+ </section>
+<section class="experiment" id="public-nasdaq">
+ <div class="eyebrow">Research Platform v5 · public replication</div><h2>Long-history Nasdaq-100 proxy track</h2>
+ <p class="question">Can the same FVG hypotheses survive a much longer, freely obtainable Nasdaq-related price history?</p>
+ <div class="takeaway"><b>Status.</b> The 5,046,180-row NSX/USD workflow is implemented and audited, but the complete 12-stage replication has not yet been completed and reviewed. No public-track headline result is published yet.</div>
+ <div class="metrics">
+  <div class="metric"><span>Public source rows</span><strong>5,046,180</strong></div>
+  <div class="metric"><span>Observed range</span><strong>2010-11-14 → 2026-09-11</strong></div>
+  <div class="metric"><span>Experiment families</span><strong>9</strong></div>
+  <div class="metric"><span>Evidence status</span><strong>Run pending review</strong></div>
+ </div>
+ <div class="two">
+  <div class="panel"><h3>What v5 adds</h3><p>Local audit/preparation, fixed-EST normalization, DuckDB-backed candle queries, 1m→4H FVG overlays, isolated experiment reruns, a resumable 12-stage replication and machine-readable public summaries.</p><p><a href="./public-nasdaq/">Open the public Nasdaq status report ↗</a></p></div>
+  <div class="panel warn"><h3>Scientific boundary</h3><p>NSX/USD is an index-style quote feed, not CME NQ/MNQ futures. Volume, rolls, exchange-tick execution and futures economics are out of scope. The preserved CE/body method also carries an MNQ-derived 0.25-point convention that must be read as a transferred method unit on this proxy feed.</p><p>The raw HistData-derived market file is not hosted here; “live” data inspection occurs locally after the reader prepares the free source.</p></div>
  </div>
  </section>
 <footer class="footer"><p><b>Reproducibility.</b> The repository preserves frozen published evidence, canonical source hashes, experiment definitions, scientific limitations, a no-data quick demo, resumable full reproduction and a separate corrected Research v2 track.</p><p>Licensed Databento market history is not redistributed.</p></footer>
