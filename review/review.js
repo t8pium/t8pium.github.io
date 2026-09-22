@@ -17,7 +17,7 @@ const settle = async () => {
 const load = (path, pixels) => new Promise((resolve, reject) => {
   frame.width = pixels;
   frame.onload = () => settle().then(resolve, reject);
-  frame.src = path;
+  frame.src = path + "?review=20260922-3";
 });
 const update = () => {
   if (nojs.checked) frame.setAttribute('sandbox', 'allow-same-origin');
