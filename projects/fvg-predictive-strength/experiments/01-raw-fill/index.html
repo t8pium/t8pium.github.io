@@ -1,17 +1,370 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0d10"><title>Raw fill rates | FVG Study | t8pium</title><link rel="icon" href="../../../../assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../../style.css?v=8"><link rel="stylesheet" href="../../../../gallery.css?v=9"><link rel="stylesheet" href="../../../../polish.css?v=1"><link rel="stylesheet" href="../../../../research.css?v=1"></head><body><main class="project-page research-page"><section class="page-hero"><div class="shell"><a class="back-link" href="../../">← Back to FVG study</a><p class="page-eyebrow">Experiment 01 / Baseline behavior</p><h1>Raw fill rates</h1><p>The first experiment measures what FVGs do without pretending that a high fill percentage automatically proves anything special.</p></div></section><section class="page-content shell">
-<div class="page-section-grid"><h2>Hypothesis</h2><div><p>If FVGs are genuinely special magnets, their raw revisit rate should be high—but a valid conclusion also requires an ordinary-zone baseline.</p></div></div>
-<div class="page-section-grid"><h2>Procedure</h2><div><p>For the mechanically detected one-minute FVG population, future paths were checked for initial touch, midpoint mitigation, full fill, multiple fixed horizons, and eventual touch before the dataset ended. Right-censored events were not silently discarded.</p></div></div>
-<div class="page-section-grid"><h2>Raw behavior</h2><div><div class="research-table-wrap"><table class="research-table"><thead><tr><th>Horizon</th><th>FVG touch probability</th></tr></thead><tbody><tr><td>5 minutes</td><td><strong>~70.7%</strong></td></tr><tr><td>15 minutes</td><td>~82.0%</td></tr><tr><td>30 minutes</td><td>~87.1%</td></tr><tr><td>60 minutes</td><td>~90.9%</td></tr><tr><td>120 minutes</td><td>~93.7%</td></tr><tr><td>240 minutes</td><td>~95.4%</td></tr><tr><td>~1 trading day</td><td>~98.2%</td></tr><tr><td>~3 trading days</td><td>~99.0%</td></tr><tr><td>Eventually in sample</td><td><strong>~99.88%</strong></td></tr></tbody></table></div></div></div>
-<div class="page-section-grid"><h2>Baseline problem</h2><div><p>At roughly three trading days the matched control-zone touch rate was about <strong>98.97%</strong>, slightly above the FVG rate of about <strong>98.95%</strong>. By one trading day both were roughly <strong>98.2%</strong>.</p><div class="research-note"><strong>Result:</strong> “Almost every FVG eventually fills” is descriptively true and inferentially weak. MNQ revisits nearby prices extremely often.</div></div></div>
-<div class="page-section-grid"><h2>Conclusion</h2><div><p>Raw fill rate is not a useful proof of FVG-specific attraction. The rest of the study therefore focuses on <strong>incremental effects versus controls</strong>, not the headline percentage.</p></div></div><div class="page-section-grid"><h2>Exact implementation</h2><div>
-<h3>Population</h3><p>This experiment uses the canonical deep one-minute program. A 1m FVG is eligible only after the 14-bar ATR, 60-bar ATR-normalized trend score, and long volatility baseline are available, and it is excluded inside the ±1-day roll block. Gap width must be positive and its near edge cannot already be beyond price in the wrong direction at formation.</p>
-<h3>What counts as a touch?</h3><p>For a bullish FVG, a touch occurs when a future low reaches the upper/near edge; 50% mitigation occurs when a future low reaches the midpoint; full fill occurs when a future low reaches the lower/far edge. Bearish rules are symmetric using future highs.</p>
-<h3>Horizons</h3><p>The fixed horizons are <strong>5, 15, 30, 60, 120, 240, 1,380, and 4,140 one-minute trading bars</strong>. The code computes future extrema with rolling minima/maxima on reversed arrays, avoiding a Python path scan for every event. Eventual touch and eventual full fill are calculated with suffix minima/maxima through the end of the available dataset.</p>
-<h3>Why the raw percentage is not the conclusion</h3><p>The raw population is used for descriptive fill rates. The inferential comparison uses a seeded sample of up to <strong>40,000 real FVGs</strong> and <strong>5 controls per FVG</strong>. A control has the same direction and its width/distance are transplanted in ATR units at a non-FVG timestamp matched on session, New York hour, volatility regime, and trend regime. RNG seed: <code>42</code>.</p>
-<h3>Outputs</h3><p>The script writes <code>main_results.csv</code>, the full FVG event table, sensitivity tables, directional tables, train/test results, stratified results and charts. The reference CSV committed with the project is the exact published output.</p>
-<p><a class="button button--ghost" href="https://github.com/t8pium/fvg-predictive-strength/blob/main/published/fvg_final_fast.py" target="_blank" rel="noopener">View exact experiment code ↗</a> <a class="button button--ghost" href="https://github.com/t8pium/fvg-predictive-strength/blob/main/reference_results/deep1m_main_results.csv" target="_blank" rel="noopener">View frozen result CSV ↗</a></p>
-<pre><code>python run_published.py --suite deep-1m</code></pre>
-</div></div>
-<div class="page-section-grid"><h2>Exact procedure</h2><div><ol class="method-list"><li>Build 14-period ATR on the active one-minute series and exclude roll-neighborhood bars.</li><li>Detect bullish gaps when <code>low[t] &gt; high[t-2]</code> and bearish gaps when <code>high[t] &lt; low[t-2]</code>.</li><li>Reject zero/negative-width gaps and events whose measured starting distance is negative.</li><li>For every eligible event, precompute future rolling minima/maxima for 5, 15, 30, 60, 120, 240, 1,380 and 4,140 trading minutes.</li><li>For each horizon, test three thresholds separately: near-edge touch, midpoint mitigation, and far-edge/full fill.</li><li>Separately compute future suffix minima/maxima to determine eventual touch and eventual full fill anywhere later in the available sample.</li><li>Do not count the FVG formation bar itself as a future touch.</li></ol><p>This experiment is intentionally descriptive. Its purpose is to establish the raw behavior that later control experiments must falsify.</p></div></div>
-<div class="page-section-grid"><h2>Reproduce it</h2><div><pre class="research-code"><code>git clone https://github.com/t8pium/fvg-predictive-strength.git\ncd dsaiugbadfsigh
-python scripts/run_original.py detailed-1m</code></pre><p>The raw fill outputs are produced by the original detailed one-minute script, alongside the matched-control and regime outputs.</p><div class="source-links"><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_final_fast.py" target="_blank" rel="noopener">Canonical source ↗</a><a href="https://github.com/t8pium/fvg-predictive-strength" target="_blank" rel="noopener">Reproducibility package ↗</a></div></div></div><div class="page-section-grid"><h2>Navigate</h2><div><div class="subpage-nav"><a href="../00-methodology/">Methods</a><a href="../01-raw-fill/">Raw fill</a><a href="../02-matched-attraction/">Attraction</a><a href="../03-age-decay/">Age decay</a><a href="../04-continuation/">Continuation</a><a href="../05-retest-reaction/">Retest</a><a href="../06-midpoint/">CE</a><a href="../07-body-acceptance/">Body acceptance</a><a href="../08-controls-regimes/">Controls</a><a href="../09-out-of-sample/">OOS</a></div></div></div></section></main><footer class="footer"><div class="shell footer-inner"><a class="brand" href="../../../../"><img src="../../../../assets/logo-mark.svg" alt="" width="30" height="30"><span>t8pium</span></a><div class="footer-copy"><p>FVG Predictive Strength Study <span>·</span> MNQ 2020–2026</p></div><a href="../../">Study summary ↑</a></div></footer></body></html>
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>Raw fill rates | FVG Study | t8pium</title>
+    <link href="/assets/logo-mark.svg" rel="icon" type="image/svg+xml" />
+    <link href="/style.css?v=10" rel="stylesheet" />
+    <link href="/research.css?v=2" rel="stylesheet" />
+    <script defer="" src="/script.js?v=14"></script>
+    <meta
+      content="The first experiment measures what FVGs do without pretending that a high fill percentage automatically proves anything special."
+      name="description"
+    />
+    <link
+      href="https://t8pium.github.io/projects/fvg-predictive-strength/experiments/01-raw-fill/"
+      rel="canonical"
+    />
+    <meta content="#0b0d10" name="theme-color" />
+    <meta content="article" property="og:type" />
+    <meta content="t8pium" property="og:site_name" />
+    <meta content="Raw fill rates | FVG Study | t8pium" property="og:title" />
+    <meta
+      content="The first experiment measures what FVGs do without pretending that a high fill percentage automatically proves anything special."
+      property="og:description"
+    />
+    <meta
+      content="https://t8pium.github.io/projects/fvg-predictive-strength/experiments/01-raw-fill/"
+      property="og:url"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="t8pium — I build tools. I test ideas. Python, robotics and market research."
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="Raw fill rates | FVG Study | t8pium" name="twitter:title" />
+    <meta
+      content="The first experiment measures what FVGs do without pretending that a high fill percentage automatically proves anything special."
+      name="twitter:description"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      name="twitter:image"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <nav aria-label="Primary navigation" class="nav shell">
+        <a aria-label="t8pium — home" class="brand" href="/"
+          ><img
+            alt=""
+            decoding="async"
+            height="32"
+            src="/assets/logo-mark.svg"
+            width="32"
+          /><span>t8pium<span class="brand-period">.</span></span></a
+        >
+        <button
+          aria-controls="navMenu"
+          aria-expanded="false"
+          class="nav-toggle"
+          hidden=""
+          id="navToggle"
+          type="button"
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a aria-current="location" href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#writing">Notes</a></li>
+          <li><a href="/#social">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="project-page research-page" id="main" tabindex="-1">
+      <section class="page-hero">
+        <div class="shell">
+          <a class="back-link" href="../../">← Back to FVG study</a>
+          <p class="page-eyebrow">Experiment 01 / Baseline behavior</p>
+          <h1>Raw fill rates</h1>
+          <p>
+            The first experiment measures what FVGs do without pretending that a
+            high fill percentage automatically proves anything special.
+          </p>
+        </div>
+      </section>
+      <section class="page-content shell">
+        <div class="page-section-grid">
+          <h2>Hypothesis</h2>
+          <div>
+            <p>
+              If FVGs are genuinely special magnets, their raw revisit rate
+              should be high—but a valid conclusion also requires an
+              ordinary-zone baseline.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Procedure</h2>
+          <div>
+            <p>
+              For the mechanically detected one-minute FVG population, future
+              paths were checked for initial touch, midpoint mitigation, full
+              fill, multiple fixed horizons, and eventual touch before the
+              dataset ended. Right-censored events were not silently discarded.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Raw behavior</h2>
+          <div>
+            <p class="table-hint">
+              Scroll the table horizontally on smaller screens.
+            </p>
+            <div
+              aria-label="Raw behavior table; scroll horizontally for all columns"
+              class="research-table-wrap"
+              role="region"
+              tabindex="0"
+            >
+              <table class="research-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Horizon</th>
+                    <th scope="col">FVG touch probability</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>5 minutes</td>
+                    <td><strong>~70.7%</strong></td>
+                  </tr>
+                  <tr>
+                    <td>15 minutes</td>
+                    <td>~82.0%</td>
+                  </tr>
+                  <tr>
+                    <td>30 minutes</td>
+                    <td>~87.1%</td>
+                  </tr>
+                  <tr>
+                    <td>60 minutes</td>
+                    <td>~90.9%</td>
+                  </tr>
+                  <tr>
+                    <td>120 minutes</td>
+                    <td>~93.7%</td>
+                  </tr>
+                  <tr>
+                    <td>240 minutes</td>
+                    <td>~95.4%</td>
+                  </tr>
+                  <tr>
+                    <td>~1 trading day</td>
+                    <td>~98.2%</td>
+                  </tr>
+                  <tr>
+                    <td>~3 trading days</td>
+                    <td>~99.0%</td>
+                  </tr>
+                  <tr>
+                    <td>Eventually in sample</td>
+                    <td><strong>~99.88%</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Baseline problem</h2>
+          <div>
+            <p>
+              At roughly three trading days the matched control-zone touch rate
+              was about <strong>98.97%</strong>, slightly above the FVG rate of
+              about <strong>98.95%</strong>. By one trading day both were
+              roughly <strong>98.2%</strong>.
+            </p>
+            <div class="research-note">
+              <strong>Result:</strong> “Almost every FVG eventually fills” is
+              descriptively true and inferentially weak. MNQ revisits nearby
+              prices extremely often.
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Conclusion</h2>
+          <div>
+            <p>
+              Raw fill rate is not a useful proof of FVG-specific attraction.
+              The rest of the study therefore focuses on
+              <strong>incremental effects versus controls</strong>, not the
+              headline percentage.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Exact implementation</h2>
+          <div>
+            <h3>Population</h3>
+            <p>
+              This experiment uses the canonical deep one-minute program. A 1m
+              FVG is eligible only after the 14-bar ATR, 60-bar ATR-normalized
+              trend score, and long volatility baseline are available, and it is
+              excluded inside the ±1-day roll block. Gap width must be positive
+              and its near edge cannot already be beyond price in the wrong
+              direction at formation.
+            </p>
+            <h3>What counts as a touch?</h3>
+            <p>
+              For a bullish FVG, a touch occurs when a future low reaches the
+              upper/near edge; 50% mitigation occurs when a future low reaches
+              the midpoint; full fill occurs when a future low reaches the
+              lower/far edge. Bearish rules are symmetric using future highs.
+            </p>
+            <h3>Horizons</h3>
+            <p>
+              The fixed horizons are
+              <strong
+                >5, 15, 30, 60, 120, 240, 1,380, and 4,140 one-minute trading
+                bars</strong
+              >. The code computes future extrema with rolling minima/maxima on
+              reversed arrays, avoiding a Python path scan for every event.
+              Eventual touch and eventual full fill are calculated with suffix
+              minima/maxima through the end of the available dataset.
+            </p>
+            <h3>Why the raw percentage is not the conclusion</h3>
+            <p>
+              The raw population is used for descriptive fill rates. The
+              inferential comparison uses a seeded sample of up to
+              <strong>40,000 real FVGs</strong> and
+              <strong>5 controls per FVG</strong>. A control has the same
+              direction and its width/distance are transplanted in ATR units at
+              a non-FVG timestamp matched on session, New York hour, volatility
+              regime, and trend regime. RNG seed: <code>42</code>.
+            </p>
+            <h3>Outputs</h3>
+            <p>
+              The script writes <code>main_results.csv</code>, the full FVG
+              event table, sensitivity tables, directional tables, train/test
+              results, stratified results and charts. The reference CSV
+              committed with the project is the exact published output.
+            </p>
+            <p>
+              <a
+                class="button button--ghost"
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_final_fast.py"
+                >View exact experiment code ↗</a
+              >
+              <a
+                class="button button--ghost"
+                href="/reproducibility/fvg-predictive-strength/reference_results/deep1m_main_results.csv"
+                >View frozen result CSV ↗</a
+              >
+            </p>
+            <pre
+              aria-label="Reproduction commands; scroll horizontally if needed"
+              tabindex="0"
+            ><code>python scripts/run_original.py detailed-1m</code></pre>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Exact procedure</h2>
+          <div>
+            <ol class="method-list">
+              <li>
+                Build 14-period ATR on the active one-minute series and exclude
+                roll-neighborhood bars.
+              </li>
+              <li>
+                Detect bullish gaps when <code>low[t] &gt; high[t-2]</code> and
+                bearish gaps when <code>high[t] &lt; low[t-2]</code>.
+              </li>
+              <li>
+                Reject zero/negative-width gaps and events whose measured
+                starting distance is negative.
+              </li>
+              <li>
+                For every eligible event, precompute future rolling
+                minima/maxima for 5, 15, 30, 60, 120, 240, 1,380 and 4,140
+                trading minutes.
+              </li>
+              <li>
+                For each horizon, test three thresholds separately: near-edge
+                touch, midpoint mitigation, and far-edge/full fill.
+              </li>
+              <li>
+                Separately compute future suffix minima/maxima to determine
+                eventual touch and eventual full fill anywhere later in the
+                available sample.
+              </li>
+              <li>
+                Do not count the FVG formation bar itself as a future touch.
+              </li>
+            </ol>
+            <p>
+              This experiment is intentionally descriptive. Its purpose is to
+              establish the raw behavior that later control experiments must
+              falsify.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Reproduce it</h2>
+          <div>
+            <pre
+              aria-label="Reproduction commands; scroll horizontally if needed"
+              class="research-code"
+              tabindex="0"
+            ><code>git clone https://github.com/t8pium/fvg-predictive-strength.git
+cd fvg-predictive-strength
+python scripts/run_original.py detailed-1m</code></pre>
+            <p>
+              The raw fill outputs are produced by the original detailed
+              one-minute script, alongside the matched-control and regime
+              outputs.
+            </p>
+            <div class="source-links">
+              <a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_final_fast.py"
+                >Canonical source ↗</a
+              ><a href="https://github.com/t8pium/fvg-predictive-strength"
+                >Reproducibility package ↗</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Navigate</h2>
+          <div>
+            <nav aria-label="Experiment navigation" class="subpage-nav">
+              <a href="../00-methodology/">Methods</a
+              ><a aria-current="page" href="../01-raw-fill/">Raw fill</a
+              ><a href="../02-matched-attraction/">Attraction</a
+              ><a href="../03-age-decay/">Age decay</a
+              ><a href="../04-continuation/">Continuation</a
+              ><a href="../05-retest-reaction/">Retest</a
+              ><a href="../06-midpoint/">CE</a
+              ><a href="../07-body-acceptance/">Body acceptance</a
+              ><a href="../08-controls-regimes/">Controls</a
+              ><a href="../09-out-of-sample/">OOS</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>
+          t8pium<span class="brand-period">.</span>
+          <span class="footer-location">Dubai, UAE</span>
+        </p>
+        <nav aria-label="Footer" class="footer-links">
+          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a
+          ><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
+          ><a href="/">Back to portfolio ↑</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

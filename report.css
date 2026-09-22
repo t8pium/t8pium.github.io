@@ -1,0 +1,208 @@
+/* The full research report shares the site palette and type scale. */
+.report-page .wrap {
+  width: min(var(--shell), calc(100% - 64px));
+  margin-inline: auto;
+  padding: 3rem 0;
+}
+.report-page .hero {
+  display: block;
+  padding: 0 0 2.5rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2.5rem;
+}
+.report-page h1 {
+  font-size: var(--h1);
+  line-height: 1.15;
+  max-width: 20ch;
+  margin-bottom: 1.25rem;
+}
+.report-page .lede {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 70ch;
+}
+.report-page h2 {
+  font-size: 1.7rem;
+  margin-block: 0.5rem 1rem;
+}
+.report-page h3 {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+.report-page p {
+  color: var(--muted);
+}
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 1.25rem;
+}
+.pill {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  color: var(--dim);
+}
+.summary,
+.architecture {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem;
+}
+.summary > div,
+.architecture > div,
+.panel,
+.metric {
+  border-top: 1px solid var(--line);
+  padding: 1rem;
+  background: var(--surface);
+}
+.big {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+.muted,
+.metric span,
+.architecture span {
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+.architecture b,
+.architecture span {
+  display: block;
+}
+.answer,
+.takeaway {
+  border-left: 2px solid var(--accent);
+  padding: 1rem 1.25rem;
+  margin-block: 1.5rem;
+  background: var(--surface);
+  font-size: 0.9375rem;
+}
+.answer strong,
+.takeaway strong {
+  color: var(--text);
+}
+.figures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-block: 1.5rem 2.5rem;
+}
+.figure {
+  min-width: 0;
+  margin: 0;
+}
+.figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+.toc {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem 1rem;
+  margin: 1.5rem 0 3rem;
+}
+.toc a {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.8125rem;
+  min-height: 44px;
+}
+.experiment {
+  border-top: 1px solid var(--line);
+  padding: 2.5rem 0 1rem;
+}
+.question {
+  font-size: 1.1rem;
+  max-width: 70ch;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+.metric span,
+.metric strong {
+  display: block;
+}
+.metric strong {
+  font-size: 1.05rem;
+  margin-top: 0.4rem;
+  line-height: 1.6;
+}
+.two {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.panel p {
+  font-size: 0.9375rem;
+}
+.panel dl > div {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.875rem;
+}
+.panel dt {
+  color: var(--dim);
+}
+.panel dd {
+  overflow-wrap: anywhere;
+}
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.report-page .footer {
+  padding: 0;
+  margin: 0;
+}
+@media (max-width: 850px) {
+  .summary,
+  .architecture,
+  .toc {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .two {
+    grid-template-columns: 1fr;
+  }
+  .figures {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 700px) {
+  .report-page .wrap {
+    width: calc(100% - 40px);
+    padding-top: 2rem;
+  }
+  .report-page h1 {
+    font-size: 2.25rem;
+  }
+  .report-page .hero {
+    padding-block: 0 2rem;
+  }
+  .panel dl > div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
+@media (max-width: 420px) {
+  .summary,
+  .architecture,
+  .toc {
+    grid-template-columns: 1fr;
+  }
+  .big {
+    font-size: 1.3rem;
+  }
+}

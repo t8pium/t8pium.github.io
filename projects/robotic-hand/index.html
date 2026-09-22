@@ -1,3 +1,204 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0b0d10"><title>Computer-vision robotic hand | t8pium</title><link rel="icon" href="../../assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../style.css?v=8"><link rel="stylesheet" href="../../gallery.css?v=9"><link rel="stylesheet" href="../../polish.css?v=1"></head>
-<body><main id="main" class="project-page"><section class="page-hero"><div class="shell page-hero__grid"><div><a class="back-link" href="../../#work">← Back to gallery</a><p class="page-eyebrow">Project / Computer vision + robotics</p><h1>Computer-vision robotic hand</h1><p>A webcam tracks live hand movement, Python maps the landmarks, and Arduino turns the motion into a servo-driven prototype.</p></div><aside class="page-panel"><div class="page-panel__cover gallery-card__cover"><img id="robotHandStill" src="../../assets/covers/robotic-hand-cover.svg?v=static-fallback" alt=""></div><div class="page-panel__body"><dl><div><dt>Status</dt><dd>Prototype</dd></div><div><dt>Focus</dt><dd>Vision to physical motion</dd></div><div><dt>Stack</dt><dd>Python, MediaPipe, Arduino</dd></div></dl></div></aside></div></section><section class="page-content shell"><div class="page-section-grid"><h2>Problem</h2><div><p>The goal was to turn a visible gesture into a physical response, making software control something real instead of stopping at the screen.</p></div></div><div class="page-section-grid"><h2>Build</h2><div><ul><li>Capture live frames from a webcam.</li><li>Track hand landmarks.</li><li>Map movement into servo-friendly values.</li><li>Send motion values to Arduino.</li><li>Test the output on a physical prototype.</li></ul></div></div><div class="page-section-grid"><h2>What I learned</h2><div><p>Physical systems expose weak assumptions. Timing, friction, jitter, wiring, and structure all matter once code starts touching hardware.</p></div></div><div class="page-section-grid"><h2>Next version</h2><div><ul><li>Lower latency.</li><li>Smoother motion.</li><li>Better calibrated angle ranges.</li><li>Stronger structure.</li></ul></div></div><div class="page-section-grid"><h2>Stack</h2><div><div class="detail-tags"><span>Python</span><span>OpenCV / MediaPipe</span><span>Arduino C++</span><span>Servo Motors</span><span>Serial Communication</span><span>Rapid Prototyping</span></div></div></div></section></main><footer class="footer"><div class="shell footer-inner"><a class="brand" href="../../"><img src="../../assets/logo-mark.svg" alt="" width="30" height="30"><span>t8pium</span></a><div class="footer-copy"><p>Dubai, UAE <span>·</span> personal portfolio</p><nav class="footer-links" aria-label="Legal"><a href="../../privacy/">Privacy</a><a href="../../terms/">Terms</a></nav></div><a href="../../">Back to portfolio ↑</a></div></footer></body></html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Computer-vision robotic hand | t8pium</title>
+    <link href="/assets/logo-mark.svg" rel="icon" type="image/svg+xml" />
+    <link href="/style.css?v=10" rel="stylesheet" />
+    <script defer="" src="/script.js?v=14"></script>
+    <meta
+      content="A webcam tracks live hand movement, Python maps the landmarks, and Arduino turns the motion into a servo-driven prototype."
+      name="description"
+    />
+    <link
+      href="https://t8pium.github.io/projects/robotic-hand/"
+      rel="canonical"
+    />
+    <meta content="#0b0d10" name="theme-color" />
+    <meta content="article" property="og:type" />
+    <meta content="t8pium" property="og:site_name" />
+    <meta content="Computer-vision robotic hand | t8pium" property="og:title" />
+    <meta
+      content="A webcam tracks live hand movement, Python maps the landmarks, and Arduino turns the motion into a servo-driven prototype."
+      property="og:description"
+    />
+    <meta
+      content="https://t8pium.github.io/projects/robotic-hand/"
+      property="og:url"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="t8pium — I build tools. I test ideas. Python, robotics and market research."
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta
+      content="Computer-vision robotic hand | t8pium"
+      name="twitter:title"
+    />
+    <meta
+      content="A webcam tracks live hand movement, Python maps the landmarks, and Arduino turns the motion into a servo-driven prototype."
+      name="twitter:description"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      name="twitter:image"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <nav aria-label="Primary navigation" class="nav shell">
+        <a aria-label="t8pium — home" class="brand" href="/"
+          ><img
+            alt=""
+            decoding="async"
+            height="32"
+            src="/assets/logo-mark.svg"
+            width="32"
+          /><span>t8pium<span class="brand-period">.</span></span></a
+        >
+        <button
+          aria-controls="navMenu"
+          aria-expanded="false"
+          class="nav-toggle"
+          hidden=""
+          id="navToggle"
+          type="button"
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a aria-current="location" href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#writing">Notes</a></li>
+          <li><a href="/#social">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="project-page" id="main" tabindex="-1">
+      <section class="page-hero">
+        <div class="shell page-hero__grid">
+          <div>
+            <a class="back-link" href="../../#work">← Back to selected work</a>
+            <p class="page-eyebrow">Project / Computer vision + robotics</p>
+            <h1>Computer-vision robotic hand</h1>
+            <p>
+              A webcam tracks live hand movement, Python maps the landmarks, and
+              Arduino turns the motion into a servo-driven prototype.
+            </p>
+            <p class="status-note">
+              Prototype notes. The diagram is a system sketch; a public source
+              repository and demonstration video are not linked yet.
+            </p>
+          </div>
+          <aside class="page-panel">
+            <div class="page-panel__cover gallery-card__cover">
+              <img
+                alt="System sketch: webcam to Python landmark mapping, serial link, Arduino, and servos."
+                decoding="async"
+                height="450"
+                id="robotHandStill"
+                loading="lazy"
+                src="/assets/covers/robotic-hand-flow.svg"
+                width="800"
+              />
+            </div>
+            <div class="cover-caption">System sketch</div>
+            <div class="page-panel__body">
+              <dl>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Prototype</dd>
+                </div>
+                <div>
+                  <dt>Focus</dt>
+                  <dd>Vision to physical motion</dd>
+                </div>
+                <div>
+                  <dt>Stack</dt>
+                  <dd>Python, MediaPipe, Arduino</dd>
+                </div>
+              </dl>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section class="page-content shell">
+        <div class="page-section-grid">
+          <h2>Problem</h2>
+          <div>
+            <p>
+              The goal was to turn a visible gesture into a physical response,
+              making software control something real instead of stopping at the
+              screen.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Build</h2>
+          <div>
+            <ul>
+              <li>Capture live frames from a webcam.</li>
+              <li>Track hand landmarks.</li>
+              <li>Map movement into servo-friendly values.</li>
+              <li>Send motion values to Arduino.</li>
+              <li>Test the output on a physical prototype.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>What I learned</h2>
+          <div>
+            <p>
+              Physical systems expose weak assumptions. Timing, friction,
+              jitter, wiring, and structure all matter once code starts touching
+              hardware.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Next version</h2>
+          <div>
+            <ul>
+              <li>Lower latency.</li>
+              <li>Smoother motion.</li>
+              <li>Better calibrated angle ranges.</li>
+              <li>Stronger structure.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Stack</h2>
+          <div>
+            <div class="detail-tags">
+              <span>Python</span><span>OpenCV / MediaPipe</span
+              ><span>Arduino C++</span><span>Servo Motors</span
+              ><span>Serial Communication</span><span>Rapid Prototyping</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>
+          t8pium<span class="brand-period">.</span>
+          <span class="footer-location">Dubai, UAE</span>
+        </p>
+        <nav aria-label="Footer" class="footer-links">
+          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a
+          ><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
+          ><a href="/">Back to portfolio ↑</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

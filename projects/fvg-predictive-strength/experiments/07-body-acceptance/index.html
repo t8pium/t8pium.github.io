@@ -1,27 +1,498 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0d10"><title>Candle-body acceptance around CE | FVG Study | t8pium</title><link rel="icon" href="../../../../assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../../style.css?v=8"><link rel="stylesheet" href="../../../../gallery.css?v=9"><link rel="stylesheet" href="../../../../polish.css?v=1"><link rel="stylesheet" href="../../../../research.css?v=1"></head><body><main class="project-page research-page"><section class="page-hero"><div class="shell"><a class="back-link" href="../../">← Back to FVG study</a><p class="page-eyebrow">Experiment 07 / Execution hypothesis</p><h1>Candle-body acceptance around CE</h1><p>Tests whether the opposing candle's body close depth inside the FVG—independent of wick length—changes the probability of rejection.</p></div></section><section class="page-content shell">
-<div class="page-section-grid"><h2>Setup</h2><div><p>Penetration depth is defined from the near edge: <strong>0%</strong> at the near edge, <strong>50%</strong> at CE, and <strong>100%</strong> at the far edge.</p><ul><li>Bullish FVG → wait for a later bearish candle to enter the zone.</li><li>Bearish FVG → wait for a later bullish candle.</li><li>Classify only the candle-body close depth. Wick length is ignored.</li><li>Enter at the signal close; stop at the far FVG edge; target the near edge.</li></ul></div></div>
-<div class="page-section-grid"><h2>Exact 50%</h2><div><p>For the cleaner ≥1H sample there were only <strong>51 exact-midpoint closes</strong>. The unambiguous win rate was approximately <strong>36.4%</strong> with about <strong>−0.27R/trade</strong>. Exact CE therefore failed as a universal standalone entry.</p></div></div>
-<div class="page-section-grid"><h2>45–55% band</h2><div><div class="research-table-wrap"><table class="research-table"><thead><tr><th>TF</th><th>N</th><th>Ambiguous</th><th>Unambiguous WR</th><th>Mean R</th></tr></thead><tbody><tr><td>1m</td><td>24,336</td><td>47.7%</td><td>52.8%</td><td>+0.055R</td></tr><tr><td>5m</td><td>4,045</td><td>23.4%</td><td>52.4%</td><td>+0.048R</td></tr><tr><td>15m</td><td>1,281</td><td>12.8%</td><td>52.2%</td><td>+0.040R</td></tr><tr><td>1H</td><td>318</td><td>6.0%</td><td>50.2%</td><td>~0R</td></tr><tr><td>2H</td><td>174</td><td>3.4%</td><td>50.6%</td><td>+0.005R</td></tr><tr><td>4H</td><td>82</td><td>2.4%</td><td>60.0%</td><td>+0.177R</td></tr></tbody></table></div><p>Pooling 1H–4H produced only a weak positive result, and the later 30% was essentially flat.</p></div></div>
-<div class="page-section-grid"><h2>Before CE vs through CE</h2><div><p>The most interesting split was not exact CE but <strong>body acceptance across it</strong>. On 1H, 45–50% closes produced about <strong>57.6% WR / +0.089R</strong>, while 50–55% closes produced about <strong>43.0% WR / −0.092R</strong>.</p><p>On 4H, the 45–50% band produced <strong>49 trades, 33 wins, 16 losses, 67.35% WR and +0.286R/trade</strong>. A chronological later-30% slice had 15 trades and remained positive.</p></div></div>
-<div class="page-section-grid"><h2>Multiple-testing warning</h2><div><div class="research-note"><strong>This is hypothesis-generating, not validated.</strong> The 4H 45–50% cell emerged after searching multiple timeframes, depth bands, exact-midpoint conditions, and first-touch variants. A small positive holdout does not erase that selection risk.</div></div></div>
-<div class="page-section-grid"><h2>Conclusion</h2><div><p>The data gives more support to a possible <strong>acceptance/rejection threshold around CE</strong> than to the idea that the exact 0.5 coordinate is special. Independent untouched replication is required.</p></div></div><div class="page-section-grid"><h2>Exact implementation</h2><div>
-<h3>Timeframe construction</h3><p>The execution study evaluates 1m, 2m, 3m, 5m, 10m, 15m, 30m, 1H, 2H, 4H, 6H, 8H, 12H and 1D. Intraday bars are grouped by CME trade date and minutes since the <strong>18:00 ET session open</strong>. A higher-timeframe bar is discarded if its first and last one-minute rows do not belong to the same active symbol.</p>
-<h3>FVG eligibility</h3><p>All three candles A/B/C must belong to the same active contract. The mechanical three-candle formula is unchanged, but this study additionally requires a minimum gap width of <strong>0.25 index points = one MNQ tick</strong>.</p>
-<h3>Primary signal search</h3><p>The primary mode is <strong>first qualifying opposite candle before body-close invalidation</strong>, not necessarily the first wick touch.</p>
-<ul><li>Bullish FVG: a later bearish candle must wick into the gap and close inside it.</li><li>Bearish FVG: a later bullish candle must wick into the gap and close inside it.</li><li>Wick length is otherwise irrelevant.</li><li>Bullish body-close invalidation occurs if a candle closes below the far/lower edge; bearish invalidation is a close above the far/upper edge.</li><li>Search stops at an active-contract change.</li></ul>
-<h3>Depth formula</h3><p>Depth is normalized so 0% is the near edge, 50% is CE and 100% is the far edge. Bullish depth is <code>(upper - close) / width</code>; bearish depth is <code>(close - lower) / width</code>. Only closes from 0% inclusive to 100% exclusive qualify.</p>
-<h3>Execution</h3><p>Entry is the qualifying candle's <strong>close</strong>. TP is the near edge; SL is the far edge. The trigger higher-timeframe candle is mapped to its final underlying 1m row, and TP/SL scanning begins on the <strong>following one-minute bar</strong>. The scan ends at the active-contract boundary.</p>
-<ul><li>TP first = win.</li><li>SL first = loss.</li><li>TP and SL in the same 1m bar = ambiguous.</li><li>No resolution before roll/end = censored.</li></ul>
-<p>For the explicitly labeled <strong>conservative R</strong>, ambiguous trades are counted as −1R; unambiguous-only statistics exclude them. MFE, MAE and minutes-to-exit are also recorded.</p>
-<h3>Reward/risk geometry</h3><p>Because entry moves deeper into the gap, reward and risk change with depth. At normalized depth <code>x</code>, theoretical breakeven win rate is <code>1 − x</code>. The summary therefore compares observed win rate with the average per-trade geometric breakeven rate rather than always assuming 50%.</p>
-<h3>Predefined and exploratory slices</h3><p>The script reports 10%-wide depth buckets plus exact 50%, 49–51%, 47.5–52.5%, 45–55% and 40–60%. It also reruns the 45–55% test under a stricter <strong>first raw wick touch must qualify</strong> mode. The later 4H 45–50% result was sliced after inspecting the depth/timeframe table and is therefore explicitly post-hoc/hypothesis-generating.</p>
-<p><a class="button button--ghost" href="https://github.com/t8pium/fvg-predictive-strength/blob/main/published/fvg_ce_rejection_study.py" target="_blank" rel="noopener">View exact CE execution code ↗</a> <a class="button button--ghost" href="https://github.com/t8pium/fvg-predictive-strength/blob/main/reference_results/4h_45_50_train_test.csv" target="_blank" rel="noopener">4H 45–50 frozen CSV ↗</a> <a class="button button--ghost" href="https://github.com/t8pium/fvg-predictive-strength/blob/main/reference_results/first_touch_sensitivity_45_55.csv" target="_blank" rel="noopener">First-touch sensitivity CSV ↗</a></p>
-<pre><code>CE_TFS=240 python published/fvg_ce_rejection_study.py
-# all TFs: python run_published.py --suite body</code></pre>
-</div></div>
-<div class="page-section-grid"><h2>Exact signal search</h2><div><ol class="method-list"><li>Build 1m through daily bars from the active one-minute series. Intraday bars are anchored to the 18:00 ET CME session; daily bars use the stored CME trade date.</li><li>Require all three FVG candles to belong to the same listed contract and require at least one MNQ tick of gap width.</li><li>After formation, scan forward while the same active listed contract remains in force.</li><li>For a bullish FVG, the qualifying candle must be bearish; for a bearish FVG, it must be bullish.</li><li>The wick must touch the gap, but wick length is otherwise ignored.</li><li>Compute body-close depth: 0% at the near edge, 50% at CE, 100% at the far edge.</li><li>The trigger close must remain inside [0%,100%). Search terminates if an earlier candle body closes beyond the far edge.</li><li>Save both the first qualifying opposite candle and a stricter sensitivity where the very first raw wick touch must itself qualify.</li></ol></div></div>
-<div class="page-section-grid"><h2>Exact execution logic</h2><div><ol class="method-list"><li>Enter at the qualifying timeframe candle's close.</li><li>Target the near edge of the FVG; stop at the far edge.</li><li>Map the trigger candle to its ending one-minute base bar.</li><li>From the next one-minute bar forward, resolve target/stop until one is hit or the active listed-contract segment ends.</li><li>If target and stop trade inside the same one-minute bar, assign outcome code +2 = ambiguous.</li><li>Conservative expectancy counts ambiguity as -1R; censored trades remain NaN.</li><li>Measure MFE, MAE, exit time, realized R and theoretical breakeven win rate implied by the actual entry depth.</li><li>Aggregate 10%-wide depth buckets plus exact 50%, 49–51%, 47.5–52.5%, 45–55% and 40–60% slices.</li><li>Repeat by timeframe, year, direction, first-touch sensitivity and chronological 70/30 split.</li></ol><div class="research-note"><strong>Why low-timeframe ambiguity is high:</strong> tiny FVGs can place both TP and SL inside the same one-minute OHLC bar. The code refuses to invent which traded first.</div></div></div>
-<div class="page-section-grid"><h2>Reproduce it</h2><div><pre class="research-code"><code>python scripts/run_original.py ce-body
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>Candle-body acceptance around CE | FVG Study | t8pium</title>
+    <link href="/assets/logo-mark.svg" rel="icon" type="image/svg+xml" />
+    <link href="/style.css?v=10" rel="stylesheet" />
+    <link href="/research.css?v=2" rel="stylesheet" />
+    <script defer="" src="/script.js?v=14"></script>
+    <meta
+      content="Tests whether the opposing candle's body close depth inside the FVG—independent of wick length—changes the probability of rejection."
+      name="description"
+    />
+    <link
+      href="https://t8pium.github.io/projects/fvg-predictive-strength/experiments/07-body-acceptance/"
+      rel="canonical"
+    />
+    <meta content="#0b0d10" name="theme-color" />
+    <meta content="article" property="og:type" />
+    <meta content="t8pium" property="og:site_name" />
+    <meta
+      content="Candle-body acceptance around CE | FVG Study | t8pium"
+      property="og:title"
+    />
+    <meta
+      content="Tests whether the opposing candle's body close depth inside the FVG—independent of wick length—changes the probability of rejection."
+      property="og:description"
+    />
+    <meta
+      content="https://t8pium.github.io/projects/fvg-predictive-strength/experiments/07-body-acceptance/"
+      property="og:url"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="t8pium — I build tools. I test ideas. Python, robotics and market research."
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta
+      content="Candle-body acceptance around CE | FVG Study | t8pium"
+      name="twitter:title"
+    />
+    <meta
+      content="Tests whether the opposing candle's body close depth inside the FVG—independent of wick length—changes the probability of rejection."
+      name="twitter:description"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      name="twitter:image"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <nav aria-label="Primary navigation" class="nav shell">
+        <a aria-label="t8pium — home" class="brand" href="/"
+          ><img
+            alt=""
+            decoding="async"
+            height="32"
+            src="/assets/logo-mark.svg"
+            width="32"
+          /><span>t8pium<span class="brand-period">.</span></span></a
+        >
+        <button
+          aria-controls="navMenu"
+          aria-expanded="false"
+          class="nav-toggle"
+          hidden=""
+          id="navToggle"
+          type="button"
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a aria-current="location" href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#writing">Notes</a></li>
+          <li><a href="/#social">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="project-page research-page" id="main" tabindex="-1">
+      <section class="page-hero">
+        <div class="shell">
+          <a class="back-link" href="../../">← Back to FVG study</a>
+          <p class="page-eyebrow">Experiment 07 / Execution hypothesis</p>
+          <h1>Candle-body acceptance around CE</h1>
+          <p>
+            Tests whether the opposing candle's body close depth inside the
+            FVG—independent of wick length—changes the probability of rejection.
+          </p>
+        </div>
+      </section>
+      <section class="page-content shell">
+        <div class="page-section-grid">
+          <h2>Setup</h2>
+          <div>
+            <p>
+              Penetration depth is defined from the near edge:
+              <strong>0%</strong> at the near edge, <strong>50%</strong> at CE,
+              and <strong>100%</strong> at the far edge.
+            </p>
+            <ul>
+              <li>
+                Bullish FVG → wait for a later bearish candle to enter the zone.
+              </li>
+              <li>Bearish FVG → wait for a later bullish candle.</li>
+              <li>
+                Classify only the candle-body close depth. Wick length is
+                ignored.
+              </li>
+              <li>
+                Enter at the signal close; stop at the far FVG edge; target the
+                near edge.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Exact 50%</h2>
+          <div>
+            <p>
+              For the cleaner ≥1H sample there were only
+              <strong>51 exact-midpoint closes</strong>. The unambiguous win
+              rate was approximately <strong>36.4%</strong> with about
+              <strong>−0.27R/trade</strong>. Exact CE therefore failed as a
+              universal standalone entry.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>45–55% band</h2>
+          <div>
+            <p class="table-hint">
+              Scroll the table horizontally on smaller screens.
+            </p>
+            <div
+              aria-label="45–55% band table; scroll horizontally for all columns"
+              class="research-table-wrap"
+              role="region"
+              tabindex="0"
+            >
+              <table class="research-table">
+                <thead>
+                  <tr>
+                    <th scope="col">TF</th>
+                    <th scope="col">N</th>
+                    <th scope="col">Ambiguous</th>
+                    <th scope="col">Unambiguous WR</th>
+                    <th scope="col">Mean R</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1m</td>
+                    <td>24,336</td>
+                    <td>47.7%</td>
+                    <td>52.8%</td>
+                    <td>+0.055R</td>
+                  </tr>
+                  <tr>
+                    <td>5m</td>
+                    <td>4,045</td>
+                    <td>23.4%</td>
+                    <td>52.4%</td>
+                    <td>+0.048R</td>
+                  </tr>
+                  <tr>
+                    <td>15m</td>
+                    <td>1,281</td>
+                    <td>12.8%</td>
+                    <td>52.2%</td>
+                    <td>+0.040R</td>
+                  </tr>
+                  <tr>
+                    <td>1H</td>
+                    <td>318</td>
+                    <td>6.0%</td>
+                    <td>50.2%</td>
+                    <td>~0R</td>
+                  </tr>
+                  <tr>
+                    <td>2H</td>
+                    <td>174</td>
+                    <td>3.4%</td>
+                    <td>50.6%</td>
+                    <td>+0.005R</td>
+                  </tr>
+                  <tr>
+                    <td>4H</td>
+                    <td>82</td>
+                    <td>2.4%</td>
+                    <td>60.0%</td>
+                    <td>+0.177R</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Pooling 1H–4H produced only a weak positive result, and the later
+              30% was essentially flat.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Before CE vs through CE</h2>
+          <div>
+            <p>
+              The most interesting split was not exact CE but
+              <strong>body acceptance across it</strong>. On 1H, 45–50% closes
+              produced about <strong>57.6% WR / +0.089R</strong>, while 50–55%
+              closes produced about <strong>43.0% WR / −0.092R</strong>.
+            </p>
+            <p>
+              On 4H, the 45–50% band produced
+              <strong
+                >49 trades, 33 wins, 16 losses, 67.35% WR and
+                +0.286R/trade</strong
+              >. A chronological later-30% slice had 15 trades and remained
+              positive.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Multiple-testing warning</h2>
+          <div>
+            <div class="research-note">
+              <strong>This is hypothesis-generating, not validated.</strong> The
+              4H 45–50% cell emerged after searching multiple timeframes, depth
+              bands, exact-midpoint conditions, and first-touch variants. A
+              small positive holdout does not erase that selection risk.
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Conclusion</h2>
+          <div>
+            <p>
+              The data gives more support to a possible
+              <strong>acceptance/rejection threshold around CE</strong> than to
+              the idea that the exact 0.5 coordinate is special. Independent
+              untouched replication is required.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Exact implementation</h2>
+          <div>
+            <h3>Timeframe construction</h3>
+            <p>
+              The execution study evaluates 1m, 2m, 3m, 5m, 10m, 15m, 30m, 1H,
+              2H, 4H, 6H, 8H, 12H and 1D. Intraday bars are grouped by CME trade
+              date and minutes since the <strong>18:00 ET session open</strong>.
+              A higher-timeframe bar is discarded if its first and last
+              one-minute rows do not belong to the same active symbol.
+            </p>
+            <h3>FVG eligibility</h3>
+            <p>
+              All three candles A/B/C must belong to the same active contract.
+              The mechanical three-candle formula is unchanged, but this study
+              additionally requires a minimum gap width of
+              <strong>0.25 index points = one MNQ tick</strong>.
+            </p>
+            <h3>Primary signal search</h3>
+            <p>
+              The primary mode is
+              <strong
+                >first qualifying opposite candle before body-close
+                invalidation</strong
+              >, not necessarily the first wick touch.
+            </p>
+            <ul>
+              <li>
+                Bullish FVG: a later bearish candle must wick into the gap and
+                close inside it.
+              </li>
+              <li>
+                Bearish FVG: a later bullish candle must wick into the gap and
+                close inside it.
+              </li>
+              <li>Wick length is otherwise irrelevant.</li>
+              <li>
+                Bullish body-close invalidation occurs if a candle closes below
+                the far/lower edge; bearish invalidation is a close above the
+                far/upper edge.
+              </li>
+              <li>Search stops at an active-contract change.</li>
+            </ul>
+            <h3>Depth formula</h3>
+            <p>
+              Depth is normalized so 0% is the near edge, 50% is CE and 100% is
+              the far edge. Bullish depth is
+              <code>(upper - close) / width</code>; bearish depth is
+              <code>(close - lower) / width</code>. Only closes from 0%
+              inclusive to 100% exclusive qualify.
+            </p>
+            <h3>Execution</h3>
+            <p>
+              Entry is the qualifying candle's <strong>close</strong>. TP is the
+              near edge; SL is the far edge. The trigger higher-timeframe candle
+              is mapped to its final underlying 1m row, and TP/SL scanning
+              begins on the <strong>following one-minute bar</strong>. The scan
+              ends at the active-contract boundary.
+            </p>
+            <ul>
+              <li>TP first = win.</li>
+              <li>SL first = loss.</li>
+              <li>TP and SL in the same 1m bar = ambiguous.</li>
+              <li>No resolution before roll/end = censored.</li>
+            </ul>
+            <p>
+              For the explicitly labeled <strong>conservative R</strong>,
+              ambiguous trades are counted as −1R; unambiguous-only statistics
+              exclude them. MFE, MAE and minutes-to-exit are also recorded.
+            </p>
+            <h3>Reward/risk geometry</h3>
+            <p>
+              Because entry moves deeper into the gap, reward and risk change
+              with depth. At normalized depth <code>x</code>, theoretical
+              breakeven win rate is <code>1 − x</code>. The summary therefore
+              compares observed win rate with the average per-trade geometric
+              breakeven rate rather than always assuming 50%.
+            </p>
+            <h3>Predefined and exploratory slices</h3>
+            <p>
+              The script reports 10%-wide depth buckets plus exact 50%, 49–51%,
+              47.5–52.5%, 45–55% and 40–60%. It also reruns the 45–55% test
+              under a stricter
+              <strong>first raw wick touch must qualify</strong> mode. The later
+              4H 45–50% result was sliced after inspecting the depth/timeframe
+              table and is therefore explicitly post-hoc/hypothesis-generating.
+            </p>
+            <p>
+              <a
+                class="button button--ghost"
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_ce_rejection_study.py"
+                >View exact CE execution code ↗</a
+              >
+              <a
+                class="button button--ghost"
+                href="/reproducibility/fvg-predictive-strength/reference_results/4h_45_50_train_test.csv"
+                >4H 45–50 frozen CSV ↗</a
+              >
+              <a
+                class="button button--ghost"
+                href="/reproducibility/fvg-predictive-strength/reference_results/first_touch_sensitivity_45_55.csv"
+                >First-touch sensitivity CSV ↗</a
+              >
+            </p>
+            <pre
+              aria-label="Reproduction commands; scroll horizontally if needed"
+              tabindex="0"
+            ><code>python scripts/run_original.py ce-body --ce-tfs 240
+# all TFs: python scripts/run_original.py ce-body</code></pre>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Exact signal search</h2>
+          <div>
+            <ol class="method-list">
+              <li>
+                Build 1m through daily bars from the active one-minute series.
+                Intraday bars are anchored to the 18:00 ET CME session; daily
+                bars use the stored CME trade date.
+              </li>
+              <li>
+                Require all three FVG candles to belong to the same listed
+                contract and require at least one MNQ tick of gap width.
+              </li>
+              <li>
+                After formation, scan forward while the same active listed
+                contract remains in force.
+              </li>
+              <li>
+                For a bullish FVG, the qualifying candle must be bearish; for a
+                bearish FVG, it must be bullish.
+              </li>
+              <li>
+                The wick must touch the gap, but wick length is otherwise
+                ignored.
+              </li>
+              <li>
+                Compute body-close depth: 0% at the near edge, 50% at CE, 100%
+                at the far edge.
+              </li>
+              <li>
+                The trigger close must remain inside [0%,100%). Search
+                terminates if an earlier candle body closes beyond the far edge.
+              </li>
+              <li>
+                Save both the first qualifying opposite candle and a stricter
+                sensitivity where the very first raw wick touch must itself
+                qualify.
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Exact execution logic</h2>
+          <div>
+            <ol class="method-list">
+              <li>Enter at the qualifying timeframe candle's close.</li>
+              <li>Target the near edge of the FVG; stop at the far edge.</li>
+              <li>Map the trigger candle to its ending one-minute base bar.</li>
+              <li>
+                From the next one-minute bar forward, resolve target/stop until
+                one is hit or the active listed-contract segment ends.
+              </li>
+              <li>
+                If target and stop trade inside the same one-minute bar, assign
+                outcome code +2 = ambiguous.
+              </li>
+              <li>
+                Conservative expectancy counts ambiguity as -1R; censored trades
+                remain NaN.
+              </li>
+              <li>
+                Measure MFE, MAE, exit time, realized R and theoretical
+                breakeven win rate implied by the actual entry depth.
+              </li>
+              <li>
+                Aggregate 10%-wide depth buckets plus exact 50%, 49–51%,
+                47.5–52.5%, 45–55% and 40–60% slices.
+              </li>
+              <li>
+                Repeat by timeframe, year, direction, first-touch sensitivity
+                and chronological 70/30 split.
+              </li>
+            </ol>
+            <div class="research-note">
+              <strong>Why low-timeframe ambiguity is high:</strong> tiny FVGs
+              can place both TP and SL inside the same one-minute OHLC bar. The
+              code refuses to invent which traded first.
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Reproduce it</h2>
+          <div>
+            <pre
+              aria-label="Reproduction commands; scroll horizontally if needed"
+              class="research-code"
+              tabindex="0"
+            ><code>python scripts/run_original.py ce-body
 
 # Optional subset, e.g. only 1H, 2H and 4H:
-python scripts/run_original.py ce-body --ce-tfs 60,120,240</code></pre><div class="source-links"><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_ce_rejection_study.py" target="_blank" rel="noopener">Canonical CE study source ↗</a></div></div></div><div class="page-section-grid"><h2>Navigate</h2><div><div class="subpage-nav"><a href="../00-methodology/">Methods</a><a href="../01-raw-fill/">Raw fill</a><a href="../02-matched-attraction/">Attraction</a><a href="../03-age-decay/">Age decay</a><a href="../04-continuation/">Continuation</a><a href="../05-retest-reaction/">Retest</a><a href="../06-midpoint/">CE</a><a href="../07-body-acceptance/">Body acceptance</a><a href="../08-controls-regimes/">Controls</a><a href="../09-out-of-sample/">OOS</a></div></div></div></section></main><footer class="footer"><div class="shell footer-inner"><a class="brand" href="../../../../"><img src="../../../../assets/logo-mark.svg" alt="" width="30" height="30"><span>t8pium</span></a><div class="footer-copy"><p>FVG Predictive Strength Study <span>·</span> MNQ 2020–2026</p></div><a href="../../">Study summary ↑</a></div></footer></body></html>
+python scripts/run_original.py ce-body --ce-tfs 60,120,240</code></pre>
+            <div class="source-links">
+              <a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_ce_rejection_study.py"
+                >Canonical CE study source ↗</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Navigate</h2>
+          <div>
+            <nav aria-label="Experiment navigation" class="subpage-nav">
+              <a href="../00-methodology/">Methods</a
+              ><a href="../01-raw-fill/">Raw fill</a
+              ><a href="../02-matched-attraction/">Attraction</a
+              ><a href="../03-age-decay/">Age decay</a
+              ><a href="../04-continuation/">Continuation</a
+              ><a href="../05-retest-reaction/">Retest</a
+              ><a href="../06-midpoint/">CE</a
+              ><a aria-current="page" href="../07-body-acceptance/"
+                >Body acceptance</a
+              ><a href="../08-controls-regimes/">Controls</a
+              ><a href="../09-out-of-sample/">OOS</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>
+          t8pium<span class="brand-period">.</span>
+          <span class="footer-location">Dubai, UAE</span>
+        </p>
+        <nav aria-label="Footer" class="footer-links">
+          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a
+          ><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
+          ><a href="/">Back to portfolio ↑</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

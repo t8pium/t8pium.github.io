@@ -1,17 +1,422 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0d10"><title>Distance, regimes & controlled model | FVG Study | t8pium</title><link rel="icon" href="../../../../assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../../style.css?v=8"><link rel="stylesheet" href="../../../../gallery.css?v=9"><link rel="stylesheet" href="../../../../polish.css?v=1"><link rel="stylesheet" href="../../../../research.css?v=1"></head><body><main class="project-page research-page"><section class="page-hero"><div class="shell"><a class="back-link" href="../../">← Back to FVG study</a><p class="page-eyebrow">Experiment 08 / Incremental predictive value</p><h1>Distance, regimes & controlled model</h1><p>A controlled test of whether FVG status matters after accounting for geometry and market state.</p></div></section><section class="page-content shell">
-<div class="page-section-grid"><h2>Logistic model</h2><div><p>A 60-minute touch model used approximately <strong>240,000 FVG/control observations</strong> with predictors for FVG status, ATR-normalized distance, width, volatility, trend, time of day, and direction.</p><div class="metric-strip"><div><span>FVG odds ratio</span><strong>~1.079</strong></div><div><span>60m raw probability edge</span><strong>~+0.58 pp</strong></div><div><span>Dominant feature</span><strong>Distance</strong></div></div><p>Because baseline touch probability is already around 90%, a 7.9% odds increase corresponds to only a small absolute probability shift.</p></div></div>
-<div class="page-section-grid"><h2>Distance</h2><div><div class="research-table-wrap"><table class="research-table"><thead><tr><th>Distance</th><th>FVG</th><th>Control</th><th>Difference</th></tr></thead><tbody><tr><td>&lt;0.25 ATR</td><td>97.63%</td><td>97.66%</td><td>−0.03 pp</td></tr><tr><td>0.25–0.50</td><td>94.44%</td><td>93.85%</td><td>+0.59 pp</td></tr><tr><td>0.50–0.75</td><td>90.82%</td><td>89.95%</td><td>+0.88 pp</td></tr><tr><td>1.0–1.5</td><td>81.74%</td><td>80.73%</td><td>+1.01 pp</td></tr><tr><td>1.5–2.0</td><td>75.40%</td><td>73.81%</td><td>+1.58 pp</td></tr><tr><td>2–3</td><td>66.67%</td><td>64.46%</td><td>+2.21 pp</td></tr></tbody></table></div><p>When a target is extremely close, almost everything gets revisited. The FVG label adds essentially nothing below 0.25 ATR.</p></div></div>
-<div class="page-section-grid"><h2>Session</h2><div><ul><li>Asia: <strong>+0.85 pp</strong></li><li>London: <strong>+0.66 pp</strong></li><li>NY premarket: <strong>+0.81 pp</strong></li><li>NY AM: <strong>−0.08 pp</strong></li><li>NY lunch: <strong>−0.13 pp</strong></li><li>NY PM: <strong>~0 pp</strong></li></ul><p>The FVG-specific effect was weak during core NY hours in this sample.</p></div></div>
-<div class="page-section-grid"><h2>Volatility & displacement</h2><div><p>60-minute FVG advantage was about <strong>+0.56 pp in low volatility</strong>, <strong>+0.93 pp in normal volatility</strong>, and <strong>+0.32 pp in high volatility</strong>. Stronger displacement showed a modestly larger effect, reaching roughly <strong>+0.90 pp</strong> for the strongest bucket.</p></div></div>
-<div class="page-section-grid"><h2>Direction & size</h2><div><p>Bullish and bearish FVG effects were almost identical: approximately <strong>+0.57 vs +0.59 pp</strong>. Removing tiny gaps did not eliminate the effect; ≥0.10 ATR and ≥0.20 ATR filters remained around <strong>+0.70 pp</strong>.</p></div></div>
-<div class="page-section-grid"><h2>Conclusion</h2><div><div class="research-note">FVG status adds some incremental information, but <strong>distance and market state explain much more</strong>. This supports using FVG as one feature in a larger model rather than as the main explanatory variable.</div></div></div><div class="page-section-grid"><h2>Exact implementation</h2><div>
-<h3>Deep-1m state definition</h3><p>This experiment uses a deliberately different, longer state horizon than the multi-timeframe matching script. ATR is a 14-bar mean true range. Trend score is the <strong>60-bar close change divided by current ATR</strong>. Volatility ratio is ATR divided by a <strong>1,380-bar rolling median ATR</strong> with 300-bar minimum warm-up.</p>
-<h3>Control universe</h3><p>Controls are valid non-FVG one-minute timestamps outside the roll block and with at least 4,140 future bars available. Each sampled FVG is matched on session, New York hour, volatility regime and trend regime. The FVG's exact direction, width/ATR and distance/ATR are transplanted onto the control timestamp. Seed <code>42</code>; five controls per FVG.</p>
-<h3>Distance strata</h3><p>60-minute touch outcomes are grouped by initial distance: &lt;0.25, 0.25–0.50, 0.50–0.75, 0.75–1, 1–1.5, 1.5–2, 2–3 and 3+ ATR. The farthest cell is reported but treated cautiously because its event count is small.</p>
-<h3>Other strata</h3><p>Separate tables are generated for gap width/ATR, session, bullish/bearish direction, volatility bucket, trend bucket, displacement-body/ATR and calendar year. Minimum-size sensitivity repeats touch/midpoint/full-fill results for all gaps, ≥1 tick, ≥2 ticks, ≥0.05 ATR, ≥0.10 ATR and ≥0.20 ATR.</p>
-<h3>Logistic regression</h3><p>The binary 60-minute touch dataset combines real FVG observations with synthetic controls. Predictors are <code>is_fvg</code>, distance/ATR, width/ATR, volatility ratio, trend score, direction, and sine/cosine transforms of minute-of-day. The frozen implementation uses <code>LogisticRegression(max_iter=200, C=1e6)</code>; the FVG odds ratio is <code>exp(beta_is_fvg)</code>.</p>
-<h3>Interpretation safeguard</h3><p>The model is not presented as a causal estimator. Its purpose is narrower: determine whether the binary FVG label still contains incremental information after several obvious covariates are present, and compare its magnitude with variables such as distance.</p>
-<p><a class="button button--ghost" href="https://github.com/t8pium/fvg-predictive-strength/blob/main/published/fvg_final_fast.py" target="_blank" rel="noopener">View exact controlled model ↗</a> <a class="button button--ghost" href="https://github.com/t8pium/fvg-predictive-strength/blob/main/reference_results/deep1m_distance.csv" target="_blank" rel="noopener">Distance CSV ↗</a> <a class="button button--ghost" href="https://github.com/t8pium/fvg-predictive-strength/blob/main/reference_results/deep1m_session.csv" target="_blank" rel="noopener">Session CSV ↗</a></p>
-</div></div>
-<div class="page-section-grid"><h2>Exact controlled analysis</h2><div><ol class="method-list"><li>Run the deep 1m matched-control study and retain the matched real FVGs plus five-control sets.</li><li>Use the 60-minute touch outcome as the common dependent variable for the subgroup tables.</li><li>Stratify the matched FVG sample by ATR-normalized starting distance, ATR-normalized width, session, direction, volatility regime, trend regime, displacement-body size and calendar year.</li><li>Within each subgroup, compare the real FVG touch rate with all controls belonging to those parent events.</li><li>Repeat the comparison under minimum gap-size filters: any, ≥1 tick, ≥2 ticks, ≥0.05 ATR, ≥0.10 ATR and ≥0.20 ATR.</li><li>Build one combined FVG/control modeling table for the 60-minute touch logistic regression.</li><li>Model features are: FVG indicator, distance/ATR, width/ATR, volatility ratio, trend score, direction, plus cyclical sine/cosine encodings of time of day.</li><li>Fit near-unregularized logistic regression (<code>C=1e6</code>) and report <code>exp(beta_FVG)</code> as the FVG odds ratio.</li></ol><p>The logistic model is not used as a trading strategy. It is a diagnostic: does the FVG indicator remain non-zero once obvious state variables are present?</p></div></div>
-<div class="page-section-grid"><h2>Reproduce it</h2><div><pre class="research-code"><code>python scripts/run_original.py detailed-1m</code></pre><p>Key outputs include <code>strat_distance.csv</code>, <code>strat_session.csv</code>, <code>strat_volatility.csv</code>, <code>strat_displacement.csv</code>, <code>sensitivity.csv</code> and <code>logistic_60m.json</code>.</p><div class="source-links"><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_final_fast.py" target="_blank" rel="noopener">Canonical controlled-analysis source ↗</a></div></div></div><div class="page-section-grid"><h2>Navigate</h2><div><div class="subpage-nav"><a href="../00-methodology/">Methods</a><a href="../01-raw-fill/">Raw fill</a><a href="../02-matched-attraction/">Attraction</a><a href="../03-age-decay/">Age decay</a><a href="../04-continuation/">Continuation</a><a href="../05-retest-reaction/">Retest</a><a href="../06-midpoint/">CE</a><a href="../07-body-acceptance/">Body acceptance</a><a href="../08-controls-regimes/">Controls</a><a href="../09-out-of-sample/">OOS</a></div></div></div></section></main><footer class="footer"><div class="shell footer-inner"><a class="brand" href="../../../../"><img src="../../../../assets/logo-mark.svg" alt="" width="30" height="30"><span>t8pium</span></a><div class="footer-copy"><p>FVG Predictive Strength Study <span>·</span> MNQ 2020–2026</p></div><a href="../../">Study summary ↑</a></div></footer></body></html>
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>Distance, regimes &amp; controlled model | FVG Study | t8pium</title>
+    <link href="/assets/logo-mark.svg" rel="icon" type="image/svg+xml" />
+    <link href="/style.css?v=10" rel="stylesheet" />
+    <link href="/research.css?v=2" rel="stylesheet" />
+    <script defer="" src="/script.js?v=14"></script>
+    <meta
+      content="A controlled test of whether FVG status matters after accounting for geometry and market state."
+      name="description"
+    />
+    <link
+      href="https://t8pium.github.io/projects/fvg-predictive-strength/experiments/08-controls-regimes/"
+      rel="canonical"
+    />
+    <meta content="#0b0d10" name="theme-color" />
+    <meta content="article" property="og:type" />
+    <meta content="t8pium" property="og:site_name" />
+    <meta
+      content="Distance, regimes &amp; controlled model | FVG Study | t8pium"
+      property="og:title"
+    />
+    <meta
+      content="A controlled test of whether FVG status matters after accounting for geometry and market state."
+      property="og:description"
+    />
+    <meta
+      content="https://t8pium.github.io/projects/fvg-predictive-strength/experiments/08-controls-regimes/"
+      property="og:url"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="t8pium — I build tools. I test ideas. Python, robotics and market research."
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta
+      content="Distance, regimes &amp; controlled model | FVG Study | t8pium"
+      name="twitter:title"
+    />
+    <meta
+      content="A controlled test of whether FVG status matters after accounting for geometry and market state."
+      name="twitter:description"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      name="twitter:image"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <nav aria-label="Primary navigation" class="nav shell">
+        <a aria-label="t8pium — home" class="brand" href="/"
+          ><img
+            alt=""
+            decoding="async"
+            height="32"
+            src="/assets/logo-mark.svg"
+            width="32"
+          /><span>t8pium<span class="brand-period">.</span></span></a
+        >
+        <button
+          aria-controls="navMenu"
+          aria-expanded="false"
+          class="nav-toggle"
+          hidden=""
+          id="navToggle"
+          type="button"
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a aria-current="location" href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#writing">Notes</a></li>
+          <li><a href="/#social">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="project-page research-page" id="main" tabindex="-1">
+      <section class="page-hero">
+        <div class="shell">
+          <a class="back-link" href="../../">← Back to FVG study</a>
+          <p class="page-eyebrow">
+            Experiment 08 / Incremental predictive value
+          </p>
+          <h1>Distance, regimes &amp; controlled model</h1>
+          <p>
+            A controlled test of whether FVG status matters after accounting for
+            geometry and market state.
+          </p>
+        </div>
+      </section>
+      <section class="page-content shell">
+        <div class="page-section-grid">
+          <h2>Logistic model</h2>
+          <div>
+            <p>
+              A 60-minute touch model used approximately
+              <strong>240,000 FVG/control observations</strong> with predictors
+              for FVG status, ATR-normalized distance, width, volatility, trend,
+              time of day, and direction.
+            </p>
+            <div class="metric-strip">
+              <div><span>FVG odds ratio</span><strong>~1.079</strong></div>
+              <div>
+                <span>60m raw probability edge</span><strong>~+0.58 pp</strong>
+              </div>
+              <div><span>Dominant feature</span><strong>Distance</strong></div>
+            </div>
+            <p>
+              Because baseline touch probability is already around 90%, a 7.9%
+              odds increase corresponds to only a small absolute probability
+              shift.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Distance</h2>
+          <div>
+            <p class="table-hint">
+              Scroll the table horizontally on smaller screens.
+            </p>
+            <div
+              aria-label="Distance table; scroll horizontally for all columns"
+              class="research-table-wrap"
+              role="region"
+              tabindex="0"
+            >
+              <table class="research-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Distance</th>
+                    <th scope="col">FVG</th>
+                    <th scope="col">Control</th>
+                    <th scope="col">Difference</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>&lt;0.25 ATR</td>
+                    <td>97.63%</td>
+                    <td>97.66%</td>
+                    <td>−0.03 pp</td>
+                  </tr>
+                  <tr>
+                    <td>0.25–0.50</td>
+                    <td>94.44%</td>
+                    <td>93.85%</td>
+                    <td>+0.59 pp</td>
+                  </tr>
+                  <tr>
+                    <td>0.50–0.75</td>
+                    <td>90.82%</td>
+                    <td>89.95%</td>
+                    <td>+0.88 pp</td>
+                  </tr>
+                  <tr>
+                    <td>1.0–1.5</td>
+                    <td>81.74%</td>
+                    <td>80.73%</td>
+                    <td>+1.01 pp</td>
+                  </tr>
+                  <tr>
+                    <td>1.5–2.0</td>
+                    <td>75.40%</td>
+                    <td>73.81%</td>
+                    <td>+1.58 pp</td>
+                  </tr>
+                  <tr>
+                    <td>2–3</td>
+                    <td>66.67%</td>
+                    <td>64.46%</td>
+                    <td>+2.21 pp</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              When a target is extremely close, almost everything gets
+              revisited. The FVG label adds essentially nothing below 0.25 ATR.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Session</h2>
+          <div>
+            <ul>
+              <li>Asia: <strong>+0.85 pp</strong></li>
+              <li>London: <strong>+0.66 pp</strong></li>
+              <li>NY premarket: <strong>+0.81 pp</strong></li>
+              <li>NY AM: <strong>−0.08 pp</strong></li>
+              <li>NY lunch: <strong>−0.13 pp</strong></li>
+              <li>NY PM: <strong>~0 pp</strong></li>
+            </ul>
+            <p>
+              The FVG-specific effect was weak during core NY hours in this
+              sample.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Volatility &amp; displacement</h2>
+          <div>
+            <p>
+              60-minute FVG advantage was about
+              <strong>+0.56 pp in low volatility</strong>,
+              <strong>+0.93 pp in normal volatility</strong>, and
+              <strong>+0.32 pp in high volatility</strong>. Stronger
+              displacement showed a modestly larger effect, reaching roughly
+              <strong>+0.90 pp</strong> for the strongest bucket.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Direction &amp; size</h2>
+          <div>
+            <p>
+              Bullish and bearish FVG effects were almost identical:
+              approximately <strong>+0.57 vs +0.59 pp</strong>. Removing tiny
+              gaps did not eliminate the effect; ≥0.10 ATR and ≥0.20 ATR filters
+              remained around <strong>+0.70 pp</strong>.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Conclusion</h2>
+          <div>
+            <div class="research-note">
+              FVG status adds some incremental information, but
+              <strong>distance and market state explain much more</strong>. This
+              supports using FVG as one feature in a larger model rather than as
+              the main explanatory variable.
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Exact implementation</h2>
+          <div>
+            <h3>Deep-1m state definition</h3>
+            <p>
+              This experiment uses a deliberately different, longer state
+              horizon than the multi-timeframe matching script. ATR is a 14-bar
+              mean true range. Trend score is the
+              <strong>60-bar close change divided by current ATR</strong>.
+              Volatility ratio is ATR divided by a
+              <strong>1,380-bar rolling median ATR</strong> with 300-bar minimum
+              warm-up.
+            </p>
+            <h3>Control universe</h3>
+            <p>
+              Controls are valid non-FVG one-minute timestamps outside the roll
+              block and with at least 4,140 future bars available. Each sampled
+              FVG is matched on session, New York hour, volatility regime and
+              trend regime. The FVG's exact direction, width/ATR and
+              distance/ATR are transplanted onto the control timestamp. Seed
+              <code>42</code>; five controls per FVG.
+            </p>
+            <h3>Distance strata</h3>
+            <p>
+              60-minute touch outcomes are grouped by initial distance:
+              &lt;0.25, 0.25–0.50, 0.50–0.75, 0.75–1, 1–1.5, 1.5–2, 2–3 and 3+
+              ATR. The farthest cell is reported but treated cautiously because
+              its event count is small.
+            </p>
+            <h3>Other strata</h3>
+            <p>
+              Separate tables are generated for gap width/ATR, session,
+              bullish/bearish direction, volatility bucket, trend bucket,
+              displacement-body/ATR and calendar year. Minimum-size sensitivity
+              repeats touch/midpoint/full-fill results for all gaps, ≥1 tick, ≥2
+              ticks, ≥0.05 ATR, ≥0.10 ATR and ≥0.20 ATR.
+            </p>
+            <h3>Logistic regression</h3>
+            <p>
+              The binary 60-minute touch dataset combines real FVG observations
+              with synthetic controls. Predictors are <code>is_fvg</code>,
+              distance/ATR, width/ATR, volatility ratio, trend score, direction,
+              and sine/cosine transforms of minute-of-day. The frozen
+              implementation uses
+              <code>LogisticRegression(max_iter=200, C=1e6)</code>; the FVG odds
+              ratio is <code>exp(beta_is_fvg)</code>.
+            </p>
+            <h3>Interpretation safeguard</h3>
+            <p>
+              The model is not presented as a causal estimator. Its purpose is
+              narrower: determine whether the binary FVG label still contains
+              incremental information after several obvious covariates are
+              present, and compare its magnitude with variables such as
+              distance.
+            </p>
+            <p>
+              <a
+                class="button button--ghost"
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_final_fast.py"
+                >View exact controlled model ↗</a
+              >
+              <a
+                class="button button--ghost"
+                href="/reproducibility/fvg-predictive-strength/reference_results/deep1m_distance.csv"
+                >Distance CSV ↗</a
+              >
+              <a
+                class="button button--ghost"
+                href="/reproducibility/fvg-predictive-strength/reference_results/deep1m_session.csv"
+                >Session CSV ↗</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Exact controlled analysis</h2>
+          <div>
+            <ol class="method-list">
+              <li>
+                Run the deep 1m matched-control study and retain the matched
+                real FVGs plus five-control sets.
+              </li>
+              <li>
+                Use the 60-minute touch outcome as the common dependent variable
+                for the subgroup tables.
+              </li>
+              <li>
+                Stratify the matched FVG sample by ATR-normalized starting
+                distance, ATR-normalized width, session, direction, volatility
+                regime, trend regime, displacement-body size and calendar year.
+              </li>
+              <li>
+                Within each subgroup, compare the real FVG touch rate with all
+                controls belonging to those parent events.
+              </li>
+              <li>
+                Repeat the comparison under minimum gap-size filters: any, ≥1
+                tick, ≥2 ticks, ≥0.05 ATR, ≥0.10 ATR and ≥0.20 ATR.
+              </li>
+              <li>
+                Build one combined FVG/control modeling table for the 60-minute
+                touch logistic regression.
+              </li>
+              <li>
+                Model features are: FVG indicator, distance/ATR, width/ATR,
+                volatility ratio, trend score, direction, plus cyclical
+                sine/cosine encodings of time of day.
+              </li>
+              <li>
+                Fit near-unregularized logistic regression (<code>C=1e6</code>)
+                and report <code>exp(beta_FVG)</code> as the FVG odds ratio.
+              </li>
+            </ol>
+            <p>
+              The logistic model is not used as a trading strategy. It is a
+              diagnostic: does the FVG indicator remain non-zero once obvious
+              state variables are present?
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Reproduce it</h2>
+          <div>
+            <pre
+              aria-label="Reproduction commands; scroll horizontally if needed"
+              class="research-code"
+              tabindex="0"
+            ><code>python scripts/run_original.py detailed-1m</code></pre>
+            <p>
+              Key outputs include <code>strat_distance.csv</code>,
+              <code>strat_session.csv</code>, <code>strat_volatility.csv</code>,
+              <code>strat_displacement.csv</code>,
+              <code>sensitivity.csv</code> and <code>logistic_60m.json</code>.
+            </p>
+            <div class="source-links">
+              <a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_final_fast.py"
+                >Canonical controlled-analysis source ↗</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Navigate</h2>
+          <div>
+            <nav aria-label="Experiment navigation" class="subpage-nav">
+              <a href="../00-methodology/">Methods</a
+              ><a href="../01-raw-fill/">Raw fill</a
+              ><a href="../02-matched-attraction/">Attraction</a
+              ><a href="../03-age-decay/">Age decay</a
+              ><a href="../04-continuation/">Continuation</a
+              ><a href="../05-retest-reaction/">Retest</a
+              ><a href="../06-midpoint/">CE</a
+              ><a href="../07-body-acceptance/">Body acceptance</a
+              ><a aria-current="page" href="../08-controls-regimes/">Controls</a
+              ><a href="../09-out-of-sample/">OOS</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>
+          t8pium<span class="brand-period">.</span>
+          <span class="footer-location">Dubai, UAE</span>
+        </p>
+        <nav aria-label="Footer" class="footer-links">
+          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a
+          ><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
+          ><a href="/">Back to portfolio ↑</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

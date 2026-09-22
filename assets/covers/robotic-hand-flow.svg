@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+<title id="title">Computer-vision robotic hand: system sketch</title>
+<desc id="desc">A webcam supplies frames to Python. MediaPipe landmarks are mapped to motion values and sent over serial to Arduino and the servos.</desc>
+<rect width="800" height="450" fill="#12161b"/>
+<g font-family="monospace" fill="#939aa4" font-size="14"><text x="42" y="48">VISION → MOTION</text><text x="758" y="48" text-anchor="end">SYSTEM SKETCH</text></g>
+<g fill="none" stroke="#e1a75d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M145 328 L116 294 L83 254 L67 224 L79 215 L108 244 L123 252 L111 166 Q112 150 125 158 L146 230 L144 115 Q150 98 160 114 L172 229 L182 126 Q189 111 199 127 L201 235 L220 165 Q229 152 236 168 L221 281 L204 328 Z"/>
+<path d="M147 308L131 269L156 249L183 247L205 263M131 269L83 235M156 249L155 132M183 247L191 142M205 263L227 181" stroke="#555d68"/>
+<path d="M270 223H329M321 215L329 223L321 231M500 223H557M549 215L557 223L549 231"/>
+</g>
+<g fill="#e1a75d"><circle cx="147" cy="308" r="4"/><circle cx="131" cy="269" r="4"/><circle cx="156" cy="249" r="4"/><circle cx="183" cy="247" r="4"/><circle cx="205" cy="263" r="4"/></g>
+<g fill="none" stroke="#555d68"><rect x="345" y="174" width="140" height="98" rx="4"/><rect x="575" y="174" width="180" height="98" rx="4"/></g>
+<g font-family="sans-serif" text-anchor="middle" fill="#f4f1ea" font-size="23"><text x="415" y="216">Python</text><text x="665" y="216">Arduino</text></g>
+<g font-family="monospace" text-anchor="middle" fill="#939aa4" font-size="14"><text x="415" y="247">map angles</text><text x="665" y="247">drive servos</text><text x="529" y="203" font-size="12">serial</text><text x="153" y="370">webcam landmarks</text></g>
+<path d="M42 400H758" stroke="#2b3037"/><text x="42" y="427" fill="#939aa4" font-family="monospace" font-size="13">Capture. Map. Move. Calibrate.</text>
+</svg>

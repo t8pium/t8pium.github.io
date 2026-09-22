@@ -1,4 +1,169 @@
 <!doctype html>
+
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>What broke, what changed | t8pium</title><link rel="icon" href="../../assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../style.css?v=5"><link rel="stylesheet" href="../../gallery.css?v=5"></head>
-<body><main id="main" class="project-page"><section class="page-hero"><div class="shell page-hero__grid"><div><a class="back-link" href="../../#writing">&larr; Back to writing gallery</a><span class="page-kicker">Writing / Build logs</span><h1>What broke, what changed</h1><p>Project notes that preserve the decision trail: the failed assumptions, fixes, compromises, and next versions.</p></div><aside class="page-panel"><div class="page-panel__cover gallery-card__cover"><div class="cover-mark cover-mark--small">LOG</div></div><div class="page-panel__body"><dl><div><dt>Mode</dt><dd>Project documentation</dd></div><div><dt>Focus</dt><dd>Debugging and iteration</dd></div></dl></div></aside></div></section><section class="page-content shell"><div class="page-section-grid"><h2>Core question</h2><div><p>What actually happened between the idea and the working version?</p></div></div><div class="page-section-grid"><h2>What this studies</h2><div><ul><li>The first assumption that failed.</li><li>The bug that forced a redesign.</li><li>The tradeoff that made the prototype simpler but more reliable.</li><li>The next version that became obvious only after building.</li></ul></div></div><div class="page-section-grid"><h2>Use</h2><div><p>Build logs make projects more believable because they show the path, not just the final screenshot.</p></div></div></section></main></body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>What broke, what changed | t8pium</title>
+    <link href="/assets/logo-mark.svg" rel="icon" type="image/svg+xml" />
+    <link href="/style.css?v=10" rel="stylesheet" />
+    <script defer="" src="/script.js?v=14"></script>
+    <meta
+      content="Working outline: Project notes that preserve the decision trail: the failed assumptions, fixes, compromises, and next versions."
+      name="description"
+    />
+    <link href="https://t8pium.github.io/writing/build-logs/" rel="canonical" />
+    <meta content="#0b0d10" name="theme-color" />
+    <meta content="article" property="og:type" />
+    <meta content="t8pium" property="og:site_name" />
+    <meta content="What broke, what changed | t8pium" property="og:title" />
+    <meta
+      content="Working outline: Project notes that preserve the decision trail: the failed assumptions, fixes, compromises, and next versions."
+      property="og:description"
+    />
+    <meta
+      content="https://t8pium.github.io/writing/build-logs/"
+      property="og:url"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="t8pium — I build tools. I test ideas. Python, robotics and market research."
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="What broke, what changed | t8pium" name="twitter:title" />
+    <meta
+      content="Working outline: Project notes that preserve the decision trail: the failed assumptions, fixes, compromises, and next versions."
+      name="twitter:description"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      name="twitter:image"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <nav aria-label="Primary navigation" class="nav shell">
+        <a aria-label="t8pium — home" class="brand" href="/"
+          ><img
+            alt=""
+            decoding="async"
+            height="32"
+            src="/assets/logo-mark.svg"
+            width="32"
+          /><span>t8pium<span class="brand-period">.</span></span></a
+        >
+        <button
+          aria-controls="navMenu"
+          aria-expanded="false"
+          class="nav-toggle"
+          hidden=""
+          id="navToggle"
+          type="button"
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a aria-current="location" href="/#writing">Notes</a></li>
+          <li><a href="/#social">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="project-page writing-page" id="main" tabindex="-1">
+      <section class="page-hero">
+        <div class="shell page-hero__grid">
+          <div>
+            <a class="back-link" href="../../#writing">← Back to notes</a
+            ><span class="page-kicker">Working outline / Build logs</span>
+            <h1>What broke, what changed</h1>
+            <p>
+              Project notes that preserve the decision trail: the failed
+              assumptions, fixes, compromises, and next versions.
+            </p>
+            <p class="status-note">
+              Working outline. This page records the question and planned
+              direction; it is not a finished essay.
+            </p>
+          </div>
+          <aside class="page-panel">
+            <div class="page-panel__cover gallery-card__cover">
+              <div class="cover-mark cover-mark--small">LOG</div>
+            </div>
+            <div class="page-panel__body">
+              <dl>
+                <div>
+                  <dt>Mode</dt>
+                  <dd>Project documentation</dd>
+                </div>
+                <div>
+                  <dt>Focus</dt>
+                  <dd>Debugging and iteration</dd>
+                </div>
+              </dl>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section class="page-content shell">
+        <div class="page-section-grid">
+          <h2>Core question</h2>
+          <div>
+            <p>
+              What actually happened between the idea and the working version?
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>What this studies</h2>
+          <div>
+            <ul>
+              <li>The first assumption that failed.</li>
+              <li>The bug that forced a redesign.</li>
+              <li>
+                The tradeoff that made the prototype simpler but more reliable.
+              </li>
+              <li>The next version that became obvious only after building.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Use</h2>
+          <div>
+            <p>
+              Build logs make projects more believable because they show the
+              path, not just the final screenshot.
+            </p>
+          </div>
+        </div>
+        <nav aria-label="Other working outlines" class="subpage-nav">
+          <a href="/writing/character-psychology/">Character psychology</a
+          ><a href="/writing/decision-making/">Decision-making</a
+          ><a href="/writing/story-structure/">Story structure</a
+          ><a href="/writing/systems-thinking/">Systems thinking</a
+          ><a href="/writing/technical-notes/">Technical notes</a>
+        </nav>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>
+          t8pium<span class="brand-period">.</span>
+          <span class="footer-location">Dubai, UAE</span>
+        </p>
+        <nav aria-label="Footer" class="footer-links">
+          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a
+          ><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
+          ><a href="/">Back to portfolio ↑</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

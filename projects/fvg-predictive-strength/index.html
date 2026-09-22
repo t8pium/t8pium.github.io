@@ -1,54 +1,1009 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0d10"><meta name="description" content="A quantitative FVG study with frozen CME MNQ evidence and a public 2010–2026 Nasdaq-100 replication platform."><title>Fair Value Gaps — Predictive Strength Study | t8pium</title><link rel="icon" href="../../assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../style.css?v=8"><link rel="stylesheet" href="../../gallery.css?v=9"><link rel="stylesheet" href="../../polish.css?v=1"><link rel="stylesheet" href="../../research.css?v=1"></head>
-<body><main id="main" class="project-page research-page">
-<section class="page-hero"><div class="shell page-hero__grid"><div><a class="back-link" href="../../#quant">← Back to quantitative projects</a><p class="page-eyebrow">Quantitative research / Market microstructure</p><h1>Do Fair Value Gaps predict price?</h1><p>The core published study is a falsification-style analysis of MNQ futures from 2020–2026. A separate public 2010–2026 Nasdaq-100 proxy track now repeats the same hypotheses over a much longer price history without replacing the futures evidence.</p><div class="verdict"><p><b>Published MNQ conclusion:</b> FVGs are not statistically empty, but their predictive information is weak, short-lived, and context-dependent. Fresh lower-timeframe gaps show a small attraction effect, while first-touch rejection is modestly stronger than at comparable ordinary zones. The evidence does <strong>not</strong> support a persistent magnetic force or an FVG-only trading edge.</p></div><div class="metric-strip" aria-label="Study conclusion at a glance"><div><span>Fresh 1m attraction</span><strong>+3.03 pp @ 5m</strong></div><div><span>First-touch reaction</span><strong>≈ +1–2 pp</strong></div><div><span>Strongest condition</span><strong>Freshness + LTF</strong></div></div></div><aside class="page-panel"><div class="page-panel__cover research-cover-card"><img src="../../assets/covers/fvg-research-cover.svg" alt="Stylized chart showing fair value gap zones and a price path"></div><div class="page-panel__body"><dl><div><dt>Market</dt><dd>CME MNQ futures</dd></div><div><dt>Period</dt><dd>2020-01-01 → 2026-07-10</dd></div><div><dt>Base data</dt><dd>2,303,483 one-minute bars</dd></div><div><dt>Method</dt><dd>Matched controls + chronological holdouts</dd></div><div><dt>Research status</dt><dd>Published MNQ + public replication platform</dd></div></dl></div></aside></div></section>
-<section class="page-content shell">
-<div class="page-section-grid"><h2>Research question</h2><div><p><strong>Do mechanically defined Fair Value Gaps contain incremental information about where MNQ price travels next, or can their apparent behavior be explained by ordinary market structure?</strong></p><p>The study deliberately separates <strong>predictability</strong> from <strong>profitability</strong>. A pattern can shift a probability by a few percentage points and still be too weak to trade after costs, stop geometry, adverse excursion, and model-selection error.</p><div class="research-kpis"><div class="research-kpi"><strong>2.30M</strong><span>1-minute bars</span></div><div class="research-kpi"><strong>454k+</strong><span>1m FVG events</span></div><div class="research-kpi"><strong>27</strong><span>contracts represented</span></div><div class="research-kpi"><strong>6.5 yrs</strong><span>sample length</span></div></div></div></div>
-<div class="page-section-grid"><h2>Mechanical definition</h2><div><p>For completed candles A = t−2, B = t−1, C = t:</p><ul><li><strong>Bullish FVG:</strong> Low[C] &gt; High[A]. Zone = High[A] → Low[C].</li><li><strong>Bearish FVG:</strong> High[C] &lt; Low[A]. Zone = High[C] → Low[A].</li><li>The FVG exists only after candle C has closed. No experiment may act as though the gap existed earlier.</li></ul><p>The active research series selected the highest-volume listed MNQ contract for each CME trading date and excluded roll neighborhoods from event/control formation to avoid synthetic roll gaps.</p></div></div>
-<div class="page-section-grid"><h2>Headline findings</h2><div><div class="research-table-wrap"><table class="research-table"><thead><tr><th>Claim tested</th><th>Finding</th><th>Interpretation</th></tr></thead><tbody>
-<tr><td>“Almost all FVGs fill”</td><td><strong>~99.88% eventually touched</strong></td><td>Misleading alone: matched ordinary zones also approach ~99% over long horizons.</td></tr>
-<tr><td>Short-term attraction</td><td><strong>+3.03 pp at 5m</strong> in the deep 1m placebo test</td><td>Real but small; decays quickly.</td></tr>
-<tr><td>Age decay</td><td><strong>+3.09 pp</strong> after surviving 1 bar, ~0/negative after several more</td><td>Fresh gaps carry more information than old ones.</td></tr>
-<tr><td>Formation continuation</td><td>Mixed signs across TF/horizon</td><td>No stable “FVG formed → keep going” rule.</td></tr>
-<tr><td>Retest reaction</td><td><strong>+0.91 to +2.32 pp</strong> across 1m–4H</td><td>Small barrier/reaction effect is more consistent than magnetism.</td></tr>
-<tr><td>Exact midpoint / CE</td><td>Positive on some TFs, flat on others</td><td>Not a universal magic level.</td></tr>
-<tr><td>Exact-50 body close</td><td><strong>36.4% WR</strong> on clean ≥1H sample</td><td>Does not support exact CE as a standalone entry.</td></tr>
-<tr><td>4H 45–50% body close</td><td><strong>+0.286R, N=49</strong></td><td>Interesting but hypothesis-generating due to multiple testing.</td></tr>
-<tr><td>Controlled 60m model</td><td><strong>FVG OR ≈ 1.079</strong></td><td>FVG adds some information; distance dominates.</td></tr>
-<tr><td>Out-of-sample</td><td>1m/5m short-horizon effect persisted; HTF/long horizon weakened</td><td>Best evidence is short-lived lower-timeframe structure.</td></tr>
-</tbody></table></div></div></div>
-<div class="page-section-grid"><h2>What the fill rate hides</h2><div><p>The raw result sounds dramatic: about <strong>90.9%</strong> of 1m FVGs were touched within 60 minutes, about <strong>98.2%</strong> within roughly a trading day, and about <strong>99.88%</strong> were eventually revisited somewhere later in the dataset.</p><p>But the matched controls are the important part. At roughly three trading days, FVG touch probability was about <strong>98.95%</strong> while comparable ordinary zones were about <strong>98.97%</strong>. The long-horizon “magnet” disappears.</p><div class="research-note"><strong>Core lesson:</strong> a nearby price level can have an enormous eventual revisit rate without containing unique information. The relevant statistic is the incremental difference versus a baseline, not the raw fill percentage.</div></div></div>
-<div class="page-section-grid"><h2>Where the effect is strongest</h2><div><p>The cleanest attraction pattern appeared immediately after lower-timeframe formation. In the expanded matched study, 1m FVGs were reached <strong>+3.43 percentage points</strong> more often than controls by three bars and <strong>+2.70 pp</strong> more often by five bars. On 5m the five-bar effect was <strong>+2.16 pp</strong>.</p><p>The effect then decayed. In the deeper 1m study, the difference fell from <strong>+3.03 pp at 5 minutes</strong> to <strong>+0.58 pp at 60 minutes</strong>, approximately zero by one trading day, and slightly negative by roughly three trading days.</p><p>Higher-timeframe attraction did not scale upward. The 4H matched attraction test was negative at every tested early horizon, including <strong>−4.79 pp after one 4H bar</strong>.</p></div></div>
-<div class="page-section-grid"><h2>Reaction, not gravity</h2><div><p>A different experiment waited until price returned to the FVG and then compared its reaction with a matched ordinary zone. Here the direction was positive across every tested timeframe: roughly <strong>+2.32 pp on 1m</strong>, <strong>+1.22 pp on 5m</strong>, <strong>+1.41 pp on 15m</strong>, <strong>+0.91 pp on 1H</strong>, and <strong>+1.55 pp on 4H</strong>.</p><p>That is small, but it suggests the more stable property may be <strong>how price behaves at an FVG</strong>, not a persistent force pulling price toward it.</p></div></div>
-<div class="page-section-grid"><h2>CE / midpoint</h2><div><p>The midpoint tests were deliberately separated from the general retest tests. Starting from the midpoint and racing the near edge against the far edge produced FVG-vs-control advantages of <strong>+2.45 pp on 5m</strong>, <strong>+2.64 pp on 15m</strong>, and <strong>+4.39 pp on 4H</strong>, while 1m and 1H were weak.</p><p>A separate execution study found that an <strong>exact 50% body close</strong> was not strong. The cleaner ≥1H sample had only 51 exact-midpoint closes and an unambiguous win rate of roughly <strong>36.4%</strong>.</p><p>The exploratory anomaly was on 4H: body closes <strong>45–50% deep</strong> into the gap produced 33 wins / 16 losses, <strong>67.35% WR</strong> and <strong>+0.286R/trade</strong>. Because that cell was discovered after scanning many timeframes and bands, it is treated as a new hypothesis—not evidence of a confirmed edge.</p></div></div>
-<div class="page-section-grid"><h2>Controlled model</h2><div><p>A 60-minute logistic model used FVG status alongside ATR-normalized distance, width, volatility, trend, time of day, and direction. The FVG indicator corresponded to an odds ratio of about <strong>1.079</strong>.</p><p>That sounds larger than the raw probability effect because the baseline touch probability is already high. In probability terms, the advantage remained only around half to one percentage point at 60 minutes.</p><p><strong>Distance was substantially more important.</strong> Zones within 0.25 ATR were touched around 97.6% of the time whether or not they were FVGs. The FVG label matters less than geometry when the target is already extremely close.</p></div></div>
-<div class="page-section-grid"><h2>Out-of-sample test</h2><div><div class="research-table-wrap"><table class="research-table"><thead><tr><th>Timeframe</th><th>First 70%</th><th>Last 30%</th></tr></thead><tbody><tr><td>1m, 5 native bars</td><td class="delta-pos">+3.06 pp</td><td class="delta-pos">+1.86 pp</td></tr><tr><td>5m, 5 native bars</td><td class="delta-pos">+2.10 pp</td><td class="delta-pos">+2.31 pp</td></tr><tr><td>15m</td><td>+0.69 pp</td><td>+0.49 pp</td></tr><tr><td>1H</td><td>+1.02 pp</td><td class="delta-neg">−0.38 pp</td></tr><tr><td>4H</td><td class="delta-neg">−0.71 pp</td><td class="delta-neg">−2.09 pp</td></tr></tbody></table></div><p>The lower-timeframe short-horizon phenomenon persisted better than the higher-timeframe effect. In a separate 1m 60-minute holdout, the edge collapsed from <strong>+0.79 pp</strong> in the first 70% to only <strong>+0.08 pp</strong> in the later 30%.</p></div></div>
-<div class="page-section-grid"><h2>Temporal regime study</h2><div><p>A newer exploratory extension on the same MNQ history separates <strong>attraction</strong> from <strong>reaction/rejection</strong> and asks when each behavior is strongest.</p><div class="research-table-wrap"><table class="research-table"><thead><tr><th>Outcome</th><th>FVG</th><th>Matched control</th><th>Difference</th></tr></thead><tbody><tr><td>60m near-edge attraction</td><td><strong>90.98%</strong></td><td>89.93%</td><td class="delta-pos"><strong>+1.05 pp</strong></td></tr><tr><td>First-touch rejection</td><td><strong>52.66%</strong></td><td>50.93%</td><td class="delta-pos"><strong>+1.93 pp</strong></td></tr><tr><td>3-bar move away</td><td><strong>+0.020 ATR</strong></td><td>−0.007 ATR</td><td class="delta-pos"><strong>+0.032 ATR</strong></td></tr></tbody></table></div><p>The main result is that <strong>attraction is more regime-dependent</strong>, while <strong>reaction/rejection is smaller but more temporally stable</strong>. Attraction changed more noticeably across year, quarter, session and native timeframe; rejection was more consistent across years, months, weekdays and sessions.</p><p>The strongest timing variable remains <strong>FVG age</strong>: the published 1m incremental attraction was +3.09 pp from 1→3 bars, approximately flat by 3→10 bars, and negative by 10→20 bars.</p><p>There is no evidence that FVG behavior suddenly started working recently. The matched 60m attraction premium was +1.56 pp in 2020, +1.35 pp in 2021, +0.44 pp in 2022, +1.18 pp in 2023, +1.28 pp in 2024, +0.44 pp in 2025 and +1.08 pp in partial 2026.</p><div class="research-note"><strong>Temporal conclusion:</strong> prioritize freshness, native timeframe, current regime and session. Exact weekday/month/hour filters remain exploratory unless they survive preregistered later-data testing.</div><div class="source-links"><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/TEMPORAL_ATTRACTION_REACTION_STUDY.md" target="_blank" rel="noopener">Full temporal study ↗</a><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/research_v2/findings/temporal_attraction_reaction_2026-09-20.json" target="_blank" rel="noopener">Machine-readable findings ↗</a></div></div></div>
-<div class="page-section-grid"><h2>Temporal diagnostics</h2><div><p>The temporal extension went beyond year/session averages and tested whether the matched FVG premium actually changes across calendar partitions. Attraction showed clear heterogeneity by <strong>year (p≈0.0004)</strong>, <strong>session (p≈0.014)</strong>, and <strong>quarter (p≈0.019)</strong>. Rejection was much more stable: year p≈0.29, session p≈0.79, weekday p≈0.92.</p><p>Monthly trend estimates also argue against a recent “FVGs started working” story: attraction premium <strong>r≈−0.23</strong>, rejection premium r≈−0.12, and 3-bar reaction magnitude r≈−0.25 versus time.</p><div class="research-table-wrap"><table class="research-table"><thead><tr><th>Diagnostic extreme</th><th>Observed value</th><th>Interpretation</th></tr></thead><tbody><tr><td>2024-01-08 week attraction</td><td class="delta-pos"><strong>+6.17 pp</strong></td><td>Short-lived strong attraction regime</td></tr><tr><td>2020-10-12 week attraction</td><td class="delta-neg"><strong>−4.37 pp</strong></td><td>FVG label underperformed matched zones</td></tr><tr><td>2020-05-18 week rejection</td><td class="delta-pos"><strong>+14.8 pp</strong></td><td>Large local reaction regime</td></tr><tr><td>2022-08-08 week rejection</td><td class="delta-neg"><strong>−14.5 pp</strong></td><td>Large local failure regime</td></tr></tbody></table></div><p>Individual days were even more extreme: raw 60m attraction ranged from roughly <strong>82%</strong> to <strong>97%</strong> in highlighted days, while raw rejection examples ranged from <strong>38.46%</strong> to <strong>68.61%</strong>. These are treated as regime diagnostics rather than recurring calendar rules.</p><div class="research-note"><strong>Research hierarchy:</strong> freshness/age → native timeframe → market regime/year/quarter → session → hour as exploratory → weekday/month weak → isolated day/week/day-of-month spikes as hypothesis generation only.</div></div></div><div class="page-section-grid"><h2>Research platform & audit layer</h2><div><p>The repository evolved into a full reproducible research platform rather than a collection of scripts. Published v1 remains hash-locked, while the local Research Lab adds a Quick Demo, resumable reproduction, event-level visual inspection, dataset preflight, diagnostics, Stability Atlas, power/MDE analysis, economic-significance tooling, run provenance, report export and release packaging.</p><p>A separate <strong>Research v2</strong> track implements corrected full-horizon eligibility, contract-boundary censoring, parent-paired age decay, CME-trade-date clustering, walk-forward controls, FDR-corrected CE re-inference, negative-control placebos and matching ablations.</p><p><strong>Research Platform v5</strong> adds a second long-history public-data track and keeps its outputs isolated from the frozen MNQ study. The current cross-platform verification suite passes <strong>78 tests</strong> on Windows Python 3.12, Ubuntu Python 3.11 and Ubuntu Python 3.13.</p><div class="source-links"><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/CHAT_RESEARCH_ARCHIVE_2026-09-20.md" target="_blank" rel="noopener">Full chat research & platform archive ↗</a><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/PLATFORM_GUIDE.md" target="_blank" rel="noopener">Research Platform guide ↗</a><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/SCIENTIFIC_AUDIT.md" target="_blank" rel="noopener">Scientific audit ↗</a></div></div></div>
-<div class="page-section-grid"><h2>Public Nasdaq replication</h2><div><p>The project now has a second research track built around <strong>5,046,180 one-minute NSX/USD bars</strong> spanning <strong>2010-11-14 → 2026-09-11</strong>. This gives the FVG hypotheses a much longer set of market regimes to survive or fail on than the original 2020–2026 MNQ window.</p><div class="research-kpis"><div class="research-kpi"><strong>5.05M</strong><span>public 1m bars</span></div><div class="research-kpi"><strong>~16 yrs</strong><span>history</span></div><div class="research-kpi"><strong>9</strong><span>experiment families</span></div><div class="research-kpi"><strong>v5</strong><span>research platform</span></div></div><p>The v5 Research Lab can audit and normalize the dataset, query it directly with DuckDB, display date-filtered candlesticks with mechanically detected FVG overlays, rerun an individual experiment, or execute the full 12-stage replication and build machine-readable summaries and a separate report.</p><div class="research-note"><strong>Status:</strong> the infrastructure is complete, but new NSX/USD experiment statistics are not presented here until the full long-history run has actually completed and been reviewed. The “live” explorer is local after the reader prepares the dataset; the raw 365 MB market file is not hosted on this site. NSX/USD is an index-style quote feed—not CME NQ/MNQ futures—and the preserved CE/body method carries an MNQ-derived 0.25-point convention, so futures volume, roll, exact-tick and execution claims remain out of scope.</div><p>The repository also does not assume permission to redistribute HistData-derived market files. Readers prepare the free source locally; a release-asset installer exists only for use if redistribution permission is explicitly confirmed.</p><div class="source-links"><a href="../../fvg-predictive-strength/public-nasdaq/">Public Nasdaq status report ↗</a><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/PUBLIC_NASDAQ_RESEARCH.md" target="_blank" rel="noopener">Public Nasdaq research track ↗</a><a href="https://github.com/t8pium/fvg-predictive-strength" target="_blank" rel="noopener">Research Platform v5 ↗</a></div></div></div>
-<div class="page-section-grid"><h2>Code & reproduction</h2><div><p>The full experiment code is public. The original analysis scripts are preserved unchanged under <code>src/original/</code>, while a portability runner patches only machine-specific input/output paths at runtime. The market data itself is not redistributed; readers can regenerate the same MNQ parent-symbol OHLCV input with their own Databento access.</p><pre class="research-code"><code>git clone https://github.com/t8pium/fvg-predictive-strength.git\ncd fvg-predictive-strength
-pip install -r requirements.txt
-pip install -e .
 
-# build the active-contract dataset
-python scripts/download_databento.py
-python scripts/prepare_active_contract.py
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta
+      content="A quantitative FVG study with frozen CME MNQ evidence and a public 2010–2026 Nasdaq-100 replication platform."
+      name="description"
+    />
+    <title>Fair Value Gaps — Predictive Strength Study | t8pium</title>
+    <link href="/assets/logo-mark.svg" rel="icon" type="image/svg+xml" />
+    <link href="/style.css?v=10" rel="stylesheet" />
+    <link href="/research.css?v=2" rel="stylesheet" />
+    <script defer="" src="/script.js?v=14"></script>
+    <link
+      href="https://t8pium.github.io/projects/fvg-predictive-strength/"
+      rel="canonical"
+    />
+    <meta content="#0b0d10" name="theme-color" />
+    <meta content="article" property="og:type" />
+    <meta content="t8pium" property="og:site_name" />
+    <meta
+      content="Fair Value Gaps — Predictive Strength Study | t8pium"
+      property="og:title"
+    />
+    <meta
+      content="A quantitative FVG study with frozen CME MNQ evidence and a public 2010–2026 Nasdaq-100 replication platform."
+      property="og:description"
+    />
+    <meta
+      content="https://t8pium.github.io/projects/fvg-predictive-strength/"
+      property="og:url"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="t8pium — I build tools. I test ideas. Python, robotics and market research."
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta
+      content="Fair Value Gaps — Predictive Strength Study | t8pium"
+      name="twitter:title"
+    />
+    <meta
+      content="A quantitative FVG study with frozen CME MNQ evidence and a public 2010–2026 Nasdaq-100 replication platform."
+      name="twitter:description"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      name="twitter:image"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <nav aria-label="Primary navigation" class="nav shell">
+        <a aria-label="t8pium — home" class="brand" href="/"
+          ><img
+            alt=""
+            decoding="async"
+            height="32"
+            src="/assets/logo-mark.svg"
+            width="32"
+          /><span>t8pium<span class="brand-period">.</span></span></a
+        >
+        <button
+          aria-controls="navMenu"
+          aria-expanded="false"
+          class="nav-toggle"
+          hidden=""
+          id="navToggle"
+          type="button"
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a aria-current="location" href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#writing">Notes</a></li>
+          <li><a href="/#social">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="project-page research-page" id="main" tabindex="-1">
+      <section class="page-hero">
+        <div class="shell page-hero__grid">
+          <div>
+            <a class="back-link" href="../../#quant"
+              >← Back to quantitative projects</a
+            >
+            <p class="page-eyebrow">
+              Quantitative research / Market microstructure
+            </p>
+            <h1>Do Fair Value Gaps predict price?</h1>
+            <p>
+              The core published study is a falsification-style analysis of MNQ
+              futures from 2020–2026. A separate public 2010–2026 Nasdaq-100
+              proxy track now repeats the same hypotheses over a much longer
+              price history without replacing the futures evidence.
+            </p>
+            <div class="verdict">
+              <p>
+                <b>Published MNQ conclusion:</b> FVGs are not statistically
+                empty, but their predictive information is weak, short-lived,
+                and context-dependent. Fresh lower-timeframe gaps show a small
+                attraction effect, while first-touch rejection is modestly
+                stronger than at comparable ordinary zones. The evidence does
+                <strong>not</strong> support a persistent magnetic force or an
+                FVG-only trading edge.
+              </p>
+            </div>
+            <div aria-label="Study conclusion at a glance" class="metric-strip">
+              <div>
+                <span>Fresh 1m attraction</span><strong>+3.03 pp @ 5m</strong>
+              </div>
+              <div>
+                <span>First-touch reaction</span><strong>≈ +1–2 pp</strong>
+              </div>
+              <div>
+                <span>Strongest condition</span><strong>Freshness + LTF</strong>
+              </div>
+            </div>
+            <div class="page-actions">
+              <a
+                class="text-link"
+                href="https://github.com/t8pium/fvg-predictive-strength"
+                >Source &amp; local research app →</a
+              ><a class="text-link" href="#experiments">Browse experiments →</a>
+            </div>
+          </div>
+          <aside class="page-panel">
+            <div class="page-panel__cover research-cover-card">
+              <img
+                alt="Stylized chart showing fair value gap zones and a price path"
+                decoding="async"
+                height="900"
+                loading="lazy"
+                src="../../assets/covers/fvg-research-cover.svg"
+                width="1600"
+              />
+            </div>
+            <div class="cover-caption">Project illustration</div>
+            <div class="page-panel__body">
+              <dl>
+                <div>
+                  <dt>Market</dt>
+                  <dd>CME MNQ futures</dd>
+                </div>
+                <div>
+                  <dt>Period</dt>
+                  <dd>2020-01-01 → 2026-07-10</dd>
+                </div>
+                <div>
+                  <dt>Base data</dt>
+                  <dd>2,303,483 one-minute bars</dd>
+                </div>
+                <div>
+                  <dt>Method</dt>
+                  <dd>Matched controls + chronological holdouts</dd>
+                </div>
+                <div>
+                  <dt>Research status</dt>
+                  <dd>Published MNQ + public replication platform</dd>
+                </div>
+              </dl>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section class="page-content shell">
+        <div class="page-section-grid">
+          <h2>Research question</h2>
+          <div>
+            <p>
+              <strong
+                >Do mechanically defined Fair Value Gaps contain incremental
+                information about where MNQ price travels next, or can their
+                apparent behavior be explained by ordinary market
+                structure?</strong
+              >
+            </p>
+            <p>
+              The study deliberately separates
+              <strong>predictability</strong> from
+              <strong>profitability</strong>. A pattern can shift a probability
+              by a few percentage points and still be too weak to trade after
+              costs, stop geometry, adverse excursion, and model-selection
+              error.
+            </p>
+            <div class="research-kpis">
+              <div class="research-kpi">
+                <strong>2.30M</strong><span>1-minute bars</span>
+              </div>
+              <div class="research-kpi">
+                <strong>454k+</strong><span>1m FVG events</span>
+              </div>
+              <div class="research-kpi">
+                <strong>27</strong><span>contracts represented</span>
+              </div>
+              <div class="research-kpi">
+                <strong>6.5 yrs</strong><span>sample length</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Mechanical definition</h2>
+          <div>
+            <p>For completed candles A = t−2, B = t−1, C = t:</p>
+            <ul>
+              <li>
+                <strong>Bullish FVG:</strong> Low[C] &gt; High[A]. Zone =
+                High[A] → Low[C].
+              </li>
+              <li>
+                <strong>Bearish FVG:</strong> High[C] &lt; Low[A]. Zone =
+                High[C] → Low[A].
+              </li>
+              <li>
+                The FVG exists only after candle C has closed. No experiment may
+                act as though the gap existed earlier.
+              </li>
+            </ul>
+            <p>
+              The active research series selected the highest-volume listed MNQ
+              contract for each CME trading date and excluded roll neighborhoods
+              from event/control formation to avoid synthetic roll gaps.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Headline findings</h2>
+          <div>
+            <p class="table-hint">
+              Scroll the table horizontally on smaller screens.
+            </p>
+            <div
+              aria-label="Headline findings table; scroll horizontally for all columns"
+              class="research-table-wrap"
+              role="region"
+              tabindex="0"
+            >
+              <table class="research-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Claim tested</th>
+                    <th scope="col">Finding</th>
+                    <th scope="col">Interpretation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>“Almost all FVGs fill”</td>
+                    <td><strong>~99.88% eventually touched</strong></td>
+                    <td>
+                      Misleading alone: matched ordinary zones also approach
+                      ~99% over long horizons.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Short-term attraction</td>
+                    <td>
+                      <strong>+3.03 pp at 5m</strong> in the deep 1m placebo
+                      test
+                    </td>
+                    <td>Real but small; decays quickly.</td>
+                  </tr>
+                  <tr>
+                    <td>Age decay</td>
+                    <td>
+                      <strong>+3.09 pp</strong> after surviving 1 bar,
+                      ~0/negative after several more
+                    </td>
+                    <td>Fresh gaps carry more information than old ones.</td>
+                  </tr>
+                  <tr>
+                    <td>Formation continuation</td>
+                    <td>Mixed signs across TF/horizon</td>
+                    <td>No stable “FVG formed → keep going” rule.</td>
+                  </tr>
+                  <tr>
+                    <td>Retest reaction</td>
+                    <td><strong>+0.91 to +2.32 pp</strong> across 1m–4H</td>
+                    <td>
+                      Small barrier/reaction effect is more consistent than
+                      magnetism.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Exact midpoint / CE</td>
+                    <td>Positive on some TFs, flat on others</td>
+                    <td>Not a universal magic level.</td>
+                  </tr>
+                  <tr>
+                    <td>Exact-50 body close</td>
+                    <td><strong>36.4% WR</strong> on clean ≥1H sample</td>
+                    <td>Does not support exact CE as a standalone entry.</td>
+                  </tr>
+                  <tr>
+                    <td>4H 45–50% body close</td>
+                    <td><strong>+0.286R, N=49</strong></td>
+                    <td>
+                      Interesting but hypothesis-generating due to multiple
+                      testing.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Controlled 60m model</td>
+                    <td><strong>FVG OR ≈ 1.079</strong></td>
+                    <td>FVG adds some information; distance dominates.</td>
+                  </tr>
+                  <tr>
+                    <td>Out-of-sample</td>
+                    <td>
+                      1m/5m short-horizon effect persisted; HTF/long horizon
+                      weakened
+                    </td>
+                    <td>
+                      Best evidence is short-lived lower-timeframe structure.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>What the fill rate hides</h2>
+          <div>
+            <p>
+              The raw result sounds dramatic: about <strong>90.9%</strong> of 1m
+              FVGs were touched within 60 minutes, about
+              <strong>98.2%</strong> within roughly a trading day, and about
+              <strong>99.88%</strong> were eventually revisited somewhere later
+              in the dataset.
+            </p>
+            <p>
+              But the matched controls are the important part. At roughly three
+              trading days, FVG touch probability was about
+              <strong>98.95%</strong> while comparable ordinary zones were about
+              <strong>98.97%</strong>. The long-horizon “magnet” disappears.
+            </p>
+            <div class="research-note">
+              <strong>Core lesson:</strong> a nearby price level can have an
+              enormous eventual revisit rate without containing unique
+              information. The relevant statistic is the incremental difference
+              versus a baseline, not the raw fill percentage.
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Where the effect is strongest</h2>
+          <div>
+            <p>
+              The cleanest attraction pattern appeared immediately after
+              lower-timeframe formation. In the expanded matched study, 1m FVGs
+              were reached <strong>+3.43 percentage points</strong> more often
+              than controls by three bars and <strong>+2.70 pp</strong> more
+              often by five bars. On 5m the five-bar effect was
+              <strong>+2.16 pp</strong>.
+            </p>
+            <p>
+              The effect then decayed. In the deeper 1m study, the difference
+              fell from <strong>+3.03 pp at 5 minutes</strong> to
+              <strong>+0.58 pp at 60 minutes</strong>, approximately zero by one
+              trading day, and slightly negative by roughly three trading days.
+            </p>
+            <p>
+              Higher-timeframe attraction did not scale upward. The 4H matched
+              attraction test was negative at every tested early horizon,
+              including <strong>−4.79 pp after one 4H bar</strong>.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Reaction, not gravity</h2>
+          <div>
+            <p>
+              A different experiment waited until price returned to the FVG and
+              then compared its reaction with a matched ordinary zone. Here the
+              direction was positive across every tested timeframe: roughly
+              <strong>+2.32 pp on 1m</strong>, <strong>+1.22 pp on 5m</strong>,
+              <strong>+1.41 pp on 15m</strong>, <strong>+0.91 pp on 1H</strong>,
+              and <strong>+1.55 pp on 4H</strong>.
+            </p>
+            <p>
+              That is small, but it suggests the more stable property may be
+              <strong>how price behaves at an FVG</strong>, not a persistent
+              force pulling price toward it.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>CE / midpoint</h2>
+          <div>
+            <p>
+              The midpoint tests were deliberately separated from the general
+              retest tests. Starting from the midpoint and racing the near edge
+              against the far edge produced FVG-vs-control advantages of
+              <strong>+2.45 pp on 5m</strong>, <strong>+2.64 pp on 15m</strong>,
+              and <strong>+4.39 pp on 4H</strong>, while 1m and 1H were weak.
+            </p>
+            <p>
+              A separate execution study found that an
+              <strong>exact 50% body close</strong> was not strong. The cleaner
+              ≥1H sample had only 51 exact-midpoint closes and an unambiguous
+              win rate of roughly <strong>36.4%</strong>.
+            </p>
+            <p>
+              The exploratory anomaly was on 4H: body closes
+              <strong>45–50% deep</strong> into the gap produced 33 wins / 16
+              losses, <strong>67.35% WR</strong> and
+              <strong>+0.286R/trade</strong>. Because that cell was discovered
+              after scanning many timeframes and bands, it is treated as a new
+              hypothesis—not evidence of a confirmed edge.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Controlled model</h2>
+          <div>
+            <p>
+              A 60-minute logistic model used FVG status alongside
+              ATR-normalized distance, width, volatility, trend, time of day,
+              and direction. The FVG indicator corresponded to an odds ratio of
+              about <strong>1.079</strong>.
+            </p>
+            <p>
+              That sounds larger than the raw probability effect because the
+              baseline touch probability is already high. In probability terms,
+              the advantage remained only around half to one percentage point at
+              60 minutes.
+            </p>
+            <p>
+              <strong>Distance was substantially more important.</strong> Zones
+              within 0.25 ATR were touched around 97.6% of the time whether or
+              not they were FVGs. The FVG label matters less than geometry when
+              the target is already extremely close.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Out-of-sample test</h2>
+          <div>
+            <p class="table-hint">
+              Scroll the table horizontally on smaller screens.
+            </p>
+            <div
+              aria-label="Out-of-sample test table; scroll horizontally for all columns"
+              class="research-table-wrap"
+              role="region"
+              tabindex="0"
+            >
+              <table class="research-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Timeframe</th>
+                    <th scope="col">First 70%</th>
+                    <th scope="col">Last 30%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1m, 5 native bars</td>
+                    <td class="delta-pos">+3.06 pp</td>
+                    <td class="delta-pos">+1.86 pp</td>
+                  </tr>
+                  <tr>
+                    <td>5m, 5 native bars</td>
+                    <td class="delta-pos">+2.10 pp</td>
+                    <td class="delta-pos">+2.31 pp</td>
+                  </tr>
+                  <tr>
+                    <td>15m</td>
+                    <td>+0.69 pp</td>
+                    <td>+0.49 pp</td>
+                  </tr>
+                  <tr>
+                    <td>1H</td>
+                    <td>+1.02 pp</td>
+                    <td class="delta-neg">−0.38 pp</td>
+                  </tr>
+                  <tr>
+                    <td>4H</td>
+                    <td class="delta-neg">−0.71 pp</td>
+                    <td class="delta-neg">−2.09 pp</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The lower-timeframe short-horizon phenomenon persisted better than
+              the higher-timeframe effect. In a separate 1m 60-minute holdout,
+              the edge collapsed from <strong>+0.79 pp</strong> in the first 70%
+              to only <strong>+0.08 pp</strong> in the later 30%.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Temporal regime study</h2>
+          <div>
+            <p>
+              A newer exploratory extension on the same MNQ history separates
+              <strong>attraction</strong> from
+              <strong>reaction/rejection</strong> and asks when each behavior is
+              strongest.
+            </p>
+            <p class="table-hint">
+              Scroll the table horizontally on smaller screens.
+            </p>
+            <div
+              aria-label="Temporal regime study table; scroll horizontally for all columns"
+              class="research-table-wrap"
+              role="region"
+              tabindex="0"
+            >
+              <table class="research-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Outcome</th>
+                    <th scope="col">FVG</th>
+                    <th scope="col">Matched control</th>
+                    <th scope="col">Difference</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>60m near-edge attraction</td>
+                    <td><strong>90.98%</strong></td>
+                    <td>89.93%</td>
+                    <td class="delta-pos"><strong>+1.05 pp</strong></td>
+                  </tr>
+                  <tr>
+                    <td>First-touch rejection</td>
+                    <td><strong>52.66%</strong></td>
+                    <td>50.93%</td>
+                    <td class="delta-pos"><strong>+1.93 pp</strong></td>
+                  </tr>
+                  <tr>
+                    <td>3-bar move away</td>
+                    <td><strong>+0.020 ATR</strong></td>
+                    <td>−0.007 ATR</td>
+                    <td class="delta-pos"><strong>+0.032 ATR</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The main result is that
+              <strong>attraction is more regime-dependent</strong>, while
+              <strong
+                >reaction/rejection is smaller but more temporally
+                stable</strong
+              >. Attraction changed more noticeably across year, quarter,
+              session and native timeframe; rejection was more consistent across
+              years, months, weekdays and sessions.
+            </p>
+            <p>
+              The strongest timing variable remains <strong>FVG age</strong>:
+              the published 1m incremental attraction was +3.09 pp from 1→3
+              bars, approximately flat by 3→10 bars, and negative by 10→20 bars.
+            </p>
+            <p>
+              There is no evidence that FVG behavior suddenly started working
+              recently. The matched 60m attraction premium was +1.56 pp in 2020,
+              +1.35 pp in 2021, +0.44 pp in 2022, +1.18 pp in 2023, +1.28 pp in
+              2024, +0.44 pp in 2025 and +1.08 pp in partial 2026.
+            </p>
+            <div class="research-note">
+              <strong>Temporal conclusion:</strong> prioritize freshness, native
+              timeframe, current regime and session. Exact weekday/month/hour
+              filters remain exploratory unless they survive preregistered
+              later-data testing.
+            </div>
+            <div class="source-links">
+              <a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/TEMPORAL_ATTRACTION_REACTION_STUDY.md"
+                >Full temporal study ↗</a
+              ><a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/research_v2/findings/temporal_attraction_reaction_2026-09-20.json"
+                >Machine-readable findings ↗</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Temporal diagnostics</h2>
+          <div>
+            <p>
+              The temporal extension went beyond year/session averages and
+              tested whether the matched FVG premium actually changes across
+              calendar partitions. Attraction showed clear heterogeneity by
+              <strong>year (p≈0.0004)</strong>,
+              <strong>session (p≈0.014)</strong>, and
+              <strong>quarter (p≈0.019)</strong>. Rejection was much more
+              stable: year p≈0.29, session p≈0.79, weekday p≈0.92.
+            </p>
+            <p>
+              Monthly trend estimates also argue against a recent “FVGs started
+              working” story: attraction premium <strong>r≈−0.23</strong>,
+              rejection premium r≈−0.12, and 3-bar reaction magnitude r≈−0.25
+              versus time.
+            </p>
+            <p class="table-hint">
+              Scroll the table horizontally on smaller screens.
+            </p>
+            <div
+              aria-label="Temporal diagnostics table; scroll horizontally for all columns"
+              class="research-table-wrap"
+              role="region"
+              tabindex="0"
+            >
+              <table class="research-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Diagnostic extreme</th>
+                    <th scope="col">Observed value</th>
+                    <th scope="col">Interpretation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>2024-01-08 week attraction</td>
+                    <td class="delta-pos"><strong>+6.17 pp</strong></td>
+                    <td>Short-lived strong attraction regime</td>
+                  </tr>
+                  <tr>
+                    <td>2020-10-12 week attraction</td>
+                    <td class="delta-neg"><strong>−4.37 pp</strong></td>
+                    <td>FVG label underperformed matched zones</td>
+                  </tr>
+                  <tr>
+                    <td>2020-05-18 week rejection</td>
+                    <td class="delta-pos"><strong>+14.8 pp</strong></td>
+                    <td>Large local reaction regime</td>
+                  </tr>
+                  <tr>
+                    <td>2022-08-08 week rejection</td>
+                    <td class="delta-neg"><strong>−14.5 pp</strong></td>
+                    <td>Large local failure regime</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Individual days were even more extreme: raw 60m attraction ranged
+              from roughly <strong>82%</strong> to <strong>97%</strong> in
+              highlighted days, while raw rejection examples ranged from
+              <strong>38.46%</strong> to <strong>68.61%</strong>. These are
+              treated as regime diagnostics rather than recurring calendar
+              rules.
+            </p>
+            <div class="research-note">
+              <strong>Research hierarchy:</strong> freshness/age → native
+              timeframe → market regime/year/quarter → session → hour as
+              exploratory → weekday/month weak → isolated day/week/day-of-month
+              spikes as hypothesis generation only.
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Research platform &amp; audit layer</h2>
+          <div>
+            <p>
+              The repository evolved into a full reproducible research platform
+              rather than a collection of scripts. Published v1 remains
+              hash-locked, while the local Research Lab adds a Quick Demo,
+              resumable reproduction, event-level visual inspection, dataset
+              preflight, diagnostics, Stability Atlas, power/MDE analysis,
+              economic-significance tooling, run provenance, report export and
+              release packaging.
+            </p>
+            <p>
+              A separate <strong>Research v2</strong> track implements corrected
+              full-horizon eligibility, contract-boundary censoring,
+              parent-paired age decay, CME-trade-date clustering, walk-forward
+              controls, FDR-corrected CE re-inference, negative-control placebos
+              and matching ablations.
+            </p>
+            <p>
+              <strong>Research Platform v5</strong> adds a second long-history
+              public-data track and keeps its outputs isolated from the frozen
+              MNQ study. The current cross-platform verification suite passes
+              <strong>78 tests</strong> on Windows Python 3.12, Ubuntu Python
+              3.11 and Ubuntu Python 3.13.
+            </p>
+            <div class="source-links">
+              <a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/CHAT_RESEARCH_ARCHIVE_2026-09-20.md"
+                >Full chat research &amp; platform archive ↗</a
+              ><a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/PLATFORM_GUIDE.md"
+                >Research Platform guide ↗</a
+              ><a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/SCIENTIFIC_AUDIT.md"
+                >Scientific audit ↗</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Public Nasdaq replication</h2>
+          <div>
+            <p>
+              The project now has a second research track built around
+              <strong>5,046,180 one-minute NSX/USD bars</strong> spanning
+              <strong>2010-11-14 → 2026-09-11</strong>. This gives the FVG
+              hypotheses a much longer set of market regimes to survive or fail
+              on than the original 2020–2026 MNQ window.
+            </p>
+            <div class="research-kpis">
+              <div class="research-kpi">
+                <strong>5.05M</strong><span>public 1m bars</span>
+              </div>
+              <div class="research-kpi">
+                <strong>~16 yrs</strong><span>history</span>
+              </div>
+              <div class="research-kpi">
+                <strong>9</strong><span>experiment families</span>
+              </div>
+              <div class="research-kpi">
+                <strong>v5</strong><span>research platform</span>
+              </div>
+            </div>
+            <p>
+              The v5 Research Lab can audit and normalize the dataset, query it
+              directly with DuckDB, display date-filtered candlesticks with
+              mechanically detected FVG overlays, rerun an individual
+              experiment, or execute the full 12-stage replication and build
+              machine-readable summaries and a separate report.
+            </p>
+            <div class="research-note">
+              <strong>Status:</strong> the infrastructure is complete, but new
+              NSX/USD experiment statistics are not presented here until the
+              full long-history run has actually completed and been reviewed.
+              The “live” explorer is local after the reader prepares the
+              dataset; the raw 365 MB market file is not hosted on this site.
+              NSX/USD is an index-style quote feed—not CME NQ/MNQ futures—and
+              the preserved CE/body method carries an MNQ-derived 0.25-point
+              convention, so futures volume, roll, exact-tick and execution
+              claims remain out of scope.
+            </div>
+            <p>
+              The repository also does not assume permission to redistribute
+              HistData-derived market files. Readers prepare the free source
+              locally; a release-asset installer exists only for use if
+              redistribution permission is explicitly confirmed.
+            </p>
+            <div class="source-links">
+              <a href="../../fvg-predictive-strength/public-nasdaq/"
+                >Public Nasdaq status report ↗</a
+              ><a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/PUBLIC_NASDAQ_RESEARCH.md"
+                >Public Nasdaq research track ↗</a
+              ><a href="https://github.com/t8pium/fvg-predictive-strength"
+                >Research Platform v5 ↗</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Code &amp; reproduction</h2>
+          <div>
+            <p>
+              The full experiment code is public. The original analysis scripts
+              are preserved unchanged under <code>src/original/</code>, while a
+              portability runner patches only machine-specific input/output
+              paths at runtime. The market data itself is not redistributed;
+              readers can regenerate the same MNQ parent-symbol OHLCV input with
+              their own Databento access.
+            </p>
+            <pre
+              aria-label="Reproduction commands; scroll horizontally if needed"
+              class="research-code"
+              tabindex="0"
+            ><code>git clone https://github.com/t8pium/fvg-predictive-strength.git
+cd fvg-predictive-strength
 
-# reproduce the full experiment family
-python run_all.py</code></pre><div class="source-links"><a href="../../fvg-predictive-strength/">Full static research report ↗</a><a href="https://github.com/t8pium/fvg-predictive-strength" target="_blank" rel="noopener">Open research repository ↗</a><a href="https://github.com/t8pium/fvg-predictive-strength/archive/refs/heads/main.zip">Download interactive lab ZIP ↓</a><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/EXPERIMENTS.md" target="_blank" rel="noopener">Exact experiment documentation ↗</a><a href="https://github.com/t8pium/fvg-predictive-strength/tree/main/src/original" target="_blank" rel="noopener">Original analysis scripts ↗</a></div><p>Each experiment subpage below also links directly to the exact script that generated its result family.</p></div></div>
-<div class="page-section-grid"><h2>Experiments</h2><div><p>Each page below documents one test separately: hypothesis, construction, controls, measurement, results, interpretation, and limitations.</p><div class="experiment-grid">
-<a class="experiment-card" href="experiments/01-raw-fill/"><span class="exp-no">Experiment 01</span><h3>Raw fill rates</h3><p>How often FVGs are revisited, and why “99% fill” is not enough evidence.</p><span class="exp-result">Result → high raw fill, weak inference</span><span class="exp-open">Open experiment ↗</span></a>
-<a class="experiment-card" href="experiments/02-matched-attraction/"><span class="exp-no">Experiment 02</span><h3>Matched-zone attraction</h3><p>Real FVGs versus comparable ordinary zones at multiple horizons and timeframes.</p><span class="exp-result">Result → small short-horizon attraction</span><span class="exp-open">Open experiment ↗</span></a>
-<a class="experiment-card" href="experiments/03-age-decay/"><span class="exp-no">Experiment 03</span><h3>Age decay</h3><p>Conditional probability after a gap survives unfilled.</p><span class="exp-result">Result → strength decays rapidly</span><span class="exp-open">Open experiment ↗</span></a>
-<a class="experiment-card" href="experiments/04-continuation/"><span class="exp-no">Experiment 04</span><h3>Formation continuation</h3><p>Does creating an FVG predict continued movement in the formation direction?</p><span class="exp-result">Result → inconsistent / no stable rule</span><span class="exp-open">Open experiment ↗</span></a>
-<a class="experiment-card" href="experiments/05-retest-reaction/"><span class="exp-no">Experiment 05</span><h3>First-touch reaction</h3><p>Does price reject an FVG differently from a matched ordinary zone after return?</p><span class="exp-result">Result → small positive reaction on every TF</span><span class="exp-open">Open experiment ↗</span></a>
-<a class="experiment-card" href="experiments/06-midpoint/"><span class="exp-no">Experiment 06</span><h3>Midpoint / CE</h3><p>Tests the 50% level directly with symmetric near-edge vs far-edge races.</p><span class="exp-result">Result → conditional, not universal</span><span class="exp-open">Open experiment ↗</span></a>
-<a class="experiment-card" href="experiments/07-body-acceptance/"><span class="exp-no">Experiment 07</span><h3>Candle-body acceptance</h3><p>Exact 50%, 45–55%, and before-CE versus through-CE body closes.</p><span class="exp-result">Result → exact CE weak; 4H 45–50% exploratory</span><span class="exp-open">Open experiment ↗</span></a>
-<a class="experiment-card" href="experiments/08-controls-regimes/"><span class="exp-no">Experiment 08</span><h3>Distance, regimes & predictive model</h3><p>Logistic controls, sessions, volatility, displacement, size, and direction.</p><span class="exp-result">Result → FVG adds some info; distance dominates</span><span class="exp-open">Open experiment ↗</span></a>
-<a class="experiment-card" href="experiments/09-out-of-sample/"><span class="exp-no">Experiment 09</span><h3>Out-of-sample robustness</h3><p>Chronological holdouts, year stability, and sensitivity tests.</p><span class="exp-result">Result → LTF short-horizon survives best</span><span class="exp-open">Open experiment ↗</span></a>
-<a class="experiment-card" href="experiments/00-methodology/"><span class="exp-no">Methods</span><h3>Dataset & methodology</h3><p>Contract construction, FVG detection, matched controls, ambiguity, and statistical practice.</p><span class="exp-result">Reproducibility notes</span><span class="exp-open">Open methods ↗</span></a>
-</div></div></div>
-<div class="page-section-grid"><h2>Interpretation</h2><div><p>The most conservative explanation is that a three-candle FVG is a <strong>marker of a temporary displacement state</strong>. The process that created the gap may leave short-lived structure in subsequent retracement and reaction probabilities. That does not mean the rectangle itself causally pulls price.</p><p>This interpretation is compatible with broader market-microstructure research showing that order-flow and queue imbalance can predict very short-term movement, and with empirical support/resistance research showing local reaction effects that decay with age. Those adjacent literatures make the phenomenon plausible; they do not validate FVG theory by themselves.</p></div></div>
-<div class="page-section-grid"><h2>Limitations</h2><div><ul><li>One primary market: MNQ. Cross-market replication is still required.</li><li>Base resolution is 1-minute OHLCV, so low-timeframe TP/SL ordering can be ambiguous.</li><li>Matched synthetic controls reduce obvious confounding but cannot control every hidden market structure.</li><li>Many events from the same day/move are dependent; day-level resampling was used where practical.</li><li>Multiple timeframe/band searches create data-mining risk. Strong subgroup discoveries must be independently replicated.</li><li>Statistical effects are not automatically economically tradeable after spread, commissions, slippage, and adverse excursion.</li></ul></div></div>
-<div class="page-section-grid"><h2>Final answer</h2><div><div class="research-note"><strong>Do FVGs have predictable strength?</strong> Yes, slightly. In this MNQ sample the FVG label contains weak but measurable information, mostly in the first few bars after formation and around certain retests. That information decays, varies by regime and timeframe, and is far too conditional to support “FVGs are magnets” or “FVG alone is an edge.”</div></div></div>
-</section></main><footer class="footer"><div class="shell footer-inner"><a class="brand" href="../../"><img src="../../assets/logo-mark.svg" alt="" width="30" height="30"><span>t8pium</span></a><div class="footer-copy"><p>Quantitative research <span>·</span> falsification before narrative</p><nav class="footer-links" aria-label="Legal"><a href="../../privacy/">Privacy</a><a href="../../terms/">Terms</a></nav></div><a href="../../#quant">Back to portfolio ↑</a></div></footer></body></html>
+# Windows: launch setup and the local research app
+START_HERE.bat
+
+# Other platforms: follow the repository setup guide</code></pre>
+            <div class="source-links">
+              <a href="../../fvg-predictive-strength/"
+                >Full static research report ↗</a
+              ><a href="https://github.com/t8pium/fvg-predictive-strength"
+                >Open research repository ↗</a
+              ><a
+                href="https://github.com/t8pium/fvg-predictive-strength/archive/refs/heads/main.zip"
+                >Download interactive lab ZIP ↓</a
+              ><a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/EXPERIMENTS.md"
+                >Exact experiment documentation ↗</a
+              ><a
+                href="https://github.com/t8pium/fvg-predictive-strength/tree/main/src/original"
+                >Original analysis scripts ↗</a
+              >
+            </div>
+            <p>
+              Each experiment subpage below also links directly to the exact
+              script that generated its result family.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid" id="experiments">
+          <h2>Experiments</h2>
+          <div>
+            <p>
+              Each page below documents one test separately: hypothesis,
+              construction, controls, measurement, results, interpretation, and
+              limitations.
+            </p>
+            <div class="experiment-grid">
+              <a class="experiment-card" href="experiments/01-raw-fill/"
+                ><span class="exp-no">Experiment 01</span>
+                <h3>Raw fill rates</h3>
+                <p>
+                  How often FVGs are revisited, and why “99% fill” is not enough
+                  evidence.
+                </p>
+                <span class="exp-result"
+                  >Result → high raw fill, weak inference</span
+                ><span class="exp-open">Open experiment ↗</span></a
+              >
+              <a
+                class="experiment-card"
+                href="experiments/02-matched-attraction/"
+                ><span class="exp-no">Experiment 02</span>
+                <h3>Matched-zone attraction</h3>
+                <p>
+                  Real FVGs versus comparable ordinary zones at multiple
+                  horizons and timeframes.
+                </p>
+                <span class="exp-result"
+                  >Result → small short-horizon attraction</span
+                ><span class="exp-open">Open experiment ↗</span></a
+              >
+              <a class="experiment-card" href="experiments/03-age-decay/"
+                ><span class="exp-no">Experiment 03</span>
+                <h3>Age decay</h3>
+                <p>Conditional probability after a gap survives unfilled.</p>
+                <span class="exp-result">Result → strength decays rapidly</span
+                ><span class="exp-open">Open experiment ↗</span></a
+              >
+              <a class="experiment-card" href="experiments/04-continuation/"
+                ><span class="exp-no">Experiment 04</span>
+                <h3>Formation continuation</h3>
+                <p>
+                  Does creating an FVG predict continued movement in the
+                  formation direction?
+                </p>
+                <span class="exp-result"
+                  >Result → inconsistent / no stable rule</span
+                ><span class="exp-open">Open experiment ↗</span></a
+              >
+              <a class="experiment-card" href="experiments/05-retest-reaction/"
+                ><span class="exp-no">Experiment 05</span>
+                <h3>First-touch reaction</h3>
+                <p>
+                  Does price reject an FVG differently from a matched ordinary
+                  zone after return?
+                </p>
+                <span class="exp-result"
+                  >Result → small positive reaction on every TF</span
+                ><span class="exp-open">Open experiment ↗</span></a
+              >
+              <a class="experiment-card" href="experiments/06-midpoint/"
+                ><span class="exp-no">Experiment 06</span>
+                <h3>Midpoint / CE</h3>
+                <p>
+                  Tests the 50% level directly with symmetric near-edge vs
+                  far-edge races.
+                </p>
+                <span class="exp-result"
+                  >Result → conditional, not universal</span
+                ><span class="exp-open">Open experiment ↗</span></a
+              >
+              <a class="experiment-card" href="experiments/07-body-acceptance/"
+                ><span class="exp-no">Experiment 07</span>
+                <h3>Candle-body acceptance</h3>
+                <p>
+                  Exact 50%, 45–55%, and before-CE versus through-CE body
+                  closes.
+                </p>
+                <span class="exp-result"
+                  >Result → exact CE weak; 4H 45–50% exploratory</span
+                ><span class="exp-open">Open experiment ↗</span></a
+              >
+              <a class="experiment-card" href="experiments/08-controls-regimes/"
+                ><span class="exp-no">Experiment 08</span>
+                <h3>Distance, regimes &amp; predictive model</h3>
+                <p>
+                  Logistic controls, sessions, volatility, displacement, size,
+                  and direction.
+                </p>
+                <span class="exp-result"
+                  >Result → FVG adds some info; distance dominates</span
+                ><span class="exp-open">Open experiment ↗</span></a
+              >
+              <a class="experiment-card" href="experiments/09-out-of-sample/"
+                ><span class="exp-no">Experiment 09</span>
+                <h3>Out-of-sample robustness</h3>
+                <p>
+                  Chronological holdouts, year stability, and sensitivity tests.
+                </p>
+                <span class="exp-result"
+                  >Result → LTF short-horizon survives best</span
+                ><span class="exp-open">Open experiment ↗</span></a
+              >
+              <a class="experiment-card" href="experiments/00-methodology/"
+                ><span class="exp-no">Methods</span>
+                <h3>Dataset &amp; methodology</h3>
+                <p>
+                  Contract construction, FVG detection, matched controls,
+                  ambiguity, and statistical practice.
+                </p>
+                <span class="exp-result">Reproducibility notes</span
+                ><span class="exp-open">Open methods ↗</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Interpretation</h2>
+          <div>
+            <p>
+              The most conservative explanation is that a three-candle FVG is a
+              <strong>marker of a temporary displacement state</strong>. The
+              process that created the gap may leave short-lived structure in
+              subsequent retracement and reaction probabilities. That does not
+              mean the rectangle itself causally pulls price.
+            </p>
+            <p>
+              This interpretation is compatible with broader
+              market-microstructure research showing that order-flow and queue
+              imbalance can predict very short-term movement, and with empirical
+              support/resistance research showing local reaction effects that
+              decay with age. Those adjacent literatures make the phenomenon
+              plausible; they do not validate FVG theory by themselves.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Limitations</h2>
+          <div>
+            <ul>
+              <li>
+                One primary market: MNQ. Cross-market replication is still
+                required.
+              </li>
+              <li>
+                Base resolution is 1-minute OHLCV, so low-timeframe TP/SL
+                ordering can be ambiguous.
+              </li>
+              <li>
+                Matched synthetic controls reduce obvious confounding but cannot
+                control every hidden market structure.
+              </li>
+              <li>
+                Many events from the same day/move are dependent; day-level
+                resampling was used where practical.
+              </li>
+              <li>
+                Multiple timeframe/band searches create data-mining risk. Strong
+                subgroup discoveries must be independently replicated.
+              </li>
+              <li>
+                Statistical effects are not automatically economically tradeable
+                after spread, commissions, slippage, and adverse excursion.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Final answer</h2>
+          <div>
+            <div class="research-note">
+              <strong>Do FVGs have predictable strength?</strong> Yes, slightly.
+              In this MNQ sample the FVG label contains weak but measurable
+              information, mostly in the first few bars after formation and
+              around certain retests. That information decays, varies by regime
+              and timeframe, and is far too conditional to support “FVGs are
+              magnets” or “FVG alone is an edge.”
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>
+          t8pium<span class="brand-period">.</span>
+          <span class="footer-location">Dubai, UAE</span>
+        </p>
+        <nav aria-label="Footer" class="footer-links">
+          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a
+          ><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
+          ><a href="/">Back to portfolio ↑</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,20 +1,407 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0d10"><title>Matched-zone attraction | FVG Study | t8pium</title><link rel="icon" href="../../../../assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../../style.css?v=8"><link rel="stylesheet" href="../../../../gallery.css?v=9"><link rel="stylesheet" href="../../../../polish.css?v=1"><link rel="stylesheet" href="../../../../research.css?v=1"></head><body><main class="project-page research-page"><section class="page-hero"><div class="shell"><a class="back-link" href="../../">← Back to FVG study</a><p class="page-eyebrow">Experiment 02 / Magnet test</p><h1>Matched-zone attraction</h1><p>Real FVGs are compared with ordinary price zones that have similar geometry and market context.</p></div></section><section class="page-content shell">
-<div class="page-section-grid"><h2>Hypothesis</h2><div><p><strong>H0:</strong> after controlling for distance, width, volatility, trend and session, price is no more likely to reach an FVG than an ordinary zone.</p><p><strong>H1:</strong> the FVG label increases the probability of touch beyond those controls.</p></div></div>
-<div class="page-section-grid"><h2>Multi-timeframe result</h2><div><div class="research-table-wrap"><table class="research-table"><thead><tr><th>TF</th><th>1 bar</th><th>3 bars</th><th>5 bars</th><th>10 bars</th><th>20 bars</th></tr></thead><tbody><tr><td>1m</td><td>+2.46 pp</td><td class="delta-pos">+3.43 pp</td><td>+2.70 pp</td><td>+1.94 pp</td><td>+0.98 pp</td></tr><tr><td>5m</td><td>+1.65 pp</td><td class="delta-pos">+2.48 pp</td><td>+2.16 pp</td><td>+1.51 pp</td><td>+1.32 pp</td></tr><tr><td>15m</td><td>−0.41 pp</td><td>+0.76 pp</td><td>+0.63 pp</td><td>+0.28 pp</td><td>−0.36 pp</td></tr><tr><td>1H</td><td>+0.21 pp</td><td>+0.98 pp</td><td>+0.60 pp</td><td>+0.27 pp</td><td>−0.29 pp</td></tr><tr><td>4H</td><td class="delta-neg">−4.79 pp</td><td>−2.75 pp</td><td>−1.13 pp</td><td>−2.44 pp</td><td>−1.59 pp</td></tr></tbody></table></div></div></div>
-<div class="page-section-grid"><h2>Deep 1m placebo test</h2><div><p>A computationally heavier pass used 40,000 sampled eligible FVGs with five matched controls per event.</p><div class="research-table-wrap"><table class="research-table"><thead><tr><th>Horizon</th><th>FVG</th><th>Control</th><th>Difference</th></tr></thead><tbody><tr><td>5m</td><td>70.73%</td><td>67.71%</td><td class="delta-pos">+3.03 pp</td></tr><tr><td>15m</td><td>81.98%</td><td>80.53%</td><td>+1.45 pp</td></tr><tr><td>60m</td><td>90.86%</td><td>90.29%</td><td>+0.58 pp</td></tr><tr><td>240m</td><td>95.40%</td><td>95.15%</td><td>+0.25 pp</td></tr><tr><td>~1 day</td><td>98.20%</td><td>98.19%</td><td>~0.00 pp</td></tr></tbody></table></div><p>The 5-minute difference had a day-cluster bootstrap interval of roughly <strong>+2.64 to +3.42 pp</strong>.</p></div></div>
-<div class="page-section-grid"><h2>Directional check</h2><div><p>Average movement toward the target was positive relative to controls for the first ~1–10 bars, then disappeared and reversed at longer horizons. That distinguishes a short-lived directional attraction from a level that merely gets revisited eventually.</p></div></div>
-<div class="page-section-grid"><h2>Conclusion</h2><div><div class="research-note"><strong>Supported:</strong> a small short-horizon lower-timeframe attraction bias. <strong>Not supported:</strong> persistent magnetism or stronger attraction simply because the FVG is higher timeframe.</div></div></div><div class="page-section-grid"><h2>Exact implementation</h2><div>
-<h3>Two independent implementations</h3><p>The attraction result was tested twice. The deep 1m program samples up to 40,000 FVGs with 5 controls each. The multi-timeframe program tests 1m, 5m, 15m, 1H and 4H separately, sampling up to 12,000 FVGs per timeframe with 3 controls each.</p>
-<h3>Matching variables</h3><p>For each real FVG, the control keeps the same bullish/bearish direction, ATR-normalized gap width, and ATR-normalized starting distance from price. Multi-timeframe controls are selected from non-FVG bars with the exact same <strong>session, volatility bucket, trend bucket, and time bucket</strong>. Time buckets are one hour through 1H and four hours above 1H. The deep 1m version matches exact New York hour. Controls are sampled with replacement only when a matching pool is too small.</p>
-<h3>Touch calculation</h3><p>For each native horizon 1/3/5/10/20 bars, future minimum and maximum arrays are precomputed. A bullish zone is touched if the future minimum reaches the near edge; a bearish zone is touched if the future maximum reaches the near edge. The reported control probability for inference is the <strong>parent-average of that FVG's controls</strong>, so a real event remains the unit of comparison.</p>
-<h3>Uncertainty</h3><p>The multi-timeframe program clusters differences by New York calendar day and bootstraps whole days <strong>300 times</strong>. The deep 1m program uses a paired day-cluster bootstrap with a separate seed <code>7</code>. This avoids pretending thousands of FVGs from the same trading day are independent.</p>
-<h3>Directional attraction</h3><p>The deep 1m program also measures signed movement toward the zone after 1, 3, 5, 10, 15, 30 and 60 bars. For a bullish FVG, falling price toward the gap is positive; for a bearish FVG, rising price toward the gap is positive. Values are normalized by ATR at formation.</p>
-<p><a class="button button--ghost" href="https://github.com/t8pium/fvg-predictive-strength/blob/main/published/fvg_strength_one_tf.py" target="_blank" rel="noopener">View multi-TF code ↗</a> <a class="button button--ghost" href="https://github.com/t8pium/fvg-predictive-strength/blob/main/published/fvg_final_fast.py" target="_blank" rel="noopener">View deep-1m code ↗</a> <a class="button button--ghost" href="https://github.com/t8pium/fvg-predictive-strength/blob/main/reference_results/multitf_magnet.csv" target="_blank" rel="noopener">Reference results ↗</a></p>
-<pre><code>TF=5 python published/fvg_strength_one_tf.py
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>Matched-zone attraction | FVG Study | t8pium</title>
+    <link href="/assets/logo-mark.svg" rel="icon" type="image/svg+xml" />
+    <link href="/style.css?v=10" rel="stylesheet" />
+    <link href="/research.css?v=2" rel="stylesheet" />
+    <script defer="" src="/script.js?v=14"></script>
+    <meta
+      content="Real FVGs are compared with ordinary price zones that have similar geometry and market context."
+      name="description"
+    />
+    <link
+      href="https://t8pium.github.io/projects/fvg-predictive-strength/experiments/02-matched-attraction/"
+      rel="canonical"
+    />
+    <meta content="#0b0d10" name="theme-color" />
+    <meta content="article" property="og:type" />
+    <meta content="t8pium" property="og:site_name" />
+    <meta
+      content="Matched-zone attraction | FVG Study | t8pium"
+      property="og:title"
+    />
+    <meta
+      content="Real FVGs are compared with ordinary price zones that have similar geometry and market context."
+      property="og:description"
+    />
+    <meta
+      content="https://t8pium.github.io/projects/fvg-predictive-strength/experiments/02-matched-attraction/"
+      property="og:url"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="t8pium — I build tools. I test ideas. Python, robotics and market research."
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta
+      content="Matched-zone attraction | FVG Study | t8pium"
+      name="twitter:title"
+    />
+    <meta
+      content="Real FVGs are compared with ordinary price zones that have similar geometry and market context."
+      name="twitter:description"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      name="twitter:image"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <nav aria-label="Primary navigation" class="nav shell">
+        <a aria-label="t8pium — home" class="brand" href="/"
+          ><img
+            alt=""
+            decoding="async"
+            height="32"
+            src="/assets/logo-mark.svg"
+            width="32"
+          /><span>t8pium<span class="brand-period">.</span></span></a
+        >
+        <button
+          aria-controls="navMenu"
+          aria-expanded="false"
+          class="nav-toggle"
+          hidden=""
+          id="navToggle"
+          type="button"
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a aria-current="location" href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#writing">Notes</a></li>
+          <li><a href="/#social">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="project-page research-page" id="main" tabindex="-1">
+      <section class="page-hero">
+        <div class="shell">
+          <a class="back-link" href="../../">← Back to FVG study</a>
+          <p class="page-eyebrow">Experiment 02 / Magnet test</p>
+          <h1>Matched-zone attraction</h1>
+          <p>
+            Real FVGs are compared with ordinary price zones that have similar
+            geometry and market context.
+          </p>
+        </div>
+      </section>
+      <section class="page-content shell">
+        <div class="page-section-grid">
+          <h2>Hypothesis</h2>
+          <div>
+            <p>
+              <strong>H0:</strong> after controlling for distance, width,
+              volatility, trend and session, price is no more likely to reach an
+              FVG than an ordinary zone.
+            </p>
+            <p>
+              <strong>H1:</strong> the FVG label increases the probability of
+              touch beyond those controls.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Multi-timeframe result</h2>
+          <div>
+            <p class="table-hint">
+              Scroll the table horizontally on smaller screens.
+            </p>
+            <div
+              aria-label="Multi-timeframe result table; scroll horizontally for all columns"
+              class="research-table-wrap"
+              role="region"
+              tabindex="0"
+            >
+              <table class="research-table">
+                <thead>
+                  <tr>
+                    <th scope="col">TF</th>
+                    <th scope="col">1 bar</th>
+                    <th scope="col">3 bars</th>
+                    <th scope="col">5 bars</th>
+                    <th scope="col">10 bars</th>
+                    <th scope="col">20 bars</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1m</td>
+                    <td>+2.46 pp</td>
+                    <td class="delta-pos">+3.43 pp</td>
+                    <td>+2.70 pp</td>
+                    <td>+1.94 pp</td>
+                    <td>+0.98 pp</td>
+                  </tr>
+                  <tr>
+                    <td>5m</td>
+                    <td>+1.65 pp</td>
+                    <td class="delta-pos">+2.48 pp</td>
+                    <td>+2.16 pp</td>
+                    <td>+1.51 pp</td>
+                    <td>+1.32 pp</td>
+                  </tr>
+                  <tr>
+                    <td>15m</td>
+                    <td>−0.41 pp</td>
+                    <td>+0.76 pp</td>
+                    <td>+0.63 pp</td>
+                    <td>+0.28 pp</td>
+                    <td>−0.36 pp</td>
+                  </tr>
+                  <tr>
+                    <td>1H</td>
+                    <td>+0.21 pp</td>
+                    <td>+0.98 pp</td>
+                    <td>+0.60 pp</td>
+                    <td>+0.27 pp</td>
+                    <td>−0.29 pp</td>
+                  </tr>
+                  <tr>
+                    <td>4H</td>
+                    <td class="delta-neg">−4.79 pp</td>
+                    <td>−2.75 pp</td>
+                    <td>−1.13 pp</td>
+                    <td>−2.44 pp</td>
+                    <td>−1.59 pp</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Deep 1m placebo test</h2>
+          <div>
+            <p>
+              A computationally heavier pass used 40,000 sampled eligible FVGs
+              with five matched controls per event.
+            </p>
+            <p class="table-hint">
+              Scroll the table horizontally on smaller screens.
+            </p>
+            <div
+              aria-label="Deep 1m placebo test table; scroll horizontally for all columns"
+              class="research-table-wrap"
+              role="region"
+              tabindex="0"
+            >
+              <table class="research-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Horizon</th>
+                    <th scope="col">FVG</th>
+                    <th scope="col">Control</th>
+                    <th scope="col">Difference</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>5m</td>
+                    <td>70.73%</td>
+                    <td>67.71%</td>
+                    <td class="delta-pos">+3.03 pp</td>
+                  </tr>
+                  <tr>
+                    <td>15m</td>
+                    <td>81.98%</td>
+                    <td>80.53%</td>
+                    <td>+1.45 pp</td>
+                  </tr>
+                  <tr>
+                    <td>60m</td>
+                    <td>90.86%</td>
+                    <td>90.29%</td>
+                    <td>+0.58 pp</td>
+                  </tr>
+                  <tr>
+                    <td>240m</td>
+                    <td>95.40%</td>
+                    <td>95.15%</td>
+                    <td>+0.25 pp</td>
+                  </tr>
+                  <tr>
+                    <td>~1 day</td>
+                    <td>98.20%</td>
+                    <td>98.19%</td>
+                    <td>~0.00 pp</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The 5-minute difference had a day-cluster bootstrap interval of
+              roughly <strong>+2.64 to +3.42 pp</strong>.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Directional check</h2>
+          <div>
+            <p>
+              Average movement toward the target was positive relative to
+              controls for the first ~1–10 bars, then disappeared and reversed
+              at longer horizons. That distinguishes a short-lived directional
+              attraction from a level that merely gets revisited eventually.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Conclusion</h2>
+          <div>
+            <div class="research-note">
+              <strong>Supported:</strong> a small short-horizon lower-timeframe
+              attraction bias. <strong>Not supported:</strong> persistent
+              magnetism or stronger attraction simply because the FVG is higher
+              timeframe.
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Exact implementation</h2>
+          <div>
+            <h3>Two independent implementations</h3>
+            <p>
+              The attraction result was tested twice. The deep 1m program
+              samples up to 40,000 FVGs with 5 controls each. The
+              multi-timeframe program tests 1m, 5m, 15m, 1H and 4H separately,
+              sampling up to 12,000 FVGs per timeframe with 3 controls each.
+            </p>
+            <h3>Matching variables</h3>
+            <p>
+              For each real FVG, the control keeps the same bullish/bearish
+              direction, ATR-normalized gap width, and ATR-normalized starting
+              distance from price. Multi-timeframe controls are selected from
+              non-FVG bars with the exact same
+              <strong
+                >session, volatility bucket, trend bucket, and time
+                bucket</strong
+              >. Time buckets are one hour through 1H and four hours above 1H.
+              The deep 1m version matches exact New York hour. Controls are
+              sampled with replacement only when a matching pool is too small.
+            </p>
+            <h3>Touch calculation</h3>
+            <p>
+              For each native horizon 1/3/5/10/20 bars, future minimum and
+              maximum arrays are precomputed. A bullish zone is touched if the
+              future minimum reaches the near edge; a bearish zone is touched if
+              the future maximum reaches the near edge. The reported control
+              probability for inference is the
+              <strong>parent-average of that FVG's controls</strong>, so a real
+              event remains the unit of comparison.
+            </p>
+            <h3>Uncertainty</h3>
+            <p>
+              The multi-timeframe program clusters differences by New York
+              calendar day and bootstraps whole days <strong>300 times</strong>.
+              The deep 1m program uses a paired day-cluster bootstrap with a
+              separate seed <code>7</code>. This avoids pretending thousands of
+              FVGs from the same trading day are independent.
+            </p>
+            <h3>Directional attraction</h3>
+            <p>
+              The deep 1m program also measures signed movement toward the zone
+              after 1, 3, 5, 10, 15, 30 and 60 bars. For a bullish FVG, falling
+              price toward the gap is positive; for a bearish FVG, rising price
+              toward the gap is positive. Values are normalized by ATR at
+              formation.
+            </p>
+            <p>
+              <a
+                class="button button--ghost"
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_strength_one_tf.py"
+                >View multi-TF code ↗</a
+              >
+              <a
+                class="button button--ghost"
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_final_fast.py"
+                >View deep-1m code ↗</a
+              >
+              <a
+                class="button button--ghost"
+                href="/reproducibility/fvg-predictive-strength/reference_results/multitf_magnet.csv"
+                >Reference results ↗</a
+              >
+            </p>
+            <pre
+              aria-label="Reproduction commands; scroll horizontally if needed"
+              tabindex="0"
+            ><code>python scripts/run_original.py multi-tf --tf 5
 # repeat TF=1,5,15,60,240</code></pre>
-</div></div>
-<div class="page-section-grid"><h2>Exact control construction</h2><div><ol class="method-list"><li>Sample eligible real FVGs using a fixed RNG seed. The deep one-minute run uses up to 40,000 FVGs; the multi-timeframe run uses up to 12,000 per timeframe.</li><li>Create the candidate pool only from bars that are <strong>not</strong> FVG formation bars and have valid ATR, trend and volatility state.</li><li>Exact-match candidate timestamps on session, time-of-day bucket, volatility regime and trend regime.</li><li>Copy the real FVG's direction, ATR-normalized width and ATR-normalized starting distance to the candidate timestamp.</li><li>Convert those normalized values back into absolute prices using the control timestamp's ATR and close. This makes the control equally wide and similarly distant without using an FVG location.</li><li>Generate five controls per FVG in the deep 1m run and three controls per FVG in the multi-timeframe run.</li><li>Measure real and control touches over identical future horizons, then average control outcomes by parent FVG before computing paired differences.</li><li>For the deep 1m result, bootstrap the paired difference by trading day rather than treating every event as independent.</li></ol><p>The central falsification question is therefore: <strong>does the FVG label add probability after geometry and broad market state are held roughly constant?</strong></p></div></div>
-<div class="page-section-grid"><h2>Reproduce it</h2><div><pre class="research-code"><code># Deep 1m placebo study
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Exact control construction</h2>
+          <div>
+            <ol class="method-list">
+              <li>
+                Sample eligible real FVGs using a fixed RNG seed. The deep
+                one-minute run uses up to 40,000 FVGs; the multi-timeframe run
+                uses up to 12,000 per timeframe.
+              </li>
+              <li>
+                Create the candidate pool only from bars that are
+                <strong>not</strong> FVG formation bars and have valid ATR,
+                trend and volatility state.
+              </li>
+              <li>
+                Exact-match candidate timestamps on session, time-of-day bucket,
+                volatility regime and trend regime.
+              </li>
+              <li>
+                Copy the real FVG's direction, ATR-normalized width and
+                ATR-normalized starting distance to the candidate timestamp.
+              </li>
+              <li>
+                Convert those normalized values back into absolute prices using
+                the control timestamp's ATR and close. This makes the control
+                equally wide and similarly distant without using an FVG
+                location.
+              </li>
+              <li>
+                Generate five controls per FVG in the deep 1m run and three
+                controls per FVG in the multi-timeframe run.
+              </li>
+              <li>
+                Measure real and control touches over identical future horizons,
+                then average control outcomes by parent FVG before computing
+                paired differences.
+              </li>
+              <li>
+                For the deep 1m result, bootstrap the paired difference by
+                trading day rather than treating every event as independent.
+              </li>
+            </ol>
+            <p>
+              The central falsification question is therefore:
+              <strong
+                >does the FVG label add probability after geometry and broad
+                market state are held roughly constant?</strong
+              >
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Reproduce it</h2>
+          <div>
+            <pre
+              aria-label="Reproduction commands; scroll horizontally if needed"
+              class="research-code"
+              tabindex="0"
+            ><code># Deep 1m placebo study
 python scripts/run_original.py detailed-1m
 
 # Native-timeframe attraction study
@@ -22,4 +409,50 @@ python scripts/run_original.py multi-tf --tf 1
 python scripts/run_original.py multi-tf --tf 5
 python scripts/run_original.py multi-tf --tf 15
 python scripts/run_original.py multi-tf --tf 60
-python scripts/run_original.py multi-tf --tf 240</code></pre><div class="source-links"><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_final_fast.py" target="_blank" rel="noopener">Deep 1m source ↗</a><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_strength_one_tf.py" target="_blank" rel="noopener">Multi-TF source ↗</a></div></div></div><div class="page-section-grid"><h2>Navigate</h2><div><div class="subpage-nav"><a href="../00-methodology/">Methods</a><a href="../01-raw-fill/">Raw fill</a><a href="../02-matched-attraction/">Attraction</a><a href="../03-age-decay/">Age decay</a><a href="../04-continuation/">Continuation</a><a href="../05-retest-reaction/">Retest</a><a href="../06-midpoint/">CE</a><a href="../07-body-acceptance/">Body acceptance</a><a href="../08-controls-regimes/">Controls</a><a href="../09-out-of-sample/">OOS</a></div></div></div></section></main><footer class="footer"><div class="shell footer-inner"><a class="brand" href="../../../../"><img src="../../../../assets/logo-mark.svg" alt="" width="30" height="30"><span>t8pium</span></a><div class="footer-copy"><p>FVG Predictive Strength Study <span>·</span> MNQ 2020–2026</p></div><a href="../../">Study summary ↑</a></div></footer></body></html>
+python scripts/run_original.py multi-tf --tf 240</code></pre>
+            <div class="source-links">
+              <a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_final_fast.py"
+                >Deep 1m source ↗</a
+              ><a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/src/original/fvg_strength_one_tf.py"
+                >Multi-TF source ↗</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Navigate</h2>
+          <div>
+            <nav aria-label="Experiment navigation" class="subpage-nav">
+              <a href="../00-methodology/">Methods</a
+              ><a href="../01-raw-fill/">Raw fill</a
+              ><a aria-current="page" href="../02-matched-attraction/"
+                >Attraction</a
+              ><a href="../03-age-decay/">Age decay</a
+              ><a href="../04-continuation/">Continuation</a
+              ><a href="../05-retest-reaction/">Retest</a
+              ><a href="../06-midpoint/">CE</a
+              ><a href="../07-body-acceptance/">Body acceptance</a
+              ><a href="../08-controls-regimes/">Controls</a
+              ><a href="../09-out-of-sample/">OOS</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>
+          t8pium<span class="brand-period">.</span>
+          <span class="footer-location">Dubai, UAE</span>
+        </p>
+        <nav aria-label="Footer" class="footer-links">
+          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a
+          ><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
+          ><a href="/">Back to portfolio ↑</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,154 +1,909 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0d10"><meta name="description" content="Full static report for the MNQ Fair Value Gap predictive-strength study."><title>FVG Predictive Strength — Full Research Report | t8pium</title>
-<style>
-:root{--bg:#0b0d10;--panel:#11171f;--panel2:#151d27;--text:#eef3f8;--muted:#97a7b7;--line:#283442;--blue:#58a6ff;--green:#3fb950;--amber:#d29922}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Manrope,Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:1180px;margin:auto;padding:26px 22px 80px}a{color:#8fc3ff;text-decoration:none}a:hover{text-decoration:underline}
-.hero{margin:16px 0 28px;padding:52px 44px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,rgba(88,166,255,.16),transparent 48%),var(--panel)}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:var(--blue)}h1{font-size:clamp(40px,7vw,70px);line-height:1;letter-spacing:-.055em;margin:10px 0 18px}h2{font-size:34px;line-height:1.15;letter-spacing:-.035em;margin:8px 0}h3{font-size:19px;margin:0 0 12px}.lede{font-size:19px;color:var(--muted);max-width:900px}.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.pill{border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:13px;font-weight:700;background:rgba(255,255,255,.02)}
-.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}.summary>div,.panel,.metric,.figure{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px}.big{font-size:25px;font-weight:800;letter-spacing:-.03em}.muted,.metric span,dt{color:var(--muted);font-size:13px}
-.answer{border-left:4px solid var(--blue);background:rgba(88,166,255,.09);padding:16px 18px;border-radius:12px;margin:18px 0}.architecture{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}.architecture div{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:14px}.architecture b{display:block;margin-bottom:5px}.architecture span{color:var(--muted);font-size:13px}
-.figures{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}.figure img{width:100%;height:auto;display:block}.toc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0 36px}.toc a{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:10px 12px;color:var(--text)}
-.experiment{border-top:1px solid var(--line);padding:54px 0 24px}.question{font-size:22px;font-weight:750;line-height:1.35}.takeaway{border-left:4px solid var(--blue);background:rgba(88,166,255,.08);border-radius:10px;padding:14px 16px;margin:16px 0}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:18px 0}.metric span{display:block}.metric strong{display:block;font-size:18px;margin-top:3px}.two{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;margin-top:18px}.warn{border-left:4px solid var(--amber)}dl{margin:0}dl div{display:grid;grid-template-columns:140px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}dd{margin:0}.footer{border-top:1px solid var(--line);margin-top:48px;padding-top:24px;color:var(--muted)}
-.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.button{display:inline-block;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--panel2);font-weight:700}.button.primary{background:#1f6feb;color:#fff;border-color:#1f6feb}
-@media(max-width:850px){.summary,.figures,.toc,.two,.architecture{grid-template-columns:1fr}.hero{padding:34px 24px}.wrap{padding:18px 15px 60px}dl div{grid-template-columns:1fr;gap:2px}}
-</style></head><body><main class="wrap">
-<section class="hero"><div class="eyebrow">Quantitative research / full static report</div><h1>FVG Predictive Strength</h1><p class="lede">A falsification-style MNQ study asking whether mechanically defined Fair Value Gaps add predictive information beyond distance, volatility, trend, session and ordinary price revisits.</p><div class="pills"><span class="pill">MNQ</span><span class="pill">2020-01-01 to 2026-07-10</span><span class="pill">2,303,483 active 1m bars</span><span class="pill">454,197 detected 1m FVGs</span><span class="pill">9 experiments</span></div><div class="cta"><a class="button primary" href="https://github.com/t8pium/fvg-predictive-strength">Open GitHub repository</a><a class="button" href="../projects/fvg-predictive-strength/">Portfolio study page</a></div></section>
-<section><h2>Answer in one sentence</h2><div class="answer"><b>Published conclusion.</b> FVGs were revisited frequently, but after matching comparable ordinary zones the incremental attraction was small, strongest shortly after formation, and inconsistent across longer horizons, timeframes and later data.</div>
-<div class="summary"><div><span class="muted">60m raw revisit</span><div class="big">90.86%</div></div><div><span class="muted">60m matched excess</span><div class="big">+0.58 pp</div></div><div><span class="muted">~1 day matched excess</span><div class="big">+0.003 pp</div></div><div><span class="muted">Later deep 1m / 60m</span><div class="big">+0.08 pp</div></div></div></section>
-<section><h2>Research architecture</h2><p class="muted">Four canonical computational suites feed nine reader-facing experiments. The presentation layer does not duplicate the heavy calculations.</p><div class="architecture"><div><b>Detailed 1m</b><span>01 · 02 · 08 · 09</span></div><div><b>Multi-timeframe</b><span>02 · 03 · 04 · 05 · 09</span></div><div><b>Midpoint / CE</b><span>06</span></div><div><b>CE body / execution</b><span>07</span></div></div></section>
-<section><h2>Published figures</h2><div class="figures"><div class="figure"><h3>Raw revisit probability</h3><img src="figures/01_fill_curve.svg" alt="Raw fill curve"></div><div class="figure"><h3>Incremental matched attraction</h3><img src="figures/02_matched_advantage.svg" alt="Matched attraction"></div><div class="figure"><h3>Midpoint / CE reaction</h3><img src="figures/03_midpoint_reaction.svg" alt="Midpoint reaction"></div><div class="figure"><h3>Chronological robustness</h3><img src="figures/04_oos_robustness.svg" alt="Chronological robustness"></div></div></section>
-<section><h2>Experiment index</h2><nav class="toc"><a href="#raw_fill">01 · Raw Fill Rates</a><a href="#matched_attraction">02 · Matched-Zone Attraction</a><a href="#age_decay">03 · FVG Age Decay</a><a href="#continuation">04 · Formation Continuation</a><a href="#retest">05 · First-Touch Retest Reaction</a><a href="#midpoint">06 · Midpoint / Consequent Encroachment</a><a href="#body_acceptance">07 · Candle-Body Acceptance Around CE</a><a href="#controls_regimes">08 · Distance, Regimes &amp; Controlled Model</a><a href="#oos">09 · Chronological Robustness</a></nav></section>
-<section class="experiment" id="raw_fill">
- <div class="eyebrow">Experiment 01</div><h2>Raw Fill Rates</h2>
- <p class="question">How often do FVGs actually get revisited?</p>
- <div class="takeaway"><b>Published takeaway.</b> FVGs are revisited very frequently in absolute terms, but this baseline alone cannot show that the FVG label is special.</div>
- <div class="metrics"><div class="metric"><span>5m touch</span><strong>70.76%</strong></div><div class="metric"><span>60m touch</span><strong>90.86%</strong></div><div class="metric"><span>Eventual touch</span><strong>99.878%</strong></div><div class="metric"><span>Eventual full fill</span><strong>99.795%</strong></div></div>
- <div class="two">
-  <div class="panel"><h3>Design</h3><dl><div><dt>Canonical suite</dt><dd>detailed-1m</dd></div><div><dt>Published sample</dt><dd>454,197 detected 1m FVGs</dd></div><div><dt>Controls</dt><dd>None — descriptive baseline</dd></div><div><dt>Seed</dt><dd>Not required</dd></div></dl></div>
-  <div class="panel warn"><h3>Interpretation guardrail</h3><p>Raw revisit probability is descriptive. Distance, volatility and ordinary price revisitation can explain much of it.</p></div>
- </div>
- </section>
-<section class="experiment" id="matched_attraction">
- <div class="eyebrow">Experiment 02</div><h2>Matched-Zone Attraction</h2>
- <p class="question">Are FVGs reached more often than comparable ordinary zones?</p>
- <div class="takeaway"><b>Published takeaway.</b> The largest excess attraction appears shortly after formation and decays toward zero at longer horizons.</div>
- <div class="metrics"><div class="metric"><span>5m excess</span><strong>3.027 pp</strong></div><div class="metric"><span>60m excess</span><strong>0.577 pp</strong></div><div class="metric"><span>~1d excess</span><strong>0.003 pp</strong></div><div class="metric"><span>~3d excess</span><strong>-0.025 pp</strong></div></div>
- <div class="two">
-  <div class="panel"><h3>Design</h3><dl><div><dt>Canonical suite</dt><dd>detailed-1m + multi-tf</dd></div><div><dt>Published sample</dt><dd>Deep 1m: up to 40,000 parents; multi-TF: up to 12,000/timeframe</dd></div><div><dt>Controls</dt><dd>Up to 5 deep-1m controls; 3 multi-TF controls</dd></div><div><dt>Seed</dt><dd>42 / 260918</dd></div></dl></div>
-  <div class="panel warn"><h3>Interpretation guardrail</h3><p>Matching reduces obvious confounding but does not establish causality.</p></div>
- </div>
- </section>
-<section class="experiment" id="age_decay">
- <div class="eyebrow">Experiment 03</div><h2>FVG Age Decay</h2>
- <p class="question">Does an old unfilled gap still carry information?</p>
- <div class="takeaway"><b>Published takeaway.</b> The incremental 1m attraction is front-loaded and weakens rapidly after the first few bars.</div>
- <div class="metrics"><div class="metric"><span>1→3 bars</span><strong>+3.09 pp</strong></div><div class="metric"><span>3→5 bars</span><strong>-0.21 pp</strong></div><div class="metric"><span>5→10 bars</span><strong>-0.08 pp</strong></div><div class="metric"><span>10→20 bars</span><strong>-1.86 pp</strong></div></div>
- <div class="two">
-  <div class="panel"><h3>Design</h3><dl><div><dt>Canonical suite</dt><dd>multi-tf</dd></div><div><dt>Published sample</dt><dd>Up to 12,000 FVG parents/timeframe</dd></div><div><dt>Controls</dt><dd>3 matched ordinary zones per FVG where available</dd></div><div><dt>Seed</dt><dd>260918</dd></div></dl></div>
-  <div class="panel warn"><h3>Interpretation guardrail</h3><p>Published v1 control survival is survivor-zone weighted rather than perfectly parent-paired.</p></div>
- </div>
- </section>
-<section class="experiment" id="continuation">
- <div class="eyebrow">Experiment 04</div><h2>Formation Continuation</h2>
- <p class="question">Does creating an FVG predict continuation in the same direction?</p>
- <div class="takeaway"><b>Published takeaway.</b> Five-bar continuation differences are small and inconsistent across timeframes.</div>
- <div class="metrics"><div class="metric"><span>1m</span><strong>+0.0271 ATR</strong></div><div class="metric"><span>5m</span><strong>-0.0410 ATR</strong></div><div class="metric"><span>15m</span><strong>+0.0083 ATR</strong></div><div class="metric"><span>1H</span><strong>-0.0381 ATR</strong></div><div class="metric"><span>4H</span><strong>+0.0599 ATR</strong></div></div>
- <div class="two">
-  <div class="panel"><h3>Design</h3><dl><div><dt>Canonical suite</dt><dd>multi-tf</dd></div><div><dt>Published sample</dt><dd>Up to 8,000 FVG-forming moves/timeframe</dd></div><div><dt>Controls</dt><dd>One state/move-matched non-FVG displacement</dd></div><div><dt>Seed</dt><dd>260918</dd></div></dl></div>
-  <div class="panel warn"><h3>Interpretation guardrail</h3><p>Small conditional return differences may be dominated by costs, execution and regime changes.</p></div>
- </div>
- </section>
-<section class="experiment" id="retest">
- <div class="eyebrow">Experiment 05</div><h2>First-Touch Retest Reaction</h2>
- <p class="question">Does price react differently once it reaches an FVG?</p>
- <div class="takeaway"><b>Published takeaway.</b> The published reaction advantage is positive but modest across the tested timeframes.</div>
- <div class="metrics"><div class="metric"><span>1m</span><strong>+2.32 pp</strong></div><div class="metric"><span>5m</span><strong>+1.22 pp</strong></div><div class="metric"><span>15m</span><strong>+1.41 pp</strong></div><div class="metric"><span>1H</span><strong>+0.91 pp</strong></div><div class="metric"><span>4H</span><strong>+1.55 pp</strong></div></div>
- <div class="two">
-  <div class="panel"><h3>Design</h3><dl><div><dt>Canonical suite</dt><dd>multi-tf</dd></div><div><dt>Published sample</dt><dd>Up to 12,000 sampled FVG parents/timeframe</dd></div><div><dt>Controls</dt><dd>3 matched ordinary zones per FVG where available</dd></div><div><dt>Seed</dt><dd>260918</dd></div></dl></div>
-  <div class="panel warn"><h3>Interpretation guardrail</h3><p>OHLC bars cannot reveal within-bar ordering when both race boundaries trade in the same bar.</p></div>
- </div>
- </section>
-<section class="experiment" id="midpoint">
- <div class="eyebrow">Experiment 06</div><h2>Midpoint / Consequent Encroachment</h2>
- <p class="question">Is the exact 50% level special?</p>
- <div class="takeaway"><b>Published takeaway.</b> Midpoint rejection differences vary by timeframe, with the largest published cell appearing on 4H.</div>
- <div class="metrics"><div class="metric"><span>1m</span><strong>+0.92 pp</strong></div><div class="metric"><span>5m</span><strong>+2.45 pp</strong></div><div class="metric"><span>15m</span><strong>+2.64 pp</strong></div><div class="metric"><span>1H</span><strong>+0.36 pp</strong></div><div class="metric"><span>4H</span><strong>+4.39 pp</strong></div></div>
- <div class="two">
-  <div class="panel"><h3>Design</h3><dl><div><dt>Canonical suite</dt><dd>midpoint</dd></div><div><dt>Published sample</dt><dd>Up to 12,000 eligible FVGs/timeframe</dd></div><div><dt>Controls</dt><dd>3 state-matched zones per FVG</dd></div><div><dt>Seed</dt><dd>9917</dd></div></dl></div>
-  <div class="panel warn"><h3>Interpretation guardrail</h3><p>The strongest cell was selected from multiple searched timeframe cells and should be interpreted accordingly.</p></div>
- </div>
- </section>
-<section class="experiment" id="body_acceptance">
- <div class="eyebrow">Experiment 07</div><h2>Candle-Body Acceptance Around CE</h2>
- <p class="question">Does body-close depth inside the gap matter?</p>
- <div class="takeaway"><b>Published takeaway.</b> The highlighted 4H 45–50% cell is interesting but exploratory rather than a confirmed edge.</div>
- <div class="metrics"><div class="metric"><span>4H 40–45%</span><strong>N=47 · 56.50% · R -0.015</strong></div><div class="metric"><span>4H 45–50%</span><strong>N=49 · 67.35% · R +0.286</strong></div><div class="metric"><span>4H 50–55%</span><strong>N=33 · 48.40% · R +0.005</strong></div><div class="metric"><span>4H 55–60%</span><strong>N=44 · 40.90% · R -0.041</strong></div></div>
- <div class="two">
-  <div class="panel"><h3>Design</h3><dl><div><dt>Canonical suite</dt><dd>ce-body</dd></div><div><dt>Published sample</dt><dd>All qualifying opposite-color signal candles</dd></div><div><dt>Controls</dt><dd>TP/SL execution race, no matched-zone placebo</dd></div><div><dt>Seed</dt><dd>20260918 bootstrap</dd></div></dl></div>
-  <div class="panel warn"><h3>Interpretation guardrail</h3><p>Signals overlap and many timeframe/depth cells were inspected; uncertainty is therefore optimistic without multiplicity/dependence correction.</p></div>
- </div>
- </section>
-<section class="experiment" id="controls_regimes">
- <div class="eyebrow">Experiment 08</div><h2>Distance, Regimes &amp; Controlled Model</h2>
- <p class="question">How much does the FVG label matter after obvious variables are controlled?</p>
- <div class="takeaway"><b>Published takeaway.</b> Distance explains much of the raw attraction; the conditional FVG effect remains small in the published 60-minute model.</div>
- <div class="metrics"><div class="metric"><span>60m FVG odds ratio</span><strong>1.0789</strong></div><div class="metric"><span>&lt;0.25 ATR</span><strong>-0.03 pp</strong></div><div class="metric"><span>0.25–0.50</span><strong>+0.59 pp</strong></div><div class="metric"><span>0.50–0.75</span><strong>+0.88 pp</strong></div><div class="metric"><span>1.0–1.5</span><strong>+1.01 pp</strong></div><div class="metric"><span>1.5–2.0</span><strong>+1.58 pp</strong></div><div class="metric"><span>2–3</span><strong>+2.21 pp</strong></div></div>
- <div class="two">
-  <div class="panel"><h3>Design</h3><dl><div><dt>Canonical suite</dt><dd>detailed-1m</dd></div><div><dt>Published sample</dt><dd>Deep 1m matched sample, up to 40,000 parents</dd></div><div><dt>Controls</dt><dd>Up to 5 matched ordinary zones per FVG</dd></div><div><dt>Seed</dt><dd>42</dd></div></dl></div>
-  <div class="panel warn"><h3>Interpretation guardrail</h3><p>The coefficient is conditional on the chosen feature set and is not a causal or economic edge estimate.</p></div>
- </div>
- </section>
-<section class="experiment" id="oos">
- <div class="eyebrow">Experiment 09</div><h2>Chronological Robustness</h2>
- <p class="question">Does the observed effect survive later data?</p>
- <div class="takeaway"><b>Published takeaway.</b> Several effects weaken materially in the later sample, consistent with a small and regime-dependent signal.</div>
- <div class="metrics"><div class="metric"><span>Deep 1m/60m early</span><strong>+0.79 pp</strong></div><div class="metric"><span>Deep 1m/60m later</span><strong>+0.08 pp</strong></div><div class="metric"><span>1m early → later</span><strong>3.06 → 1.86 pp</strong></div><div class="metric"><span>5m early → later</span><strong>2.10 → 2.31 pp</strong></div><div class="metric"><span>15m early → later</span><strong>0.69 → 0.49 pp</strong></div><div class="metric"><span>1H early → later</span><strong>1.02 → -0.38 pp</strong></div><div class="metric"><span>4H early → later</span><strong>-0.71 → -2.09 pp</strong></div></div>
- <div class="two">
-  <div class="panel"><h3>Design</h3><dl><div><dt>Canonical suite</dt><dd>detailed-1m + multi-tf</dd></div><div><dt>Published sample</dt><dd>Chronologically ordered matched parent events</dd></div><div><dt>Controls</dt><dd>Same controls as source attraction studies</dd></div><div><dt>Seed</dt><dd>42 / 260918</dd></div></dl></div>
-  <div class="panel warn"><h3>Interpretation guardrail</h3><p>This is a chronological robustness split, not a sealed prospective pipeline holdout.</p></div>
- </div>
- </section>
-<section class="experiment" id="temporal-regimes">
- <div class="eyebrow">New exploratory extension</div><h2>When are FVGs most predictive?</h2>
- <p class="question">A second-stage temporal study separates FVG attraction from first-touch reaction/rejection across year, quarter, session, hour and native timeframe.</p>
- <div class="takeaway"><b>Main finding.</b> Attraction is more regime-dependent; reaction/rejection is smaller but more temporally stable.</div>
- <div class="metrics">
-  <div class="metric"><span>60m attraction</span><strong>+1.05 pp vs matched controls</strong></div>
-  <div class="metric"><span>First-touch rejection</span><strong>+1.93 pp</strong></div>
-  <div class="metric"><span>3-bar move away</span><strong>+0.032 ATR</strong></div>
-  <div class="metric"><span>Strongest timing variable</span><strong>FVG age / freshness</strong></div>
- </div>
- <div class="two">
-  <div class="panel"><h3>Temporal structure</h3><p>The matched attraction premium was +1.56 pp in 2020, +1.35 pp in 2021, +0.44 pp in 2022, +1.18 pp in 2023, +1.28 pp in 2024, +0.44 pp in 2025 and +1.08 pp in partial 2026. The result does not support a story that FVGs suddenly started working recently.</p><p>Attraction heterogeneity was strongest by year (p≈0.0004), session (p≈0.014) and quarter (p≈0.019); rejection was much more stable. Monthly trend estimates were mildly negative for attraction (r≈−0.23) and 3-bar reaction magnitude (r≈−0.25).</p><p>By formation session, post-market, Asia and London showed larger incremental attraction than NY premarket, even though NY premarket had the highest raw touch rate.</p></div>
-  <div class="panel warn"><h3>Interpretation guardrail</h3><p>Recurring weekday and calendar-month effects were weak. Historical extremes were large—e.g. +6.17 pp attraction in the week of 2024-01-08 and +14.8 pp rejection in the week of 2020-05-18—but opposite-sign weeks were also observed. These are regime diagnostics, not recurring calendar rules.</p><p>Individual day/hour/day-of-month anomalies face substantial multiple-comparison risk and remain hypothesis-generation material only.</p><p><a href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/TEMPORAL_ATTRACTION_REACTION_STUDY.md" target="_blank" rel="noopener">Read the complete temporal study ↗</a></p></div>
- </div>
- </section>
-<section class="experiment" id="research-platform">
- <div class="eyebrow">Research Platform v5</div><h2>Inspect, reproduce, stress-test, and extend</h2>
- <p class="question">The repository is now a research platform around the frozen published study rather than only a code dump.</p>
- <div class="metrics">
-  <div class="metric"><span>No-data proof</span><strong>Quick demo</strong></div>
-  <div class="metric"><span>Published rerun</span><strong>12 cached stages</strong></div>
-  <div class="metric"><span>Audit tooling</span><strong>Diagnostics + provenance</strong></div>
-  <div class="metric"><span>New research</span><strong>Corrected v2 track</strong></div>
- </div>
- <div class="two">
-  <div class="panel"><h3>Reproduction workflow</h3><p>Download the repository, run <code>START_HERE.bat</code>, inspect the frozen evidence immediately, then optionally prepare licensed data and run the resumable full-study reproduction. The app compares local output with the published reference and can export a self-contained HTML report.</p><p><a href="https://github.com/t8pium/fvg-predictive-strength" target="_blank" rel="noopener">Open Research Platform v5 on GitHub ↗</a></p></div>
-  <div class="panel warn"><h3>Research v2</h3><p>The published v1 scripts stay hash-locked. A separate v2 track implements symmetric full-horizon eligibility, contract-boundary censoring, parent-paired age decay, CME-trade-date clustered uncertainty, walk-forward controls, and FDR-corrected CE re-inference.</p><p><strong>All v2 results are new / unpublished research until rerun and reviewed on licensed data.</strong></p></div>
- </div>
- </section>
-<section class="experiment" id="public-nasdaq">
- <div class="eyebrow">Research Platform v5 · public replication</div><h2>Long-history Nasdaq-100 proxy track</h2>
- <p class="question">Can the same FVG hypotheses survive a much longer, freely obtainable Nasdaq-related price history?</p>
- <div class="takeaway"><b>Status.</b> The 5,046,180-row NSX/USD workflow is implemented and audited, but the complete 12-stage replication has not yet been completed and reviewed. No public-track headline result is published yet.</div>
- <div class="metrics">
-  <div class="metric"><span>Public source rows</span><strong>5,046,180</strong></div>
-  <div class="metric"><span>Observed range</span><strong>2010-11-14 → 2026-09-11</strong></div>
-  <div class="metric"><span>Experiment families</span><strong>9</strong></div>
-  <div class="metric"><span>Evidence status</span><strong>Run pending review</strong></div>
- </div>
- <div class="two">
-  <div class="panel"><h3>What v5 adds</h3><p>Local audit/preparation, fixed-EST normalization, DuckDB-backed candle queries, 1m→4H FVG overlays, isolated experiment reruns, a resumable 12-stage replication and machine-readable public summaries.</p><p><a href="./public-nasdaq/">Open the public Nasdaq status report ↗</a></p></div>
-  <div class="panel warn"><h3>Scientific boundary</h3><p>NSX/USD is an index-style quote feed, not CME NQ/MNQ futures. Volume, rolls, exchange-tick execution and futures economics are out of scope. The preserved CE/body method also carries an MNQ-derived 0.25-point convention that must be read as a transferred method unit on this proxy feed.</p><p>The raw HistData-derived market file is not hosted here; “live” data inspection occurs locally after the reader prepares the free source.</p></div>
- </div>
- </section>
-<footer class="footer"><p><b>Reproducibility.</b> The repository preserves frozen published evidence, canonical source hashes, experiment definitions, scientific limitations, a no-data quick demo, resumable full reproduction and a separate corrected Research v2 track.</p><p>Licensed Databento market history is not redistributed.</p></footer>
-</main></body></html>
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta
+      content="Full static report for the MNQ Fair Value Gap predictive-strength study."
+      name="description"
+    />
+    <title>FVG Predictive Strength — Full Research Report | t8pium</title>
+    <link href="/style.css?v=10" rel="stylesheet" />
+    <link href="/research.css?v=2" rel="stylesheet" />
+    <link href="/report.css?v=1" rel="stylesheet" />
+    <script defer="" src="/script.js?v=14"></script>
+    <link
+      href="https://t8pium.github.io/fvg-predictive-strength/"
+      rel="canonical"
+    />
+    <meta content="#0b0d10" name="theme-color" />
+    <meta content="article" property="og:type" />
+    <meta content="t8pium" property="og:site_name" />
+    <meta
+      content="FVG Predictive Strength — Full Research Report | t8pium"
+      property="og:title"
+    />
+    <meta
+      content="Full static report for the MNQ Fair Value Gap predictive-strength study."
+      property="og:description"
+    />
+    <meta
+      content="https://t8pium.github.io/fvg-predictive-strength/"
+      property="og:url"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="t8pium — I build tools. I test ideas. Python, robotics and market research."
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta
+      content="FVG Predictive Strength — Full Research Report | t8pium"
+      name="twitter:title"
+    />
+    <meta
+      content="Full static report for the MNQ Fair Value Gap predictive-strength study."
+      name="twitter:description"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      name="twitter:image"
+    />
+  </head>
+  <body class="report-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <nav aria-label="Primary navigation" class="nav shell">
+        <a aria-label="t8pium — home" class="brand" href="/"
+          ><img
+            alt=""
+            decoding="async"
+            height="32"
+            src="/assets/logo-mark.svg"
+            width="32"
+          /><span>t8pium<span class="brand-period">.</span></span></a
+        >
+        <button
+          aria-controls="navMenu"
+          aria-expanded="false"
+          class="nav-toggle"
+          hidden=""
+          id="navToggle"
+          type="button"
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a aria-current="location" href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#writing">Notes</a></li>
+          <li><a href="/#social">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="wrap" id="main" tabindex="-1">
+      <section class="hero">
+        <div class="eyebrow">Quantitative research / full static report</div>
+        <h1>FVG Predictive Strength</h1>
+        <p class="lede">
+          A falsification-style MNQ study asking whether mechanically defined
+          Fair Value Gaps add predictive information beyond distance,
+          volatility, trend, session and ordinary price revisits.
+        </p>
+        <div class="pills">
+          <span class="pill">MNQ</span
+          ><span class="pill">2020-01-01 to 2026-07-10</span
+          ><span class="pill">2,303,483 active 1m bars</span
+          ><span class="pill">454,197 detected 1m FVGs</span
+          ><span class="pill">9 experiments</span>
+        </div>
+        <div class="cta">
+          <a
+            class="button primary"
+            href="https://github.com/t8pium/fvg-predictive-strength"
+            >Open GitHub repository</a
+          ><a class="button" href="../projects/fvg-predictive-strength/"
+            >Portfolio study page</a
+          >
+        </div>
+      </section>
+      <section>
+        <h2>Answer in one sentence</h2>
+        <div class="answer">
+          <b>Published conclusion.</b> FVGs were revisited frequently, but after
+          matching comparable ordinary zones the incremental attraction was
+          small, strongest shortly after formation, and inconsistent across
+          longer horizons, timeframes and later data.
+        </div>
+        <div class="summary">
+          <div>
+            <span class="muted">60m raw revisit</span>
+            <div class="big">90.86%</div>
+          </div>
+          <div>
+            <span class="muted">60m matched excess</span>
+            <div class="big">+0.58 pp</div>
+          </div>
+          <div>
+            <span class="muted">~1 day matched excess</span>
+            <div class="big">+0.003 pp</div>
+          </div>
+          <div>
+            <span class="muted">Later deep 1m / 60m</span>
+            <div class="big">+0.08 pp</div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Research architecture</h2>
+        <p class="muted">
+          Four canonical computational suites feed nine reader-facing
+          experiments. The presentation layer does not duplicate the heavy
+          calculations.
+        </p>
+        <div class="architecture">
+          <div><b>Detailed 1m</b><span>01 · 02 · 08 · 09</span></div>
+          <div><b>Multi-timeframe</b><span>02 · 03 · 04 · 05 · 09</span></div>
+          <div><b>Midpoint / CE</b><span>06</span></div>
+          <div><b>CE body / execution</b><span>07</span></div>
+        </div>
+      </section>
+      <section>
+        <h2>Published figures</h2>
+        <div class="figures">
+          <div class="figure">
+            <h3>Raw revisit probability</h3>
+            <img
+              alt="Raw fill curve"
+              decoding="async"
+              height="460"
+              loading="lazy"
+              src="figures/01_fill_curve.svg"
+              width="920"
+            />
+          </div>
+          <div class="figure">
+            <h3>Incremental matched attraction</h3>
+            <img
+              alt="Matched attraction"
+              decoding="async"
+              height="460"
+              loading="lazy"
+              src="figures/02_matched_advantage.svg"
+              width="920"
+            />
+          </div>
+          <div class="figure">
+            <h3>Midpoint / CE reaction</h3>
+            <img
+              alt="Midpoint reaction"
+              decoding="async"
+              height="460"
+              loading="lazy"
+              src="figures/03_midpoint_reaction.svg"
+              width="920"
+            />
+          </div>
+          <div class="figure">
+            <h3>Chronological robustness</h3>
+            <img
+              alt="Chronological robustness"
+              decoding="async"
+              height="460"
+              loading="lazy"
+              src="figures/04_oos_robustness.svg"
+              width="920"
+            />
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Experiment index</h2>
+        <nav class="toc">
+          <a href="#raw_fill">01 · Raw Fill Rates</a
+          ><a href="#matched_attraction">02 · Matched-Zone Attraction</a
+          ><a href="#age_decay">03 · FVG Age Decay</a
+          ><a href="#continuation">04 · Formation Continuation</a
+          ><a href="#retest">05 · First-Touch Retest Reaction</a
+          ><a href="#midpoint">06 · Midpoint / Consequent Encroachment</a
+          ><a href="#body_acceptance">07 · Candle-Body Acceptance Around CE</a
+          ><a href="#controls_regimes"
+            >08 · Distance, Regimes &amp; Controlled Model</a
+          ><a href="#oos">09 · Chronological Robustness</a>
+        </nav>
+      </section>
+      <section class="experiment" id="raw_fill">
+        <div class="eyebrow">Experiment 01</div>
+        <h2>Raw Fill Rates</h2>
+        <p class="question">How often do FVGs actually get revisited?</p>
+        <div class="takeaway">
+          <b>Published takeaway.</b> FVGs are revisited very frequently in
+          absolute terms, but this baseline alone cannot show that the FVG label
+          is special.
+        </div>
+        <div class="metrics">
+          <div class="metric"><span>5m touch</span><strong>70.76%</strong></div>
+          <div class="metric">
+            <span>60m touch</span><strong>90.86%</strong>
+          </div>
+          <div class="metric">
+            <span>Eventual touch</span><strong>99.878%</strong>
+          </div>
+          <div class="metric">
+            <span>Eventual full fill</span><strong>99.795%</strong>
+          </div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>Design</h3>
+            <dl>
+              <div>
+                <dt>Canonical suite</dt>
+                <dd>detailed-1m</dd>
+              </div>
+              <div>
+                <dt>Published sample</dt>
+                <dd>454,197 detected 1m FVGs</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>None — descriptive baseline</dd>
+              </div>
+              <div>
+                <dt>Seed</dt>
+                <dd>Not required</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="panel warn">
+            <h3>Interpretation guardrail</h3>
+            <p>
+              Raw revisit probability is descriptive. Distance, volatility and
+              ordinary price revisitation can explain much of it.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="experiment" id="matched_attraction">
+        <div class="eyebrow">Experiment 02</div>
+        <h2>Matched-Zone Attraction</h2>
+        <p class="question">
+          Are FVGs reached more often than comparable ordinary zones?
+        </p>
+        <div class="takeaway">
+          <b>Published takeaway.</b> The largest excess attraction appears
+          shortly after formation and decays toward zero at longer horizons.
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <span>5m excess</span><strong>3.027 pp</strong>
+          </div>
+          <div class="metric">
+            <span>60m excess</span><strong>0.577 pp</strong>
+          </div>
+          <div class="metric">
+            <span>~1d excess</span><strong>0.003 pp</strong>
+          </div>
+          <div class="metric">
+            <span>~3d excess</span><strong>-0.025 pp</strong>
+          </div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>Design</h3>
+            <dl>
+              <div>
+                <dt>Canonical suite</dt>
+                <dd>detailed-1m + multi-tf</dd>
+              </div>
+              <div>
+                <dt>Published sample</dt>
+                <dd>
+                  Deep 1m: up to 40,000 parents; multi-TF: up to
+                  12,000/timeframe
+                </dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Up to 5 deep-1m controls; 3 multi-TF controls</dd>
+              </div>
+              <div>
+                <dt>Seed</dt>
+                <dd>42 / 260918</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="panel warn">
+            <h3>Interpretation guardrail</h3>
+            <p>
+              Matching reduces obvious confounding but does not establish
+              causality.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="experiment" id="age_decay">
+        <div class="eyebrow">Experiment 03</div>
+        <h2>FVG Age Decay</h2>
+        <p class="question">
+          Does an old unfilled gap still carry information?
+        </p>
+        <div class="takeaway">
+          <b>Published takeaway.</b> The incremental 1m attraction is
+          front-loaded and weakens rapidly after the first few bars.
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <span>1→3 bars</span><strong>+3.09 pp</strong>
+          </div>
+          <div class="metric">
+            <span>3→5 bars</span><strong>-0.21 pp</strong>
+          </div>
+          <div class="metric">
+            <span>5→10 bars</span><strong>-0.08 pp</strong>
+          </div>
+          <div class="metric">
+            <span>10→20 bars</span><strong>-1.86 pp</strong>
+          </div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>Design</h3>
+            <dl>
+              <div>
+                <dt>Canonical suite</dt>
+                <dd>multi-tf</dd>
+              </div>
+              <div>
+                <dt>Published sample</dt>
+                <dd>Up to 12,000 FVG parents/timeframe</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>3 matched ordinary zones per FVG where available</dd>
+              </div>
+              <div>
+                <dt>Seed</dt>
+                <dd>260918</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="panel warn">
+            <h3>Interpretation guardrail</h3>
+            <p>
+              Published v1 control survival is survivor-zone weighted rather
+              than perfectly parent-paired.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="experiment" id="continuation">
+        <div class="eyebrow">Experiment 04</div>
+        <h2>Formation Continuation</h2>
+        <p class="question">
+          Does creating an FVG predict continuation in the same direction?
+        </p>
+        <div class="takeaway">
+          <b>Published takeaway.</b> Five-bar continuation differences are small
+          and inconsistent across timeframes.
+        </div>
+        <div class="metrics">
+          <div class="metric"><span>1m</span><strong>+0.0271 ATR</strong></div>
+          <div class="metric"><span>5m</span><strong>-0.0410 ATR</strong></div>
+          <div class="metric"><span>15m</span><strong>+0.0083 ATR</strong></div>
+          <div class="metric"><span>1H</span><strong>-0.0381 ATR</strong></div>
+          <div class="metric"><span>4H</span><strong>+0.0599 ATR</strong></div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>Design</h3>
+            <dl>
+              <div>
+                <dt>Canonical suite</dt>
+                <dd>multi-tf</dd>
+              </div>
+              <div>
+                <dt>Published sample</dt>
+                <dd>Up to 8,000 FVG-forming moves/timeframe</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>One state/move-matched non-FVG displacement</dd>
+              </div>
+              <div>
+                <dt>Seed</dt>
+                <dd>260918</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="panel warn">
+            <h3>Interpretation guardrail</h3>
+            <p>
+              Small conditional return differences may be dominated by costs,
+              execution and regime changes.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="experiment" id="retest">
+        <div class="eyebrow">Experiment 05</div>
+        <h2>First-Touch Retest Reaction</h2>
+        <p class="question">
+          Does price react differently once it reaches an FVG?
+        </p>
+        <div class="takeaway">
+          <b>Published takeaway.</b> The published reaction advantage is
+          positive but modest across the tested timeframes.
+        </div>
+        <div class="metrics">
+          <div class="metric"><span>1m</span><strong>+2.32 pp</strong></div>
+          <div class="metric"><span>5m</span><strong>+1.22 pp</strong></div>
+          <div class="metric"><span>15m</span><strong>+1.41 pp</strong></div>
+          <div class="metric"><span>1H</span><strong>+0.91 pp</strong></div>
+          <div class="metric"><span>4H</span><strong>+1.55 pp</strong></div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>Design</h3>
+            <dl>
+              <div>
+                <dt>Canonical suite</dt>
+                <dd>multi-tf</dd>
+              </div>
+              <div>
+                <dt>Published sample</dt>
+                <dd>Up to 12,000 sampled FVG parents/timeframe</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>3 matched ordinary zones per FVG where available</dd>
+              </div>
+              <div>
+                <dt>Seed</dt>
+                <dd>260918</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="panel warn">
+            <h3>Interpretation guardrail</h3>
+            <p>
+              OHLC bars cannot reveal within-bar ordering when both race
+              boundaries trade in the same bar.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="experiment" id="midpoint">
+        <div class="eyebrow">Experiment 06</div>
+        <h2>Midpoint / Consequent Encroachment</h2>
+        <p class="question">Is the exact 50% level special?</p>
+        <div class="takeaway">
+          <b>Published takeaway.</b> Midpoint rejection differences vary by
+          timeframe, with the largest published cell appearing on 4H.
+        </div>
+        <div class="metrics">
+          <div class="metric"><span>1m</span><strong>+0.92 pp</strong></div>
+          <div class="metric"><span>5m</span><strong>+2.45 pp</strong></div>
+          <div class="metric"><span>15m</span><strong>+2.64 pp</strong></div>
+          <div class="metric"><span>1H</span><strong>+0.36 pp</strong></div>
+          <div class="metric"><span>4H</span><strong>+4.39 pp</strong></div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>Design</h3>
+            <dl>
+              <div>
+                <dt>Canonical suite</dt>
+                <dd>midpoint</dd>
+              </div>
+              <div>
+                <dt>Published sample</dt>
+                <dd>Up to 12,000 eligible FVGs/timeframe</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>3 state-matched zones per FVG</dd>
+              </div>
+              <div>
+                <dt>Seed</dt>
+                <dd>9917</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="panel warn">
+            <h3>Interpretation guardrail</h3>
+            <p>
+              The strongest cell was selected from multiple searched timeframe
+              cells and should be interpreted accordingly.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="experiment" id="body_acceptance">
+        <div class="eyebrow">Experiment 07</div>
+        <h2>Candle-Body Acceptance Around CE</h2>
+        <p class="question">Does body-close depth inside the gap matter?</p>
+        <div class="takeaway">
+          <b>Published takeaway.</b> The highlighted 4H 45–50% cell is
+          interesting but exploratory rather than a confirmed edge.
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <span>4H 40–45%</span><strong>N=47 · 56.50% · R -0.015</strong>
+          </div>
+          <div class="metric">
+            <span>4H 45–50%</span><strong>N=49 · 67.35% · R +0.286</strong>
+          </div>
+          <div class="metric">
+            <span>4H 50–55%</span><strong>N=33 · 48.40% · R +0.005</strong>
+          </div>
+          <div class="metric">
+            <span>4H 55–60%</span><strong>N=44 · 40.90% · R -0.041</strong>
+          </div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>Design</h3>
+            <dl>
+              <div>
+                <dt>Canonical suite</dt>
+                <dd>ce-body</dd>
+              </div>
+              <div>
+                <dt>Published sample</dt>
+                <dd>All qualifying opposite-color signal candles</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>TP/SL execution race, no matched-zone placebo</dd>
+              </div>
+              <div>
+                <dt>Seed</dt>
+                <dd>20260918 bootstrap</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="panel warn">
+            <h3>Interpretation guardrail</h3>
+            <p>
+              Signals overlap and many timeframe/depth cells were inspected;
+              uncertainty is therefore optimistic without
+              multiplicity/dependence correction.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="experiment" id="controls_regimes">
+        <div class="eyebrow">Experiment 08</div>
+        <h2>Distance, Regimes &amp; Controlled Model</h2>
+        <p class="question">
+          How much does the FVG label matter after obvious variables are
+          controlled?
+        </p>
+        <div class="takeaway">
+          <b>Published takeaway.</b> Distance explains much of the raw
+          attraction; the conditional FVG effect remains small in the published
+          60-minute model.
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <span>60m FVG odds ratio</span><strong>1.0789</strong>
+          </div>
+          <div class="metric">
+            <span>&lt;0.25 ATR</span><strong>-0.03 pp</strong>
+          </div>
+          <div class="metric">
+            <span>0.25–0.50</span><strong>+0.59 pp</strong>
+          </div>
+          <div class="metric">
+            <span>0.50–0.75</span><strong>+0.88 pp</strong>
+          </div>
+          <div class="metric">
+            <span>1.0–1.5</span><strong>+1.01 pp</strong>
+          </div>
+          <div class="metric">
+            <span>1.5–2.0</span><strong>+1.58 pp</strong>
+          </div>
+          <div class="metric"><span>2–3</span><strong>+2.21 pp</strong></div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>Design</h3>
+            <dl>
+              <div>
+                <dt>Canonical suite</dt>
+                <dd>detailed-1m</dd>
+              </div>
+              <div>
+                <dt>Published sample</dt>
+                <dd>Deep 1m matched sample, up to 40,000 parents</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Up to 5 matched ordinary zones per FVG</dd>
+              </div>
+              <div>
+                <dt>Seed</dt>
+                <dd>42</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="panel warn">
+            <h3>Interpretation guardrail</h3>
+            <p>
+              The coefficient is conditional on the chosen feature set and is
+              not a causal or economic edge estimate.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="experiment" id="oos">
+        <div class="eyebrow">Experiment 09</div>
+        <h2>Chronological Robustness</h2>
+        <p class="question">Does the observed effect survive later data?</p>
+        <div class="takeaway">
+          <b>Published takeaway.</b> Several effects weaken materially in the
+          later sample, consistent with a small and regime-dependent signal.
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <span>Deep 1m/60m early</span><strong>+0.79 pp</strong>
+          </div>
+          <div class="metric">
+            <span>Deep 1m/60m later</span><strong>+0.08 pp</strong>
+          </div>
+          <div class="metric">
+            <span>1m early → later</span><strong>3.06 → 1.86 pp</strong>
+          </div>
+          <div class="metric">
+            <span>5m early → later</span><strong>2.10 → 2.31 pp</strong>
+          </div>
+          <div class="metric">
+            <span>15m early → later</span><strong>0.69 → 0.49 pp</strong>
+          </div>
+          <div class="metric">
+            <span>1H early → later</span><strong>1.02 → -0.38 pp</strong>
+          </div>
+          <div class="metric">
+            <span>4H early → later</span><strong>-0.71 → -2.09 pp</strong>
+          </div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>Design</h3>
+            <dl>
+              <div>
+                <dt>Canonical suite</dt>
+                <dd>detailed-1m + multi-tf</dd>
+              </div>
+              <div>
+                <dt>Published sample</dt>
+                <dd>Chronologically ordered matched parent events</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Same controls as source attraction studies</dd>
+              </div>
+              <div>
+                <dt>Seed</dt>
+                <dd>42 / 260918</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="panel warn">
+            <h3>Interpretation guardrail</h3>
+            <p>
+              This is a chronological robustness split, not a sealed prospective
+              pipeline holdout.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="experiment" id="temporal-regimes">
+        <div class="eyebrow">New exploratory extension</div>
+        <h2>When are FVGs most predictive?</h2>
+        <p class="question">
+          A second-stage temporal study separates FVG attraction from
+          first-touch reaction/rejection across year, quarter, session, hour and
+          native timeframe.
+        </p>
+        <div class="takeaway">
+          <b>Main finding.</b> Attraction is more regime-dependent;
+          reaction/rejection is smaller but more temporally stable.
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <span>60m attraction</span
+            ><strong>+1.05 pp vs matched controls</strong>
+          </div>
+          <div class="metric">
+            <span>First-touch rejection</span><strong>+1.93 pp</strong>
+          </div>
+          <div class="metric">
+            <span>3-bar move away</span><strong>+0.032 ATR</strong>
+          </div>
+          <div class="metric">
+            <span>Strongest timing variable</span
+            ><strong>FVG age / freshness</strong>
+          </div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>Temporal structure</h3>
+            <p>
+              The matched attraction premium was +1.56 pp in 2020, +1.35 pp in
+              2021, +0.44 pp in 2022, +1.18 pp in 2023, +1.28 pp in 2024, +0.44
+              pp in 2025 and +1.08 pp in partial 2026. The result does not
+              support a story that FVGs suddenly started working recently.
+            </p>
+            <p>
+              Attraction heterogeneity was strongest by year (p≈0.0004), session
+              (p≈0.014) and quarter (p≈0.019); rejection was much more stable.
+              Monthly trend estimates were mildly negative for attraction
+              (r≈−0.23) and 3-bar reaction magnitude (r≈−0.25).
+            </p>
+            <p>
+              By formation session, post-market, Asia and London showed larger
+              incremental attraction than NY premarket, even though NY premarket
+              had the highest raw touch rate.
+            </p>
+          </div>
+          <div class="panel warn">
+            <h3>Interpretation guardrail</h3>
+            <p>
+              Recurring weekday and calendar-month effects were weak. Historical
+              extremes were large—e.g. +6.17 pp attraction in the week of
+              2024-01-08 and +14.8 pp rejection in the week of 2020-05-18—but
+              opposite-sign weeks were also observed. These are regime
+              diagnostics, not recurring calendar rules.
+            </p>
+            <p>
+              Individual day/hour/day-of-month anomalies face substantial
+              multiple-comparison risk and remain hypothesis-generation material
+              only.
+            </p>
+            <p>
+              <a
+                href="https://github.com/t8pium/fvg-predictive-strength/blob/main/docs/TEMPORAL_ATTRACTION_REACTION_STUDY.md"
+                >Read the complete temporal study ↗</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="experiment" id="research-platform">
+        <div class="eyebrow">Research Platform v5</div>
+        <h2>Inspect, reproduce, stress-test, and extend</h2>
+        <p class="question">
+          The repository is now a research platform around the frozen published
+          study rather than only a code dump.
+        </p>
+        <div class="metrics">
+          <div class="metric">
+            <span>No-data proof</span><strong>Quick demo</strong>
+          </div>
+          <div class="metric">
+            <span>Published rerun</span><strong>12 cached stages</strong>
+          </div>
+          <div class="metric">
+            <span>Audit tooling</span><strong>Diagnostics + provenance</strong>
+          </div>
+          <div class="metric">
+            <span>New research</span><strong>Corrected v2 track</strong>
+          </div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>Reproduction workflow</h3>
+            <p>
+              Download the repository, run <code>START_HERE.bat</code>, inspect
+              the frozen evidence immediately, then optionally prepare licensed
+              data and run the resumable full-study reproduction. The app
+              compares local output with the published reference and can export
+              a self-contained HTML report.
+            </p>
+            <p>
+              <a href="https://github.com/t8pium/fvg-predictive-strength"
+                >Open Research Platform v5 on GitHub ↗</a
+              >
+            </p>
+          </div>
+          <div class="panel warn">
+            <h3>Research v2</h3>
+            <p>
+              The published v1 scripts stay hash-locked. A separate v2 track
+              implements symmetric full-horizon eligibility, contract-boundary
+              censoring, parent-paired age decay, CME-trade-date clustered
+              uncertainty, walk-forward controls, and FDR-corrected CE
+              re-inference.
+            </p>
+            <p>
+              <strong
+                >All v2 results are new / unpublished research until rerun and
+                reviewed on licensed data.</strong
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="experiment" id="public-nasdaq">
+        <div class="eyebrow">Research Platform v5 · public replication</div>
+        <h2>Long-history Nasdaq-100 proxy track</h2>
+        <p class="question">
+          Can the same FVG hypotheses survive a much longer, freely obtainable
+          Nasdaq-related price history?
+        </p>
+        <div class="takeaway">
+          <b>Status.</b> The 5,046,180-row NSX/USD workflow is implemented and
+          audited, but the complete 12-stage replication has not yet been
+          completed and reviewed. No public-track headline result is published
+          yet.
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <span>Public source rows</span><strong>5,046,180</strong>
+          </div>
+          <div class="metric">
+            <span>Observed range</span><strong>2010-11-14 → 2026-09-11</strong>
+          </div>
+          <div class="metric">
+            <span>Experiment families</span><strong>9</strong>
+          </div>
+          <div class="metric">
+            <span>Evidence status</span><strong>Run pending review</strong>
+          </div>
+        </div>
+        <div class="two">
+          <div class="panel">
+            <h3>What v5 adds</h3>
+            <p>
+              Local audit/preparation, fixed-EST normalization, DuckDB-backed
+              candle queries, 1m→4H FVG overlays, isolated experiment reruns, a
+              resumable 12-stage replication and machine-readable public
+              summaries.
+            </p>
+            <p>
+              <a href="./public-nasdaq/"
+                >Open the public Nasdaq status report ↗</a
+              >
+            </p>
+          </div>
+          <div class="panel warn">
+            <h3>Scientific boundary</h3>
+            <p>
+              NSX/USD is an index-style quote feed, not CME NQ/MNQ futures.
+              Volume, rolls, exchange-tick execution and futures economics are
+              out of scope. The preserved CE/body method also carries an
+              MNQ-derived 0.25-point convention that must be read as a
+              transferred method unit on this proxy feed.
+            </p>
+            <p>
+              The raw HistData-derived market file is not hosted here; “live”
+              data inspection occurs locally after the reader prepares the free
+              source.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>
+          t8pium<span class="brand-period">.</span>
+          <span class="footer-location">Dubai, UAE</span>
+        </p>
+        <nav aria-label="Footer" class="footer-links">
+          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a
+          ><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
+          ><a href="/">Back to portfolio ↑</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

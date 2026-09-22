@@ -1,3 +1,248 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0b0d10"><title>Instagram Highlight Backup + Story Restore Toolkit | t8pium</title><link rel="icon" href="../../assets/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="../../style.css?v=8"><link rel="stylesheet" href="../../gallery.css?v=9"><link rel="stylesheet" href="../../polish.css?v=1"></head>
-<body><main id="main" class="project-page"><section class="page-hero"><div class="shell page-hero__grid"><div><a class="back-link" href="../../#work">← Back to gallery</a><p class="page-eyebrow">Project / Browser automation + local launcher</p><h1>Instagram Highlight Backup + Story Restore Toolkit</h1><p>A local Python toolkit for personal highlight archival and restoration workflows, built around manual authentication, dedicated browser profiles, ordered folders, calibrated screen-vision controls, and a Windows launcher.</p></div><aside class="page-panel"><div class="page-panel__cover gallery-card__cover"><img src="../../assets/covers/instagram-toolkit-launcher-cover.svg?v=2" alt=""></div><div class="page-panel__body"><dl><div><dt>Status</dt><dd>Personal tooling project</dd></div><div><dt>Focus</dt><dd>Responsible browser automation</dd></div><div><dt>Repo</dt><dd><a href="https://github.com/t8pium/instagram-highlight-personal-archiver" target="_blank" rel="noopener">GitHub</a></dd></div></dl></div></aside></div></section><section class="page-content shell"><div class="page-section-grid"><h2>Positioning</h2><div><p>This is framed as a responsible browser-assisted personal archive workflow for content the user owns or has permission to archive or publish.</p></div></div><div class="page-section-grid"><h2>Run experience</h2><div><ul><li>Uses a root-level launcher instead of requiring command prompt setup.</li><li>Creates the local Python environment, installs dependencies, and exposes the main actions as a menu.</li><li>Keeps the original Python scripts directly runnable for advanced use.</li></ul></div></div><div class="page-section-grid"><h2>Backup side</h2><div><ul><li>Launches or connects to a dedicated Chrome profile.</li><li>Uses manual login instead of collecting credentials.</li><li>Uses the currently opened profile page or an entered username or profile URL.</li><li>Detects highlight links and keeps the workflow local.</li></ul></div></div><div class="page-section-grid"><h2>Restore side</h2><div><ul><li>Uses a folder picker to choose an ordered local highlight folder.</li><li>Calibrates visible buttons on the uploader extension page.</li><li>Steps through Add, Next, Publish now, and OK.</li><li>Waits 60 to 70 seconds after OK before the next file.</li><li>Supports dry runs, start position, and limits for resuming.</li></ul></div></div><div class="page-section-grid"><h2>Boundary</h2><div><p>The tool does not automate login, verification, CAPTCHA, account checks, or security decisions. It depends on the user controlling the browser and using the tool responsibly.</p></div></div><div class="page-section-grid"><h2>Stack</h2><div><div class="detail-tags"><span>Python</span><span>Playwright</span><span>PyAutoGUI</span><span>Pyperclip</span><span>OpenCV template matching</span><span>Chrome DevTools Protocol</span><span>Filesystem automation</span><span>CLI design</span><span>Windows batch launcher</span></div></div></div></section></main><footer class="footer"><div class="shell footer-inner"><a class="brand" href="../../"><img src="../../assets/logo-mark.svg" alt="" width="30" height="30"><span>t8pium</span></a><div class="footer-copy"><p>Dubai, UAE <span>·</span> personal portfolio</p><nav class="footer-links" aria-label="Legal"><a href="../../privacy/">Privacy</a><a href="../../terms/">Terms</a></nav></div><a href="../../">Back to portfolio ↑</a></div></footer></body></html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Instagram Highlight Backup + Story Restore Toolkit | t8pium</title>
+    <link href="/assets/logo-mark.svg" rel="icon" type="image/svg+xml" />
+    <link href="/style.css?v=10" rel="stylesheet" />
+    <script defer="" src="/script.js?v=14"></script>
+    <meta
+      content="A local Python toolkit for personal highlight archival and restoration workflows, built around manual authentication, dedicated browser profiles, ordered folders, calibrated screen-vision controls, and a Windows launcher."
+      name="description"
+    />
+    <link
+      href="https://t8pium.github.io/projects/instagram-highlight-toolkit/"
+      rel="canonical"
+    />
+    <meta content="#0b0d10" name="theme-color" />
+    <meta content="article" property="og:type" />
+    <meta content="t8pium" property="og:site_name" />
+    <meta
+      content="Instagram Highlight Backup + Story Restore Toolkit | t8pium"
+      property="og:title"
+    />
+    <meta
+      content="A local Python toolkit for personal highlight archival and restoration workflows, built around manual authentication, dedicated browser profiles, ordered folders, calibrated screen-vision controls, and a Windows launcher."
+      property="og:description"
+    />
+    <meta
+      content="https://t8pium.github.io/projects/instagram-highlight-toolkit/"
+      property="og:url"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="t8pium — I build tools. I test ideas. Python, robotics and market research."
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta
+      content="Instagram Highlight Backup + Story Restore Toolkit | t8pium"
+      name="twitter:title"
+    />
+    <meta
+      content="A local Python toolkit for personal highlight archival and restoration workflows, built around manual authentication, dedicated browser profiles, ordered folders, calibrated screen-vision controls, and a Windows launcher."
+      name="twitter:description"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      name="twitter:image"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <nav aria-label="Primary navigation" class="nav shell">
+        <a aria-label="t8pium — home" class="brand" href="/"
+          ><img
+            alt=""
+            decoding="async"
+            height="32"
+            src="/assets/logo-mark.svg"
+            width="32"
+          /><span>t8pium<span class="brand-period">.</span></span></a
+        >
+        <button
+          aria-controls="navMenu"
+          aria-expanded="false"
+          class="nav-toggle"
+          hidden=""
+          id="navToggle"
+          type="button"
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a aria-current="location" href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#writing">Notes</a></li>
+          <li><a href="/#social">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="project-page" id="main" tabindex="-1">
+      <section class="page-hero">
+        <div class="shell page-hero__grid">
+          <div>
+            <a class="back-link" href="../../#work">← Back to selected work</a>
+            <p class="page-eyebrow">
+              Project / Browser automation + local launcher
+            </p>
+            <h1>Instagram Highlight Toolkit</h1>
+            <p>
+              A local Python toolkit for backing up highlights and restoring
+              stories: ordered files, manual login, calibrated screen controls,
+              and a Windows launcher.
+            </p>
+            <div class="page-actions">
+              <a
+                class="button button--primary"
+                href="https://github.com/t8pium/instagram-highlight-personal-archiver"
+                >View source on GitHub ↗</a
+              >
+            </div>
+          </div>
+          <aside class="page-panel">
+            <div class="page-panel__cover gallery-card__cover">
+              <img
+                alt="Illustration of the toolkit launcher menu for backup and restoration."
+                decoding="async"
+                height="675"
+                loading="lazy"
+                src="../../assets/covers/instagram-toolkit-launcher-cover.svg?v=2"
+                width="1200"
+              />
+            </div>
+            <div class="cover-caption">Project illustration</div>
+            <div class="page-panel__body">
+              <dl>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Personal tooling project</dd>
+                </div>
+                <div>
+                  <dt>Focus</dt>
+                  <dd>Responsible browser automation</dd>
+                </div>
+                <div>
+                  <dt>Repo</dt>
+                  <dd>
+                    <a
+                      href="https://github.com/t8pium/instagram-highlight-personal-archiver"
+                      >GitHub</a
+                    >
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section class="page-content shell">
+        <div class="page-section-grid">
+          <h2>Why I built it</h2>
+          <div>
+            <p>
+              I wanted a repeatable way to archive and restore my own
+              highlights, with file order preserved and setup handled by a
+              launcher.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Run experience</h2>
+          <div>
+            <ul>
+              <li>
+                Uses a root-level launcher instead of requiring command prompt
+                setup.
+              </li>
+              <li>
+                Creates the local Python environment, installs dependencies, and
+                exposes the main actions as a menu.
+              </li>
+              <li>
+                Keeps the original Python scripts directly runnable for advanced
+                use.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Backup side</h2>
+          <div>
+            <ul>
+              <li>Launches or connects to a dedicated Chrome profile.</li>
+              <li>Uses manual login instead of collecting credentials.</li>
+              <li>
+                Uses the currently opened profile page or an entered username or
+                profile URL.
+              </li>
+              <li>Detects highlight links and keeps the workflow local.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Restore side</h2>
+          <div>
+            <ul>
+              <li>
+                Uses a folder picker to choose an ordered local highlight
+                folder.
+              </li>
+              <li>
+                Calibrates visible buttons on the uploader extension page.
+              </li>
+              <li>Steps through Add, Next, Publish now, and OK.</li>
+              <li>Waits 60 to 70 seconds after OK before the next file.</li>
+              <li>
+                Supports dry runs, start position, and limits for resuming.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Boundary</h2>
+          <div>
+            <p>
+              The tool does not automate login, verification, CAPTCHA, account
+              checks, or security decisions. It depends on the user controlling
+              the browser and using the tool responsibly.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-grid">
+          <h2>Stack</h2>
+          <div>
+            <div class="detail-tags">
+              <span>Python</span><span>Playwright</span><span>PyAutoGUI</span
+              ><span>Pyperclip</span><span>OpenCV template matching</span
+              ><span>Chrome DevTools Protocol</span
+              ><span>Filesystem automation</span><span>CLI design</span
+              ><span>Windows batch launcher</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>
+          t8pium<span class="brand-period">.</span>
+          <span class="footer-location">Dubai, UAE</span>
+        </p>
+        <nav aria-label="Footer" class="footer-links">
+          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a
+          ><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
+          ><a href="/">Back to portfolio ↑</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
