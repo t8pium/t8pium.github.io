@@ -13,6 +13,19 @@
   };
   toggle.hidden = false;
   nav.classList.add("nav-ready");
+  // Keep anchor targets below the real header height, including enlarged text.
+  const header = nav.closest("header");
+  const updateScrollOffset = () => {
+    document.documentElement.style.setProperty(
+      "--scroll-offset",
+      `${Math.ceil(header.getBoundingClientRect().height) + 24}px`,
+    );
+  };
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(updateScrollOffset).observe(header);
+  }
+  window.addEventListener("resize", updateScrollOffset, { passive: true });
+  updateScrollOffset();
   toggle.addEventListener("click", () => {
     const open = toggle.getAttribute("aria-expanded") !== "true";
     toggle.setAttribute("aria-expanded", String(open));
