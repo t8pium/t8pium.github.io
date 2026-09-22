@@ -1,0 +1,229 @@
+[
+  {
+    "path": "/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 11
+      }
+    ]
+  },
+  {
+    "path": "/fvg-predictive-strength/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/fvg-predictive-strength/public-nasdaq/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "path": "/privacy/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/projects/automatic-keyboard-presser/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/00-methodology/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/01-raw-fill/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/02-matched-attraction/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/03-age-decay/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/04-continuation/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/05-retest-reaction/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/06-midpoint/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/07-body-acceptance/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/08-controls-regimes/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/09-out-of-sample/",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "path": "/projects/instagram-highlight-toolkit/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/projects/robotic-hand/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/projects/topium-dice-market/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/terms/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/writing/build-logs/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/writing/character-psychology/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/writing/decision-making/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/writing/story-structure/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/writing/systems-thinking/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/writing/technical-notes/",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  },
+  {
+    "path": "/404.html",
+    "width": 390,
+    "violations": [],
+    "incomplete": []
+  }
+]
