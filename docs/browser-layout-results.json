@@ -1,0 +1,1946 @@
+[
+  {
+    "path": "/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "I build tools.I test ideas.",
+    "brokenImages": []
+  },
+  {
+    "path": "/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "I build tools.I test ideas.",
+    "brokenImages": []
+  },
+  {
+    "path": "/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "I build tools.I test ideas.",
+    "brokenImages": []
+  },
+  {
+    "path": "/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "I build tools.I test ideas.",
+    "brokenImages": []
+  },
+  {
+    "path": "/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "I build tools.I test ideas.",
+    "brokenImages": []
+  },
+  {
+    "path": "/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "I build tools.I test ideas.",
+    "brokenImages": []
+  },
+  {
+    "path": "/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "I build tools.I test ideas.",
+    "brokenImages": []
+  },
+  {
+    "path": "/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "I build tools.I test ideas.",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "FVG Predictive Strength",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "FVG Predictive Strength",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "FVG Predictive Strength",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "FVG Predictive Strength",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "FVG Predictive Strength",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "FVG Predictive Strength",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "FVG Predictive Strength",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "FVG Predictive Strength",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/public-nasdaq/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Nasdaq FVG replication · 2010–2026",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/public-nasdaq/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Nasdaq FVG replication · 2010–2026",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/public-nasdaq/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Nasdaq FVG replication · 2010–2026",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/public-nasdaq/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Nasdaq FVG replication · 2010–2026",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/public-nasdaq/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Nasdaq FVG replication · 2010–2026",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/public-nasdaq/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Nasdaq FVG replication · 2010–2026",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/public-nasdaq/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Nasdaq FVG replication · 2010–2026",
+    "brokenImages": []
+  },
+  {
+    "path": "/fvg-predictive-strength/public-nasdaq/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Nasdaq FVG replication · 2010–2026",
+    "brokenImages": []
+  },
+  {
+    "path": "/privacy/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Privacy",
+    "brokenImages": []
+  },
+  {
+    "path": "/privacy/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Privacy",
+    "brokenImages": []
+  },
+  {
+    "path": "/privacy/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Privacy",
+    "brokenImages": []
+  },
+  {
+    "path": "/privacy/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Privacy",
+    "brokenImages": []
+  },
+  {
+    "path": "/privacy/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Privacy",
+    "brokenImages": []
+  },
+  {
+    "path": "/privacy/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Privacy",
+    "brokenImages": []
+  },
+  {
+    "path": "/privacy/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Privacy",
+    "brokenImages": []
+  },
+  {
+    "path": "/privacy/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Privacy",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/automatic-keyboard-presser/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Automatic Keyboard Presser",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/automatic-keyboard-presser/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Automatic Keyboard Presser",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/automatic-keyboard-presser/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Automatic Keyboard Presser",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/automatic-keyboard-presser/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Automatic Keyboard Presser",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/automatic-keyboard-presser/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Automatic Keyboard Presser",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/automatic-keyboard-presser/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Automatic Keyboard Presser",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/automatic-keyboard-presser/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Automatic Keyboard Presser",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/automatic-keyboard-presser/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Automatic Keyboard Presser",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Do Fair Value Gaps predict price?",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Do Fair Value Gaps predict price?",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Do Fair Value Gaps predict price?",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Do Fair Value Gaps predict price?",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Do Fair Value Gaps predict price?",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Do Fair Value Gaps predict price?",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Do Fair Value Gaps predict price?",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Do Fair Value Gaps predict price?",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/00-methodology/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Dataset & methodology",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/00-methodology/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Dataset & methodology",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/00-methodology/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Dataset & methodology",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/00-methodology/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Dataset & methodology",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/00-methodology/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Dataset & methodology",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/00-methodology/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Dataset & methodology",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/00-methodology/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Dataset & methodology",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/00-methodology/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Dataset & methodology",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/01-raw-fill/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Raw fill rates",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/01-raw-fill/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Raw fill rates",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/01-raw-fill/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Raw fill rates",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/01-raw-fill/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Raw fill rates",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/01-raw-fill/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Raw fill rates",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/01-raw-fill/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Raw fill rates",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/01-raw-fill/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Raw fill rates",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/01-raw-fill/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Raw fill rates",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/02-matched-attraction/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Matched-zone attraction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/02-matched-attraction/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Matched-zone attraction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/02-matched-attraction/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Matched-zone attraction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/02-matched-attraction/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Matched-zone attraction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/02-matched-attraction/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Matched-zone attraction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/02-matched-attraction/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Matched-zone attraction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/02-matched-attraction/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Matched-zone attraction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/02-matched-attraction/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Matched-zone attraction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/03-age-decay/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "FVG age decay",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/03-age-decay/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "FVG age decay",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/03-age-decay/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "FVG age decay",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/03-age-decay/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "FVG age decay",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/03-age-decay/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "FVG age decay",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/03-age-decay/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "FVG age decay",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/03-age-decay/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "FVG age decay",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/03-age-decay/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "FVG age decay",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/04-continuation/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Formation continuation",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/04-continuation/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Formation continuation",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/04-continuation/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Formation continuation",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/04-continuation/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Formation continuation",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/04-continuation/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Formation continuation",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/04-continuation/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Formation continuation",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/04-continuation/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Formation continuation",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/04-continuation/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Formation continuation",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/05-retest-reaction/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "First-touch retest reaction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/05-retest-reaction/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "First-touch retest reaction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/05-retest-reaction/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "First-touch retest reaction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/05-retest-reaction/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "First-touch retest reaction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/05-retest-reaction/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "First-touch retest reaction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/05-retest-reaction/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "First-touch retest reaction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/05-retest-reaction/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "First-touch retest reaction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/05-retest-reaction/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "First-touch retest reaction",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/06-midpoint/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Midpoint / consequent encroachment",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/06-midpoint/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Midpoint / consequent encroachment",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/06-midpoint/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Midpoint / consequent encroachment",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/06-midpoint/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Midpoint / consequent encroachment",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/06-midpoint/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Midpoint / consequent encroachment",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/06-midpoint/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Midpoint / consequent encroachment",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/06-midpoint/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Midpoint / consequent encroachment",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/06-midpoint/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Midpoint / consequent encroachment",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/07-body-acceptance/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Candle-body acceptance around CE",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/07-body-acceptance/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Candle-body acceptance around CE",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/07-body-acceptance/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Candle-body acceptance around CE",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/07-body-acceptance/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Candle-body acceptance around CE",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/07-body-acceptance/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Candle-body acceptance around CE",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/07-body-acceptance/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Candle-body acceptance around CE",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/07-body-acceptance/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Candle-body acceptance around CE",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/07-body-acceptance/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Candle-body acceptance around CE",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/08-controls-regimes/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Distance, regimes & controlled model",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/08-controls-regimes/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Distance, regimes & controlled model",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/08-controls-regimes/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Distance, regimes & controlled model",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/08-controls-regimes/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Distance, regimes & controlled model",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/08-controls-regimes/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Distance, regimes & controlled model",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/08-controls-regimes/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Distance, regimes & controlled model",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/08-controls-regimes/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Distance, regimes & controlled model",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/08-controls-regimes/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Distance, regimes & controlled model",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/09-out-of-sample/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Out-of-sample robustness",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/09-out-of-sample/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Out-of-sample robustness",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/09-out-of-sample/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Out-of-sample robustness",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/09-out-of-sample/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Out-of-sample robustness",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/09-out-of-sample/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Out-of-sample robustness",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/09-out-of-sample/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Out-of-sample robustness",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/09-out-of-sample/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Out-of-sample robustness",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/fvg-predictive-strength/experiments/09-out-of-sample/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Out-of-sample robustness",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/instagram-highlight-toolkit/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Instagram Highlight Toolkit",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/instagram-highlight-toolkit/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Instagram Highlight Toolkit",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/instagram-highlight-toolkit/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Instagram Highlight Toolkit",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/instagram-highlight-toolkit/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Instagram Highlight Toolkit",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/instagram-highlight-toolkit/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Instagram Highlight Toolkit",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/instagram-highlight-toolkit/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Instagram Highlight Toolkit",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/instagram-highlight-toolkit/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Instagram Highlight Toolkit",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/instagram-highlight-toolkit/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Instagram Highlight Toolkit",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/robotic-hand/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Computer-vision robotic hand",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/robotic-hand/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Computer-vision robotic hand",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/robotic-hand/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Computer-vision robotic hand",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/robotic-hand/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Computer-vision robotic hand",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/robotic-hand/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Computer-vision robotic hand",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/robotic-hand/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Computer-vision robotic hand",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/robotic-hand/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Computer-vision robotic hand",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/robotic-hand/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Computer-vision robotic hand",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/topium-dice-market/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Topium Dice Market",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/topium-dice-market/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Topium Dice Market",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/topium-dice-market/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Topium Dice Market",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/topium-dice-market/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Topium Dice Market",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/topium-dice-market/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Topium Dice Market",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/topium-dice-market/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Topium Dice Market",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/topium-dice-market/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Topium Dice Market",
+    "brokenImages": []
+  },
+  {
+    "path": "/projects/topium-dice-market/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Topium Dice Market",
+    "brokenImages": []
+  },
+  {
+    "path": "/terms/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Terms",
+    "brokenImages": []
+  },
+  {
+    "path": "/terms/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Terms",
+    "brokenImages": []
+  },
+  {
+    "path": "/terms/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Terms",
+    "brokenImages": []
+  },
+  {
+    "path": "/terms/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Terms",
+    "brokenImages": []
+  },
+  {
+    "path": "/terms/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Terms",
+    "brokenImages": []
+  },
+  {
+    "path": "/terms/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Terms",
+    "brokenImages": []
+  },
+  {
+    "path": "/terms/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Terms",
+    "brokenImages": []
+  },
+  {
+    "path": "/terms/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Terms",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/build-logs/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "What broke, what changed",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/build-logs/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "What broke, what changed",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/build-logs/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "What broke, what changed",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/build-logs/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "What broke, what changed",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/build-logs/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "What broke, what changed",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/build-logs/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "What broke, what changed",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/build-logs/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "What broke, what changed",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/build-logs/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "What broke, what changed",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/character-psychology/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Behavior under pressure",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/character-psychology/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Behavior under pressure",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/character-psychology/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Behavior under pressure",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/character-psychology/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Behavior under pressure",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/character-psychology/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Behavior under pressure",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/character-psychology/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Behavior under pressure",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/character-psychology/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Behavior under pressure",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/character-psychology/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Behavior under pressure",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/decision-making/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Tradeoffs and incentives",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/decision-making/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Tradeoffs and incentives",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/decision-making/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Tradeoffs and incentives",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/decision-making/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Tradeoffs and incentives",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/decision-making/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Tradeoffs and incentives",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/decision-making/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Tradeoffs and incentives",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/decision-making/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Tradeoffs and incentives",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/decision-making/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Tradeoffs and incentives",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/story-structure/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Conflict into consequence",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/story-structure/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Conflict into consequence",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/story-structure/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Conflict into consequence",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/story-structure/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Conflict into consequence",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/story-structure/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Conflict into consequence",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/story-structure/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Conflict into consequence",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/story-structure/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Conflict into consequence",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/story-structure/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Conflict into consequence",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/systems-thinking/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Feedback loops and constraints",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/systems-thinking/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Feedback loops and constraints",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/systems-thinking/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Feedback loops and constraints",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/systems-thinking/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Feedback loops and constraints",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/systems-thinking/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Feedback loops and constraints",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/systems-thinking/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Feedback loops and constraints",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/systems-thinking/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Feedback loops and constraints",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/systems-thinking/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Feedback loops and constraints",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/technical-notes/",
+    "width": 320,
+    "viewport": 305,
+    "scroll": 305,
+    "overflow": false,
+    "h1": "Dense ideas reduced cleanly",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/technical-notes/",
+    "width": 360,
+    "viewport": 345,
+    "scroll": 345,
+    "overflow": false,
+    "h1": "Dense ideas reduced cleanly",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/technical-notes/",
+    "width": 375,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Dense ideas reduced cleanly",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/technical-notes/",
+    "width": 390,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Dense ideas reduced cleanly",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/technical-notes/",
+    "width": 430,
+    "viewport": 415,
+    "scroll": 415,
+    "overflow": false,
+    "h1": "Dense ideas reduced cleanly",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/technical-notes/",
+    "width": 768,
+    "viewport": 753,
+    "scroll": 753,
+    "overflow": false,
+    "h1": "Dense ideas reduced cleanly",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/technical-notes/",
+    "width": 1024,
+    "viewport": 1009,
+    "scroll": 1009,
+    "overflow": false,
+    "h1": "Dense ideas reduced cleanly",
+    "brokenImages": []
+  },
+  {
+    "path": "/writing/technical-notes/",
+    "width": 1440,
+    "viewport": 1425,
+    "scroll": 1425,
+    "overflow": false,
+    "h1": "Dense ideas reduced cleanly",
+    "brokenImages": []
+  },
+  {
+    "path": "/404.html",
+    "width": 320,
+    "viewport": 320,
+    "scroll": 320,
+    "overflow": false,
+    "h1": "Nothing at this address.",
+    "brokenImages": []
+  },
+  {
+    "path": "/404.html",
+    "width": 360,
+    "viewport": 360,
+    "scroll": 360,
+    "overflow": false,
+    "h1": "Nothing at this address.",
+    "brokenImages": []
+  },
+  {
+    "path": "/404.html",
+    "width": 375,
+    "viewport": 375,
+    "scroll": 375,
+    "overflow": false,
+    "h1": "Nothing at this address.",
+    "brokenImages": []
+  },
+  {
+    "path": "/404.html",
+    "width": 390,
+    "viewport": 390,
+    "scroll": 390,
+    "overflow": false,
+    "h1": "Nothing at this address.",
+    "brokenImages": []
+  },
+  {
+    "path": "/404.html",
+    "width": 430,
+    "viewport": 430,
+    "scroll": 430,
+    "overflow": false,
+    "h1": "Nothing at this address.",
+    "brokenImages": []
+  },
+  {
+    "path": "/404.html",
+    "width": 768,
+    "viewport": 768,
+    "scroll": 768,
+    "overflow": false,
+    "h1": "Nothing at this address.",
+    "brokenImages": []
+  },
+  {
+    "path": "/404.html",
+    "width": 1024,
+    "viewport": 1024,
+    "scroll": 1024,
+    "overflow": false,
+    "h1": "Nothing at this address.",
+    "brokenImages": []
+  },
+  {
+    "path": "/404.html",
+    "width": 1440,
+    "viewport": 1440,
+    "scroll": 1440,
+    "overflow": false,
+    "h1": "Nothing at this address.",
+    "brokenImages": []
+  }
+]

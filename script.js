@@ -84,8 +84,9 @@
   const markCurrent = () => {
     queued = false;
     let current = "";
+    const cutoff = header.getBoundingClientRect().height + 32;
     for (const section of sections) {
-      if (section.getBoundingClientRect().top <= 160)
+      if (section.getBoundingClientRect().top <= cutoff)
         current = `#${section.id}`;
     }
     links.forEach((link) => {
