@@ -33,9 +33,11 @@ document.querySelector('#layout').addEventListener('click', async () => {
   const rows = [];
   try {
     for (const path of routes) {
+      await load(path, widths[0]);
       for (const pixels of widths) {
         status.textContent = `Checking ${path} at ${pixels}px`;
-        await load(path, pixels);
+        frame.width = pixels;
+        await settle();
         const doc = frame.contentDocument;
         const brokenImages = [...doc.images].filter(img => img.complete && !img.naturalWidth).map(img => img.getAttribute('src'));
         rows.push({path, width:pixels, viewport:doc.documentElement.clientWidth, scroll:doc.documentElement.scrollWidth, overflow:doc.documentElement.scrollWidth>doc.documentElement.clientWidth+1, h1:doc.querySelector('h1')?.textContent, brokenImages});

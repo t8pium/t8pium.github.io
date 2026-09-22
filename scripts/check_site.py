@@ -73,6 +73,8 @@ def audit(root=ROOT):
                 if 'alt' not in attrs: fail('image missing alt')
                 if not attrs.get('width') or not attrs.get('height'): fail('image dimensions missing')
             if tag == 'th' and not attrs.get('scope'): fail('table heading missing scope')
+            if tag == 'pre' and 'research-code' not in (attrs.get('class') or '').split(): fail('code block needs the shared overflow treatment')
+            if tag == 'pre' and attrs.get('tabindex') != '0': fail('code block needs keyboard scroll access')
             for attr in ('src', 'href'):
                 href = attrs.get(attr)
                 if not href: continue
