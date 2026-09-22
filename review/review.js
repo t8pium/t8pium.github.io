@@ -17,7 +17,7 @@ const settle = async () => {
 const load = (path, pixels) => new Promise((resolve, reject) => {
   frame.width = pixels;
   frame.onload = () => settle().then(resolve, reject);
-  frame.src = path + "?review=20260922-4";
+  frame.src = path + "?review=20260922-5";
 });
 const update = () => {
   if (nojs.checked) frame.setAttribute('sandbox', 'allow-same-origin');
@@ -37,8 +37,10 @@ document.querySelector('#layout').addEventListener('click', async () => {
       for (const pixels of widths) {
         status.textContent = `Checking ${path} at ${pixels}px`;
         frame.width = pixels;
-        await settle();
         const doc = frame.contentDocument;
+        // Reading layout flushes this width change before measuring overflow.
+        frame.getBoundingClientRect();
+        doc.documentElement.getBoundingClientRect();
         const brokenImages = [...doc.images].filter(img => img.complete && !img.naturalWidth).map(img => img.getAttribute('src'));
         rows.push({path, width:pixels, viewport:doc.documentElement.clientWidth, scroll:doc.documentElement.scrollWidth, overflow:doc.documentElement.scrollWidth>doc.documentElement.clientWidth+1, h1:doc.querySelector('h1')?.textContent, brokenImages});
       }

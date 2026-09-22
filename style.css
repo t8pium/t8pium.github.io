@@ -563,7 +563,12 @@ a:hover {
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
   gap: clamp(2rem, 7vw, 6rem);
 }
+.about-layout > *,
+.academic-breakdown > * {
+  min-width: 0;
+}
 .about-layout h2 {
+  overflow-wrap: anywhere;
   font-size: clamp(1.7rem, 2.5vw, 2rem);
   line-height: 1.3;
 }
@@ -636,7 +641,7 @@ a:hover {
 }
 .academic-breakdown {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
   margin-top: 1rem;
   padding: 1.5rem;
@@ -647,6 +652,7 @@ a:hover {
 }
 .academic-breakdown dl > div {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
   padding: 0.5rem 0;
@@ -654,6 +660,8 @@ a:hover {
 }
 .academic-breakdown dt {
   color: var(--muted);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .academic-breakdown dd {
   white-space: nowrap;
@@ -985,7 +993,7 @@ a:hover {
     margin-top: -0.8rem;
   }
   .academic-record {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .page-hero__grid {
     grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr);
@@ -1044,7 +1052,7 @@ a:hover {
     min-height: 48px;
   }
   .hero {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2.5rem;
     padding-block: 3rem;
   }
@@ -1090,7 +1098,7 @@ a:hover {
     max-width: 38rem;
   }
   .research-feature {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     padding-top: 0;
     gap: 1.75rem;
     padding-bottom: 2rem;
@@ -1116,7 +1124,7 @@ a:hover {
     font-size: 0.625rem;
   }
   .tool-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.6rem;
   }
   .tool-row > .text-link {
@@ -1130,11 +1138,8 @@ a:hover {
     content: " · ";
   }
   .about-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
-  }
-  .about-layout h2 br {
-    display: none;
   }
   .academic-record {
     gap: 1.5rem;
@@ -1150,7 +1155,7 @@ a:hover {
     font-size: 0.6875rem;
   }
   .academic-breakdown {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
     padding: 1rem;
   }
@@ -1168,7 +1173,7 @@ a:hover {
     font-size: 1rem;
   }
   .contact {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
   }
   .contact h2 {
@@ -1191,7 +1196,7 @@ a:hover {
   }
   .page-hero__grid,
   .writing-page .page-hero__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.75rem;
   }
   .page-hero h1 {
@@ -1214,7 +1219,7 @@ a:hover {
     gap: 1rem;
   }
   .page-section-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
     padding: 1.5rem 0;
   }
@@ -1233,7 +1238,7 @@ a:hover {
 }
 @media (max-width: 480px) {
   .project-pair {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2.5rem;
   }
   .project-pair .project-image {
@@ -1243,7 +1248,7 @@ a:hover {
     gap: 1.25rem;
   }
   .academic-summary {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0;
   }
   .academic-summary > div {
@@ -1260,7 +1265,7 @@ a:hover {
     font-size: 0.8125rem;
   }
   .page-panel__body dl {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .research-feature h3 {
     font-size: 1.5rem;
