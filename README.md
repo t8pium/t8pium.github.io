@@ -2,7 +2,7 @@
 
 [Live site](https://t8pium.github.io/) · [Research platform](https://github.com/t8pium/fvg-predictive-strength)
 
-A personal site for Python tools, robotics prototypes, market research, and working notes. Plain HTML, CSS, and a small navigation script. There are **no runtime package dependencies, remote font requests, analytics, or content APIs**.
+A personal site for Python tools, robotics prototypes, market research, and working notes. Plain HTML, CSS, and small vanilla-JavaScript enhancements. There are **no runtime package dependencies, remote font requests, or analytics**. The contact page submits messages to FormSubmit so visitors can email from the site without opening a mail client.
 
 ## Run locally
 
@@ -28,7 +28,8 @@ The build validates all pages and exports production assets to `_site/`. GitHub 
 
 ## Editing guide
 
-- `index.html` — home, selected projects, academics, notes, contact.
+- `index.html` — home, selected projects, academics, notes, contact entry point.
+- `contact/` — on-site email composer, contact-specific styles, and AJAX submission handling.
 - `style.css` — shared tokens, navigation, home, project notes, legal pages, responsive rules.
 - `research.css` — study tables, experiment links, commands and evidence summaries.
 - `report.css` — the long-form standalone research report.
