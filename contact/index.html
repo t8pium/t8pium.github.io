@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta
+      content="Send t8pium a message directly from the portfolio."
+      name="description"
+    />
+    <title>Contact | t8pium</title>
+    <link href="/assets/logo-mark.svg" rel="icon" type="image/svg+xml" />
+    <link href="/style.css?v=13" rel="stylesheet" />
+    <link href="/contact/contact.css?v=1" rel="stylesheet" />
+    <script defer src="/script.js?v=16"></script>
+    <script defer src="/contact/contact.js?v=1"></script>
+    <link href="https://t8pium.github.io/contact/" rel="canonical" />
+    <meta content="#0b0d10" name="theme-color" />
+    <meta content="website" property="og:type" />
+    <meta content="t8pium" property="og:site_name" />
+    <meta content="Contact | t8pium" property="og:title" />
+    <meta
+      content="Send t8pium a message directly from the portfolio."
+      property="og:description"
+    />
+    <meta content="https://t8pium.github.io/contact/" property="og:url" />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="t8pium — I build tools. I test ideas. Python, robotics and market research."
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="Contact | t8pium" name="twitter:title" />
+    <meta
+      content="Send t8pium a message directly from the portfolio."
+      name="twitter:description"
+    />
+    <meta
+      content="https://t8pium.github.io/assets/social-preview.png"
+      name="twitter:image"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <nav aria-label="Primary navigation" class="nav shell">
+        <a aria-label="t8pium — home" class="brand" href="/"
+          ><img
+            alt=""
+            decoding="async"
+            height="32"
+            src="/assets/logo-mark.svg"
+            width="32"
+          /><span>t8pium<span class="brand-period">.</span></span></a
+        >
+        <button
+          aria-controls="navMenu"
+          aria-expanded="false"
+          class="nav-toggle"
+          hidden
+          id="navToggle"
+          type="button"
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#writing">Notes</a></li>
+          <li><a aria-current="page" href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="contact-page" id="main" tabindex="-1">
+      <section class="shell contact-page__layout" aria-labelledby="contact-title">
+        <div class="contact-page__intro">
+          <a class="back-link" href="/">← Back to portfolio</a>
+          <p class="eyebrow">Contact / Direct message</p>
+          <h1 id="contact-title">Send me an email.</h1>
+          <p class="contact-page__lede">
+            Have a project, question, opportunity, or something worth discussing?
+            Write it here and it will be delivered to
+            <strong>topium.dev@gmail.com</strong>.
+          </p>
+          <div class="contact-page__note">
+            <span class="contact-page__note-mark" aria-hidden="true">↳</span>
+            <p>
+              Your email address is only used so I can reply. Prefer your own mail
+              app? <a href="mailto:topium.dev@gmail.com">Open email instead.</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <form
+            action="https://formsubmit.co/topium.dev@gmail.com"
+            class="contact-form"
+            id="contactForm"
+            method="POST"
+          >
+            <input
+              autocomplete="off"
+              class="contact-honeypot"
+              name="_honey"
+              tabindex="-1"
+              type="text"
+            />
+            <input name="_template" type="hidden" value="table" />
+            <input
+              name="_url"
+              type="hidden"
+              value="https://t8pium.github.io/contact/"
+            />
+
+            <div class="contact-field">
+              <label for="contactName">Name</label>
+              <input
+                autocomplete="name"
+                id="contactName"
+                maxlength="120"
+                name="name"
+                placeholder="Your name"
+                required
+                type="text"
+              />
+            </div>
+
+            <div class="contact-field">
+              <label for="contactEmail">Email</label>
+              <input
+                autocomplete="email"
+                id="contactEmail"
+                maxlength="254"
+                name="email"
+                placeholder="you@example.com"
+                required
+                type="email"
+              />
+            </div>
+
+            <div class="contact-field">
+              <label for="contactSubject">Subject</label>
+              <input
+                id="contactSubject"
+                maxlength="180"
+                name="_subject"
+                placeholder="What is this about?"
+                required
+                type="text"
+              />
+            </div>
+
+            <div class="contact-field">
+              <label for="contactMessage">Message</label>
+              <textarea
+                id="contactMessage"
+                maxlength="8000"
+                name="message"
+                placeholder="Write your message..."
+                required
+                rows="9"
+              ></textarea>
+            </div>
+
+            <div class="contact-form__footer">
+              <button class="button button--primary" id="contactSubmit" type="submit">
+                Send message <span aria-hidden="true">→</span>
+              </button>
+              <p
+                aria-live="polite"
+                class="contact-status"
+                id="contactStatus"
+                role="status"
+              ></p>
+            </div>
+          </form>
+
+          <noscript>
+            <p class="contact-noscript">
+              JavaScript is off. The form still works, but submission will use
+              FormSubmit's standard confirmation page.
+            </p>
+          </noscript>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>
+          t8pium<span class="brand-period">.</span>
+          <span class="footer-location">Dubai, UAE</span>
+        </p>
+        <nav aria-label="Footer" class="footer-links">
+          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a
+          ><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
+          ><a href="/">Back to portfolio ↑</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
