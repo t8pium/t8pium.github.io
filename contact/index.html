@@ -116,6 +116,11 @@
               type="hidden"
               value="https://t8pium.github.io/contact/"
             />
+            <input
+              name="_next"
+              type="hidden"
+              value="https://t8pium.github.io/contact/sent/"
+            />
 
             <div class="contact-field">
               <label for="contactName">Name</label>
@@ -171,21 +176,16 @@
               <button class="button button--primary" id="contactSubmit" type="submit">
                 Send message <span aria-hidden="true">→</span>
               </button>
-              <p
-                aria-live="polite"
-                class="contact-status"
-                id="contactStatus"
-                role="status"
-              ></p>
+              <p class="contact-status">
+                Secure delivery is handled by FormSubmit.
+              </p>
             </div>
           </form>
 
-          <noscript>
-            <p class="contact-noscript">
-              JavaScript is off. The form still works, but submission will use
-              FormSubmit's standard confirmation page.
-            </p>
-          </noscript>
+          <p class="contact-noscript">
+            On first use, FormSubmit may ask you to complete a verification
+            challenge before the message is delivered.
+          </p>
         </div>
       </section>
     </main>
