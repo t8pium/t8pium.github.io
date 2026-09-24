@@ -1,0 +1,228 @@
+.contact-page {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
+
+.contact-page__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2.5rem, 7vw, 6rem);
+  align-items: start;
+}
+
+.contact-page__intro {
+  padding-top: 0.4rem;
+}
+
+.contact-page__intro .eyebrow {
+  margin-top: 2.5rem;
+}
+
+.contact-page__intro h1 {
+  margin-top: 0.8rem;
+  max-width: 10ch;
+  font-size: clamp(2.7rem, 6vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.contact-page__lede {
+  max-width: 35rem;
+  margin-top: 1.6rem;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.contact-page__lede strong {
+  color: var(--text);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.contact-page__note {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.8rem;
+  max-width: 34rem;
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  color: var(--dim);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.contact-page__note-mark {
+  color: var(--accent);
+  font-family: var(--mono);
+}
+
+.contact-page__note a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: clamp(1.4rem, 4vw, 2.2rem);
+}
+
+.contact-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.contact-field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.contact-field label {
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 0.85rem 0.95rem;
+  outline: none;
+  transition:
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    background 140ms ease;
+}
+
+.contact-field textarea {
+  min-height: 12rem;
+  resize: vertical;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  color: #747b84;
+}
+
+.contact-field input:hover,
+.contact-field textarea:hover {
+  border-color: var(--line-strong);
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+  background: var(--bg-deep);
+}
+
+.contact-field input:invalid:not(:placeholder-shown) {
+  border-color: var(--rose);
+}
+
+.contact-form__footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem 1.25rem;
+  flex-wrap: wrap;
+  padding-top: 0.25rem;
+}
+
+.contact-form__footer .button {
+  border: 0;
+  cursor: pointer;
+}
+
+.contact-form__footer .button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.contact-status {
+  min-height: 1.4em;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.contact-status[data-state="success"] {
+  color: var(--lime);
+}
+
+.contact-status[data-state="error"] {
+  color: var(--rose);
+}
+
+.contact-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.contact-noscript {
+  margin-top: 1rem;
+  color: var(--dim);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+  .contact-page {
+    display: block;
+    padding-block: 2.5rem 3.5rem;
+  }
+
+  .contact-page__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.2rem;
+  }
+
+  .contact-page__intro .eyebrow {
+    margin-top: 1.8rem;
+  }
+
+  .contact-page__intro h1 {
+    font-size: clamp(2.5rem, 13vw, 4rem);
+  }
+
+  .contact-page__lede {
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 1.1rem;
+  }
+
+  .contact-form__footer {
+    align-items: stretch;
+  }
+
+  .contact-form__footer .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-field input,
+  .contact-field textarea {
+    transition: none;
+  }
+}
