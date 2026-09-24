@@ -4,7 +4,7 @@ from pathlib import Path
 import shutil
 from check_site import ROOT, audit, site_files
 
-PUBLISH_SUFFIXES={'.html','.css','.js','.svg','.png','.webp','.ico','.woff2','.csv'}
+PUBLISH_SUFFIXES={'.html','.css','.js','.svg','.png','.ico','.woff2','.csv'}
 
 def build():
     errors,count=audit()
