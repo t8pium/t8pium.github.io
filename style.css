@@ -475,7 +475,7 @@ a:hover {
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-inline: contain;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: x mandatory;
   scroll-padding-inline: 1px;
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
@@ -498,6 +498,7 @@ a:hover {
   flex-direction: column;
   overflow: hidden;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   background: var(--surface);
   border: 1px solid var(--line-strong);
   border-radius: 6px;
