@@ -105,3 +105,110 @@
   window.addEventListener("pageshow", schedule);
   markCurrent();
 })();
+
+
+/* Selected work: native horizontal carousel with wheel, touch, drag and buttons. */
+(() => {
+  const viewport = document.getElementById("workCarousel");
+  const prev = document.getElementById("workPrev");
+  const next = document.getElementById("workNext");
+  if (!viewport) return;
+
+  const cards = () => [...viewport.querySelectorAll(".work-card")];
+  const maxScroll = () => Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+
+  const moveByCard = (direction) => {
+    const first = cards()[0];
+    if (!first) return;
+    const gap = parseFloat(getComputedStyle(viewport.querySelector(".work-carousel__track")).gap || "0");
+    const amount = first.getBoundingClientRect().width + gap;
+    const atStart = viewport.scrollLeft <= 2;
+    const atEnd = viewport.scrollLeft >= maxScroll() - 2;
+
+    if (direction < 0 && atStart) {
+      viewport.scrollTo({ left: maxScroll(), behavior: "smooth" });
+      return;
+    }
+    if (direction > 0 && atEnd) {
+      viewport.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+    viewport.scrollBy({ left: direction * amount, behavior: "smooth" });
+  };
+
+  prev?.addEventListener("click", () => moveByCard(-1));
+  next?.addEventListener("click", () => moveByCard(1));
+
+  viewport.addEventListener(
+    "wheel",
+    (event) => {
+      const verticalIntent = Math.abs(event.deltaY) > Math.abs(event.deltaX);
+      if (!verticalIntent || event.ctrlKey) return;
+
+      const atStart = viewport.scrollLeft <= 0;
+      const atEnd = viewport.scrollLeft >= maxScroll() - 1;
+      const wantsLeft = event.deltaY < 0;
+      const wantsRight = event.deltaY > 0;
+
+      // At the two ends, let the page keep scrolling naturally.
+      if ((atStart && wantsLeft) || (atEnd && wantsRight)) return;
+
+      event.preventDefault();
+      viewport.scrollLeft += event.deltaY;
+    },
+    { passive: false },
+  );
+
+  let pointerId = null;
+  let startX = 0;
+  let startScroll = 0;
+  let moved = false;
+
+  viewport.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "touch") return;
+    pointerId = event.pointerId;
+    startX = event.clientX;
+    startScroll = viewport.scrollLeft;
+    moved = false;
+    viewport.setPointerCapture(pointerId);
+  });
+
+  viewport.addEventListener("pointermove", (event) => {
+    if (event.pointerId !== pointerId) return;
+    const delta = event.clientX - startX;
+    if (Math.abs(delta) > 4) moved = true;
+    viewport.scrollLeft = startScroll - delta;
+  });
+
+  const endDrag = (event) => {
+    if (event.pointerId !== pointerId) return;
+    try {
+      viewport.releasePointerCapture(pointerId);
+    } catch {}
+    pointerId = null;
+  };
+  viewport.addEventListener("pointerup", endDrag);
+  viewport.addEventListener("pointercancel", endDrag);
+
+  viewport.addEventListener(
+    "click",
+    (event) => {
+      if (!moved) return;
+      event.preventDefault();
+      event.stopPropagation();
+      moved = false;
+    },
+    true,
+  );
+
+  viewport.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      moveByCard(-1);
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      moveByCard(1);
+    }
+  });
+})();
