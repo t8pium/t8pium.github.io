@@ -126,7 +126,7 @@
     let best = 0;
     let distance = Infinity;
     slides.forEach((slide, index) => {
-      const delta = Math.abs(slide.offsetLeft - left - viewport.offsetLeft);
+      const delta = Math.abs(slide.offsetLeft - slides[0].offsetLeft - left);
       if (delta < distance) {
         distance = delta;
         best = index;
@@ -146,7 +146,7 @@
     const target = slides[Math.max(0, Math.min(slides.length - 1, index))];
     if (!target) return;
     viewport.scrollTo({
-      left: target.offsetLeft - viewport.offsetLeft,
+      left: target.offsetLeft - slides[0].offsetLeft,
       behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
     });
   };
