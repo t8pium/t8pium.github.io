@@ -10,8 +10,8 @@
     />
     <title>t8pium — Tools, robotics &amp; market research</title>
     <link href="/assets/logo-mark.svg" rel="icon" type="image/svg+xml" />
-    <link href="/style.css?v=17" rel="stylesheet" />
-    <script defer="" src="/script.js?v=17"></script>
+    <link href="/style.css?v=18" rel="stylesheet" />
+    <script defer="" src="/script.js?v=18"></script>
     <link href="https://t8pium.github.io/" rel="canonical" />
     <meta content="#0b0d10" name="theme-color" />
     <meta content="website" property="og:type" />
@@ -122,38 +122,56 @@
             <p class="eyebrow">01 / Selected work</p>
             <h2 id="work-title">Things I’ve built and tested.</h2>
           </div>
-          <div class="work-heading__aside">
-            <p>
-              Some physical. Some statistical.<br />All easier to judge with the
-              details open.
-            </p>
-            <p class="work-scroll-hint" aria-hidden="true">
-              Scroll / drag <span>→</span>
-            </p>
-          </div>
+          <p>
+            Five projects, one format. Scan the evidence, then open the details.
+          </p>
         </div>
 
-        <div class="work-carousel">
-          <button
-            aria-label="Previous project"
-            class="work-carousel__button work-carousel__button--prev"
-            id="workPrev"
-            type="button"
-          >
-            ←
-          </button>
-          <div
-            aria-label="Selected projects"
-            class="work-carousel__viewport"
-            id="workCarousel"
-            role="region"
-            tabindex="0"
-          >
-            <div class="work-carousel__track">
-              <article aria-labelledby="fvg-title" class="work-card work-card--research" id="quant">
+        <div
+          aria-labelledby="work-title"
+          aria-roledescription="carousel"
+          class="work-rail"
+          role="region"
+        >
+          <div class="work-rail__toolbar">
+            <p class="work-rail__hint">
+              <span aria-hidden="true">↔</span> Swipe, scroll, drag, or use the controls.
+            </p>
+            <div class="work-rail__controls">
+              <span aria-live="polite" class="work-rail__status" id="workStatus">1 / 5</span>
+              <button
+                aria-label="Previous project"
+                class="work-rail__button"
+                hidden
+                id="workPrev"
+                type="button"
+              >
+                ←
+              </button>
+              <button
+                aria-label="Next project"
+                class="work-rail__button"
+                hidden
+                id="workNext"
+                type="button"
+              >
+                →
+              </button>
+            </div>
+          </div>
+
+          <div class="work-rail__viewport" id="workCarousel" tabindex="0">
+            <div class="work-rail__track">
+              <article
+                aria-label="1 of 5"
+                aria-roledescription="slide"
+                class="work-card"
+                id="quant"
+                role="group"
+              >
                 <a
-                  aria-label="Read the fair value gap research case study"
-                  class="work-card__image"
+                  aria-label="Open fair value gap research project"
+                  class="work-card__media"
                   href="/projects/fvg-predictive-strength/"
                 >
                   <img
@@ -165,39 +183,39 @@
                     width="1200"
                   />
                 </a>
-                <div class="work-card__body">
-                  <p class="project-kind">Research platform · Python</p>
-                  <h3 id="fvg-title">
-                    <a href="/projects/fvg-predictive-strength/"
-                      >Do fair value gaps predict price?</a
-                    >
-                  </h3>
+                <div class="work-card__content">
+                  <p class="work-card__kind">Research platform · Python</p>
+                  <h3><a href="/projects/fvg-predictive-strength/">Do fair value gaps predict price?</a></h3>
                   <p class="work-card__summary">
-                    A market claim turned into nine experiments: define the gap,
-                    match ordinary zones, measure the difference, then check
-                    whether it survives later data.
+                    Nine controlled experiments test whether FVGs behave differently from matched ordinary price zones.
                   </p>
-                  <p class="work-card__evidence">
-                    Published MNQ: <strong>+3.03 pp</strong> · <strong>+0.58 pp</strong> · <strong>+0.003 pp</strong>
-                  </p>
-                  <p class="project-stack">Python / pandas / Streamlit / DuckDB</p>
-                  <div class="project-links">
-                    <a class="text-link" href="/projects/fvg-predictive-strength/"
-                      >View project <span aria-hidden="true">→</span></a
-                    >
-                    <a
-                      class="text-link secondary-link"
-                      href="https://github.com/t8pium/fvg-predictive-strength"
-                      >Source <span aria-hidden="true">↗</span></a
-                    >
+                  <dl class="work-card__facts">
+                    <div>
+                      <dt>Focus</dt>
+                      <dd>Reproducible market research</dd>
+                    </div>
+                    <div>
+                      <dt>Evidence</dt>
+                      <dd>+3.03 pp at 5m · +0.58 pp at 60m · +0.003 pp at ~1d</dd>
+                    </div>
+                  </dl>
+                  <p class="work-card__stack">Python / pandas / Streamlit / DuckDB</p>
+                  <div class="work-card__actions">
+                    <a class="text-link" href="/projects/fvg-predictive-strength/">View project <span aria-hidden="true">→</span></a>
+                    <a class="text-link secondary-link" href="https://github.com/t8pium/fvg-predictive-strength">Source <span aria-hidden="true">↗</span></a>
                   </div>
                 </div>
               </article>
 
-              <article aria-labelledby="robot-title" class="work-card">
+              <article
+                aria-label="2 of 5"
+                aria-roledescription="slide"
+                class="work-card"
+                role="group"
+              >
                 <a
-                  aria-label="Read about the computer-vision robotic hand"
-                  class="work-card__image"
+                  aria-label="Open computer-vision robotic hand project"
+                  class="work-card__media"
                   href="/projects/robotic-hand/"
                 >
                   <img
@@ -209,30 +227,38 @@
                     width="800"
                   />
                 </a>
-                <div class="work-card__body">
-                  <p class="project-kind">Computer vision / Hardware · Prototype</p>
-                  <h3 id="robot-title">
-                    <a href="/projects/robotic-hand/">Computer-vision robotic hand</a>
-                  </h3>
+                <div class="work-card__content">
+                  <p class="work-card__kind">Computer vision · Hardware</p>
+                  <h3><a href="/projects/robotic-hand/">Computer-vision robotic hand</a></h3>
                   <p class="work-card__summary">
-                    Webcam landmarks become servo motion. A Python-to-Arduino
-                    pipeline where timing, jitter, and calibration become very
-                    real once the code touches hardware.
+                    Webcam hand landmarks are translated into servo motion through a Python-to-Arduino control pipeline.
                   </p>
-                  <p class="work-card__evidence">
-                    Vision → landmarks → servo control
-                  </p>
-                  <p class="project-stack">Python / MediaPipe / OpenCV / Arduino</p>
-                  <a class="text-link" href="/projects/robotic-hand/"
-                    >View project <span aria-hidden="true">→</span></a
-                  >
+                  <dl class="work-card__facts">
+                    <div>
+                      <dt>Focus</dt>
+                      <dd>Vision-to-hardware control</dd>
+                    </div>
+                    <div>
+                      <dt>Evidence</dt>
+                      <dd>Working prototype with calibration, timing, and jitter handling</dd>
+                    </div>
+                  </dl>
+                  <p class="work-card__stack">Python / MediaPipe / OpenCV / Arduino</p>
+                  <div class="work-card__actions">
+                    <a class="text-link" href="/projects/robotic-hand/">View project <span aria-hidden="true">→</span></a>
+                  </div>
                 </div>
               </article>
 
-              <article aria-labelledby="dice-title" class="work-card">
+              <article
+                aria-label="3 of 5"
+                aria-roledescription="slide"
+                class="work-card"
+                role="group"
+              >
                 <a
-                  aria-label="Read about Topium Dice Market"
-                  class="work-card__image"
+                  aria-label="Open Topium Dice Market project"
+                  class="work-card__media"
                   href="/projects/topium-dice-market/"
                 >
                   <img
@@ -244,37 +270,39 @@
                     width="1200"
                   />
                 </a>
-                <div class="work-card__body">
-                  <p class="project-kind">Simulation / Visualization · Working prototype</p>
-                  <h3 id="dice-title">
-                    <a href="/projects/topium-dice-market/">Topium Dice Market</a>
-                  </h3>
+                <div class="work-card__content">
+                  <p class="work-card__kind">Simulation · Visualization</p>
+                  <h3><a href="/projects/topium-dice-market/">Topium Dice Market</a></h3>
                   <p class="work-card__summary">
-                    What does randomness look like once you put it on a chart?
-                    Coin flips set direction, dice set movement, and the app
-                    handles candles, timeframes, and VWAP bands.
+                    A stochastic market simulator where coin flips set direction and dice determine movement.
                   </p>
-                  <p class="work-card__evidence">
-                    Coin flips → direction · dice → movement
-                  </p>
-                  <p class="project-stack">Python / Tkinter / Matplotlib</p>
-                  <div class="project-links">
-                    <a class="text-link" href="/projects/topium-dice-market/"
-                      >View project <span aria-hidden="true">→</span></a
-                    >
-                    <a
-                      class="text-link secondary-link"
-                      href="https://github.com/t8pium/topium-dice-market"
-                      >Source <span aria-hidden="true">↗</span></a
-                    >
+                  <dl class="work-card__facts">
+                    <div>
+                      <dt>Focus</dt>
+                      <dd>Random processes made visual</dd>
+                    </div>
+                    <div>
+                      <dt>Evidence</dt>
+                      <dd>Working desktop prototype with candles, timeframes, and VWAP bands</dd>
+                    </div>
+                  </dl>
+                  <p class="work-card__stack">Python / Tkinter / Matplotlib</p>
+                  <div class="work-card__actions">
+                    <a class="text-link" href="/projects/topium-dice-market/">View project <span aria-hidden="true">→</span></a>
+                    <a class="text-link secondary-link" href="https://github.com/t8pium/topium-dice-market">Source <span aria-hidden="true">↗</span></a>
                   </div>
                 </div>
               </article>
 
-              <article aria-labelledby="keyboard-title" class="work-card">
+              <article
+                aria-label="4 of 5"
+                aria-roledescription="slide"
+                class="work-card"
+                role="group"
+              >
                 <a
-                  aria-label="Read about Automatic Keyboard Presser"
-                  class="work-card__image"
+                  aria-label="Open Automatic Keyboard Presser project"
+                  class="work-card__media"
                   href="/projects/automatic-keyboard-presser/"
                 >
                   <img
@@ -282,36 +310,42 @@
                     decoding="async"
                     height="675"
                     loading="lazy"
-                    src="/assets/covers/home-automatic-keyboard-presser-v3.svg"
+                    src="/assets/covers/automatic-keyboard-presser-cover.svg?v=2"
                     width="1200"
                   />
                 </a>
-                <div class="work-card__body">
-                  <p class="project-kind">Desktop automation · Private source</p>
-                  <h3 id="keyboard-title">
-                    <a href="/projects/automatic-keyboard-presser/"
-                      >Automatic Keyboard Presser</a
-                    >
-                  </h3>
+                <div class="work-card__content">
+                  <p class="work-card__kind">Desktop automation · Private source</p>
+                  <h3><a href="/projects/automatic-keyboard-presser/">Automatic Keyboard Presser</a></h3>
                   <p class="work-card__summary">
-                    A visual keyboard, repeat and hold modes, and mouse/keyboard
-                    macro recording. Built to make repeated input manageable
-                    without rewriting a script.
+                    A visual desktop utility for repeat, hold, and recorded mouse-and-keyboard automation.
                   </p>
-                  <p class="work-card__evidence">
-                    Repeat · hold · mouse / keyboard macros
-                  </p>
-                  <p class="project-stack">Python / Desktop GUI / Automation</p>
-                  <a class="text-link" href="/projects/automatic-keyboard-presser/"
-                    >View project <span aria-hidden="true">→</span></a
-                  >
+                  <dl class="work-card__facts">
+                    <div>
+                      <dt>Focus</dt>
+                      <dd>Fast local input automation</dd>
+                    </div>
+                    <div>
+                      <dt>Evidence</dt>
+                      <dd>Repeat, hold, hotkeys, and macro recording in one interface</dd>
+                    </div>
+                  </dl>
+                  <p class="work-card__stack">Python / Desktop GUI / Automation</p>
+                  <div class="work-card__actions">
+                    <a class="text-link" href="/projects/automatic-keyboard-presser/">View project <span aria-hidden="true">→</span></a>
+                  </div>
                 </div>
               </article>
 
-              <article aria-labelledby="archive-title" class="work-card">
+              <article
+                aria-label="5 of 5"
+                aria-roledescription="slide"
+                class="work-card"
+                role="group"
+              >
                 <a
-                  aria-label="Read about Instagram Highlight Toolkit"
-                  class="work-card__image"
+                  aria-label="Open Instagram Highlight Toolkit project"
+                  class="work-card__media"
                   href="/projects/instagram-highlight-toolkit/"
                 >
                   <img
@@ -319,40 +353,35 @@
                     decoding="async"
                     height="675"
                     loading="lazy"
-                    src="/assets/covers/home-instagram-highlight-toolkit-v3.svg"
+                    src="/assets/covers/instagram-toolkit-launcher-cover.svg?v=2"
                     width="1200"
                   />
                 </a>
-                <div class="work-card__body">
-                  <p class="project-kind">Browser automation · Personal tool</p>
-                  <h3 id="archive-title">
-                    <a href="/projects/instagram-highlight-toolkit/"
-                      >Instagram Highlight Toolkit</a
-                    >
-                  </h3>
+                <div class="work-card__content">
+                  <p class="work-card__kind">Browser automation · Personal tool</p>
+                  <h3><a href="/projects/instagram-highlight-toolkit/">Instagram Highlight Toolkit</a></h3>
                   <p class="work-card__summary">
-                    A local backup and restore workflow: manual login, ordered
-                    files, calibrated screen controls, and a Windows launcher.
+                    A local workflow for backing up highlights and restoring ordered stories through calibrated controls.
                   </p>
-                  <p class="work-card__evidence">
-                    Backup · ordered restore · local workflow
-                  </p>
-                  <p class="project-stack">Python / Playwright / PyAutoGUI / OpenCV</p>
-                  <a class="text-link" href="/projects/instagram-highlight-toolkit/"
-                    >View project <span aria-hidden="true">→</span></a
-                  >
+                  <dl class="work-card__facts">
+                    <div>
+                      <dt>Focus</dt>
+                      <dd>Repeatable local browser workflow</dd>
+                    </div>
+                    <div>
+                      <dt>Evidence</dt>
+                      <dd>Backup, ordered restore, dry runs, resume points, and launcher setup</dd>
+                    </div>
+                  </dl>
+                  <p class="work-card__stack">Python / Playwright / PyAutoGUI / OpenCV</p>
+                  <div class="work-card__actions">
+                    <a class="text-link" href="/projects/instagram-highlight-toolkit/">View project <span aria-hidden="true">→</span></a>
+                    <a class="text-link secondary-link" href="https://github.com/t8pium/instagram-highlight-personal-archiver">Source <span aria-hidden="true">↗</span></a>
+                  </div>
                 </div>
               </article>
             </div>
           </div>
-          <button
-            aria-label="Next project"
-            class="work-carousel__button work-carousel__button--next"
-            id="workNext"
-            type="button"
-          >
-            →
-          </button>
         </div>
       </section>
       <section aria-labelledby="about-title" class="section shell" id="about">
