@@ -2,7 +2,7 @@
 
 [Live site](https://t8pium.github.io/) · [Research platform](https://github.com/t8pium/fvg-predictive-strength)
 
-A personal site for Python tools, robotics prototypes, market research, and working notes. Plain HTML, CSS, and small vanilla-JavaScript enhancements. There are **no runtime package dependencies, remote font requests, or analytics**. The contact page submits messages to FormSubmit so visitors can email from the site without opening a mail client.
+A personal site for Python tools, robotics prototypes, market research, and working notes. Plain HTML, CSS, and small vanilla-JavaScript enhancements. There are **no runtime package dependencies, remote font requests, or analytics**. The contact page submits messages through FormSubmit with a native POST flow and a local confirmation page.
 
 ## Run locally
 
@@ -33,11 +33,11 @@ The build validates all pages and exports production assets to `_site/`. GitHub 
 - `style.css` — shared tokens, navigation, home, project notes, legal pages, responsive rules.
 - `research.css` — study tables, experiment links, commands and evidence summaries.
 - `report.css` — the long-form standalone research report.
-- `script.js` — accessible mobile disclosure navigation and current-section indication. Content is never dependent on JavaScript.
+- `script.js` — progressive enhancements for mobile navigation, section indication, and the selected-work rail. Core content and horizontal scrolling remain usable without JavaScript.
 - `projects/` — four software/hardware case studies plus the FVG study and ten methodology/experiment pages.
 - `writing/` — six **working outlines**, explicitly identified as such.
 - `fvg-predictive-strength/` — static MNQ report and separate public Nasdaq replication status.
-- `assets/` — local SVG artwork, social preview, and self-hosted fonts with their OFL licenses.
+- `assets/` — local SVG project artwork, social preview, and self-hosted fonts with their OFL licenses.
 - `scripts/`, `tests/` — static export and regression checks.
 - `docs/PORTFOLIO_AUDIT.md` — audit decisions, validation, and limitations.
 
