@@ -285,11 +285,6 @@ a:hover {
   gap: 1.75rem;
   margin-top: 1.75rem;
 }
-.hero-footnote {
-  margin-top: 1.5rem;
-  color: var(--dim);
-  font-size: var(--small);
-}
 .button {
   display: inline-flex;
   align-items: center;
@@ -337,24 +332,61 @@ a:hover {
 .secondary-link {
   color: var(--muted);
 }
-.margin-note {
-  padding: 0 0 0 1.6rem;
+.focus-note {
+  align-self: stretch;
+  padding: 1.25rem 0 1.25rem 1.5rem;
   border-left: 1px solid var(--line-strong);
-  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.margin-note h2 {
-  font-size: 1.35rem;
-  line-height: 1.5;
+.focus-note .eyebrow {
+  margin-bottom: 0.55rem;
+}
+.focus-note h2 {
+  font-size: 1.3rem;
+  line-height: 1.4;
   letter-spacing: -0.025em;
 }
-.margin-note p:not(.eyebrow) {
+.focus-list {
+  display: grid;
+  gap: 0;
+  margin-top: 1rem;
+}
+.focus-list > div {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--line);
+}
+.focus-list dt {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+}
+.focus-list dd {
   color: var(--muted);
-  font-size: 0.875rem;
-  margin-top: 0.8rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
 }
-.margin-note .text-link {
-  margin-top: 0.65rem;
+@media (max-width: 700px) {
+  .focus-note {
+    margin-top: 0;
+    padding: 1.1rem 0 0 1.15rem;
+    max-width: 35rem;
+  }
+  .focus-note h2 {
+    font-size: 1.1rem;
+  }
+  .focus-list {
+    margin-top: 0.75rem;
+  }
+  .focus-list > div {
+    grid-template-columns: 4.8rem minmax(0, 1fr);
+  }
 }
+
 .section {
   padding-block: 4.5rem;
   border-top: 1px solid var(--line);
@@ -1055,9 +1087,6 @@ a:hover {
   .hero h1 {
     font-size: 3rem;
   }
-  .margin-note {
-    padding-left: 1.25rem;
-  }
   .academic-record {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1131,26 +1160,6 @@ a:hover {
   }
   .hero .eyebrow {
     font-size: 0.625rem;
-  }
-  .hero-footnote {
-    font-size: 0.75rem;
-  }
-  .margin-note {
-    margin-top: 0;
-    padding-left: 1.2rem;
-    max-width: 35rem;
-  }
-  .margin-note h2 {
-    font-size: 1.125rem;
-  }
-  .margin-note .eyebrow {
-    margin-bottom: 0.5rem;
-  }
-  .margin-note p:not(.eyebrow) {
-    font-size: 0.8125rem;
-  }
-  .margin-note .text-link {
-    font-size: 0.8125rem;
   }
   .section {
     padding-block: 3rem;
