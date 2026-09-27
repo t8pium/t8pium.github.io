@@ -1727,3 +1727,33 @@ a:hover {
     min-height: 2.4rem;
   }
 }
+
+
+/* Shared evidence row keeps every carousel card internally consistent. */
+.work-card__body {
+  grid-template-rows: auto auto minmax(7.2rem, auto) minmax(2.5rem, auto) auto auto;
+}
+.work-card__evidence {
+  min-height: 2.5rem;
+  margin-top: 0.85rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  line-height: 1.55;
+}
+.work-card__evidence strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+.work-card .project-stack {
+  border-top: 0;
+  padding-top: 0.85rem;
+}
+@media (max-width: 700px) {
+  .work-card__body {
+    grid-template-rows: auto auto minmax(6.6rem, auto) minmax(2.5rem, auto) auto auto;
+  }
+}
