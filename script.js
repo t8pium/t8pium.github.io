@@ -106,109 +106,130 @@
   markCurrent();
 })();
 
-
-/* Selected work: native horizontal carousel with wheel, touch, drag and buttons. */
+/* Selected work rail: progressive enhancement only; native horizontal scroll remains usable without JS. */
 (() => {
   const viewport = document.getElementById("workCarousel");
   const prev = document.getElementById("workPrev");
   const next = document.getElementById("workNext");
-  if (!viewport) return;
+  const status = document.getElementById("workStatus");
+  if (!viewport || !prev || !next || !status) return;
 
-  const cards = () => [...viewport.querySelectorAll(".work-card")];
+  const slides = [...viewport.querySelectorAll(".work-card")];
+  if (!slides.length) return;
+
+  prev.hidden = false;
+  next.hidden = false;
+
   const maxScroll = () => Math.max(0, viewport.scrollWidth - viewport.clientWidth);
-
-  const moveByCard = (direction) => {
-    const first = cards()[0];
-    if (!first) return;
-    const gap = parseFloat(getComputedStyle(viewport.querySelector(".work-carousel__track")).gap || "0");
-    const amount = first.getBoundingClientRect().width + gap;
-    const atStart = viewport.scrollLeft <= 2;
-    const atEnd = viewport.scrollLeft >= maxScroll() - 2;
-
-    if (direction < 0 && atStart) {
-      viewport.scrollTo({ left: maxScroll(), behavior: "smooth" });
-      return;
-    }
-    if (direction > 0 && atEnd) {
-      viewport.scrollTo({ left: 0, behavior: "smooth" });
-      return;
-    }
-    viewport.scrollBy({ left: direction * amount, behavior: "smooth" });
+  const nearestIndex = () => {
+    const left = viewport.scrollLeft;
+    let best = 0;
+    let distance = Infinity;
+    slides.forEach((slide, index) => {
+      const delta = Math.abs(slide.offsetLeft - left - viewport.offsetLeft);
+      if (delta < distance) {
+        distance = delta;
+        best = index;
+      }
+    });
+    return best;
   };
 
-  prev?.addEventListener("click", () => moveByCard(-1));
-  next?.addEventListener("click", () => moveByCard(1));
+  const update = () => {
+    const index = nearestIndex();
+    status.textContent = `${index + 1} / ${slides.length}`;
+    prev.disabled = viewport.scrollLeft <= 2;
+    next.disabled = viewport.scrollLeft >= maxScroll() - 2;
+  };
+
+  const go = (index) => {
+    const target = slides[Math.max(0, Math.min(slides.length - 1, index))];
+    if (!target) return;
+    viewport.scrollTo({
+      left: target.offsetLeft - viewport.offsetLeft,
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  };
+
+  prev.addEventListener("click", () => go(nearestIndex() - 1));
+  next.addEventListener("click", () => go(nearestIndex() + 1));
+
+  viewport.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      go(nearestIndex() - 1);
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      go(nearestIndex() + 1);
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      go(0);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      go(slides.length - 1);
+    }
+  });
 
   viewport.addEventListener(
     "wheel",
     (event) => {
-      const verticalIntent = Math.abs(event.deltaY) > Math.abs(event.deltaX);
-      if (!verticalIntent || event.ctrlKey) return;
-
-      const atStart = viewport.scrollLeft <= 0;
+      if (event.ctrlKey || Math.abs(event.deltaX) >= Math.abs(event.deltaY)) return;
+      const atStart = viewport.scrollLeft <= 1;
       const atEnd = viewport.scrollLeft >= maxScroll() - 1;
-      const wantsLeft = event.deltaY < 0;
-      const wantsRight = event.deltaY > 0;
-
-      // At the two ends, let the page keep scrolling naturally.
-      if ((atStart && wantsLeft) || (atEnd && wantsRight)) return;
-
+      if ((event.deltaY < 0 && atStart) || (event.deltaY > 0 && atEnd)) return;
       event.preventDefault();
       viewport.scrollLeft += event.deltaY;
     },
     { passive: false },
   );
 
-  let pointerId = null;
+  let pointer = null;
   let startX = 0;
   let startScroll = 0;
-  let moved = false;
+  let dragged = false;
 
   viewport.addEventListener("pointerdown", (event) => {
     if (event.pointerType === "touch") return;
-    pointerId = event.pointerId;
+    pointer = event.pointerId;
     startX = event.clientX;
     startScroll = viewport.scrollLeft;
-    moved = false;
-    viewport.setPointerCapture(pointerId);
+    dragged = false;
+    viewport.setPointerCapture(pointer);
   });
-
   viewport.addEventListener("pointermove", (event) => {
-    if (event.pointerId !== pointerId) return;
+    if (event.pointerId !== pointer) return;
     const delta = event.clientX - startX;
-    if (Math.abs(delta) > 4) moved = true;
+    if (Math.abs(delta) > 5) dragged = true;
     viewport.scrollLeft = startScroll - delta;
   });
-
-  const endDrag = (event) => {
-    if (event.pointerId !== pointerId) return;
-    try {
-      viewport.releasePointerCapture(pointerId);
-    } catch {}
-    pointerId = null;
+  const release = (event) => {
+    if (event.pointerId !== pointer) return;
+    try { viewport.releasePointerCapture(pointer); } catch {}
+    pointer = null;
   };
-  viewport.addEventListener("pointerup", endDrag);
-  viewport.addEventListener("pointercancel", endDrag);
-
+  viewport.addEventListener("pointerup", release);
+  viewport.addEventListener("pointercancel", release);
   viewport.addEventListener(
     "click",
     (event) => {
-      if (!moved) return;
+      if (!dragged) return;
       event.preventDefault();
       event.stopPropagation();
-      moved = false;
+      dragged = false;
     },
     true,
   );
 
-  viewport.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      moveByCard(-1);
-    }
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      moveByCard(1);
-    }
-  });
+  let queued = false;
+  const scheduleUpdate = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      update();
+    });
+  };
+  viewport.addEventListener("scroll", scheduleUpdate, { passive: true });
+  window.addEventListener("resize", scheduleUpdate, { passive: true });
+  update();
 })();
