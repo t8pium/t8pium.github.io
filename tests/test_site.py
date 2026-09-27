@@ -29,6 +29,16 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(f"{values['touch_1380']:.3f}",'0.003')
         homepage=(ROOT/'index.html').read_text()
         for value in ['+3.03','+0.58','+0.003']:self.assertIn(value,homepage)
+    def test_homepage_carousel_is_consistent(self):
+        homepage=(ROOT/'index.html').read_text()
+        self.assertEqual(homepage.count('class="work-card"'),5)
+        self.assertEqual(homepage.count('class="work-card__media"'),5)
+        self.assertEqual(homepage.count('class="work-card__summary"'),5)
+        self.assertEqual(homepage.count('class="work-card__facts"'),5)
+        self.assertEqual(homepage.count('class="work-card__stack"'),5)
+        self.assertEqual(homepage.count('class="work-card__actions"'),5)
+        self.assertIn('aria-roledescription="carousel"',homepage)
+        self.assertEqual(homepage.count('aria-roledescription="slide"'),5)
     def test_deep_links_preserved(self):
         ids=Page((ROOT/'index.html').read_text()).ids
         for anchor in ['home','work','quant','about','academics','writing','social']: self.assertIn(anchor,ids)
