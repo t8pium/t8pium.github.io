@@ -1,4 +1,4 @@
-# Portfolio audit — September 22, 2026
+# Portfolio audit — September 28, 2026
 
 ## Scope and baseline
 
@@ -19,7 +19,7 @@ Reviewed all 87 tracked files at `959743bb676984b724735b712af1d82191e7fab9`: 26 
 
 Retained the dark background, warm accent, existing identity mark, technical interests, personal voice, academic record, and all original public routes. Reduced the hero to two short lines with a clear explanation of the work. Moved selected projects above the background material.
 
-The research gets an editorial feature with actual published evidence, two visual projects share a smaller comparison row, and utility projects use concise text rows. This hierarchy follows the available substance. It avoids turning everything into a card or inventing project screenshots.
+Selected work now uses one consistent, horizontally scrollable project rail. All five cards follow the same information hierarchy — project type, title, short synopsis, two evidence/focus rows, technology stack, and actions — so visitors can compare projects without relearning the layout. The rail has native horizontal scrolling, visible previous/next controls when JavaScript is available, keyboard support, mouse-wheel and pointer-drag enhancement, no automatic rotation, and the original project artwork rather than invented screenshots.
 
 The robotic hand now has an explicitly labeled signal-flow sketch. Existing dice artwork was simplified. Small borders, modest radii, restrained type sizes and short hover transitions replace decorative effects. The homepage has no entrance animations, particles, counters, live-stat API or generic slogan about innovation.
 
@@ -31,13 +31,16 @@ Removed obsolete presentation files and the incomplete duplicate archiver stagin
 
 - Semantic headings, skip links, visible keyboard focus, descriptive links and image alternatives.
 - Mobile disclosure navigation: Escape, outside-click, focus departure, resize and destination focus handling.
-- Content and navigation remain usable without JavaScript. Academic detail uses native `details`.
+- Content and navigation remain usable without JavaScript. The selected-work rail remains natively horizontally scrollable; JavaScript only adds controls, status, keyboard shortcuts and pointer/wheel enhancement. Academic detail uses native `details`.
 - Explicit image dimensions, lazy secondary images, self-hosted WOFF2 fonts and no automatic third-party requests.
 - Readable table text with keyboard-focusable horizontal scrolling, avoiding whole-page overflow.
 - Reduced-motion CSS disables transitions and smooth scrolling.
-- No runtime packages, framework hydration or data-fetch dependency. JavaScript only enhances navigation.
+- No runtime packages, framework hydration or data-fetch dependency. JavaScript is limited to progressive navigation and selected-work interaction enhancements.
 
 ## Verification
+
+The September 28 homepage rebuild was checked separately after the original September 22 browser audit. Current regression gates verify that all five selected-work cards use the same required structure, the published FVG figures remain unchanged, deep links are preserved, JavaScript parses, and the production export succeeds. The stored browser layout/accessibility JSON files remain the September 22 rendered baseline and are retained as historical evidence rather than mislabeled as a fresh physical-device run.
+
 
 Structural checks cover every HTML route, local links and anchors, metadata, image attributes, ARIA references, SVG parsing and CSS asset URLs. Regression checks verify preserved deep links, static content access and SHA-256 equality of original research scripts and CSVs. Production export and JavaScript syntax are checked separately.
 
