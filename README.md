@@ -29,7 +29,7 @@ The build validates all pages and exports production assets to `_site/`. GitHub 
 ## Editing guide
 
 - `index.html` — home, selected projects, academics, notes, contact entry point.
-- `contact/` — on-site email composer, contact-specific styles, and AJAX submission handling.
+- `contact/` — on-site email composer, contact-specific styles, native FormSubmit POST handling, and a local confirmation page.
 - `style.css` — shared tokens, navigation, home, project notes, legal pages, responsive rules.
 - `research.css` — study tables, experiment links, commands and evidence summaries.
 - `report.css` — the long-form standalone research report.
