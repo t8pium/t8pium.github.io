@@ -1263,9 +1263,6 @@ a:hover {
   }
 }
 @media (max-width: 480px) {
-  .project-pair .project-image {
-    margin-bottom: 1rem;
-  }
   .hero-actions {
     gap: 1.25rem;
   }
@@ -1288,9 +1285,6 @@ a:hover {
   }
   .page-panel__body dl {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .research-feature h3 {
-    font-size: 1.5rem;
   }
   .project-links {
     gap: 0.5rem 1.25rem;
@@ -1336,7 +1330,6 @@ a:hover {
     padding-block: 1rem;
   }
   .hero,
-  .research-feature,
   .page-hero__grid,
   .page-section-grid {
     display: block;
