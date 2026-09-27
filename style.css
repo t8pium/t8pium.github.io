@@ -493,7 +493,7 @@ a:hover {
   padding: 0.1rem 0 0.85rem;
 }
 .work-card {
-  width: clamp(320px, 33vw, 410px);
+  width: calc((min(var(--shell), calc(100vw - 64px)) - 2rem) / 3);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -601,9 +601,14 @@ a:hover {
   font-size: 0.8125rem;
   white-space: nowrap;
 }
-@media (max-width: 900px) {
+@media (min-width: 1180px) {
   .work-card {
-    width: min(70vw, 380px);
+    width: calc((var(--shell) - 2rem) / 3);
+  }
+}
+@media (max-width: 900px) and (min-width: 701px) {
+  .work-card {
+    width: calc((calc(100vw - 64px) - 1rem) / 2);
   }
 }
 @media (max-width: 700px) {
@@ -637,7 +642,7 @@ a:hover {
     padding-bottom: 0.3rem;
   }
   .work-card {
-    width: min(84vw, 340px);
+    width: calc(100vw - 40px);
   }
   .work-card__content {
     grid-template-rows:
