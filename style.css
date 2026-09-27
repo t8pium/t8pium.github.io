@@ -1656,3 +1656,74 @@ a:hover {
     display: none;
   }
 }
+
+
+/* Standardized carousel card content */
+.work-card__body {
+  display: grid;
+  grid-template-rows: auto auto minmax(7.2rem, auto) auto auto;
+  align-content: start;
+  gap: 0;
+}
+.work-card .project-kind {
+  margin: 0 0 0.55rem;
+  min-height: 1.4em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.work-card h3 {
+  min-height: 3.4rem;
+  display: flex;
+  align-items: flex-start;
+}
+.work-card__summary {
+  min-height: 7.2rem;
+  margin-top: 0.7rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.work-card .project-stack {
+  min-height: 2.6rem;
+  margin-top: 0;
+  padding-top: 0.95rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: flex-start;
+}
+.work-card .project-links,
+.work-card__body > .text-link {
+  min-height: 2.1rem;
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.work-card .project-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+.work-card .project-links .text-link,
+.work-card__body > .text-link {
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+.work-card__stats {
+  display: none;
+}
+@media (max-width: 700px) {
+  .work-card__body {
+    grid-template-rows: auto auto minmax(6.6rem, auto) auto auto;
+  }
+  .work-card h3 {
+    min-height: 3rem;
+  }
+  .work-card__summary {
+    min-height: 6.6rem;
+    -webkit-line-clamp: 4;
+  }
+  .work-card .project-stack {
+    min-height: 2.4rem;
+  }
+}
