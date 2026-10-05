@@ -1,75 +1,390 @@
 <!doctype html>
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>Computer-vision robotic hand | t8pium</title>
+    <title>TeleHand Robotics | t8pium</title>
     <link href="/assets/logo-mark.svg" rel="icon" type="image/svg+xml" />
     <link href="/style.css?v=13" rel="stylesheet" />
-    <script defer="" src="/script.js?v=16"></script>
+    <script defer src="/script.js?v=16"></script>
     <meta
-      content="A webcam tracks live hand movement, Python maps the landmarks, and Arduino turns the motion into a servo-driven prototype."
+      content="TeleHand Robotics is a computer-vision-driven robotic hand project that maps natural hand movement into real-time tendon-driven robotic actuation."
       name="description"
     />
-    <link
-      href="https://t8pium.github.io/projects/robotic-hand/"
-      rel="canonical"
-    />
+    <link href="https://t8pium.github.io/projects/robotic-hand/" rel="canonical" />
     <meta content="#0b0d10" name="theme-color" />
     <meta content="article" property="og:type" />
     <meta content="t8pium" property="og:site_name" />
-    <meta content="Computer-vision robotic hand | t8pium" property="og:title" />
+    <meta content="TeleHand Robotics | t8pium" property="og:title" />
     <meta
-      content="A webcam tracks live hand movement, Python maps the landmarks, and Arduino turns the motion into a servo-driven prototype."
+      content="Computer vision, embedded control and tendon-driven mechanics combined into an intuitive human-to-robot control prototype."
       property="og:description"
     />
-    <meta
-      content="https://t8pium.github.io/projects/robotic-hand/"
-      property="og:url"
-    />
-    <meta
-      content="https://t8pium.github.io/assets/social-preview.png"
-      property="og:image"
-    />
+    <meta content="https://t8pium.github.io/projects/robotic-hand/" property="og:url" />
+    <meta content="https://t8pium.github.io/assets/social-preview.png" property="og:image" />
     <meta content="1200" property="og:image:width" />
     <meta content="630" property="og:image:height" />
-    <meta
-      content="t8pium — I build tools. I test ideas. Python, robotics and market research."
-      property="og:image:alt"
-    />
+    <meta content="TeleHand Robotics project overview" property="og:image:alt" />
     <meta content="summary_large_image" name="twitter:card" />
+    <meta content="TeleHand Robotics | t8pium" name="twitter:title" />
     <meta
-      content="Computer-vision robotic hand | t8pium"
-      name="twitter:title"
-    />
-    <meta
-      content="A webcam tracks live hand movement, Python maps the landmarks, and Arduino turns the motion into a servo-driven prototype."
+      content="A computer-vision robotic hand project exploring intuitive teleoperation, embedded control and tendon-driven actuation."
       name="twitter:description"
     />
-    <meta
-      content="https://t8pium.github.io/assets/social-preview.png"
-      name="twitter:image"
-    />
+    <meta content="https://t8pium.github.io/assets/social-preview.png" name="twitter:image" />
+
+    <style>
+      .telehand-hero-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+      }
+      .telehand-hero-meta > div {
+        padding: 0.9rem 1rem;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .telehand-hero-meta strong {
+        display: block;
+        color: var(--text);
+        font-size: 0.9rem;
+      }
+      .telehand-hero-meta span {
+        display: block;
+        margin-top: 0.25rem;
+        color: var(--dim);
+        font-family: var(--mono);
+        font-size: 0.66rem;
+        line-height: 1.5;
+      }
+      .telehand-callout {
+        margin-top: 1.5rem;
+        padding: 1rem 1.1rem;
+        border-left: 2px solid var(--accent);
+        background: linear-gradient(90deg, rgba(225,167,93,.09), rgba(225,167,93,0));
+        color: var(--muted);
+        font-size: 0.875rem;
+      }
+      .telehand-panel {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        padding: 1.25rem;
+      }
+      .telehand-panel__label {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: .65rem;
+        text-transform: uppercase;
+        letter-spacing: .07em;
+      }
+      .telehand-panel h3 {
+        margin-top: .45rem;
+        font-size: 1.15rem;
+      }
+      .telehand-panel p {
+        margin-top: .55rem;
+        color: var(--muted);
+        font-size: .82rem;
+        line-height: 1.65;
+      }
+      .telehand-status-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+      .telehand-stage {
+        display: flex;
+        gap: .85rem;
+        align-items: flex-start;
+        padding: 1rem 0;
+        border-top: 1px solid var(--line);
+      }
+      .telehand-stage:first-child { border-top: 0; padding-top: 0; }
+      .telehand-stage:last-child { padding-bottom: 0; }
+      .telehand-stage__num {
+        flex: 0 0 auto;
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line-strong);
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: .67rem;
+        border-radius: 50%;
+      }
+      .telehand-stage strong { display: block; font-size: .88rem; }
+      .telehand-stage span {
+        display: block;
+        margin-top: .2rem;
+        color: var(--dim);
+        font-size: .76rem;
+        line-height: 1.55;
+      }
+      .telehand-diagram {
+        margin-top: 1.25rem;
+        border: 1px solid var(--line-strong);
+        background: #0e1116;
+        overflow: hidden;
+      }
+      .telehand-diagram__head {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: end;
+        padding: 1.1rem 1.2rem;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(180deg, #151a20 0%, #11151a 100%);
+      }
+      .telehand-diagram__head h3 { font-size: 1rem; }
+      .telehand-diagram__head p {
+        max-width: 38rem;
+        color: var(--dim);
+        font-family: var(--mono);
+        font-size: .64rem;
+        line-height: 1.55;
+        text-align: right;
+      }
+      .telehand-flow {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(145px, 1fr));
+        overflow-x: auto;
+        scrollbar-width: thin;
+      }
+      .telehand-node {
+        min-width: 145px;
+        padding: 1rem;
+        border-right: 1px solid var(--line);
+        position: relative;
+      }
+      .telehand-node:last-child { border-right: 0; }
+      .telehand-node::after {
+        content: "→";
+        position: absolute;
+        right: -9px;
+        top: 49%;
+        z-index: 2;
+        width: 18px;
+        height: 18px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        font-size: .72rem;
+        font-weight: 800;
+      }
+      .telehand-node:last-child::after { display: none; }
+      .telehand-node__icon {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line-strong);
+        background: var(--surface-2);
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: .72rem;
+      }
+      .telehand-node strong {
+        display: block;
+        margin-top: .75rem;
+        font-size: .82rem;
+        line-height: 1.35;
+      }
+      .telehand-node small {
+        display: block;
+        margin-top: .4rem;
+        color: var(--dim);
+        font-size: .68rem;
+        line-height: 1.55;
+      }
+      .telehand-node em {
+        display: inline-block;
+        margin-top: .65rem;
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: .58rem;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+      }
+      .telehand-specs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 1px solid var(--line);
+      }
+      .telehand-spec {
+        padding: .9rem 1rem;
+        border-right: 1px solid var(--line);
+      }
+      .telehand-spec:last-child { border-right: 0; }
+      .telehand-spec strong { display: block; font-size: .78rem; }
+      .telehand-spec span {
+        display: block;
+        margin-top: .2rem;
+        color: var(--dim);
+        font-size: .68rem;
+        line-height: 1.5;
+      }
+      .telehand-version-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .telehand-version {
+        padding: 1.25rem;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .telehand-version--next {
+        border-color: var(--line-strong);
+        background: linear-gradient(180deg, #171b21 0%, var(--surface) 100%);
+      }
+      .telehand-version__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 1rem;
+      }
+      .telehand-version__badge {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: .63rem;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+      }
+      .telehand-version h3 { margin-top: .45rem; font-size: 1.15rem; }
+      .telehand-version p {
+        margin-top: .65rem;
+        color: var(--muted);
+        font-size: .84rem;
+        line-height: 1.75;
+      }
+      .telehand-version ul {
+        margin: .9rem 0 0;
+        padding-left: 1.1rem;
+      }
+      .telehand-version li {
+        color: var(--muted);
+        font-size: .78rem;
+        line-height: 1.65;
+      }
+      .telehand-version li::marker { color: var(--accent); }
+      .telehand-bom {
+        margin-top: 1rem;
+        border: 1px solid var(--line);
+      }
+      .telehand-bom__row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 1rem;
+        padding: .65rem .8rem;
+        border-top: 1px solid var(--line);
+        font-size: .76rem;
+      }
+      .telehand-bom__row:first-child { border-top: 0; }
+      .telehand-bom__row span:first-child { color: var(--muted); }
+      .telehand-bom__row span:last-child {
+        color: var(--text);
+        font-family: var(--mono);
+        white-space: nowrap;
+      }
+      .telehand-bom__total {
+        background: rgba(225,167,93,.07);
+        font-weight: 700;
+      }
+      .telehand-roadmap {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        border: 1px solid var(--line);
+      }
+      .telehand-roadmap > div {
+        padding: 1rem;
+        border-right: 1px solid var(--line);
+      }
+      .telehand-roadmap > div:last-child { border-right: 0; }
+      .telehand-roadmap b {
+        display: block;
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: .62rem;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+      }
+      .telehand-roadmap strong {
+        display: block;
+        margin-top: .45rem;
+        font-size: .84rem;
+      }
+      .telehand-roadmap p {
+        margin-top: .35rem;
+        color: var(--dim);
+        font-size: .72rem;
+        line-height: 1.55;
+      }
+      .telehand-apps {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: .75rem;
+      }
+      .telehand-app {
+        padding: 1rem;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .telehand-app strong { font-size: .86rem; }
+      .telehand-app p {
+        margin-top: .3rem;
+        color: var(--dim);
+        font-size: .74rem;
+        line-height: 1.55;
+      }
+      .telehand-note {
+        margin-top: 1rem;
+        color: var(--dim);
+        font-family: var(--mono);
+        font-size: .65rem;
+        line-height: 1.65;
+      }
+      @media (max-width: 900px) {
+        .telehand-hero-meta,
+        .telehand-specs,
+        .telehand-roadmap { grid-template-columns: 1fr; }
+        .telehand-spec,
+        .telehand-roadmap > div {
+          border-right: 0;
+          border-top: 1px solid var(--line);
+        }
+        .telehand-spec:first-child,
+        .telehand-roadmap > div:first-child { border-top: 0; }
+        .telehand-diagram__head { display: block; }
+        .telehand-diagram__head p { margin-top: .5rem; text-align: left; }
+      }
+      @media (max-width: 700px) {
+        .telehand-status-grid,
+        .telehand-version-grid,
+        .telehand-apps { grid-template-columns: 1fr; }
+        .telehand-flow { grid-template-columns: repeat(7, minmax(175px, 1fr)); }
+      }
+    </style>
   </head>
+
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header" id="siteHeader">
       <nav aria-label="Primary navigation" class="nav shell">
-        <a aria-label="t8pium — home" class="brand" href="/"
-          ><img
-            alt=""
-            decoding="async"
-            height="32"
-            src="/assets/logo-mark.svg"
-            width="32"
-          /><span>t8pium<span class="brand-period">.</span></span></a
-        >
+        <a aria-label="t8pium — home" class="brand" href="/">
+          <img alt="" decoding="async" height="32" src="/assets/logo-mark.svg" width="32" />
+          <span>t8pium<span class="brand-period">.</span></span>
+        </a>
         <button
           aria-controls="navMenu"
           aria-expanded="false"
           class="nav-toggle"
-          hidden=""
+          hidden
           id="navToggle"
           type="button"
         >
@@ -83,110 +398,412 @@
         </ul>
       </nav>
     </header>
+
     <main class="project-page" id="main" tabindex="-1">
       <section class="page-hero">
         <div class="shell page-hero__grid">
           <div>
             <a class="back-link" href="../../#work">← Back to selected work</a>
-            <p class="page-eyebrow">Project / Computer vision + robotics</p>
-            <h1>Computer-vision robotic hand</h1>
+            <p class="page-eyebrow">TeleHand Robotics / Computer vision + mechatronics</p>
+            <h1>Natural hand motion, translated into robotic movement.</h1>
             <p>
-              A webcam tracks live hand movement, Python maps the landmarks, and
-              Arduino turns the motion into a servo-driven prototype.
+              TeleHand Robotics is a computer-vision-driven robotic hand project
+              focused on turning natural human finger movement into real-time
+              physical actuation. The working prototype combines hand tracking,
+              motion mapping, Arduino control and tendon-driven mechanics.
             </p>
-            <p class="status-note">
-              Prototype notes. The diagram is a system sketch; a public source
-              repository and demonstration video are not linked yet.
-            </p>
-          </div>
-          <aside class="page-panel">
-            <div class="page-panel__cover gallery-card__cover">
-              <img
-                alt="System sketch: webcam to Python landmark mapping, serial link, Arduino, and servos."
-                decoding="async"
-                height="450"
-                id="robotHandStill"
-                loading="lazy"
-                src="/assets/covers/robotic-hand-flow.svg"
-                width="800"
-              />
+
+            <div class="telehand-hero-meta" aria-label="Project highlights">
+              <div>
+                <strong>Working prototype</strong>
+                <span>Vision → control → physical motion</span>
+              </div>
+              <div>
+                <strong>Markerless input</strong>
+                <span>No motion-capture glove required</span>
+              </div>
+              <div>
+                <strong>Next build planned</strong>
+                <span>3D-printed hand + Raspberry Pi vision</span>
+              </div>
             </div>
-            <div class="cover-caption">System sketch</div>
-            <div class="page-panel__body">
+
+            <div class="telehand-callout">
+              The project started as a low-cost proof of concept built from
+              accessible materials. The next iteration focuses on a more rigid
+              3D-printed structure, cleaner actuation and a path toward
+              networked teleoperation.
+            </div>
+          </div>
+
+          <aside class="page-panel" aria-label="Project status">
+            <div class="telehand-status-grid">
+              <div class="telehand-panel">
+                <span class="telehand-panel__label">Current</span>
+                <h3>Mark I prototype</h3>
+                <p>Cardboard hand, string tendons, five micro servos and Arduino control.</p>
+              </div>
+              <div class="telehand-panel">
+                <span class="telehand-panel__label">Next</span>
+                <h3>3D-printed build</h3>
+                <p>Rigid articulated hand, forearm-mounted servos and onboard Raspberry Pi vision.</p>
+              </div>
+            </div>
+            <div class="page-panel__body" style="margin-top:1.25rem">
               <dl>
                 <div>
-                  <dt>Status</dt>
-                  <dd>Prototype</dd>
-                </div>
-                <div>
                   <dt>Focus</dt>
-                  <dd>Vision to physical motion</dd>
+                  <dd>Human-to-robot teleoperation</dd>
                 </div>
                 <div>
-                  <dt>Stack</dt>
+                  <dt>Core stack</dt>
                   <dd>Python, MediaPipe, Arduino</dd>
+                </div>
+                <div>
+                  <dt>Mechanism</dt>
+                  <dd>Tendon-driven finger actuation</dd>
                 </div>
               </dl>
             </div>
           </aside>
         </div>
       </section>
+
       <section class="page-content shell">
         <div class="page-section-grid">
-          <h2>Problem</h2>
+          <h2>What it solves</h2>
           <div>
             <p>
-              The goal was to turn a visible gesture into a physical response,
-              making software control something real instead of stopping at the
-              screen.
+              Many robotic systems are controlled through joysticks, specialised
+              controllers or motion-capture hardware. TeleHand explores a more
+              natural interface: move your hand in front of a normal camera and
+              let the robot mirror the intent.
+            </p>
+            <p>
+              The core engineering challenge is not only recognising a gesture,
+              but reliably converting vision data into smooth, bounded,
+              repeatable physical movement.
             </p>
           </div>
         </div>
+
         <div class="page-section-grid">
-          <h2>Build</h2>
-          <div>
-            <ul>
-              <li>Capture live frames from a webcam.</li>
-              <li>Track hand landmarks.</li>
-              <li>Map movement into servo-friendly values.</li>
-              <li>Send motion values to Arduino.</li>
-              <li>Test the output on a physical prototype.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="page-section-grid">
-          <h2>What I learned</h2>
+          <h2>Current prototype</h2>
           <div>
             <p>
-              Physical systems expose weak assumptions. Timing, friction,
-              jitter, wiring, and structure all matter once code starts touching
-              hardware.
+              The first working version validates the complete control chain:
+              hand movement is captured by a camera, computer vision extracts
+              landmarks, software maps the motion into servo commands, and an
+              Arduino drives five tendon-actuated fingers.
+            </p>
+
+            <div class="telehand-diagram" role="img" aria-label="Current TeleHand prototype architecture">
+              <div class="telehand-diagram__head">
+                <div>
+                  <span class="telehand-panel__label">Diagram 01</span>
+                  <h3>Prototype system overview</h3>
+                </div>
+                <p>Markerless vision → motion mapping → Arduino → five servos → tendon-driven hand</p>
+              </div>
+              <div class="telehand-flow">
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">01</div>
+                  <strong>Human hand motion</strong>
+                  <small>User performs natural finger gestures in front of a camera.</small>
+                  <em>Input</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">CAM</div>
+                  <strong>Camera feed</strong>
+                  <small>Live video provides the visual input for hand tracking.</small>
+                  <em>Video</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">CV</div>
+                  <strong>Hand tracking</strong>
+                  <small>Computer vision detects landmarks and estimates finger state.</small>
+                  <em>Landmarks</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">&lt;/&gt;</div>
+                  <strong>Control logic</strong>
+                  <small>Finger movement is mapped into stable servo-friendly values.</small>
+                  <em>Serial commands</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">UNO</div>
+                  <strong>Arduino Uno</strong>
+                  <small>Receives commands and outputs PWM control to the actuators.</small>
+                  <em>PWM</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">×5</div>
+                  <strong>Micro servos</strong>
+                  <small>Five servo motors pull one tendon for each finger.</small>
+                  <em>Actuation</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">✋</div>
+                  <strong>Robotic hand</strong>
+                  <small>Cardboard structure, string tendons and guides reproduce the motion.</small>
+                  <em>Physical output</em>
+                </div>
+              </div>
+              <div class="telehand-specs">
+                <div class="telehand-spec">
+                  <strong>Markerless hand tracking</strong>
+                  <span>Normal camera input rather than a dedicated tracking glove.</span>
+                </div>
+                <div class="telehand-spec">
+                  <strong>Arduino-based actuation</strong>
+                  <span>Simple, accessible embedded hardware for rapid prototyping.</span>
+                </div>
+                <div class="telehand-spec">
+                  <strong>Low-cost tendon mechanics</strong>
+                  <span>Strings and lightweight guides turn servo rotation into finger flexion.</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="telehand-note">
+              This diagram recreates the current system architecture as a responsive
+              page-native graphic so it remains sharp and readable on desktop and mobile.
             </p>
           </div>
         </div>
+
         <div class="page-section-grid">
-          <h2>Next version</h2>
+          <h2>Development</h2>
           <div>
-            <ul>
-              <li>Lower latency.</li>
-              <li>Smoother motion.</li>
-              <li>Better calibrated angle ranges.</li>
-              <li>Stronger structure.</li>
-            </ul>
+            <div class="telehand-version-grid">
+              <article class="telehand-version">
+                <div class="telehand-version__top">
+                  <div>
+                    <span class="telehand-version__badge">Built</span>
+                    <h3>Mark I — proof of concept</h3>
+                  </div>
+                </div>
+                <p>
+                  The first version prioritised learning speed over appearance.
+                  Cardboard, simple guides, micro servos and string tendons made
+                  it possible to validate the mechanics without waiting for a
+                  refined enclosure.
+                </p>
+                <ul>
+                  <li>Rapid physical iteration</li>
+                  <li>Five independently actuated fingers</li>
+                  <li>Arduino serial control</li>
+                  <li>Computer-vision input</li>
+                </ul>
+              </article>
+
+              <article class="telehand-version telehand-version--next">
+                <div class="telehand-version__top">
+                  <div>
+                    <span class="telehand-version__badge">In development</span>
+                    <h3>Next generation — 3D-printed architecture</h3>
+                  </div>
+                </div>
+                <p>
+                  The next build keeps the same human-to-robot control idea while
+                  replacing the temporary structure with a stronger articulated
+                  hand, cleaner tendon paths and a dedicated forearm actuator
+                  module.
+                </p>
+                <ul>
+                  <li>3D-printed articulated hand</li>
+                  <li>Forearm-mounted metal-gear servos</li>
+                  <li>Raspberry Pi 5 vision processing</li>
+                  <li>PCA9685 servo driver + dedicated power</li>
+                </ul>
+              </article>
+            </div>
           </div>
         </div>
+
+        <div class="page-section-grid">
+          <h2>Next-gen system</h2>
+          <div>
+            <p>
+              The planned upgrade moves vision processing onboard, improves
+              mechanical repeatability and separates servo power/control more
+              cleanly. This creates a better foundation for calibration,
+              networking, force sensing and future teleoperation experiments.
+            </p>
+
+            <div class="telehand-diagram" role="img" aria-label="Planned next-generation TeleHand architecture">
+              <div class="telehand-diagram__head">
+                <div>
+                  <span class="telehand-panel__label">Diagram 02</span>
+                  <h3>Next-generation 3D-printed hand concept</h3>
+                </div>
+                <p>Raspberry Pi vision → mapped finger commands → dedicated servo driver → forearm actuation → 3D-printed hand</p>
+              </div>
+              <div class="telehand-flow">
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">01</div>
+                  <strong>Human motion</strong>
+                  <small>Natural hand gestures remain the primary control interface.</small>
+                  <em>Input</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">CAM</div>
+                  <strong>Pi camera / webcam</strong>
+                  <small>Captures a real-time view of the operator's hand.</small>
+                  <em>Video</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">RPi</div>
+                  <strong>Raspberry Pi 5</strong>
+                  <small>Runs hand tracking and local vision processing.</small>
+                  <em>Landmarks</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">&lt;/&gt;</div>
+                  <strong>Motion mapping</strong>
+                  <small>Applies calibration, smoothing and finger-angle mapping.</small>
+                  <em>I²C control</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">PWM</div>
+                  <strong>PCA9685 + power</strong>
+                  <small>Dedicated PWM driver and external supply stabilise servo control.</small>
+                  <em>Servo signals</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">MG</div>
+                  <strong>5 metal-gear servos</strong>
+                  <small>Forearm-mounted actuators pull routed tendons.</small>
+                  <em>Tendon force</em>
+                </div>
+                <div class="telehand-node">
+                  <div class="telehand-node__icon">3D</div>
+                  <strong>Printed hand</strong>
+                  <small>Rigid articulated fingers provide smoother, repeatable mechanics.</small>
+                  <em>Robotic output</em>
+                </div>
+              </div>
+              <div class="telehand-specs">
+                <div class="telehand-spec">
+                  <strong>3D-printed structure</strong>
+                  <span>More rigid, repeatable and scalable than the cardboard proof of concept.</span>
+                </div>
+                <div class="telehand-spec">
+                  <strong>Forearm-mounted actuation</strong>
+                  <span>Cleaner servo integration and organised tendon routing.</span>
+                </div>
+                <div class="telehand-spec">
+                  <strong>Onboard vision control</strong>
+                  <span>Creates a path toward standalone and internet-connected operation.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="telehand-bom" aria-label="Planned bill of materials">
+              <div class="telehand-bom__row"><span>Raspberry Pi 5 (8GB) starter kit</span><span>AED 850–950</span></div>
+              <div class="telehand-bom__row"><span>Raspberry Pi Camera Module 3 / webcam</span><span>AED 210–265</span></div>
+              <div class="telehand-bom__row"><span>5× MG90S metal-gear servos</span><span>AED 45–80</span></div>
+              <div class="telehand-bom__row"><span>PCA9685 servo driver</span><span>AED 25–35</span></div>
+              <div class="telehand-bom__row"><span>5V 5A servo power supply</span><span>AED 35–60</span></div>
+              <div class="telehand-bom__row"><span>Connectors, wiring, breadboard / terminal block</span><span>AED 25–70</span></div>
+              <div class="telehand-bom__row telehand-bom__total"><span>Planned prototype budget</span><span>≈ AED 1,200–1,600</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-section-grid">
+          <h2>Roadmap</h2>
+          <div>
+            <div class="telehand-roadmap">
+              <div>
+                <b>01 / Complete</b>
+                <strong>Proof of concept</strong>
+                <p>Validate camera tracking, control logic, Arduino and tendon-driven motion.</p>
+              </div>
+              <div>
+                <b>02 / Next</b>
+                <strong>Mechanical refinement</strong>
+                <p>3D-print the hand, improve joint geometry and organise the actuator frame.</p>
+              </div>
+              <div>
+                <b>03 / Planned</b>
+                <strong>Closed-loop sensing</strong>
+                <p>Add force or pressure sensing, better calibration and safety limits.</p>
+              </div>
+              <div>
+                <b>04 / Research direction</b>
+                <strong>Networked teleoperation</strong>
+                <p>Explore remote control, latency monitoring, haptic feedback and fail-safe states.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-section-grid">
+          <h2>Where it could go</h2>
+          <div>
+            <div class="telehand-apps">
+              <div class="telehand-app">
+                <strong>Remote manipulation</strong>
+                <p>Operate a dexterous end-effector from a separate location using natural hand movement.</p>
+              </div>
+              <div class="telehand-app">
+                <strong>Assistive robotics</strong>
+                <p>Explore more intuitive control interfaces for robotic and rehabilitation systems.</p>
+              </div>
+              <div class="telehand-app">
+                <strong>Hazardous environments</strong>
+                <p>Keep the operator physically separated from tasks that are unsafe or difficult to access.</p>
+              </div>
+              <div class="telehand-app">
+                <strong>Healthcare research</strong>
+                <p>Long-term research direction in tele-assistance, haptics and remotely controlled robotic systems.</p>
+              </div>
+            </div>
+            <p class="telehand-note">
+              TeleHand is currently an engineering prototype, not a medical device
+              or surgical system. Healthcare applications are a long-term research
+              direction rather than a claim about the current hardware.
+            </p>
+          </div>
+        </div>
+
+        <div class="page-section-grid">
+          <h2>Engineering lessons</h2>
+          <div>
+            <p>
+              The project made the difference between software demos and physical
+              systems obvious. Friction, servo jitter, tendon tension, angle
+              limits, wiring, power delivery and structural stiffness can all
+              dominate performance even when the computer-vision code works.
+            </p>
+            <p>
+              That is why the next version focuses as much on mechanical and
+              electrical architecture as on the tracking algorithm itself.
+            </p>
+          </div>
+        </div>
+
         <div class="page-section-grid">
           <h2>Stack</h2>
           <div>
             <div class="detail-tags">
-              <span>Python</span><span>OpenCV / MediaPipe</span
-              ><span>Arduino C++</span><span>Servo Motors</span
-              ><span>Serial Communication</span><span>Rapid Prototyping</span>
+              <span>Python</span>
+              <span>OpenCV / MediaPipe</span>
+              <span>Arduino C++</span>
+              <span>Servo Motors</span>
+              <span>Serial Communication</span>
+              <span>Tendon Mechanics</span>
+              <span>Raspberry Pi</span>
+              <span>PCA9685</span>
+              <span>3D Printing</span>
+              <span>Rapid Prototyping</span>
             </div>
           </div>
         </div>
       </section>
     </main>
+
     <footer class="footer">
       <div class="shell footer-inner">
         <p>
@@ -194,9 +811,10 @@
           <span class="footer-location">Dubai, UAE</span>
         </p>
         <nav aria-label="Footer" class="footer-links">
-          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a
-          ><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a
-          ><a href="/">Back to portfolio ↑</a>
+          <a href="https://github.com/t8pium/t8pium.github.io">Site source</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/">Back to portfolio ↑</a>
         </nav>
       </div>
     </footer>
