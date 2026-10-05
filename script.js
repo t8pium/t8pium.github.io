@@ -190,6 +190,15 @@
 
   viewport.addEventListener("pointerdown", (event) => {
     if (event.pointerType === "touch") return;
+
+    // Do not start drag-capture from interactive controls. Capturing the pointer
+    // from a link can prevent the browser's native navigation from firing.
+    if (
+      event.target instanceof Element &&
+      event.target.closest("a, button, input, textarea, select, summary, [role='button']")
+    )
+      return;
+
     pointer = event.pointerId;
     startX = event.clientX;
     startScroll = viewport.scrollLeft;
